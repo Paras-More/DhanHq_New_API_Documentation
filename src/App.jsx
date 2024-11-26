@@ -1,16 +1,16 @@
 import { useState } from 'react'
 import Navbar from './Components/Navbar'
 import Note from './Components/Note'
-import Main from './Components/Main'
+import AppLayout from './Components/AppLayout'
+import Router from './Routes/Router'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div className='w-full relative'>
+    <div className='w-full h-full relative'>
       <Note/>
-        <Navbar/>
-        <Main/>
+        {/* <AppLayout/> */}
+        <Router/>
     </div>
   )
 }

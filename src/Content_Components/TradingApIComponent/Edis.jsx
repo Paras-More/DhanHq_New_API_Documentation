@@ -1,9 +1,9 @@
 import React from 'react'
 
-function EDIS() {
+function Edis() {
   return (
     <div>EDIS</div>
   )
 }
 
-export default EDIS
+export default Edis
