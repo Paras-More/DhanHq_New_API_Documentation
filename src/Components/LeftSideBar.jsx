@@ -1,9 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 function LeftSideBar() {
 
-   
+  const navigate = useNavigate()
+
+    function handleRouteChange(e){
+        const respath = e.target.getAttribute("value");
+        console.log(respath);
+        navigate(respath)
+        
+    } 
 
   return (
     <aside className='bg-white w-customSmall flex-shrink-0 xl:flex flex-col hidden gap-4 '>
@@ -30,6 +38,7 @@ function LeftSideBar() {
         <Link to="/postback">Postback</Link>
         <Link to="/live-order-update">Live Order Update</Link>
       </ul>
+
     </div>
 
     <div>
