@@ -18,6 +18,33 @@
     border-radius: 10px;  /* Round corners of the scrollbar track */
   }
   
+/*  */
+.content-heading-font {
+  font-size: 2rem;
+  font-weight: 600;
+  color:#2D48DD;
+  font-family: 'CircularXXSub-Medium',sans-serif ;
+}
 
+.content-subheading-font {
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-family: 'CircularXXSub-Medium',sans-serif ;
+}
 
+.title-font{
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  margin: 1em 0;
+  font-family: 'CircularXXSub-Medium',sans-serif ;
+  color:#181154 !important
+}
+
+td, th {
+  border-top: 1px solid #ccc;   /* Add top horizontal border between rows */
+  border-bottom: 1px solid #ccc; /* Add bottom horizontal border between rows */
+  border-left: none;  /* Remove vertical border on the left */
+  border-right: none; /* Remove vertical border on the right */
+}
 
