@@ -13,16 +13,17 @@ const SwitchTabComponent = () => {
           }`}
           onClick={() => setActiveTab("REST")}
         >
-          REST
+          REST  
         </button>
-        <button
+        {/* Incase Infuture if wants to add Python then this can be uncomment */}
+        {/* <button
           className={`py-2 px-4 font-semibold ${
             activeTab === "Python" ? "text-blue-500 border-b-2 border-blue-500" : "text-gray-600"
           }`}
           onClick={() => setActiveTab("Python")}
         >
           Python
-        </button>
+        </button> */}
       </div>
 
       {/* Tab Content */}
@@ -34,9 +35,13 @@ const SwitchTabComponent = () => {
             request.
           </p>
         )}
-        {activeTab === "Python" && (
+
+        {/* Incase Infuture if wants to add Python then this can be uncomment */}
+        {/* {activeTab === "Python" && (
           <p>Install Python Package directly using the following command in the command line.</p>
-        )}
+        )} */}
+
+
       </div>
     </div>
   );

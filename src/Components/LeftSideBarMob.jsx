@@ -8,7 +8,6 @@ function LeftSideBarMob() {
 
     useEffect(()=>{
         console.log("lone 10",ShowMenu);
-        
     },[ShowMenu])
 
   return (

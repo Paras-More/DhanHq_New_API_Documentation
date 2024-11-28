@@ -11,13 +11,11 @@ import CenterContainer from './CenterContainer';
 import { useSelector } from 'react-redux';
 
 
-function  Main() {
+function  AppLayout() {
 
-
-
-  return (
+  return (  
     <>
-      <div className='bg-white  border-black flex items-center justify-center' style={{ maxHeight: 'calc(100vh - 67.6px)' }}>
+      <div className='bg-white  border-black flex items-center justify-center'>
         {/* This Below Div will only be visible above 995px width screen */}
         {console.log("render")}
         
@@ -41,4 +39,4 @@ function  Main() {
   );
 }
 
-export default Main;
+export default AppLayout;

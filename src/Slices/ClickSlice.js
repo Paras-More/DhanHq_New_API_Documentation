@@ -7,7 +7,7 @@ const ClickSlice = createSlice({
         ShowMenu:false
     },
     reducers:{
-        SetisMenuClicked:(state,action)=>{
+        SetShowMenu:(state,action)=>{
             state.ShowMenu = !state.ShowMenu
         }
     }

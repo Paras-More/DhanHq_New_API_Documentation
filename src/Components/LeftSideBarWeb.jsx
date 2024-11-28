@@ -20,9 +20,10 @@ function LeftSideBarWeb() {
       <h1 className="font-bold mb-1">Trading API's</h1>
       <ul className='indent-3 flex flex-col'>
         <Link to="/orders"><li>Orders</li></Link>
-        <Link to="/forever"><li>Forever Order</li></Link>
-        <Link to="/Release"><li>Release Order</li></Link>
-        <Link to="/Portfolio"><li>Portfolio</li></Link>
+        {/* <Link to="/order-book"><li>Order Book</li></Link>
+        <Link to="/Release"><li>Release Order</li></Link> */}
+        <Link to="/net-position"><li>Net Position</li></Link>
+        <Link to="/calculate-order-margin"><li>Calculate Order Margin</li></Link>
         <Link to="/edis"><li>EDIS</li></Link>
         <Link to="traders-control"><li>Trader's Control</li></Link>
          <Link to="/funds"><li>Funds</li></Link>

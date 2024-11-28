@@ -10,9 +10,8 @@ function App() {
 
   return (
     <div className='w-full h-full relative'>
-      {/* <Note/> */}
       <Provider store={store}>
-      <Router/>
+          <Router/>
       </Provider>
     </div>
   )

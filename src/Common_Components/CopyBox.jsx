@@ -8,25 +8,17 @@ const CopyBox = ({ copyContent }) => {
         // alert(data)
         console.log(data);
         setIsCopied(true)
-
         // Deleting the Pop of copied text
         setTimeout(()=>{
          setIsCopied(false)
         },1000)
-        
     }).catch((e)=>{
         alert(e)
     })
   };
 
-
-  useEffect(()=>{
-        console.log(copyContent);
-        
-  },[])
-
   return (
-    <div className="relative bg-gray-400 text-white p-4 rounded-sm shadow-md max-w-full overflow-x-auto">
+    <div className="relative bg-customBlue  text-gray-800 p-4 rounded-sm shadow-md max-w-full overflow-x-auto">
       <pre className="whitespace-pre-wrap">{copyContent}</pre>
       <button
         onClick={handleCopy}
@@ -35,7 +27,7 @@ const CopyBox = ({ copyContent }) => {
         Copy
       </button>
     {
-        isCopied &&  <span className="fixed bottom-6 right-32 px-6 py-3 bg-customMediumBlue transform-origin: left;
+        isCopied &&  <span className="fixed bottom-6 right-32 px-6 py-2 bg-customMediumBlue text-white rounded-md;
         ">Text is copied</span>
     }
     </div>

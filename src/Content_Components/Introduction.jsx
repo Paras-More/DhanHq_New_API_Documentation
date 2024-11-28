@@ -123,6 +123,7 @@ function Introduction() {
             </div>
           </div>
       {/* Login details Section  */}
+          <h1>Base API URL: </h1>
           <div>
           <h3 className="font-semibold content-subheading-font">Login</h3>
             <h4 className="title-font">For Partners</h4>
