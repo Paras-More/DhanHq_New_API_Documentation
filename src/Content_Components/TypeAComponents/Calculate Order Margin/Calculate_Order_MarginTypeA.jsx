@@ -1,72 +1,118 @@
 import React from 'react'
-import NewJsonViewer from '../../../Common_Components/NewJsonViewer'
 import CopyBox from '../../../Common_Components/CopyBox'
+import NewJsonViewer from '../../../Common_Components/NewJsonViewer'
 
-function CancelOrderTypeA() {
+function Calculate_Order_MarginTypeA() {
 
-    const CancelOrderCurlData = `
-curl --location --request DELETE 
-'http://localhost:18463/zrd/orders/regular/1161241001100' \\
+
+const COMCurlData =`
+curl --location 'http://localhost:18463/Zrd/margins/orders' \\
 --header 'X-Mirae-Version: 1' \\
 --header 'Authorization: token api_key:access_token' \\
---header 'Content-Type: application/x-www-form-urlencoded' \\
---data-urlencode 'tradingsymbol=ACC' \\
---data-urlencode 'transaction_type=BUY' \\
---data-urlencode 'validity=DAY' \\
---data-urlencode 'exchange=NSE' \\
---data-urlencode 'quantity=3' \\
---data-urlencode 'order_type=LIMIT' \\
---data-urlencode 'modqty_remng=2' \\
---data-urlencode 'product=MIS' \\
---data-urlencode 'price=1250'`
+--header 'Content-Type: application/json' \\
+--data '{
+    "exchange": "NSE",
+    "tradingsymbol": "INFY",
+    "transaction_type": "BUY",
+    "variety": "regular",
+    "product": "CNC",
+    "order_type": "MARKET",
+    "quantity": 1,
+    "price": 0,
+    "trigger_price": 0
+}`  
+
+const requestBodyJson ={
+    "exchange": "NSE",
+    "tradingsymbol": "INFY",
+    "transaction_type": "BUY",
+    "variety": "regular",
+    "product": "CNC",
+    "order_type": "MARKET",
+    "quantity": 1,
+    "price": 0,
+    "trigger_price": 0
+}
 
 const SuccessResponseJson = {
-    "status": "success",
-    "data": {
-        "order_id": "1161241001100"
-    }
+  "status": "success",
+  "data": {
+      "type": "equity",
+      "tradingsymbol": "INFY",
+      "exchange": "NSE",
+      "span": 0,
+      "exposure": 0,
+      "option_premium": 0,
+      "additional": 1699.37,
+      "bo": 0,
+      "cash": 0,
+      "var": 0,
+      "pnl": {
+          "realised": 0,
+          "unrealised": 0
+      },
+      "leverage": 0,
+      "charges": {
+          "transaction_tax": 0,
+          "transaction_tax_type": "stt",
+          "exchange_turnover_charge": 0,
+          "sebi_turnover_charge": 0,
+          "brokerage": 80.92,
+          "stamp_duty": 0,
+          "gst": {
+              "igst": 0,
+              "cgst": 0,
+              "sgst": 0,
+              "total": 0
+          },
+          "total": 80.92
+      },
+      "total": 1699.37
+  }
+
 }
 
 const FailureInputJson = {
-    "status": "error",
-    "message": "Order Does not Exsist.Need to refresh orderbook / relogin in application ",
-    "error_type": "InputException",
-    "data": null
+  "status": "error",
+  "message": "Incorrect auth. Please try again.",
+  "error_type": "InputException",
+  "data": null
 }
 
   return (
-<div className='flex flex-col gap-6 mt-10'>
+    <div className='flex flex-col gap-6 mt-10'>
     {/* <h1>Place Order</h1> */}
+    <h1 className="content-heading-font">Calculate Order Margin Type A</h1>
     <div className='flex flex-col gap-3'>
       <ol className='list-inside'>
-        <li className="font-bold text-xl">3. Cancel Order</li>
+        <li className="font-bold text-xl">Calculate Order Margin</li>
       </ol>
       <p>
         URL :
         <a
           className="text-customBlueFont"
-          href="https://ntasc.mirae.com/zrd/orders/regular"
+          href="https://ntasc.mirae.com/zrd/margins/orders"
         >
-          https://ntasc.mirae.com/zrd/orders/regular/&#10100;OrderID&#10101;
+          https://ntasc.mirae.com/zrd/margins/orders
         </a>
       </p>
       <p>
-        Method -<span className="font-bold"> DELETE</span>
+        Method -<span className="font-bold"> POST</span>
       </p>
     </div>
     
     {/* Description  Details Section */}
     <div>
       <p>
-        <span className="font-bold">Description -</span>This endpoint allows users to delete an existing order specified by
-        the order ID. Deleting an order will cancel the specified order.
+        <span className="font-bold">Description -</span>This endpoint allows users to retrieve a list of their trading orders.
+        Users can view all their existing orders.
       </p>
     </div>
 
     {/* Postman Curl command Details Section */}
     <div>
       <p className="font-bold">Postman cURL Command -</p>
-      <CopyBox copyContent={CancelOrderCurlData} />
+      <CopyBox copyContent={COMCurlData} />
     </div>
     
     {/* Request Header Section */}
@@ -111,21 +157,8 @@ const FailureInputJson = {
 
     {/* Request Body Details Section */}
     <div>
-      <p>
-        <span className="font-bold">Request Body - </span>The   body   of   the   request   must   be   URL-encoded   and   include   the   following
-        parameters:
-      </p>
-      <ul className="list-inside list-disc indent-8 py-2">
-        <li>tradingsymbol</li>
-        <li>transaction_type</li>
-        <li>validity</li>
-        <li>exchange</li>
-        <li>quantity</li>
-        <li>order_type</li>
-        <li>modqty_remng</li>
-        <li>product</li>
-        <li>price</li>
-      </ul>
+    <p className="font-bold">Request Body-</p>
+    <NewJsonViewer data={requestBodyJson}/>
     </div>
 
     {/* Request Response -  Details Section  */}
@@ -140,8 +173,8 @@ const FailureInputJson = {
           <li>
             {" "}
             <span className="font-semibold">Success (HTTP Status 200): </span>
-            On successful order deletion, the server returns
-            a JSON object containing the order ID and status.
+            On successful request execution, server will
+            return the below json formated data.
           </li>
           <NewJsonViewer data={SuccessResponseJson} />
 
@@ -151,16 +184,16 @@ const FailureInputJson = {
             <span className="font-semibold">
             Failure (HTTP Status 200):{" "}
             </span>{" "}
-            : If orderid does not exist then server will return
-            below json reponse.
+            If authentication fails, the server will return an
+            error message
           </li>
           <NewJsonViewer data={FailureInputJson} />
         </ul>
       </div>
     </div>
 
-</div>
+    </div>
   )
 }
 
-export default CancelOrderTypeA
+export default Calculate_Order_MarginTypeA

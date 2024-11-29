@@ -1,21 +1,19 @@
 import React from 'react'
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import Introduction from '../Content_Components/Introduction'
-import Portfolio from '../Content_Components/TradingApIComponent/Net_Position'
-import Orders from '../Content_Components/TradingApIComponent/Orders'
-import Net_Position from '../Content_Components/TradingApIComponent/Net_Position'
-import Postback from '../Content_Components/TradingApIComponent/Postback'
-import Funds from '../Content_Components/TradingApIComponent/Funds'
-import Calculate_Order_Margin from '../Content_Components/TradingApIComponent/Calculate_Order_Margin'
-import Edis from '../Content_Components/TradingApIComponent/EDIS'
-import Statement from '../Content_Components/TradingApIComponent/Statement'
-import Live_Order_Update from '../Content_Components/TradingApIComponent/Live_Order_Update'
-import Market_Quote from '../Content_Components/DataApiComponent/Market_Quote'
-import Historical_Data from '../Content_Components/DataApiComponent/Historical_Data'
-import Live_Market_Feed from '../Content_Components/DataApiComponent/Live_Market_Feed'
-import Annexure from '../Content_Components/Annexure'
-import Instrument_List from '../Content_Components/Instrument_List'
-import AppLayout from '../Components/AppLayout'
+import AllOrdersTypeA from '../Content_Components/TypeAComponents/Orders/AllOrdersTypeA'
+import AllOrdersTypeB from '../Content_Components/TypeBComponents/Orders/AllOrdersTypeB'
+import Net_PositionTypeA from '../Content_Components/TypeAComponents/Net Position/Net_PositionTypeA'
+import Net_PositionTypeB from '../Content_Components/TypeBComponents/Net Position/Net_PositionTypeB'
+import Calculate_Order_MarginTypeA from '../Content_Components/TypeAComponents/Calculate Order Margin/Calculate_Order_MarginTypeA'
+import Calculate_Order_MarginTypeB from '../Content_Components/TypeBComponents/Calculate Order Margin/Calculate_Order_MarginTypeB'
+import GenerateSessionTypeA from '../Content_Components/TypeAComponents/Generate Session/GenerateSessionTypeA'
+import GenerateSessionTypeB from '../Content_Components/TypeBComponents/Generate Session/GenerateSessionTypeB'
+import LoginTypeA from '../Content_Components/TypeAComponents/Login/LoginTypeA'
+import LoginTypeB from '../Content_Components/TypeBComponents/Login/LoginTypeB'
+import NotFound from '../Pages/NotFound'
+import AppLayout from '../Pages/AppLayout'
+
 function Router() {
   return (
     <>
@@ -23,20 +21,22 @@ function Router() {
       <Routes>
           <Route path='/' element={<AppLayout/>}>
           <Route index element={<Introduction/>}></Route>
-          <Route path='/Orders' element={<Orders/>}></Route>
-          <Route path='/net-position' element={<Net_Position/>}></Route>
-          <Route path='/portfolio' element={<Portfolio/>}></Route>
-          <Route path='/calculate-order-margin' element={<Calculate_Order_Margin/>}></Route>
-          <Route path='/edis' element={<Edis/>}></Route>
-          <Route path='/funds' element={<Funds/>}></Route>
-          <Route path='/statement' element={<Statement/>}></Route>
-          <Route path='/postback' element={<Postback/>}/>
-          <Route path='/market-quote' element={<Market_Quote/>}/>
-          <Route path='/live-market-feed' element={<Live_Market_Feed/>}/>
-          <Route path='/historic-data' element={<Historical_Data/>}/>
-          <Route path='/live-order-update' element={<Live_Order_Update/>}/>
-          <Route path='/annexure' element={<Annexure/>}/>
-          <Route path='/instrument-list' element={<Instrument_List/>}/>
+              {/* Order Routes */}
+              <Route path='/type-a/orders' element={<AllOrdersTypeA/>}></Route>
+              <Route path='/type-b/orders' element={<AllOrdersTypeB/>}></Route>
+              {/* Net Position Route */}
+              <Route path='/type-a/net-position' element={<Net_PositionTypeA/>}></Route>
+              <Route path='/type-b/net-position' element={<Net_PositionTypeB/>}></Route>
+              {/* Calculate Order Margin route */}
+              <Route path='/type-a/calculate-order-margin' element={<Calculate_Order_MarginTypeA/>}></Route>
+              <Route path='/type-b/calculate-order-margin' element={<Calculate_Order_MarginTypeB/>}></Route>
+              {/* Generate Session Routes */}
+              <Route path='/type-a/generate-session' element={<GenerateSessionTypeA/>}></Route>
+              <Route path='/type-b/generate-session' element={<GenerateSessionTypeB/>}></Route>
+              {/* Login Session Routes */}
+              <Route path='/type-a/login' element={<LoginTypeA/>}></Route>
+              <Route path='/type-b/login' element={<LoginTypeB/>}></Route>
+          <Route path='*' element={<NotFound/>}/>
         </Route>
        </Routes>
     </BrowserRouter>

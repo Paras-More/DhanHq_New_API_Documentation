@@ -13,7 +13,7 @@ function Navbar() {
 
   return (
     <>
-      {console.log("Navbar Rendered")}
+      {console.log("Navbar Rendered")}  
       <nav className="w-full bg-white border-2 border-black lg:px-40 lg:py-3 px-8 py-3 flex items-center justify-between flex-wrap sticky top-0">
         <div className="lg:flex hidden gap-20 items-center justify-between">
           {/* <img src='https://dhanhq.co/docs/v2/img/DhanHQ_logo.svg'></img> */}

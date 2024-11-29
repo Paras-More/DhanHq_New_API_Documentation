@@ -2,104 +2,125 @@ import React from 'react'
 import CopyBox from '../../../Common_Components/CopyBox'
 import NewJsonViewer from '../../../Common_Components/NewJsonViewer'
 import DynamicTable from '../../../Common_Components/DynamicTable'
-function Net_PositionTypeA() {
+function Net_PositionTypeB() {
 
   const positionCurlData = `
-curl --location 'http://localhost:18463/Zrd/portfolio/positions' \\
+curl --location 'http://localhost:18463/Agl/portfolio/positions' \\
 --header 'X-Mirae-Version: 1' \\
---header 'Authorization: token api_key:access_token'`
+--header 'Authorization: Bearer access_token'
+`
  
   const SuccessResponseJson = {
-    "status": "success",
-    "data": {
-        "net": [
-            {
-                "tradingsymbol": "YESBANK",
-                "exchange": "NSE",
-                "instrument_token": 11915,
-                "product": "",
-                "quantity": 100,
-                "overnight_quantity": 0,
-                "multiplier": 1,
-                "average_price": 19.05,
-                "close_price": 27.65,
-                "last_price": 27.65,
-                "value": 1905,
-                "pnl": 0,
-                "m2m": 860,
-                "unrealised": 0,
-                "realised": 0,
-                "buy_quantity": 100,
-                "buy_price": 19.05,
-                "buy_value": 1905,
-                "buy_m2m": 0,
-                "sell_quantity": 0,
-                "sell_price": 0,
-                "sell_value": 0,
-                "sell_m2m": 0,
-                "day_buy_quantity": 100,
-                "day_buy_price": 19.05,
-                "day_buy_value": 1905,
-                "day_sell_quantity": 0,
-                "day_sell_price": 0,
-                "day_sell_value": 0
-            },
-            {
-                "tradingsymbol": "IDEA",
-                "exchange": "NSE",
-                "instrument_token": 14366,
-                "product": "",
-                "quantity": 4,
-                "overnight_quantity": 0,
-                "multiplier": 1,
-                "average_price": 100,
-                "close_price": 16.55,
-                "last_price": 16.55,
-                "value": 400,
-                "pnl": 0,
-                "m2m": -333.8,
-                "unrealised": 0,
-                "realised": 0,
-                "buy_quantity": 4,
-                "buy_price": 100,
-                "buy_value": 400,
-                "buy_m2m": 0,
-                "sell_quantity": 0,
-                "sell_price": 0,
-                "sell_value": 0,
-                "sell_m2m": 0,
-                "day_buy_quantity": 4,
-                "day_buy_price": 100,
-                "day_buy_value": 400,
-                "day_sell_quantity": 0,
-                "day_sell_price": 0,
-                "day_sell_value": 0
-            }
-        ],
-        "day": null
-    }}
+    "status": true,
+    "message": "SUCCESS",
+    "errorcode": "",
+    "data": [
+        {
+            "exchange": "NSE",
+            "symboltoken": "50374",
+            "producttype": "INTRADAY",
+            "tradingsymbol": "",
+            "symbolname": "NIFTY-07Nov2024-24000-CE",
+            "instrumenttype": "OPTIDX",
+            "priceden": "",
+            "pricenum": "",
+            "genden": "",
+            "gennum": "",
+            "precision": "",
+            "multiplier": "1",
+            "boardlotsize": "",
+            "buyqty": "100",
+            "sellqty": "600",
+            "buyamount": "800.1",
+            "sellamount": "799.97",
+            "symbolgroup": "",
+            "strikeprice": "24000",
+            "optiontype": "CE",
+            "expirydate": "07-Nov-2024",
+            "lotsize": "25",
+            "cfbuyqty": "0",
+            "cfsellqty": "0",
+            "cfbuyamount": "",
+            "cfsellamount": "",
+            "buyavgprice": "800.1",
+            "sellavgprice": "799.97",
+            "avgnetprice": "799.94",
+            "netvalue": "399970",
+            "netqty": "-500",
+            "totalbuyvalue": "80010",
+            "totalsellvalue": "479980",
+            "cfbuyavgprice": "0",
+            "cfsellavgprice": "0",
+            "totalbuyavgprice": "",
+            "totalsellavgprice": "",
+            "netprice": "799.94"
+        },
+        {
+            "exchange": "NSE",
+            "symboltoken": "50374",
+            "producttype": "CARRYFORWARD",
+            "tradingsymbol": "",
+            "symbolname": "NIFTY-07Nov2024-24000-CE",
+            "instrumenttype": "OPTIDX",
+            "priceden": "",
+            "pricenum": "",
+            "genden": "",
+            "gennum": "",
+            "precision": "",
+            "multiplier": "1",
+            "boardlotsize": "",
+            "buyqty": "150",
+            "sellqty": "100",
+            "buyamount": "800.1",
+            "sellamount": "799.9",
+            "symbolgroup": "",
+            "strikeprice": "24000",
+            "optiontype": "CE",
+            "expirydate": "07-Nov-2024",
+            "lotsize": "25",
+            "cfbuyqty": "0",
+            "cfsellqty": "0",
+            "cfbuyamount": "",
+            "cfsellamount": "",
+            "buyavgprice": "800.1",
+            "sellavgprice": "799.9",
+            "avgnetprice": "800.5",
+            "netvalue": "-40025",
+            "netqty": "50",
+            "totalbuyvalue": "120015",
+            "totalsellvalue": "79990",
+            "cfbuyavgprice": "0",
+            "cfsellavgprice": "0",
+            "totalbuyavgprice": "",
+            "totalsellavgprice": "",
+            "netprice": "800.5"
+        }
+    ]
+}
+
   
   const FailureVersionJson = {
-    "status": "error",
-    "message": "Please provide valid api version.",
-    "error_type": "VersionException",
+    "status": false,
+    "message": "Incorrect auth. Please try again.",
+    "errorcode": "400",
     "data": null
-}  
-  const data = [
-    {
-      "method": "POST",
-      "path": "https://ntasc.mirae.com/zrd/portfolio/positions",
-      "description": "retrieve a list of all existing trading orders."
-    },
-  ]
+}
+  
+const data = [
+  {
+    "method": "POST",
+    "path": "https://nTasc.mirae.com/agl/portfolio/positions",
+    "description": "retrieve a list of all existing trading orders."
+  },
+]
 
   return (
     <div className='flex flex-col gap-6 mt-10'>
     {/* <h1>Place Order</h1> */}
-    <h1 className="content-heading-font">Net Position TYPE A</h1>
-             <div className='mt-4'>
-                 <DynamicTable data={data}/>
-              </div>
+    <h1 className="content-heading-font">Net Position TYPE B</h1>
+                    <div className='mt-4'>
+                        <DynamicTable data={data}/>
+                    </div>
     <div className='flex flex-col gap-3'>
       <ol className='list-inside'>
         <li className="font-bold text-xl">Net Position</li>
@@ -110,7 +131,7 @@ curl --location 'http://localhost:18463/Zrd/portfolio/positions' \\
           className="text-customBlueFont"
           href="https://ntasc.mirae.com/zrd/orders/regular"
         >
-          https://ntasc.mirae.com/zrd/portfolio/positions
+           https://nTasc.mirae.com/agl/portfolio/positions
         </a>
       </p>
       <p>
@@ -202,4 +223,4 @@ curl --location 'http://localhost:18463/Zrd/portfolio/positions' \\
   )
 }
 
-export default Net_PositionTypeA
+export default Net_PositionTypeB

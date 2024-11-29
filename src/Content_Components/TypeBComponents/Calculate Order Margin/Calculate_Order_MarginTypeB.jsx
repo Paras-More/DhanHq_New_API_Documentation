@@ -1,87 +1,98 @@
 import React from 'react'
-import CopyBox from '../../Common_Components/CopyBox'
-import JsonViewer from '../../Common_Components/JsonViewer'
+import CopyBox from '../../../Common_Components/CopyBox'
+import NewJsonViewer from '../../../Common_Components/NewJsonViewer'
+import DynamicTable from '../../../Common_Components/DynamicTable'
 
-function Calculate_Order_Margin() {
+function Calculate_Order_MarginTypeB() {
 
 
 const COMCurlData =`
-curl --location 'http://localhost:18463/Zrd/margins/orders' \
---header 'X-Mirae-Version: 1' \
---header 'Authorization: token api_key:access_token' \
---header 'Content-Type: application/json' \
+curl --location 'http://localhost:18463/Agl/margins/orders' \\
+--header 'X-Mirae-Version: 1' \\
+--header 'Authorization: Bearer access_token \\
+--header 'Content-Type: application/json' \\
 --data '{
     "exchange": "NSE",
-    "tradingsymbol": "INFY",
-    "transaction_type": "BUY",
-    "variety": "regular",
-    "product": "CNC",
-    "order_type": "MARKET",
-    "quantity": 1,
-    "price": 0,
-    "trigger_price": 0
-}`  
+    "qty": "10",
+    "price": "2240",
+    "productType": "DELIVERY",
+    "token": "22",
+    "tradeType": "BUY",
+    "triggerPrice": 0
+}'
+`  
 
 const requestBodyJson ={
-    "exchange": "NSE",
-    "tradingsymbol": "INFY",
-    "transaction_type": "BUY",
-    "variety": "regular",
-    "product": "CNC",
-    "order_type": "MARKET",
-    "quantity": 1,
-    "price": 0,
-    "trigger_price": 0
+  "exchange": "NSE",
+  "qty": "10",
+  "price": "2240",
+  "productType": "DELIVERY",
+  "token": "22",
+  "tradeType": "BUY",
+  "triggerPrice": 0
 }
+
 
 const SuccessResponseJson = {
-  "status": "success",
+  "status": true,
+  "message": "SUCCESS",
+  "errorcode": null,
   "data": {
-      "type": "equity",
-      "tradingsymbol": "INFY",
-      "exchange": "NSE",
-      "span": 0,
-      "exposure": 0,
-      "option_premium": 0,
-      "additional": 1699.37,
-      "bo": 0,
-      "cash": 0,
-      "var": 0,
-      "pnl": {
-          "realised": 0,
-          "unrealised": 0
+      "totalMarginRequired": 22400,
+      "marginComponents": {
+          "netPremium": 0,
+          "spanMargin": 0,
+          "marginBenefit": 0,
+          "deliveryMargin": 0,
+          "nonNFOMargin": 0,
+          "totOptionsPremium": 0
       },
-      "leverage": 0,
-      "charges": {
-          "transaction_tax": 0,
-          "transaction_tax_type": "stt",
-          "exchange_turnover_charge": 0,
-          "sebi_turnover_charge": 0,
-          "brokerage": 80.92,
-          "stamp_duty": 0,
-          "gst": {
-              "igst": 0,
-              "cgst": 0,
-              "sgst": 0,
-              "total": 0
-          },
-          "total": 80.92
-      },
-      "total": 1699.37
+      "marginBreakup": [
+          {
+              "exchange": "NSE",
+              "productType": "DELIVERY",
+              "totalMarginRequired": 0
+          }
+      ],
+      "optionsBuy": {
+          "totOptionsPremium": 0,
+          "optionDetails": [
+              {
+                  "exchange": "NSE",
+                  "productType": "DELIVERY",
+                  "token": "22",
+                  "lotMultiplier": 10,
+                  "optionPremium": 0
+              }
+          ]
+      }
   }
-
 }
+
+const data = [
+  {
+    "method": "POST",
+    "path": "https://nTasc.mirae.com/agl/margins/orders",
+    "description": "This endpoint allows users to retrieve a list of their trading orders. Users can view all their existing orders."
+  },
+]
+
 
 const FailureInputJson = {
-  "status": "error",
-  "message": "Incorrect auth. Please try again.",
-  "error_type": "InputException",
+  "status": false,
+  "message": "Invalid request. Please try again.",
+  "errorcode": "400",
   "data": null
 }
+
 
   return (
     <div className='flex flex-col gap-6 mt-10'>
     {/* <h1>Place Order</h1> */}
+    <h1 className="content-heading-font">Calculate Order Margin Type B</h1>
+                   <div className='mt-4'>
+                        <DynamicTable data={data}/>
+                    </div>
     <div className='flex flex-col gap-3'>
       <ol className='list-inside'>
         <li className="font-bold text-xl">Calculate Order Margin</li>
@@ -90,9 +101,9 @@ const FailureInputJson = {
         URL :
         <a
           className="text-customBlueFont"
-          href="https://ntasc.mirae.com/zrd/margins/orders"
+          href="https://nTasc.mirae.com/agl/margins/orders"
         >
-          https://ntasc.mirae.com/zrd/margins/orders
+          https://nTasc.mirae.com/agl/margins/orders
         </a>
       </p>
       <p>
@@ -139,7 +150,7 @@ const FailureInputJson = {
           api_key:access_token.
         </li>
         <li>
-          <span className="font-semibold">Content-Type:</span> Indicated the media type of the resource. For this request, it is set to <a className='text-customBlueFont' href='application/x-www-form-urlencoded'> application/x-www-form-urlencoded</a>, which s used for submiting form data.
+          <span className="font-semibold">Content-Type:</span> Indicates the media type of the resource being sent. For this request, it is set to application/json.
         </li>
       </ul>
     </div>
@@ -157,7 +168,7 @@ const FailureInputJson = {
     {/* Request Body Details Section */}
     <div>
     <p className="font-bold">Request Body-</p>
-    <JsonViewer data={requestBodyJson}/>
+    <NewJsonViewer data={requestBodyJson}/>
     </div>
 
     {/* Request Response -  Details Section  */}
@@ -175,7 +186,7 @@ const FailureInputJson = {
             On successful request execution, server will
             return the below json formated data.
           </li>
-          <JsonViewer data={SuccessResponseJson} />
+          <NewJsonViewer data={SuccessResponseJson} />
 
 
           <li>
@@ -186,7 +197,7 @@ const FailureInputJson = {
             If authentication fails, the server will return an
             error message
           </li>
-          <JsonViewer data={FailureInputJson} />
+          <NewJsonViewer data={FailureInputJson} />
         </ul>
       </div>
     </div>
@@ -195,4 +206,4 @@ const FailureInputJson = {
   )
 }
 
-export default Calculate_Order_Margin
+export default Calculate_Order_MarginTypeB

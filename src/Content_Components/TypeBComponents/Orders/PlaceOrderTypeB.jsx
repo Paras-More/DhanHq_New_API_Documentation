@@ -2,41 +2,60 @@ import React from 'react'
 import CopyBox from '../../../Common_Components/CopyBox'
 import NewJsonViewer from '../../../Common_Components/NewJsonViewer'
 
-function PlaceOrderTypeA() {
+function PlaceOrderTypeB() {
 
-    const PlaceOrdercURLData = `curl --location 'http://localhost:18463/zrd/orders/regular' \\
+    const PlaceOrdercURLData = `
+    curl --location 'http://localhost:18463/Agl/orders/regular' \\
     --header 'X-Mirae-Version: 1' \\
-    --header 'Authorization: token api_key:access_token \\
-    --header 'Content-Type: application/x-www-form-urlencoded' \\
-    --data-urlencode 'tradingsymbol=INFY' \\
-    --data-urlencode 'exchange=NSE' \\
-    --data-urlencode 'transaction_type=BUY' \\
-    --data-urlencode 'order_type=LIMIT' \\
-    --data-urlencode 'quantity=10' \\
-    --data-urlencode 'product=MIS' \\
-    --data-urlencode 'validity=DAY' \\
-    --data-urlencode 'price=1250'`
+    --header 'Authorization: Bearer access_token' \\
+    --header 'Content-Type: application/json' \\
+    --data '{
+    "variety": "NORMAL",
+    "tradingsymbol": "ACC-EQ",
+    "symboltoken": "22",
+    "exchange": "NSE",
+    "transactiontype": "BUY",
+    "ordertype": "MARKET",
+    "quantity": "20",
+    "producttype": "DELIVERY",
+    "price": "194.50",
+    "triggerprice": "0",
+    "squareoff": "0",
+    "stoploss": "0",
+    "trailingStopLoss": "",
+    "disclosedquantity": "",
+    "duration": "DAY",
+    "ordertag": ""
+}'
+`
     
         const SuccessResponseJson = {
-            "status": "success",
-            "data": {
-                "order_id": "1131241001100"
-            }
-        }
+          "status": true,
+          "message": "SUCCESS",
+          "errorcode": "",
+          "data": {
+              "script": "ACC-EQ",
+              "orderid": "1191241106101",
+              "uniqueorderid": ""
+          }
+      }
+      
     
-        const FailureTokenJson ={
-            "status": "error",
-            "message": "Invalid request. Please try again.",
-            "error_type": "TokenException",
-            "data": null
-        }
+        const FailureInvalidOrderTypeJson ={
+          "status": false,
+          "message": "Invalid order type. valid product types allowed are MARKET, STOPLOSS_MARKET, STOPLOSS_LIMIT and LIMIT.",
+          "errorcode": "400",
+          "data": null
+      }
+      
     
-        const FailureInputJson = {
-            "status": "error",
-            "message": "System is not connected to NSE Equity market",
-            "error_type": "InputException",
-            "data": null
-        }
+        const FailureMarketCloseJson = {
+          "status": false,
+          "message": "RMS:1141241105101:NSE,EQUITY,22,ACC,INTRADAY,,EQ,SATYA,B,1,I,22,ACC,INTRADAY,89.44995,FUND LIMIT INSUFFICIENT,AVAILABLE FUND=0,ADDITIONAL REQUIRED FUND=572.36,CALCULATED MARGIN FOR ORDER=572.36",
+          "errorcode": "RS-0111",
+          "data": null
+      }
+      
 
         
   return (
@@ -52,7 +71,7 @@ function PlaceOrderTypeA() {
             className="text-customBlueFont"
             href="https://ntasc.mirae.com/zrd/orders/regular"
           >
-            https://ntasc.mirae.com/zrd/orders/regular
+            https://nTasc.mirae.com/agl/orders/regular 
           </a>
         </p>
         <p>
@@ -73,14 +92,21 @@ function PlaceOrderTypeA() {
           request must be URL-encoded and include the following parameters:
         </p>
         <ul className="list-inside list-disc indent-8 py-2">
+          <li>variety</li>
           <li>tradingsymbol</li>
           <li>exchange</li>
-          <li>transaction_type</li>
-          <li>order_type</li>
+          <li>transactiontype </li>
+          <li>ordertype</li>
           <li>quantity</li>
-          <li>product</li>
-          <li>validity</li>
-          <li>price</li>
+          <li>producttype </li>
+          <li>price </li>
+          <li>triggerprice </li>
+          <li>squareoff</li>
+          <li>stoploss</li>
+          <li>trailingStopLoss</li>
+          <li>disclosedquantity</li>
+          <li>uration</li>
+          <li>ordertag</li>
         </ul>
       </div>
       
@@ -103,12 +129,10 @@ function PlaceOrderTypeA() {
 
             <li>
               {" "}
-              <span className="font-semibold">Failure (HTTP Status 401): </span>
-              If the order fails due to invalid parameters, authentication
-              issues, or other errors, the server will return an error message
-              with below json format.
+              <span className="font-semibold">Failure (HTTP Status 400): </span>
+              If the order fails due to invalid parameters, authentication issues, or other errors, the server will return an error message with below json format.
             </li>
-            <NewJsonViewer data={FailureTokenJson} />
+            <NewJsonViewer data={FailureInvalidOrderTypeJson} />
 
             <li>
               {" "}
@@ -118,7 +142,7 @@ function PlaceOrderTypeA() {
               If market is closed or not connected to NSE then api will return
               an error message with below json format.
             </li>
-            <NewJsonViewer data={FailureInputJson} />
+            <NewJsonViewer data={FailureMarketCloseJson} />
           </ul>
         </div>
       </div>
@@ -148,9 +172,9 @@ function PlaceOrderTypeA() {
             authentication header. The format is token api_key:access_token
           </li>
           <li>
-            <span className="font-semibold">Content-Type:</span> For this
-            request, it is set to application/x-www-form-urlencoded, which is
-            used for submiting form data.
+            <span className="font-semibold">Content-Type:</span>A token-based authentication header. The format is token api_key:access_token.
+            Content-Type: For this request, it is set to <span className='text-customBlueFont'>application/json</span>, which is used for submiting form data through body
+
           </li>
         </ul>
       </div>
@@ -169,4 +193,4 @@ function PlaceOrderTypeA() {
   );
 }
 
-export default PlaceOrderTypeA
+export default PlaceOrderTypeB

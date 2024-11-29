@@ -1,18 +1,15 @@
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'    
+import React, { useEffect, useState } from 'react'
 
 function LeftSideBarMob() {
-
-    const ShowMenu = useSelector(store=>store.ClickStatus.ShowMenu);
+  const [ShowMenu,setShowMenu] = useState(false)
 
 
     useEffect(()=>{
-        console.log("lone 10",ShowMenu);
-    },[ShowMenu])
+    },[])
 
   return (
     <div className={`bg-red-700 ${ShowMenu ? "flex" :"hidden"}   xl:hidden h-[100vh] w-[6/12] fixed top-0`}>
- 
+        
     </div>
   )
 }

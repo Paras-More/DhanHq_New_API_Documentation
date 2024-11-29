@@ -1,46 +1,58 @@
 import React from 'react'
 import CopyBox from '../../../Common_Components/CopyBox'
 import NewJsonViewer from '../../../Common_Components/NewJsonViewer'
-function ModifyOrderTypeA() {
+function ModifyOrderTypeB() {
 
-    const ModifyOrderCurlData = `curl --location --request PUT 
-'http://localhost:18463/zrd/orders/regular/1131241001100' \\
---header 'X-Mirae-Version: 1' \\
---header 'Authorization: token api_key:access_token' \\
---header 'Content-Type: application/x-www-form-urlencoded' \\
---data-urlencode 'tradingsymbol=INFY' \\
---data-urlencode 'order_type=LIMIT' \\
---data-urlencode 'quantity=20' \\
---data-urlencode 'price=1255' \\
---data-urlencode 'validity=DAY' \\
---data-urlencode 'exchange=NSE' \\
---data-urlencode 'trigger_price=1230' \\
---data-urlencode 'disclosed_quantity=0' \\
---data-urlencode 'transaction_type=BUY' \\
---data-urlencode 'product=MIS' \\
---data-urlencode 'modqty_remng=2'`
+    const ModifyOrderCurlData = `
+    curl --location --request PUT 'http://localhost:18463/Agl/orders/regular/1191241106101' \\
+  --header 'X-Mirae-Version: 1' \\
+  --header 'Authorization: Bearer access_token \\
+  --header 'Content-Type: application/json' \\
+  --data '{
+    "variety": "NORMAL",
+    "tradingsymbol": "ACC-EQ",
+    "symboltoken": "22",
+    "exchange": "NSE",
+    "transactiontype": "BUY",
+    "orderid": "1191241106101",
+    "ordertype": "MARKET",
+    "quantity": "15",
+    "producttype": "DELIVERY",
+    "duration": "DAY",
+    "price": "2240",
+    "triggerprice": "0",
+    "disclosedquantity": "",
+    "modqty_remng": "0"
+}'
+`
 
 
     const SuccessResponseJson ={
-        "status": "success",
-        "data": {
-            "order_id": "1131241001100"
-        }
-    }
+      "status": true,
+      "message": "SUCCESS",
+      "errorcode": "",
+      "data": {
+          "orderid": " 1191241106101",
+          "uniqueorderid": ""
+      }
+  }
+  
 
-    const FailureTokenJson = {
-        "status": "error",
-        "message": "Invalid request. Please try again.",
-        "error_type": "TokenException",
-        "data": null
-    }
+    const FailureValidJson = {
+      "status": false,
+      "message": "Enter valid trigger price.",
+      "errorcode": "400",
+      "data": null
+  }
+  
 
-    const FailureInputJson = {
-        "status": "error",
-        "message": "Order Does not Exsist.Need to refresh orderbook / relogin in application ",
-        "error_type": "InputException",
-        "data": null
-    }
+    const FailureOrderIdJson = {
+      "status": false,
+      "message": "Order is Cancelled.Kindly refresh your OrderBook",
+      "errorcode": "RS-0034",
+      "data": null
+  }
+  
 
 
   return (
@@ -56,7 +68,7 @@ function ModifyOrderTypeA() {
           className="text-customBlueFont"
           href="https://ntasc.mirae.com/zrd/orders/regular"
         >
-          https://ntasc.mirae.com/zrd/orders/regular/&#10100;OrderID&#10101;
+          https://nTasc.mirae.com/agl/orders/regular/&#10100;OrderID&#10101;
         </a>
       </p>
       <p>
@@ -103,7 +115,7 @@ function ModifyOrderTypeA() {
           api_key:access_token.
         </li>
         <li>
-          <span className="font-semibold">Content-Type:</span> Indicated the media type of the resource. For this request, it is set to <a className='text-customBlueFont' href='application/x-www-form-urlencoded'> application/x-www-form-urlencoded</a>, which s used for submiting form data.
+          <span className="font-semibold">Content-Type:</span> Indicated the media type of the resource. For this request, it is set to <span className='text-customBlueFont'>application/json</span>, which is used for submiting form data through body
         </li>
       </ul>
     </div>
@@ -115,17 +127,21 @@ function ModifyOrderTypeA() {
         parameters:
       </p>
       <ul className="list-inside list-disc indent-8 py-2">
-        <li>tradingsymbol</li>
-        <li>order_type</li>
-        <li>quantity</li>
+        <li>variety </li>
+        <li>tradingsymbol </li>
+        <li>symboltoken </li>
+        <li>exchange </li>
+        <li>transactiontype </li>
+        <li>orderid </li>
+        <li>ordertype </li>
+        <li>quantity </li>
+        <li>producttype </li>
+        <li>duration </li>
         <li>price</li>
-        <li>validity</li>
-        <li>exchange</li>
-        <li>trigger_price</li>
-        <li>disclosed_quantity</li>
-        <li>transaction_type</li>
-        <li>product</li>
+        <li>triggerprice</li>
+        <li>disclosedquantity</li>
         <li>modqty_remng</li>
+        <li></li>
       </ul>
     </div>
 
@@ -164,7 +180,7 @@ function ModifyOrderTypeA() {
             authentication issues, or other errors, the server will return an error 
             message with below json format.
           </li>
-          <NewJsonViewer data={FailureTokenJson} />
+          <NewJsonViewer data={FailureValidJson} />
 
           <li>
             {" "}
@@ -174,7 +190,7 @@ function ModifyOrderTypeA() {
             : If orderid does not exist then server will return
             below json reponse.
           </li>
-          <NewJsonViewer data={FailureInputJson} />
+          <NewJsonViewer data={FailureOrderIdJson} />
         </ul>
       </div>
     </div>
@@ -183,4 +199,4 @@ function ModifyOrderTypeA() {
   )
 }
 
-export default ModifyOrderTypeA
+export default ModifyOrderTypeB

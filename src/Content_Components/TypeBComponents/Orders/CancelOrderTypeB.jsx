@@ -2,37 +2,49 @@ import React from 'react'
 import NewJsonViewer from '../../../Common_Components/NewJsonViewer'
 import CopyBox from '../../../Common_Components/CopyBox'
 
-function CancelOrderTypeA() {
+function CancelOrderTypeB() {
 
     const CancelOrderCurlData = `
-curl --location --request DELETE 
-'http://localhost:18463/zrd/orders/regular/1161241001100' \\
---header 'X-Mirae-Version: 1' \\
---header 'Authorization: token api_key:access_token' \\
---header 'Content-Type: application/x-www-form-urlencoded' \\
---data-urlencode 'tradingsymbol=ACC' \\
---data-urlencode 'transaction_type=BUY' \\
---data-urlencode 'validity=DAY' \\
---data-urlencode 'exchange=NSE' \\
---data-urlencode 'quantity=3' \\
---data-urlencode 'order_type=LIMIT' \\
---data-urlencode 'modqty_remng=2' \\
---data-urlencode 'product=MIS' \\
---data-urlencode 'price=1250'`
+    curl --location --request DELETE 'http://localhost:18463/Agl/orders/regular/1112241106105' \\
+    --header 'X-Mirae-Version: 1' \\
+    --header 'Authorization: Bearer access_token \\
+    --header 'Content-Type: application/json' \\
+    --data '{
+    "variety": "NORMAL",
+    "tradingsymbol": "ACC-EQ",
+    "symboltoken": "35593",
+    "exchange": "NFO",
+    "transactiontype": "BUY",
+    "orderid": "1112241106105",
+    "ordertype": "MARKET",
+    "quantity": "10",
+    "producttype": "DELIVERY",
+    "duration": "DAY",
+    "price": "2240",
+    "triggerprice": "0",
+    "disclosedquantity": "",
+    "modqty_remng": "0"
+}'
+`
 
 const SuccessResponseJson = {
-    "status": "success",
-    "data": {
-        "order_id": "1161241001100"
-    }
+  "status": true,
+  "message": "SUCCESS",
+  "errorcode": "",
+  "data": {
+      "orderid": "201020000000080",
+      "uniqueorderid": ""
+  }
 }
 
-const FailureInputJson = {
-    "status": "error",
-    "message": "Order Does not Exsist.Need to refresh orderbook / relogin in application ",
-    "error_type": "InputException",
-    "data": null
+
+const FailureOrderIdJson = {
+  "status": false,
+  "message": "Order is Cancelled.Kindly refresh your OrderBook",
+  "errorcode": "RS-00093",
+  "data": null
 }
+
 
   return (
 <div className='flex flex-col gap-6 mt-10'>
@@ -47,7 +59,7 @@ const FailureInputJson = {
           className="text-customBlueFont"
           href="https://ntasc.mirae.com/zrd/orders/regular"
         >
-          https://ntasc.mirae.com/zrd/orders/regular/&#10100;OrderID&#10101;
+           https://nTasc.mirae.com/agl/orders/regular/&#10100;OrderID&#10101;
         </a>
       </p>
       <p>
@@ -94,7 +106,7 @@ const FailureInputJson = {
           api_key:access_token.
         </li>
         <li>
-          <span className="font-semibold">Content-Type:</span> Indicated the media type of the resource. For this request, it is set to <a className='text-customBlueFont' href='application/x-www-form-urlencoded'> application/x-www-form-urlencoded</a>, which s used for submiting form data.
+          <span className="font-semibold">Content-Type:</span> Indicated the media type of the resource. For this request, it is set to <span className='text-customBlueFont'>application/json</span>, which s used for submiting form data through body.
         </li>
       </ul>
     </div>
@@ -116,15 +128,20 @@ const FailureInputJson = {
         parameters:
       </p>
       <ul className="list-inside list-disc indent-8 py-2">
+        <li>variety</li>
         <li>tradingsymbol</li>
-        <li>transaction_type</li>
-        <li>validity</li>
+        <li>symboltoken</li>
         <li>exchange</li>
+        <li>transactiontype</li>
+        <li>orderid</li>
+        <li>ordertype</li>
         <li>quantity</li>
-        <li>order_type</li>
-        <li>modqty_remng</li>
-        <li>product</li>
+        <li>producttype</li>
+        <li>duration</li>
         <li>price</li>
+        <li>triggerprice</li>
+        <li>disclosedquantity</li>
+        <li>modqty_remng</li>
       </ul>
     </div>
 
@@ -154,7 +171,7 @@ const FailureInputJson = {
             : If orderid does not exist then server will return
             below json reponse.
           </li>
-          <NewJsonViewer data={FailureInputJson} />
+          <NewJsonViewer data={FailureOrderIdJson} />
         </ul>
       </div>
     </div>
@@ -163,4 +180,4 @@ const FailureInputJson = {
   )
 }
 
-export default CancelOrderTypeA
+export default CancelOrderTypeB

@@ -2,97 +2,106 @@ import React from 'react'
 import CopyBox from '../../../Common_Components/CopyBox'
 import NewJsonViewer from '../../../Common_Components/NewJsonViewer'
 
-function OrderBookTypeA() {
+function OrderBookTypeB() {
    
    const orderBookCurlData = `
-curl --location 'http://localhost:18463/zrd/orders' \\
+curl --location 'http://localhost:18463/Agl/orders' \\
 --header 'X-Mirae-Version: 1' \\
---header 'Authorization: token api_key:access_token'`
+--header 'Authorization: Bearer access_token'
+`
 
   const SuccessResponseJson = {
-    "status": "success",
+    "status": true,
+    "message": "SUCCESS",
+    "errorcode": "",
     "data": [
         {
-            "placed_by": "SATYA",
-            "order_id": "1151240930103",
-            "exchange_order_id": "0",
-            "parent_order_id": null,
-            "status": "Rejected",
-            "status_message": 
-"RMS:1151240930103:NSE,EQUITY,1594,INFY,INTRADAY,,EQ,SATYA,B,10,I,1250.00000,FUND LIMIT INSUFFICIENT,AVAILABLE FUND=0,ADDITIONAL REQUIRED FUND=3125,CALCULATED MARGIN FOR ORDER=3125",
-            "status_message_raw": null,
-            "order_timestamp": "30-09-2024 15:45:46",
-            "exchange_update_timestamp": null,
-            "exchange_timestamp": null,
             "variety": null,
-            "modified": false,
+            "ordertype": "SL",
+            "producttype": "MARGIN",
+            "duration": "DAY",
+            "price": "2400.00",
+            "triggerprice": "2390",
+            "quantity": "900",
+            "disclosedquantity": "0",
+            "squareoff": "0",
+            "stoploss": "0",
+            "trailingstoploss": "0",
+            "tradingsymbol": "ACC-28Nov2024-2400-CE",
+            "transactiontype": "BUY",
             "exchange": "NSE",
-            "tradingsymbol": "INFY",
-            "instrument_token": 1594,
-            "order_type": "LIMIT",
-            "transaction_type": "BUY",
-            "validity": "DAY",
-            "product": "INTRADAY",
-            "quantity": 10,
-            "disclosed_quantity": 0,
-            "price": 1250,
-            "trigger_price": 0,
-            "average_price": 0,
-            "filled_quantity": 0,
-            "pending_quantity": 0,
-            "cancelled_quantity": 0,  
-            "market_protection": 0,
-            "meta": {
-                "demat_consent": "physical"
-            },
-            "tag": [],
-            "guid": ""
+            "symboltoken": "75307",
+            "instrumenttype": "OPTSTK",
+            "strikeprice": "2400",
+            "optiontype": "CE",
+            "expirydate": "2024-Nov-28",
+            "lotsize": "",
+            "cancelsize": "0",
+            "averageprice": "0",
+            "filledshares": "0",
+            "unfilledshares": "0",
+            "orderid": "1142241106106",
+            "text": "EXCH:16284:The order price is out of the days price range.",
+            "status": "Rejected",
+            "orderstatus": "Rejected",
+            "updatetime": "2024-Nov-06 12:42:18",
+            "exchtime": "",
+            "exchorderupdatetime": "2024-Nov-06 12:42:18",
+            "fillid": "",
+            "filltime": "",
+            "parentorderid": "",
+            "uniqueorderid": "",
+            "exchangeorderid": "1000000000017285"
         },
         {
-            "placed_by": "SATYA",
-            "order_id": "1161240930100",
-            "exchange_order_id": "0",
-            "parent_order_id": null,
-            "status": "Rejected",
-            "status_message": 
-"RMS:1161240930100:NSE,EQUITY,22,ACC,INTRADAY,,EQ,SATYA,B,10,I,2320.39990,FUND LIMIT INSUFFICIENT,AVAILABLE FUND=0,ADDITIONAL REQUIRED FUND=5801,CALCULATED MARGIN FOR ORDER=5801",
-            "status_message_raw": null,
-            "order_timestamp": "30-09-2024 10:54:37",
-            "exchange_update_timestamp": null,
-            "exchange_timestamp": null,
             "variety": null,
-            "modified": false,
+            "ordertype": "SL",
+            "producttype": "MARGIN",
+            "duration": "DAY",
+            "price": "2400.00",
+            "triggerprice": "2390",
+            "quantity": "900",
+            "disclosedquantity": "0",
+            "squareoff": "0",
+            "stoploss": "0",
+            "trailingstoploss": "0",
+            "tradingsymbol": "ACC-28Nov2024-FUT",
+            "transactiontype": "BUY",
             "exchange": "NSE",
-            "tradingsymbol": "ACC",
-            "instrument_token": 22,
-            "order_type": "MARKET",
-            "transaction_type": "BUY",
-            "validity": "DAY",
-            "product": "INTRADAY",
-            "quantity": 10,
-            "disclosed_quantity": 0,
-            "price": 0,
-            "trigger_price": 0,
-            "average_price": 0,
-            "filled_quantity": 0,
-            "pending_quantity": 0,
-            "cancelled_quantity": 0,
-            "market_protection": 0,
-            "meta": {
-                "demat_consent": "physical"
-            },
-            "tag": [],
-            "guid": ""
+            "symboltoken": "35593",
+            "instrumenttype": "FUTSTK",
+            "strikeprice": "-0.01",
+            "optiontype": "XX",
+            "expirydate": "2024-Nov-28",
+            "lotsize": "",
+            "cancelsize": "0",
+            "averageprice": "0",
+            "filledshares": "0",
+            "unfilledshares": "0",
+            "orderid": "1132241106107",
+            "text": "CONFIRMED",
+            "status": "Pending",
+            "orderstatus": "Pending",
+            "updatetime": "2024-Nov-06 12:41:00",
+            "exchtime": "",
+            "exchorderupdatetime": "2024-Nov-06 12:41:00",
+            "fillid": "",
+            "filltime": "",
+            "parentorderid": "",
+            "uniqueorderid": "",
+            "exchangeorderid": "1000000000017276"
         }
     ]
-}
+  }
+
 
   const VersionExpensionJson ={
-    "status": "error",
-    "message": "Please provide valid api version.",
-    "error_type": "VersionException",
+    "status": false,
+    "message": "Invalid request. Please try again.",
+    "errorcode": "400",
     "data": null
-  }
+}
+
 
 
   return (
@@ -108,7 +117,7 @@ curl --location 'http://localhost:18463/zrd/orders' \\
           className="text-customBlueFont"
           href="https://ntasc.mirae.com/zrd/orders/regular"
         >
-          https://ntasc.mirae.com/zrd/orders
+          https://nTasc.mirae.com/agl/orders
         </a>
       </p>
       <p>
@@ -154,9 +163,6 @@ curl --location 'http://localhost:18463/zrd/orders' \\
           <span className="font-semibold">Authorization:</span> A token-based authentication header. The format is token 
           api_key:access_token.
         </li>
-        <li>
-          <span className="font-semibold">Content-Type:</span> Indicated the media type of the resource. For this request, it is set to <a className='text-customBlueFont' href='application/x-www-form-urlencoded'> application/x-www-form-urlencoded</a>, which s used for submiting form data.
-        </li>
       </ul>
     </div>
 
@@ -200,7 +206,7 @@ curl --location 'http://localhost:18463/zrd/orders' \\
           <li>
             {" "}
             <span className="font-semibold">
-            Failure (HTTP Status 200):{" "}
+            Failure (HTTP Status 400):{" "}
             </span>{" "}
             :  If authentication fails, the server will return an
 error message
@@ -214,4 +220,4 @@ error message
   )
 }
 
-export default OrderBookTypeA
+export default OrderBookTypeB
