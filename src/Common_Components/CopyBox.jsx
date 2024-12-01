@@ -26,10 +26,19 @@ const CopyBox = ({ copyContent }) => {
       >
         Copy
       </button>
-    {
-        isCopied &&  <span className="fixed bottom-6 right-32 px-6 py-2 bg-customMediumBlue text-white rounded-md;
-        ">Text is copied</span>
-    }
+      {(
+  <span
+    className="fixed bottom-6 right-32 px-6 py-2 bg-customMediumBlue text-white rounded-md transition-all duration-500 ease-in-out"
+    style={{
+      opacity: isCopied ? 1 : 0,
+      visibility: isCopied ? "visible" : "hidden",
+      transform: isCopied ? "translateY(0)" : "translateY(1px)", // Optional for a sliding effect
+    }}
+  >
+    Text is copied
+  </span>
+)}
+
     </div>
   );
 };

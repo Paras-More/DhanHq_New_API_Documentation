@@ -8,11 +8,97 @@ import "./Main.css"
 function LeftSideBarWeb() {
   
     const {state,dispatch} = useContext(ContextStore);
+    const DefaultTypeAData = [
+      {
+        title:"Login",
+        path:"/type-a/login",
+        isSelected:false,
+      },
+      {
+        title:"Generate Session",
+        path:"/type-a/generate-session",
+        isSelected:false,
+      },
+      {
+        title:"Orders",
+        path:"/type-a/orders",
+        isSelected:false,
+      },
+      {
+        title:"Net Position",
+        path:"/type-a/net-position",
+        isSelected:false,
+      },
+      {
+        title:"Calculate Order Margin",
+        path:"/type-a/calculate-order-margin",
+        isSelected:false,
+      },
+
+    ]
+    const DefaultTypeBData = [
+      {
+        title:"Login",
+        path:"/type-b/login",
+        isSelected:false,
+      },
+      {
+        title:"Generate Session",
+        path:"/type-b/generate-session",
+        isSelected:false,
+      },
+      {
+        title:"Orders",
+        path:"/type-b/orders",
+        isSelected:false,
+      },
+      {
+        title:"Net Position",
+        path:"/type-b/net-position",
+        isSelected:false,
+      },
+      {
+        title:"Calculate Order Margin",
+        path:"/type-b/calculate-order-margin",
+        isSelected:false,
+      },
+
+    ]
+    const[TypeAPathData,setTypeAPathData] = useState(DefaultTypeAData)
+    const[TypeBPathData,setTypeBPathData] = useState(DefaultTypeAData)
+
+    
+
+    function handleTitleClick(title,ArrayName){
+        
+      if(ArrayName === "TypeAPathData"){
+        const filteredArray = TypeAPathData.map((ele,i)=>{
+          if(ele.title === title){
+            return {...ele,isSelected:true}
+          }else{
+            return {...ele,isSelected:false}
+          }
+      })
+      setTypeAPathData(filteredArray)   
+      setTypeBPathData(DefaultTypeBData)
+      }else if(ArrayName === "TypeBPathData"){
+        const filteredArray = TypeBPathData.map((ele,i)=>{
+          if(ele.title === title){
+            return {...ele,isSelected:true}
+          }else{
+            return {...ele,isSelected:false}
+          }
+      })
+      setTypeBPathData(filteredArray) 
+      setTypeAPathData(DefaultTypeAData)
+      }
+     
+    }
 
     useEffect(()=>{
-      console.log(state);
+      console.log(TypeAPathData);
       
-    },[state])
+    },[TypeAPathData])
 
   return (
     <aside className='bg-white w-customSmall flex-shrink-0 xl:flex flex-col hidden gap-4  overflow-y-scroll'>
@@ -37,12 +123,18 @@ function LeftSideBarWeb() {
                       <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                     </svg>
                   }
-                    
                   </div>
                 </div>
                 {
-                    state.showDropDown && 
-                    <div className="border-x-2 border-y-2 rounded-lg mt-1 flex flex-col bg-white ">
+                    // state.showDropDown &&
+                    <div className="border-x-2 border-y-2 rounded-lg mt-1 flex flex-col bg-white transition-all ease- duration-500 overflow-hidden"  
+                    style={{
+                      opacity: state.showDropDown ? 1 : 0,
+                      visibility: state.showDropDown ? "visible" : "hidden",
+                      maxHeight: state.showDropDown ? "300px" : "0px", // Increased maxHeight for smoother expand
+                      transform:state.showDropDown ?  "translateY(0)" : "translateY(1px)",
+                    }}
+                      >
                       <p className="indent-3 py-1 border-b hover:text-customBlueFont hover:bg-customBlue  flex items-center justify-between pr-6" onClick={() => dispatch({ type: "SELECTED_OPTION_VALUE", payload: "Type A" })}>
                         Type A
                         {
@@ -70,25 +162,31 @@ function LeftSideBarWeb() {
 
           {/* For Selected Value Type A */}
           {
-            state.selectedValue === 'Type A' && <ul className='indent-3 flex flex-col'>
-            <Link to="/type-a/login"><li>Login</li></Link>
-            <Link to="/type-a/generate-session"><li>Generate Session</li></Link>
-            <Link to="/type-a/orders"><li>Orders</li></Link>
-            <Link to="/type-a/net-position"><li>Net Position</li></Link>
-            <Link to="/type-a/calculate-order-margin"><li>Calculate Order Margin</li></Link>
-          </ul>
+            state.selectedValue === 'Type A' && 
+             <ul className='indent-3'>
+              {
+                TypeAPathData?.map((ele,i)=>{
+                    return(
+                <Link  onClick={(e)=>handleTitleClick(ele.title,'TypeAPathData')} to={ele.path}><li className={`${ele.isSelected ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
+                    )
+                })
+              }
+            </ul>
           }
 
           {/* For Selected Value Type B */}
           {
-          state.selectedValue === 'Type B' && <ul className='indent-3 flex flex-col'>
-            <Link to="/type-b/login"><li>Login</li></Link>
-            <Link to="/type-b/generate-session"><li>Generate Session</li></Link>
-            <Link to="/type-b/orders"><li>Orders</li></Link>
-            <Link to="/type-b/net-position"><li>Net Position</li></Link>
-            <Link to="/type-b/calculate-order-margin"><li>Calculate Order Margin</li></Link>
-          </ul>
-        }
+            state.selectedValue === 'Type B' && 
+             <ul className='indent-3'>
+              {
+                TypeBPathData?.map((ele,i)=>{
+                    return(
+                <Link  onClick={(e)=>handleTitleClick(ele.title,'TypeBPathData')} to={ele.path}><li className={`${ele.isSelected ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
+                    )
+                })
+              }
+            </ul>
+          }
         
           </div>
 

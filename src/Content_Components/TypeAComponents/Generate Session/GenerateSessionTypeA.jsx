@@ -132,7 +132,7 @@ function GenerateSessionTypeA() {
     <div>
       <p><span className="font-bold">Request Body - </span></p>
       <p>The body of the request must be URL-encoded and include the following parameters:</p>
-      <ul className='list-inside list-disc'>
+      <ul className='list-inside list-disc py-2'>
 
         <li>api_key: The API key provided to the user (Example: SATYA).</li>
 
@@ -142,13 +142,13 @@ function GenerateSessionTypeA() {
       </ul>
 
       <p>n.Tasc Fields mapping with mStock API Parameters – </p>
-      <ul className='list-inside list-disc'>
+      <ul className='list-inside list-disc py-2'>
 
         <li>api_key =&gt; username (SATYA)</li>
 
-        <li>-&gt•	request_token =&gt; OTP (123);</li>
+        <li>request_token =&gt; OTP (123);</li>
         
-        <li>•	checksum =&gt; source (W)</li>
+        <li>checksum =&gt; source (W)</li>
       </ul>
     </div>
 

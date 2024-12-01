@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect } from 'react'
 import NewJsonViewer from '../../../Common_Components/NewJsonViewer'
 import CopyBox from '../../../Common_Components/CopyBox'
 import DynamicTable from '../../../Common_Components/DynamicTable'
@@ -46,7 +47,7 @@ function LoginTypeB() {
     "errorcode": "500",
     "data": null
 }
-
+  
 
   return (
     <div className='flex flex-col gap-6 mt-10'>

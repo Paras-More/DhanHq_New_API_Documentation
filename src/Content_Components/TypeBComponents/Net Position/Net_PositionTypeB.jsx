@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import CopyBox from '../../../Common_Components/CopyBox'
 import NewJsonViewer from '../../../Common_Components/NewJsonViewer'
 import DynamicTable from '../../../Common_Components/DynamicTable'
@@ -113,6 +113,12 @@ const data = [
     "description": "retrieve a list of all existing trading orders."
   },
 ]
+
+
+  useEffect(()=>{
+    console.log(window.screen);
+    
+  },[])
 
   return (
     <div className='flex flex-col gap-6 mt-10'>

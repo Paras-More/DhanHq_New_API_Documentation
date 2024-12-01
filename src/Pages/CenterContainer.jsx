@@ -1,11 +1,20 @@
 import React, { useEffect } from 'react'
 import "./Main.css"
-import { Outlet } from 'react-router-dom'
+import { Outlet,useLocation } from 'react-router-dom'
 
 function CenterContainer() {
 
+  const location  = useLocation();
+
+  useEffect(() => {
+    const container = document.querySelector(".Center_content_div");
+    if (container) {
+      container.scrollTop = 0; // Reset the scroll position of the container to the top.
+    }
+  }, [location]); // Runs whenever the route (location) changes.
+
   return (
-<section className='bg-white w-customLarge flex-shrink-1 overflow-y-scroll mb-10 Center_content_div'>
+<section className='bg-white w-customLarge flex-shrink-1 overflow-y-auto mb-10 Center_content_div'>
 {console.log("Center Container render")}    
     <Outlet/>
  </section>

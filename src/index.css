@@ -51,4 +51,17 @@ td, th {
   border-left: none;  /* Remove vertical border on the left */
   border-right: none; /* Remove vertical border on the right */
 }
+.smoothTransition {
+  transition: all 0.5s ease-in-out;
+}
 
+.dropdown {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.dropdown-open {
+  max-height: 1000px; /* or a suitable value depending on the content */
+  opacity: 1;
+}

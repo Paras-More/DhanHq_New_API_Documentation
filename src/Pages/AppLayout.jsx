@@ -26,7 +26,7 @@ function  AppLayout() {
                  <CenterContainer/>
 
           {/* Right SideBar */}
-            <RightSideBar/>
+            {/* <RightSideBar/> */}
         </div>
 
         {/* This below Div will be visible for mobile devices */}
