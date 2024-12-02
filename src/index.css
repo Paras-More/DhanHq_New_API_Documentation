@@ -65,3 +65,10 @@ td, th {
   max-height: 1000px; /* or a suitable value depending on the content */
   opacity: 1;
 }
+
+.alphabetic-list {
+  list-style-type: upper-alpha; /* This will use A, B, C, ... for the list items */
+}
+.font-bold > span {
+    font-weight: bold;
+}

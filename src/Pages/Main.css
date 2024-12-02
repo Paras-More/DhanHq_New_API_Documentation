@@ -10,6 +10,14 @@
   font-weight: 600;
 }
 
+.indent-3 li:hover,
+.indent-1 li:hover {
+  background-color: #f4f4ff;
+  color: rgb(45, 72, 221);
+  font-weight: 600;
+}
+
+
 
 .Center_content_div::-webkit-scrollbar {
   display: none; /* Hide the scrollbar in Webkit-based browsers like Chrome */

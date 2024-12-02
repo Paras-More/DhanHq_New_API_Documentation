@@ -11,7 +11,7 @@ const CopyBox = ({ copyContent }) => {
         // Deleting the Pop of copied text
         setTimeout(()=>{
          setIsCopied(false)
-        },1000)
+        },1500)
     }).catch((e)=>{
         alert(e)
     })

@@ -105,17 +105,17 @@ function LeftSideBarWeb() {
             {console.log("LeftSide bar RENDER")}
         {/*  */}
           <div>
-            <h1 className="font-bold mb-1">Ver 2.0 / API Documentation</h1>
+            <h1 className="font-bold mb-6">API Documentation</h1>
             <ul className='indent-1 flex flex-col'>
-            <Link to="/"><li>Introduction</li></Link>
+            <Link to="/"><li className='font-semibold'>Introduction</li></Link>
             </ul>
           </div>
 
       {/* DropDown Type A & Type B */}
-          <div className='w-full pr-6'>
-                <div className='border-2 border-black rounded-lg p-1 cursor-pointer hover:text-customBlueFont' onClick={()=>dispatch({type:"TOGGLE_DROPDOWN"})}>
-                  <div className='flex items-center justify-between'>
-                  <p className='indent-2'>{state.selectedValue}</p>
+          <div className='w-full '>
+                <div className='p-2 w-[80%] bg-customBlueFont text-white rounded-lg cursor-pointer hover:bg-blue-600' onClick={()=>dispatch({type:"TOGGLE_DROPDOWN"})}>
+                  <div className='flex items-center justify-between px-1'>
+                  <p className='indent-2 font-semibold'>{state.selectedValue}</p>
                   {
                     state.showDropDown ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                       <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
@@ -126,8 +126,7 @@ function LeftSideBarWeb() {
                   </div>
                 </div>
                 {
-                    // state.showDropDown &&
-                    <div className="border-x-2 border-y-2 rounded-lg mt-1 flex flex-col bg-white transition-all ease- duration-500 overflow-hidden"  
+                    <div className="border-x-2 border-y-2 w-[80%] rounded-lg mt-1 flex flex-col bg-white shadow-lg border-blue-200  transition-all ease- duration-500 overflow-hidden"  
                     style={{
                       opacity: state.showDropDown ? 1 : 0,
                       visibility: state.showDropDown ? "visible" : "hidden",
@@ -135,21 +134,21 @@ function LeftSideBarWeb() {
                       transform:state.showDropDown ?  "translateY(0)" : "translateY(1px)",
                     }}
                       >
-                      <p className="indent-3 py-1 border-b hover:text-customBlueFont hover:bg-customBlue  flex items-center justify-between pr-6" onClick={() => dispatch({ type: "SELECTED_OPTION_VALUE", payload: "Type A" })}>
+                      <p className="indent-3 p-2 text-customBlueFont border-b hover:text-customBlueFont hover:bg-blue-100  flex items-center justify-between pr-6" onClick={() => dispatch({ type: "SELECTED_OPTION_VALUE", payload: "Type A" })}>
                         Type A
                         {
-                        state.selectedValue === 'Type A' && <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                        </svg>
+                        // state.selectedValue === 'Type A' && <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        //   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                        // </svg>
                         
                         }
                       </p>
-                      <p className="indent-3 py-1 hover:text-customBlueFont hover:bg-customBlue flex items-center justify-between pr-6" onClick={() => dispatch({ type: "SELECTED_OPTION_VALUE", payload: "Type B" })}>
+                      <p className="indent-3 p-2 text-customBlueFont hover:text-customBlueFont hover:bg-blue-100  flex items-center justify-between pr-6" onClick={() => dispatch({ type: "SELECTED_OPTION_VALUE", payload: "Type B" })}>
                         Type B
                         {
-                          state.selectedValue === 'Type B' && <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                        </svg>
+                        //   state.selectedValue === 'Type B' && <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        //   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                        // </svg>
                         }
                       </p>
                     </div> 
@@ -195,7 +194,7 @@ function LeftSideBarWeb() {
             <h1 className="font-bold mb-1">Data APIs</h1>
             <ul className='indent-3 flex flex-col'>
           
-              <Link to="/market-quote"><li>Market Quote</li></Link>
+              <Link to="/type-a/market-data"><li className='text-customBlueFont font-bold'>Market Data</li></Link>
               <Link to="/live-market-feed"><li>Live Market Feed</li></Link>
               <Link to="/historic-data"><li>Historical Data</li></Link>
             </ul>
