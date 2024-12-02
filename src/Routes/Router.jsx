@@ -12,6 +12,8 @@ import GenerateSessionTypeB from '../Content_Components/TypeBComponents/Generate
 import LoginTypeA from '../Content_Components/TypeAComponents/Login/LoginTypeA'
 import LoginTypeB from '../Content_Components/TypeBComponents/Login/LoginTypeB'
 import MarketDataTypeA from '../Content_Components/TypeAComponents/Market Data/MarketDataTypeA'
+import MarketDataTypeB from '../Content_Components/TypeBComponents/Market Data/MarketDataTypeB'
+import Annexure from '../Content_Components/Annexure'
 import NotFound from '../Pages/NotFound'
 import AppLayout from '../Pages/AppLayout'
 
@@ -39,7 +41,10 @@ function Router() {
               <Route path='/type-b/login' element={<LoginTypeB/>}></Route>
               {/* Market Data Routes */}
               <Route path='/type-a/market-data' element={<MarketDataTypeA/>}></Route>
-              <Route path='/type-b/market-data' element={<LoginTypeB/>}></Route>
+              <Route path='/type-b/market-data' element={<MarketDataTypeB/>}></Route>
+              {/* Annexure Route */}
+              <Route path='/annexure' element={<Annexure/>}></Route>
+
           <Route path='*' element={<NotFound/>}/>
         </Route>
        </Routes>

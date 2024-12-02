@@ -376,12 +376,12 @@ function MarketDataTypeA() {
     {/* Request Structure Details Section */}
     <div>
             <p><span className="font-bold">Request Structure - </span></p>
-            <p>Requests are simple JSON messages with two parameters, a (action) and v (value). </p>
+            <p>Requests are simple JSON messages with two parameters, <span className='font-bold'>a (action) </span>and <span className='font-bold'>v (value)</span>. </p>
             <ul className='list-outside list-disc p-4'>
-                <li>Available Actions (a) : subscribe, unsubscribe, mode</li>
-                <li>Available Values (v): These represents array of tokens in case of subscribe and
-                unsubscribe. In case of mode, the available mode values are expected here.</li>
-                <li>Available Modes: ltp, quote, full</li>
+                <li>Available Actions (a) :<span className='font-bold'> subscribe, unsubscribe, mode</span></li>
+                <li>Available Values (v): These represents array of tokens in case of <span className='font-bold'>subscribe</span> and
+                <span className='font-bold'> unsubscribe</span>. In case of <span className='font-bold'>mode</span>, the available <span className='font-bold'>mode</span> values are expected here.</li>
+                <li>Available Modes: <span className='font-bold'>ltp, quote, full</span></li>
             </ul>
             {/* Sample Details Structure */}
             <div>
@@ -393,21 +393,23 @@ function MarketDataTypeA() {
                 <span><NewJsonViewer data={{"a": "unsubscribe", "v": [55256, 55412]}}/></span>
             </div>
             <div>
-                <h1 className='font-bold'>Subscribe :</h1>
+                <h1 className='font-bold'>mode :</h1>
                 <span><NewJsonViewer data={{"a": "mode", "v": ["ltp"]}}/></span>
             </div>
     </div>
 
     {/* Response Structure */}
     <div className='flex flex-col gap-4'>
+    <p><span className="font-bold">Response Structure - </span></p>
+
         <p>Quotes delivered via the API are always binary messages. These have to be read as bytes
         and then type-casted into appropriate quote data structures.</p>
         <div>
             <p>Each binary message consists of Header and the actual Quote Packet. The structure is as
             follows,</p>
             <ul className='list-outside list-disc px-6'>
-                <li>The first two bytes [short] are for number of packets in the message.</li>
-                <li>The next two bytes [short] are for number of total bytes in the quote packet.</li>
+                <li>The first two bytes [<span className='font-bold'>short</span>] are for number of packets in the message.</li>
+                <li>The next two bytes [<span className='font-bold'>short</span>] are for number of total bytes in the quote packet.</li>
                 <li>The remaining bytes are for quote packet</li>
             </ul>
         </div>
