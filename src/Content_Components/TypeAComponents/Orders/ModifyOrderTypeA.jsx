@@ -1,6 +1,7 @@
 import React from 'react'
 import CopyBox from '../../../Common_Components/CopyBox'
 import NewJsonViewer from '../../../Common_Components/NewJsonViewer'
+import DynamicTable from '../../../Common_Components/DynamicTable'
 function ModifyOrderTypeA() {
 
     const ModifyOrderCurlData = `curl --location --request PUT 
@@ -42,6 +43,65 @@ function ModifyOrderTypeA() {
         "data": null
     }
 
+    const requestParameter = [
+      {
+        "Field":"tradingsymbol",
+        "Type":"string",
+        "Description":"Refer Trading Symbol in Tables"
+      },
+      {
+        "Field":"order_type",
+        "Type":"string",
+        "Description":"Order Type :<code class='highlighter'>LIMIT</code> <code class='highlighter'>MARKET</code> <code class='highlighter'>STOP_LOSS</code> <code class='highlighter'>STOP_LOSS_MARKET</code>"
+      },
+      {
+        "Field":"quantity",
+        "Type":"string",
+        "Description":"Number of shares for the order"
+      },
+      {
+        "Field":"price",
+        "Type":"string",
+        "Description":"Price at which order is placed"
+      },
+      {
+        "Field":"validity",
+        "Type":"string",
+        "Description":"Validity of Order <code class='highlighter'>DAY</code> <code class='highlighter'>IOC</code>"
+      },
+      {
+        "Field":"exchange",
+        "Type":"string",
+        "Description":"Validity of Order <code class='highlighter'>NSE</code> <code class='highlighter'>BSE</code>"
+      },
+      {
+        "Field":"trigger_price",
+        "Type":"string",
+        "Description":"Price at which the order is triggered, in case of <code class='highlighter'>STOP_LOSS</code> <code class='highlighter'>STOP_LOSS_MARKET</code>"
+      },
+      {
+        "Field":"disclosed_quantity",
+        "Type":"string",
+        "Description":"Number of shares visible (Keep more than 30% of quantity"
+      },
+      {
+        "Field":"transaction_type",
+        "Type":"string",
+        "Description":"The trading side of transaction : <code class='highlighter'>BUY</code> <code class='highlighter'>SELL</code>"
+      },
+      {
+        "Field":"product",
+        "Type":"string",
+        "Description":"Product type <code class='highlighter'>CNC</code> <code class='highlighter'>INTRADAY</code> <code class='highlighter'>MARGIN</code> <code class='highlighter'>MTF</code> <code class='highlighter'>CO</code> <code class='highlighter'>BO</code>"
+      },
+      {
+        "Field":"modqty_remng",
+        "Type":"string",
+        "Description":"Need to update"
+      },
+
+
+    ]
 
   return (
     <div className='flex flex-col gap-6 mt-10'>
@@ -53,8 +113,8 @@ function ModifyOrderTypeA() {
       <p>
         URL :
         <a
-          className="text-customBlueFont"
-          href="https://ntasc.mirae.com/zrd/orders/regular"
+          className="mstockNavFont"
+          href="https://ntasc.mirae.com/zrd/orders/regular/{OrderID}"
         >
           https://ntasc.mirae.com/zrd/orders/regular/&#10100;OrderID&#10101;
         </a>
@@ -81,7 +141,7 @@ function ModifyOrderTypeA() {
      {/* Request Header Section */}
      <div>
       <h1 className="font-bold">Request Headers – </h1>
-      <p className="indent-14">
+      <p className="py-1">
         <span>
           <span className="font-bold">Key:</span> X-Mirae-Version: ,{" "}
         </span>
@@ -103,7 +163,7 @@ function ModifyOrderTypeA() {
           api_key:access_token.
         </li>
         <li>
-          <span className="font-semibold">Content-Type:</span> Indicated the media type of the resource. For this request, it is set to <a className='text-customBlueFont' href='application/x-www-form-urlencoded'> application/x-www-form-urlencoded</a>, which s used for submiting form data.
+          <span className="font-semibold">Content-Type:</span> Indicated the media type of the resource. For this request, it is set to <a className='mstockNavFont' href='application/x-www-form-urlencoded'> application/x-www-form-urlencoded</a>, which s used for submiting form data.
         </li>
       </ul>
     </div>
@@ -126,6 +186,7 @@ function ModifyOrderTypeA() {
         <li>transaction_type</li>
         <li>product</li>
         <li>modqty_remng</li>
+        <DynamicTable data={requestParameter}/>
       </ul>
     </div>
 

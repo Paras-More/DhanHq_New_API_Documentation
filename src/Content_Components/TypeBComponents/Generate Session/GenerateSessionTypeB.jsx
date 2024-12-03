@@ -36,7 +36,43 @@ function GenerateSessionTypeB() {
       "message": "Entered OTP has been expired. Please regenerate a new one & enter the same.",
       "errorcode": "500",
       "data": null
-  }
+  } 
+
+  const SessionParameter = [
+    {
+      "Field":"api_key",
+      "Type":"string",
+      "Description":" The API key provided to the user (Example: SATYA)."
+    },
+    {
+      "Field":"request_token",
+      "Type":"string",
+      "Description":"A token that uniquely identifies the session request (Example: 123)."
+    },
+    {
+      "Field":"checksum",
+      "Type":"string",
+      "Description":"A validation string to ensure the integrity of the request (Example: W)"
+    }
+  ]
+
+  const SessionNtascParameter = [
+    {
+      "Field":"api_key",
+      "Type":"string",
+      "Description":" username (SATYA)."
+    },
+    {
+      "Field":"request_token",
+      "Type":"string",
+      "Description":" OTP (123);"
+    },
+    {
+      "Field":"checksum",
+      "Type":"string",
+      "Description":"source (W)"
+    }
+  ]
   
 
   return (
@@ -53,7 +89,7 @@ function GenerateSessionTypeB() {
           <p>
             URL :
             <a
-              className="text-customBlueFont"
+              className="mstockNavFont"
               href="https://nTasc.mirae.com/agl/session/token"
             >
               https://nTasc.mirae.com/agl/session/token 
@@ -80,7 +116,7 @@ function GenerateSessionTypeB() {
     {/* Request Header Section */}
     <div>
       <h1 className="font-bold">Request Headers – </h1>
-      <p className="indent-14">
+      <p className="py-1">
         <span>
           <span className="font-bold">Key:</span> X-Mirae-Version: ,{" "}
         </span>
@@ -98,26 +134,30 @@ function GenerateSessionTypeB() {
           the version of the API being used. In this case, it is set to 1
         </li>
         <li>
-          <span className="font-semibold">Content-Type: </span>For this request, it is set to <span className='text-customBlueFont'>application/json</span>, which is used for submiting form data through body
+          <span className="font-semibold">Content-Type: </span>For this request, it is set to <span className='mstockNavFont'>application/json</span>, which is used for submiting form data through body
         </li>
       </ul>
     </div>
 
     {/* Request Body Details Section */}
-    <div>
+    <div className='flex flex-col gap-3'>
       <p><span className="font-bold">Request Body - </span></p>
       <p>The body of the request must be URL-encoded and include the following parameters:</p>
-      <ul className='list-inside list-disc'>
+      <div className='flex flex-col gap-6'>
+      {/* <ul className='list-inside list-disc'>
         <li>refreshToken: The username of the user (Example: SATYA).</li>
 
         <li>•	otp: A token that uniquely identifies the session request (Example: 123).</li>
-      </ul>
+      </ul> */}
+      <DynamicTable data={SessionParameter}/>
 
       <p>n.Tasc Fields mapping with mStock API Parameters – </p>
-      <ul className='list-inside list-disc'>
+      {/* <ul className='list-inside list-disc'>
           <li>refreshToken  =&gt; username (SATYA)</li>
           <li>refreshToken  =&gt; OTP (123);</li>
-      </ul>
+      </ul> */}
+      <DynamicTable data={SessionNtascParameter}/>
+      </div>
     </div>
 
     {/* Request Response -  Details Section  */}

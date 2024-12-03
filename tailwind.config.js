@@ -8,7 +8,7 @@ export default {
     extend: {
       colors: {
         customBlue: '#f4f4ff',
-        customBlueFont:'#2D48DD',
+        customBlueFont:'#F5821F',
         customMediumBlue:"rgb(45, 72, 221)", // Define your custom color here
         customGray: '#6B7280',
       },

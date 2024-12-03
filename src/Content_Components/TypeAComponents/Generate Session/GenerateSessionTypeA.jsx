@@ -62,12 +62,46 @@ function GenerateSessionTypeA() {
     "message": "Entered OTP has been expired. Please regenerate a new one & enter the same.",
     "data": null
 }
+  const SessionParameter = [
+    {
+      "Field":"api_key",
+      "Type":"string",
+      "Description":" The API key provided to the user (Example: SATYA)."
+    },
+    {
+      "Field":"request_token",
+      "Type":"string",
+      "Description":"A token that uniquely identifies the session request (Example: 123)."
+    },
+    {
+      "Field":"checksum",
+      "Type":"string",
+      "Description":"A validation string to ensure the integrity of the request (Example: W)"
+    }
+  ]
 
+  const SessionNtascParameter = [
+    {
+      "Field":"api_key",
+      "Type":"string",
+      "Description":" username (SATYA)."
+    },
+    {
+      "Field":"request_token",
+      "Type":"string",
+      "Description":" OTP (123);"
+    },
+    {
+      "Field":"checksum",
+      "Type":"string",
+      "Description":"source (W)"
+    }
+  ]
 
   return (
     <div className='flex flex-col gap-6 mt-10'>
     {/* <h1>Place Order</h1> */}
-        <h1 className="content-heading-font"> Generate Session TypeA</h1>
+        <h1 className="content-heading-font"> Generate Session</h1>
         <div className='mt-4'>
               <DynamicTable data={data}/>
         </div>
@@ -78,7 +112,7 @@ function GenerateSessionTypeA() {
           <p>
             URL :
             <a
-              className="text-customBlueFont"
+              className="mstockNavFont"
               href="https://nTasc.mirae.com/zrd/session/token "
             >
               https://nTasc.mirae.com/zrd/session/token
@@ -92,7 +126,9 @@ function GenerateSessionTypeA() {
     {/* Description  Details Section */}
     <div>
       <p>
-        <span className="font-bold">Description -</span> This endpoint allows users to log in to the application by providing their username and password. Successful authentication will send the OTP to users registered mobile no that can be used for subsequent requests.
+        <span className="font-bold">Description -</span> This endpoint is used to retrieve a session token based on the
+provided API key, request token, and checksum. The session token is essential for
+authenticating subsequent API requests
       </p>
     </div>
 
@@ -105,7 +141,7 @@ function GenerateSessionTypeA() {
     {/* Request Header Section */}
     <div>
       <h1 className="font-bold">Request Headers – </h1>
-      <p className="indent-14">
+      <p className="py-1">
         <span>
           <span className="font-bold">Key:</span> X-Mirae-Version: ,{" "}
         </span>
@@ -123,33 +159,38 @@ function GenerateSessionTypeA() {
           the version of the API being used. In this case, it is set to 1
         </li>
         <li>
-          <span className="font-semibold">Content-Type: </span> For this request, it is set to<span className='text-customBlueFont'> application/x-www-form-urlencoded</span>, which is used for submiting form data.
+          <span className="font-semibold">Content-Type: </span> For this request, it is set to<span className='mstockNavFont'> application/x-www-form-urlencoded</span>, which is used for submiting form data.
         </li>
       </ul>
     </div>
 
     {/* Request Body Details Section */}
-    <div>
+    <div className='flex flex-col gap-5'>
       <p><span className="font-bold">Request Body - </span></p>
       <p>The body of the request must be URL-encoded and include the following parameters:</p>
-      <ul className='list-inside list-disc py-2'>
+
+      {/* <ul className='list-inside list-disc py-2'>
 
         <li>api_key: The API key provided to the user (Example: SATYA).</li>
 
         <li>request_token: A token that uniquely identifies the session request (Example: 123).</li>
         
         <li>checksum: A validation string to ensure the integrity of the request (Example: W)</li>
-      </ul>
+      </ul> */}
+      <DynamicTable data={SessionParameter}/>
+      
 
       <p>n.Tasc Fields mapping with mStock API Parameters – </p>
-      <ul className='list-inside list-disc py-2'>
+      {/* <ul className='list-inside list-disc py-2'>
 
         <li>api_key =&gt; username (SATYA)</li>
 
         <li>request_token =&gt; OTP (123);</li>
         
         <li>checksum =&gt; source (W)</li>
-      </ul>
+      </ul> */}
+       <DynamicTable data={SessionNtascParameter}/>
+
     </div>
 
     {/* Request Response -  Details Section  */}
@@ -163,7 +204,8 @@ function GenerateSessionTypeA() {
           {/* Success Json View repsonse */}
           <li>
             <span className="font-semibold">Success (HTTP Status 200): </span>
-            On successful login, the server returns a JSON object containing the authentication token and any relevant user information.
+            On successful request, the server returns a JSON
+            object containing the session token and any relevant user details
           </li>
           <p className='font-extralight'>Note: In below response access_token, enctoken and refresh_token are pasted half because its size is very large.</p>
           <NewJsonViewer data={SuccessResponseJson} />

@@ -82,7 +82,7 @@ const FailureInputJson = {
   return (
     <div className='flex flex-col gap-6 mt-10'>
     {/* <h1>Place Order</h1> */}
-    <h1 className="content-heading-font">Calculate Order Margin Type A</h1>
+    <h1 className="content-heading-font">Calculate Order Margin</h1>
     <div className='flex flex-col gap-3'>
       <ol className='list-inside'>
         <li className="font-bold text-xl">Calculate Order Margin</li>
@@ -90,7 +90,7 @@ const FailureInputJson = {
       <p>
         URL :
         <a
-          className="text-customBlueFont"
+          className="mstockNavFont"
           href="https://ntasc.mirae.com/zrd/margins/orders"
         >
           https://ntasc.mirae.com/zrd/margins/orders
@@ -118,7 +118,7 @@ const FailureInputJson = {
     {/* Request Header Section */}
     <div>
       <h1 className="font-bold">Request Headers – </h1>
-      <p className="indent-14">
+      <p className='py-1'>
         <span>
           <span className="font-bold">Key:</span> X-Mirae-Version: ,{" "}
         </span>
@@ -140,19 +140,9 @@ const FailureInputJson = {
           api_key:access_token.
         </li>
         <li>
-          <span className="font-semibold">Content-Type:</span> Indicated the media type of the resource. For this request, it is set to <a className='text-customBlueFont' href='application/x-www-form-urlencoded'> application/x-www-form-urlencoded</a>, which s used for submiting form data.
+          <span className="font-semibold">Content-Type:</span> Indicated the media type of the resource. For this request, it is set to <a className='mstockNavFont' href='application/x-www-form-urlencoded'> application/x-www-form-urlencoded</a>, which s used for submiting form data.
         </li>
       </ul>
-    </div>
-
-    {/* Path Parameter */}
-    <div>
-        {/* <p> */}
-            <p className="font-bold">Path Parameter -</p>
-            <ul className='list-inside list-disc px-8'>
-                <li>order_id: The unique identifier of the order to be cancel.</li>
-            </ul>
-        {/* </p> */}
     </div>
 
     {/* Request Body Details Section */}

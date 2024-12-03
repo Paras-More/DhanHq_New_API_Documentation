@@ -30,8 +30,8 @@ function AllOrdersTypeA() {
   ]
   
   return (
-    <div>
-        <h1 className="content-heading-font  py-6">Orders TypeA</h1>
+    <div className='flex flex-col gap-6 mt-10'>
+        <h1 className="content-heading-font">Orders</h1>
         {/* Order API table */}
             <div>
               <p>The order APIs let you place orders of different varities, modify and cancel pending orders, retrieve the daily order and more.</p>

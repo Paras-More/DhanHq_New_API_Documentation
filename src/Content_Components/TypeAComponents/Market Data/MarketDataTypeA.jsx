@@ -345,7 +345,7 @@ function MarketDataTypeA() {
     
         <div className='flex flex-col gap-6 mt-10'>
     {/* <h1>Place Order</h1> */}
-        <h1 className="content-heading-font">Market Data Type A</h1>
+        <h1 className="content-heading-font">Market Data</h1>
         <div>
               {/* <DynamicTable data={data}/> */}
         </div>
@@ -358,7 +358,7 @@ function MarketDataTypeA() {
                     <li>Authentication is done based on the Access Token generated in Login</li>
                     <li>The Access Token is then passed in Query Paramater of the WebSocket URL
                         <ol className='list-inside alphabetic-list indent-6 flex flex-col gap-1'>
-                            <li>Sample: <span className='font-bold'>ws://192.168.0.1:8003?ACCESS_TOKEN= N3RV32o_ZERODHA</span></li>
+                            <li>Sample: <span className='font-bold'>ws://192.168.0.1:8003?ACCESS_TOKEN= abc</span></li>
                             <li>The IP:Port will be replaced with UAT and PROD urls.</li>
                         </ol>
                     </li>
@@ -366,7 +366,7 @@ function MarketDataTypeA() {
                     <li>Once the connection is successful,<span className='text-green-600'> LOGIN:AccessToken</span> has to be sent on the WebSocket connection to maintain the connection.
                         <ol className='list-inside alphabetic-list indent-6 flex flex-col gap-1'>
                             <li>If not sent, the connection will be auto disconnected in 10 seconds</li>
-                            <li>Sample: <span className='font-bold'>LOGIN:N3RV32o_ZERODHA</span></li>
+                            <li>Sample: <span className='font-bold'>LOGIN:abc</span></li>
                         </ol>
                     </li>
                 </ol>
@@ -438,6 +438,12 @@ function MarketDataTypeA() {
             <DynamicTable data={indexPacketStructureData}/>
             </div>
       </div>
+      {/* Note Section */}
+      <div className='mb-10'>
+            <p className='font-bold'>Please Note :</p>
+            <p>1. [<span className='font-bold'>short</span>]: 2 Bytes | [<span className='font-bold'>int</span>]: 4 Bytes </p>
+      </div>
+      
    </div>
     </>
 )

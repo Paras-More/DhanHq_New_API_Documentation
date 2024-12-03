@@ -137,7 +137,6 @@ function Annexure() {
         <h1 className="content-heading-font">Annexure</h1>
         <div>
             <p className='font-bold'>Please note :</p>
-            <li>[<span className='font-bold'>short</span>]: 2 Bytes | [<span className='font-bold'>int</span>]: 4 Bytes</li>
             <li className='font-light'>Tokens are Exchange tokens from Exchange Contract Master. </li>
             <li className='font-light'>For Index Tokens, refer below,</li>
         </div>

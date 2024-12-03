@@ -44,7 +44,7 @@ const NewJsonViewer = ({ data }) => {
   };
 
   return (
-    <div className="p-4 bg-customBlue rounded-md font-mono text-sm overflow-x-auto" style={{fontFamily: 'monospace', whiteSpace: 'pre-wrap', padding: '1rem',colorborderRadius: '5px' }}>
+    <div className="p-4 bg-customBlue rounded-md font-mono text-sm overflow-x-auto" style={{whiteSpace: 'pre-wrap', padding: '1rem',colorborderRadius: '5px' }}>
       <div>
         {"{"}
         {Object.entries(data).map(([key, value], index) => (

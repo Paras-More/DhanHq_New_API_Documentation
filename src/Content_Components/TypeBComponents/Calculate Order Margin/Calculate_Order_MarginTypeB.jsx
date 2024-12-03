@@ -100,7 +100,7 @@ const FailureInputJson = {
       <p>
         URL :
         <a
-          className="text-customBlueFont"
+          className="mstockNavFont"
           href="https://nTasc.mirae.com/agl/margins/orders"
         >
           https://nTasc.mirae.com/agl/margins/orders
@@ -128,7 +128,7 @@ const FailureInputJson = {
     {/* Request Header Section */}
     <div>
       <h1 className="font-bold">Request Headers – </h1>
-      <p className="indent-14">
+      <p className="py-1">
         <span>
           <span className="font-bold">Key:</span> X-Mirae-Version: ,{" "}
         </span>

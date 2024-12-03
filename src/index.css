@@ -1,7 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+*{
+  font-size: 14px;
+  font-weight: 400;
+  /* font-family: 'CircularXXSub-Medium',sans-serif ;
+  font-feature-settings: "kern", "liga"; */
+}
 /* Customize scrollbar width and color */
 ::-webkit-scrollbar {
     width: 8px;  /* Set the width of the scrollbar */
@@ -9,14 +14,12 @@
   }
   
   ::-webkit-scrollbar-thumb {
-    background-color: rgb(45, 72, 221);  /* Color of the scrollbar thumb */
+    background-color: "#F5821F";  /* Color of the scrollbar thumb */
     border-radius: 10px;  /* Round corners of the scrollbar thumb */
   }
   
   ::-webkit-scrollbar-track {
     display: none;
-    background-color: #f1f1f1;  /* Color of the scrollbar track */
-    border-radius: 10px;  /* Round corners of the scrollbar track */
   }
   
 /*  */
@@ -26,8 +29,10 @@
 .content-heading-font {
   font-size: 2rem;
   font-weight: 600;
-  color:#2D48DD;
+  letter-spacing: -.01em;
+  color:#043B73;
   font-family: 'CircularXXSub-Medium',sans-serif ;
+  font-feature-settings: "kern", "liga";
 }
 
 .content-subheading-font {
@@ -42,7 +47,7 @@
   letter-spacing: -.01em;
   margin: 1em 0;
   font-family: 'CircularXXSub-Medium',sans-serif ;
-  color:#181154 !important
+  color:#043B73 !important
 }
 
 td, th {
@@ -51,24 +56,34 @@ td, th {
   border-left: none;  /* Remove vertical border on the left */
   border-right: none; /* Remove vertical border on the right */
 }
-.smoothTransition {
-  transition: all 0.5s ease-in-out;
+td{
+  font-family: CircularXXSub-Regular, sans-serif;
+  font-feature-settings: "kern", "liga";
+  font-family: 'CircularXXSub-Medium',sans-serif ;
+  font-size: 0.875rem;
 }
-
-.dropdown {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
+th{
+  font-weight: 700;
 }
-
-.dropdown-open {
-  max-height: 1000px; /* or a suitable value depending on the content */
-  opacity: 1;
-}
-
 .alphabetic-list {
   list-style-type: upper-alpha; /* This will use A, B, C, ... for the list items */
 }
 .font-bold > span {
     font-weight: bold;
+}
+
+.mstockNavFont {
+  color:#1a3967;
+}
+.highlighter{
+  font-family: "Inter",'Courier New', Courier, monospace !important;
+  font-size: 1rem !important;
+  font-feature-settings: "kern";
+  padding: 3PX;
+  background-color: #dbdde0;  
+}
+.JsonViewer-font{
+
+  font-family:  monospace !important;
+  padding: '1rem';
 }

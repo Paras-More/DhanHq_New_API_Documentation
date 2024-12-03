@@ -324,7 +324,7 @@ function MarketDataTypeB() {
                     <li>Authentication is done based on the Access Token generated in Login</li>
                     <li>The Access Token is then passed in Query Paramater of the WebSocket URL
                         <ol className='list-inside alphabetic-list indent-6 flex flex-col gap-1'>
-                            <li>Sample: <span className='font-bold'>ws://192.168.0.1:8003?ACCESS_TOKEN= N3RV32o_ANGEL</span></li>
+                            <li>Sample: <span className='font-bold'>ws://192.168.0.1:8003?ACCESS_TOKEN= abcxxx</span></li>
                             <li>The IP:Port will be replaced with UAT and PROD urls.</li>
                         </ol>
                     </li>
@@ -332,7 +332,7 @@ function MarketDataTypeB() {
                     <li>Once the connection is successful,<span className='text-green-600'> LOGIN:AccessToken</span> has to be sent on the WebSocket connection to maintain the connection.
                         <ol className='list-inside alphabetic-list indent-6 flex flex-col gap-1'>
                             <li>If not sent, the connection will be auto disconnected in 10 seconds</li>
-                            <li>Sample: <span className='font-bold'>LOGIN:N3RV32o_ANGEL</span></li>
+                            <li>Sample: <span className='font-bold'>LOGIN: abcxxx</span></li>
                         </ol>
                     </li>
                 </ol>
@@ -385,7 +385,11 @@ function MarketDataTypeB() {
             <DynamicTable data={marketDepthStructureData}/>
             </div>
       </div>
- 
+     {/* Note Section */}
+     <div className='mb-10'>
+            <p className='font-bold'>Please Note :</p>
+            <p>1. [<span className='font-bold'>short</span>]: 2 Bytes | [<span className='font-bold'>int</span>]: 4 Bytes | [<span className='font-bold'>long</span>]: 8 Bytes | [<span className='font-bold'>double</span>]: 8 Bytes</p>
+      </div>
    </div>
     </>
 )

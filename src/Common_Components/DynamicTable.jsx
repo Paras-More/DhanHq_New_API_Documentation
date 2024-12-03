@@ -4,7 +4,6 @@ const DynamicTable = ({ data }) => {
     }
     // Dynamically get the column keys from the data
     const columns = Object.keys(data[0]);
-    console.log(columns);
       
     return (
       <div className="overflow-x-auto w-full">
@@ -30,14 +29,14 @@ const DynamicTable = ({ data }) => {
               <tr key={rowIndex} className="hover:bg-gray-50">
                 {columns.map((col) => (
                   <td
+                  dangerouslySetInnerHTML={{__html: row[col]}}
                     key={col}
-                    className={` px-4 py-2 ${
+                    className={`px-4 py-2 ${
                       typeof row[col] === "string" && col.includes("path")
                         ? "font-mono"
                         : ""
                     }`}
                   >
-                    {row[col]}
                   </td>
                 ))}
               </tr>

@@ -1,6 +1,7 @@
 import React from 'react'
 import CopyBox from '../../../Common_Components/CopyBox'
 import NewJsonViewer from '../../../Common_Components/NewJsonViewer'
+import DynamicTable from '../../../Common_Components/DynamicTable'
 
 function PlaceOrderTypeB() {
 
@@ -55,6 +56,89 @@ function PlaceOrderTypeB() {
           "errorcode": "RS-0111",
           "data": null
       }
+
+      const requestParameter = [
+        {
+          "Field":"variety",
+          "Type":"string",
+          "Description":"pending ---"
+        },
+        {
+          "Field":"tradingsymbol",
+          "Type":"string",
+          "Description":"Refer Trading Symbol in Tables"
+        },
+        {
+          "Field":"symboltoken",
+          "Type":"string",
+          "Description":"pending ---"
+        },
+        {
+          "Field":"exchange",
+          "Type":"string",
+          "Description":"Exchange name : <code class='highlighter'>NSE</code> <code class='highlighter'>BSE</code>"
+        },
+        {
+          "Field":"transaction_type",
+          "Type":"string",
+          "Description":"The trading side of transaction : <code class='highlighter'>BUY</code> <code class='highlighter'>SELL</code>"
+        },
+        {
+          "Field":"order_type",
+          "Type":"string",
+          "Description":"Order Type :<code class='highlighter'>LIMIT</code> <code class='highlighter'>MARKET</code> <code class='highlighter'>STOP_LOSS</code> <code class='highlighter'>STOP_LOSS_MARKET</code>"
+        },
+        {
+          "Field":"quantity",
+          "Type":"string",
+          "Description":"Number of shares for the order"
+        },
+        {
+          "Field":"producttype",
+          "Type":"string",
+          "Description":"Product +________________ type <code class='highlighter'>CNC</code> <code class='highlighter'>INTRADAY</code> <code class='highlighter'>MARGIN</code> <code class='highlighter'>MTF</code> <code class='highlighter'>CO</code> <code class='highlighter'>BO</code>"
+        },
+        {
+          "Field":"price",
+          "Type":"string",
+          "Description":"Price at which order is placed"
+        },
+        {
+          "Field":"trigger_price",
+          "Type":"string",
+          "Description":"Price at which the order is triggered, in case of <code class='highlighter'>STOP_LOSS</code> <code class='highlighter'>STOP_LOSS_MARKET</code>"
+        },
+        {
+          "Field":"squareoff",
+          "Type":"string",
+          "Description":"Auto Sqaure off"
+        },
+        {
+          "Field":"stoploss",
+          "Type":"string",
+          "Description":"Stop Loss order"
+        },
+        {
+          "Field":"trailingStopLoss",
+          "Type":"string",
+          "Description":"Trailing Stop Loss order"
+        },
+        {
+          "Field":"disclosedquantity",
+          "Type":"string",
+          "Description":"Number of shares visible (Keep more than 30% of quantity)"
+        },
+        {
+          "Field":"duration",
+          "Type":"string",
+          "Description":"Regular Order Immediate or Cancel"
+        },
+        {
+          "Field":"ordertag",
+          "Type":"string",
+          "Description":"It is optional to apply to an order to identify. The length of the tag should be less than 20 characters."
+        },
+      ]
       
 
         
@@ -68,8 +152,8 @@ function PlaceOrderTypeB() {
         <p>
           URL :
           <a
-            className="text-customBlueFont"
-            href="https://ntasc.mirae.com/zrd/orders/regular"
+            className="mstockNavFont"
+            href="https://ntasc.mirae.com/agl/orders/regular"
           >
             https://nTasc.mirae.com/agl/orders/regular 
           </a>
@@ -86,28 +170,12 @@ function PlaceOrderTypeB() {
       </div>
 
        {/* Request Body Details Section */}
-      <div>
+      <div className='flex flex-col gap-3'>
         <p>
           <span className="font-bold">Request Body - </span>The body of the
           request must be URL-encoded and include the following parameters:
         </p>
-        <ul className="list-inside list-disc indent-8 py-2">
-          <li>variety</li>
-          <li>tradingsymbol</li>
-          <li>exchange</li>
-          <li>transactiontype </li>
-          <li>ordertype</li>
-          <li>quantity</li>
-          <li>producttype </li>
-          <li>price </li>
-          <li>triggerprice </li>
-          <li>squareoff</li>
-          <li>stoploss</li>
-          <li>trailingStopLoss</li>
-          <li>disclosedquantity</li>
-          <li>uration</li>
-          <li>ordertag</li>
-        </ul>
+        <DynamicTable data={requestParameter}/>
       </div>
       
        {/* Request Response -  Details Section  */}
@@ -150,7 +218,7 @@ function PlaceOrderTypeB() {
       {/* Request Header Section */}
       <div>
         <h1 className="font-bold">Request Headers – </h1>
-        <p className="indent-14">
+        <p className="py-1">
           <span>
             <span className="font-bold">Key:</span> X-Mirae-Version ,{" "}
           </span>
@@ -173,7 +241,7 @@ function PlaceOrderTypeB() {
           </li>
           <li>
             <span className="font-semibold">Content-Type:</span>A token-based authentication header. The format is token api_key:access_token.
-            Content-Type: For this request, it is set to <span className='text-customBlueFont'>application/json</span>, which is used for submiting form data through body
+            Content-Type: For this request, it is set to <span className=''>application/json</span>, which is used for submiting form data through body
 
           </li>
         </ul>

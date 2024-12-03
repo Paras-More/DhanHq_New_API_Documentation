@@ -1,6 +1,7 @@
 import React from 'react'
 import NewJsonViewer from '../../../Common_Components/NewJsonViewer'
 import CopyBox from '../../../Common_Components/CopyBox'
+import DynamicTable from '../../../Common_Components/DynamicTable'
 
 function CancelOrderTypeB() {
 
@@ -44,7 +45,79 @@ const FailureOrderIdJson = {
   "errorcode": "RS-00093",
   "data": null
 }
+const requestParameter = [
+  {
+    "Field":"variety",
+    "Type":"string",
+    "Description":"pending ---"
+  },
+  {
+    "Field":"tradingsymbol",
+    "Type":"string",
+    "Description":"Refer Trading Symbol in Tables"
+  },
+  {
+    "Field":"symboltoken",
+    "Type":"string",
+    "Description":"pending ---"
+  },
+  {
+    "Field":"exchange",
+    "Type":"string",
+    "Description":"Exchange name : <code class='highlighter'>NSE</code> <code class='highlighter'>BSE</code>"
+  },
+  {
+    "Field":"transaction_type",
+    "Type":"string",
+    "Description":"The trading side of transaction : <code class='highlighter'>BUY</code> <code class='highlighter'>SELL</code>"
+  },
+  {
+    "Field":"orderid",
+    "Type":"string",
+    "Description":"order specific ID which needs to be cancelled"
+  },
+  {
+    "Field":"order_type",
+    "Type":"string",
+    "Description":"Order Type :<code class='highlighter'>LIMIT</code> <code class='highlighter'>MARKET</code> <code class='highlighter'>STOP_LOSS</code> <code class='highlighter'>STOP_LOSS_MARKET</code>"
+  },
+  {
+    "Field":"quantity",
+    "Type":"string",
+    "Description":"Number of shares for the order"
+  },
+  {
+    "Field":"producttype",
+    "Type":"string",
+    "Description":"Product +________________ type <code class='highlighter'>CNC</code> <code class='highlighter'>INTRADAY</code> <code class='highlighter'>MARGIN</code> <code class='highlighter'>MTF</code> <code class='highlighter'>CO</code> <code class='highlighter'>BO</code>"
+  },
+  {
+    "Field":"duration",
+    "Type":"string",
+    "Description":"Regular Order Immediate or Cancel"
+  },
+  {
+    "Field":"price",
+    "Type":"string",
+    "Description":"Price at which order is placed"
+  },
+  {
+    "Field":"trigger_price",
+    "Type":"string",
+    "Description":"Price at which the order is triggered, in case of <code class='highlighter'>STOP_LOSS</code> <code class='highlighter'>STOP_LOSS_MARKET</code>"
+  },
+  {
+    "Field":"disclosedquantity",
+    "Type":"string",
+    "Description":"Number of shares visible (Keep more than 30% of quantity)"
+  },
+  {
+    "Field":"modqty_remng",
+    "Type":"string",
+    "Description":"Quantity of shares in order that needs to be modified"
+  },
 
+]
 
   return (
 <div className='flex flex-col gap-6 mt-10'>
@@ -56,8 +129,8 @@ const FailureOrderIdJson = {
       <p>
         URL :
         <a
-          className="text-customBlueFont"
-          href="https://ntasc.mirae.com/zrd/orders/regular"
+          className="mstockNavFont"
+          href="https://ntasc.mirae.com/agl/orders/regular/{OrderID}"
         >
            https://nTasc.mirae.com/agl/orders/regular/&#10100;OrderID&#10101;
         </a>
@@ -84,7 +157,7 @@ const FailureOrderIdJson = {
     {/* Request Header Section */}
     <div>
       <h1 className="font-bold">Request Headers – </h1>
-      <p className="indent-14">
+      <p className="py-1">
         <span>
           <span className="font-bold">Key:</span> X-Mirae-Version: ,{" "}
         </span>
@@ -106,7 +179,7 @@ const FailureOrderIdJson = {
           api_key:access_token.
         </li>
         <li>
-          <span className="font-semibold">Content-Type:</span> Indicated the media type of the resource. For this request, it is set to <span className='text-customBlueFont'>application/json</span>, which s used for submiting form data through body.
+          <span className="font-semibold">Content-Type:</span> Indicated the media type of the resource. For this request, it is set to <span className='mstockNavFont'>application/json</span>, which s used for submiting form data through body.
         </li>
       </ul>
     </div>
@@ -127,22 +200,8 @@ const FailureOrderIdJson = {
         <span className="font-bold">Request Body - </span>The   body   of   the   request   must   be   URL-encoded   and   include   the   following
         parameters:
       </p>
-      <ul className="list-inside list-disc indent-8 py-2">
-        <li>variety</li>
-        <li>tradingsymbol</li>
-        <li>symboltoken</li>
-        <li>exchange</li>
-        <li>transactiontype</li>
-        <li>orderid</li>
-        <li>ordertype</li>
-        <li>quantity</li>
-        <li>producttype</li>
-        <li>duration</li>
-        <li>price</li>
-        <li>triggerprice</li>
-        <li>disclosedquantity</li>
-        <li>modqty_remng</li>
-      </ul>
+
+      <DynamicTable data={requestParameter}/>
     </div>
 
     {/* Request Response -  Details Section  */}

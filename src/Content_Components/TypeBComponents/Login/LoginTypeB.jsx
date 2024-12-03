@@ -47,7 +47,29 @@ function LoginTypeB() {
     "errorcode": "500",
     "data": null
 }
-  
+const requestParameter = [
+  {
+    "Field":"clientcode",
+    "Type":"string",
+    "Description":"The username of the user attempting to log in. (Example: SATYA"
+  },
+  {
+    "Field":"password",
+    "Type":"string",
+    "Description":"The   password   associated   with   the   username.   (Example:Macm@123)"
+  },
+  {
+    "Field":"totp",
+    "Type":"string",
+    "Description":"Empty string"
+  },
+  {
+    "Field":"state",
+    "Type":"string",
+    "Description":"Empty string"
+  },
+
+]
 
   return (
     <div className='flex flex-col gap-6 mt-10'>
@@ -63,7 +85,7 @@ function LoginTypeB() {
           <p>
             URL :
             <a
-              className="text-customBlueFont"
+              className="mstockNavFont"
               href="https://nTasc.mirae.com/agl/connect/login "
             >
               https://nTasc.mirae.com/agl/connect/login 
@@ -90,7 +112,7 @@ function LoginTypeB() {
     {/* Request Header Section */}
     <div>
       <h1 className="font-bold">Request Headers – </h1>
-      <p className="indent-14">
+      <p className="py-1">
         <span>
           <span className="font-bold">Key:</span> X-Mirae-Version: ,{" "}
         </span>
@@ -108,7 +130,7 @@ function LoginTypeB() {
           the version of the API being used. In this case, it is set to 1
         </li>
         <li>
-          <span className="font-semibold">Content-Type: </span> For this request, it is set to<span className='text-customBlueFont'> application/x-www-form-urlencoded</span>, which is used for submiting form data through body.
+          <span className="font-semibold">Content-Type: </span> For this request, it is set to<span className='mstockNavFont'> application/x-www-form-urlencoded</span>, which is used for submiting form data through body.
         </li>
       </ul>
     </div>
@@ -117,12 +139,14 @@ function LoginTypeB() {
     <div>
       <p><span className="font-bold">Request Body - </span></p>
       <p>The body of the request must be URL-encoded and include the following parameters:</p>
-      <ul className='list-inside list-disc'>
+      {/* <ul className='list-inside list-disc'>
         <li>clientcode: The username of the user attempting to log in. (Example: SATYA)</li>
         <li>password: The password associated with the username. (Example: Macm@123)</li>
         <li>totp: blank</li>
         <li>state: blank</li>
-      </ul>
+      </ul> */}
+      <DynamicTable data={requestParameter}/>
+
     </div>
 
     {/* Request Response -  Details Section  */}

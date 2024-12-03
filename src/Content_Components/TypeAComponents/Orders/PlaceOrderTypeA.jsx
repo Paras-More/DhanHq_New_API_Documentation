@@ -1,6 +1,7 @@
 import React from 'react'
 import CopyBox from '../../../Common_Components/CopyBox'
 import NewJsonViewer from '../../../Common_Components/NewJsonViewer'
+import DynamicTable from '../../../Common_Components/DynamicTable'
 
 function PlaceOrderTypeA() {
 
@@ -38,6 +39,44 @@ function PlaceOrderTypeA() {
             "data": null
         }
 
+        const requestParameter = [
+          {
+            "Field":"tradingsymbol",
+            "Type":"string",
+            "Description":"Refer Trading Symbol in Tables"
+          },
+          {
+            "Field":"transaction_type",
+            "Type":"string",
+            "Description":"The trading side of transaction : <code class='highlighter'>BUY</code> <code class='highlighter'>SELL</code>"
+          },
+          {
+            "Field":"order_type",
+            "Type":"string",
+            "Description":"Order Type :<code class='highlighter'>LIMIT</code> <code class='highlighter'>MARKET</code> <code class='highlighter'>STOP_LOSS</code> <code class='highlighter'>STOP_LOSS_MARKET</code>"
+          },
+          {
+            "Field":"quantity",
+            "Type":"string",
+            "Description":"Number of shares for the order"
+          },
+          {
+            "Field":"product",
+            "Type":"string",
+            "Description":"Product type <code class='highlighter'>CNC</code> <code class='highlighter'>INTRADAY</code> <code class='highlighter'>MARGIN</code> <code class='highlighter'>MTF</code> <code class='highlighter'>CO</code> <code class='highlighter'>BO</code>"
+          },
+          {
+            "Field":"validity",
+            "Type":"string",
+            "Description":"Validity of Order <code class='highlighter'>DAY</code> <code class='highlighter'>IOC</code>"
+          },
+          {
+            "Field":"price",
+            "Type":"string",
+            "Description":"Price at which order is placed"
+          }
+        ]
+
         
   return (
     <div className='flex flex-col gap-6 mt-10'>
@@ -49,7 +88,7 @@ function PlaceOrderTypeA() {
         <p>
           URL :
           <a
-            className="text-customBlueFont"
+            className="mstockNavFont"
             href="https://ntasc.mirae.com/zrd/orders/regular"
           >
             https://ntasc.mirae.com/zrd/orders/regular
@@ -72,16 +111,7 @@ function PlaceOrderTypeA() {
           <span className="font-bold">Request Body - </span>The body of the
           request must be URL-encoded and include the following parameters:
         </p>
-        <ul className="list-inside list-disc indent-8 py-2">
-          <li>tradingsymbol</li>
-          <li>exchange</li>
-          <li>transaction_type</li>
-          <li>order_type</li>
-          <li>quantity</li>
-          <li>product</li>
-          <li>validity</li>
-          <li>price</li>
-        </ul>
+        <DynamicTable data={requestParameter}/>
       </div>
       
        {/* Request Response -  Details Section  */}
@@ -126,7 +156,7 @@ function PlaceOrderTypeA() {
       {/* Request Header Section */}
       <div>
         <h1 className="font-bold">Request Headers – </h1>
-        <p className="indent-14">
+        <p className="py-1">
           <span>
             <span className="font-bold">Key:</span> X-Mirae-Version ,{" "}
           </span>

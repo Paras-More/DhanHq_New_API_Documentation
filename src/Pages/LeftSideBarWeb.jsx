@@ -57,6 +57,12 @@ function LeftSideBarWeb() {
         isSelected:false,
         type:"Annexure"
 
+      },
+      {
+        title:"Introduction",
+        path:"/",
+        isSelected:false,
+        type:"Introduction"
       }
 
     ]
@@ -109,6 +115,12 @@ function LeftSideBarWeb() {
         type:"Annexure"
 
       },
+      {
+        title:"Introduction",
+        path:"/",
+        isSelected:false,
+        type:"Introduction"
+      }
 
     ]
     
@@ -143,21 +155,48 @@ function LeftSideBarWeb() {
 
 
   return (
-    <aside className='bg-white  w-customSmall flex-shrink-0 xl:flex flex-col hidden gap-4  overflow-y-scroll'>
+    <aside className='bg-white  w-customSmall flex-shrink-0 xl:flex flex-col gap-4  overflow-y-scroll'>
             {console.log("LeftSide bar RENDER")}
         {/*  */}
           <div>
             <h1 className="font-bold mb-6">API Documentation</h1>
             <ul className='indent-1 flex flex-col'>
-            <Link to="/"><li className='font-semibold'>Introduction</li></Link>
+            {
+            state.selectedValue === 'Type A' && 
+             <ul className='indent-3'>
+              {
+                TradlingLinkTypeA?.map((ele,i)=>{
+                  if(ele.type === 'Introduction')
+                    return(
+                <Link  onClick={(e)=>handleTitleClick(ele.title,'TradlingLinkTypeA')} to={ele.path}><li className={`${ele.isSelected ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
+                    )
+                })
+              }
+            </ul>
+          }
+
+          {/* For Selected Value Type B */}
+          {
+            state.selectedValue === 'Type B' && 
+             <ul className='indent-3'>
+              {
+                TradlingLinkTypeB?.map((ele,i)=>{
+                  if(ele.type === 'Introduction')
+                    return(
+                <Link  onClick={(e)=>handleTitleClick(ele.title,'TradlingLinkTypeB')} to={ele.path}><li className={`${ele.isSelected ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
+                    )
+                })
+              }
+            </ul>
+          }
             </ul>
           </div>
 
       {/* DropDown Type A & Type B */}
           <div className='w-full '>
-                <div className='p-2 w-[80%] bg-customBlueFont text-white rounded-lg cursor-pointer hover:bg-blue-600' onClick={()=>dispatch({type:"TOGGLE_DROPDOWN"})}>
+                <div className='p-1 w-[60%] bg-customBlueFont text-white rounded-lg cursor-pointer hover:' onClick={()=>dispatch({type:"TOGGLE_DROPDOWN"})}>
                   <div className='flex items-center justify-between px-1'>
-                  <p className='indent-2 font-semibold'>{state.selectedValue}</p>
+                  <p className='indent-2 font-semibold text-s'>{state.selectedValue}</p>
                   {
                     state.showDropDown ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                       <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
@@ -168,7 +207,7 @@ function LeftSideBarWeb() {
                   </div>
                 </div>
                 {
-                    <div className="border-x-2 border-y-2 w-[80%] rounded-lg mt-1 flex flex-col bg-white shadow-lg border-blue-200  transition-all ease- duration-500 overflow-hidden"  
+                    <div className="border-x-2 border-y-2 w-[60%] rounded-lg mt-1 flex flex-col bg-white shadow-lg border-orange-200  transition-all ease- duration-500 overflow-hidden"  
                     style={{
                       opacity: state.showDropDown ? 1 : 0,
                       visibility: state.showDropDown ? "visible" : "hidden",
@@ -176,10 +215,10 @@ function LeftSideBarWeb() {
                       transform:state.showDropDown ?  "translateY(0)" : "translateY(1px)",
                     }}
                       >
-                      <p className="indent-3 p-2 text-customBlueFont border-b hover:text-customBlueFont hover:bg-blue-100  flex items-center justify-between pr-6" onClick={() => dispatch({ type: "SELECTED_OPTION_VALUE", payload: "Type A" })}>
+                      <p className="indent-3 p-1 text-customBlueFont border-b hover:text-customBlueFont hover:bg-orange-100  flex items-center justify-between pr-6" onClick={() => dispatch({ type: "SELECTED_OPTION_VALUE", payload: "Type A" })}>
                         Type A
                       </p>
-                      <p className="indent-3 p-2 text-customBlueFont hover:text-customBlueFont hover:bg-blue-100  flex items-center justify-between pr-6" onClick={() => dispatch({ type: "SELECTED_OPTION_VALUE", payload: "Type B" })}>
+                      <p className="indent-3 p-1 text-customBlueFont hover:text-customBlueFont hover:bg-orange-100  flex items-center justify-between pr-6" onClick={() => dispatch({ type: "SELECTED_OPTION_VALUE", payload: "Type B" })}>
                         Type B
                       </p>
                     </div> 
