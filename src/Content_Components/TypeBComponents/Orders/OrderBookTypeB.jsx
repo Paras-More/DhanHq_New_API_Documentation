@@ -1,7 +1,7 @@
 import React from 'react'
 import CopyBox from '../../../Common_Components/CopyBox'
 import NewJsonViewer from '../../../Common_Components/NewJsonViewer'
-
+import DynamicTable from '../../../Common_Components/DynamicTable'
 function OrderBookTypeB() {
    
    const orderBookCurlData = `
@@ -11,7 +11,7 @@ curl --location 'http://localhost:18463/Agl/orders' \\
 `
 
   const SuccessResponseJson = {
-    "status": true,
+    "status": "true",
     "message": "SUCCESS",
     "errorcode": "",
     "data": [
@@ -96,7 +96,7 @@ curl --location 'http://localhost:18463/Agl/orders' \\
 
 
   const VersionExpensionJson ={
-    "status": false,
+    "status": "false",
     "message": "Invalid request. Please try again.",
     "errorcode": "400",
     "data": null
@@ -164,16 +164,6 @@ curl --location 'http://localhost:18463/Agl/orders' \\
           api_key:access_token.
         </li>
       </ul>
-    </div>
-
-    {/* Path Parameter */}
-    <div>
-        {/* <p> */}
-            <p className="font-bold">Path Parameter -</p>
-            <ul className='list-inside list-disc px-8'>
-                <li>order_id: The unique identifier of the order to be cancel.</li>
-            </ul>
-        {/* </p> */}
     </div>
 
     {/* Request Body Details Section */}

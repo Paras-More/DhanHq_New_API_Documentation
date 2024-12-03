@@ -153,9 +153,7 @@ const requestParameter = [
     <div>
         {/* <p> */}
             <p className="font-bold">Path Parameter -</p>
-            <ul className='list-inside list-disc px-8'>
-                <li>order_id: The unique identifier of the order to be cancel.</li>
-            </ul>
+            <DynamicTable data={[{"Field":"order_id","Description":"The unique identifier of the order to be cancel."}]}/>
         {/* </p> */}
     </div>
 

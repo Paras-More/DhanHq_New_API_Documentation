@@ -299,7 +299,7 @@ function MarketDataTypeA() {
     {
         "Field": "Token",
         "Type": "[int]",
-        "Description": ""
+        // "Description": ""
     },
     {
         "Field": "LTP",
@@ -358,7 +358,7 @@ function MarketDataTypeA() {
                     <li>Authentication is done based on the Access Token generated in Login</li>
                     <li>The Access Token is then passed in Query Paramater of the WebSocket URL
                         <ol className='list-inside alphabetic-list indent-6 flex flex-col gap-1'>
-                            <li>Sample: <span className='font-bold'>ws://192.168.0.1:8003?ACCESS_TOKEN= abc</span></li>
+                            <li>Sample: <span className='font-bold'>ws://192.168.0.1:8003?ACCESS_TOKEN= abcxxx</span></li>
                             <li>The IP:Port will be replaced with UAT and PROD urls.</li>
                         </ol>
                     </li>
@@ -366,7 +366,7 @@ function MarketDataTypeA() {
                     <li>Once the connection is successful,<span className='text-green-600'> LOGIN:AccessToken</span> has to be sent on the WebSocket connection to maintain the connection.
                         <ol className='list-inside alphabetic-list indent-6 flex flex-col gap-1'>
                             <li>If not sent, the connection will be auto disconnected in 10 seconds</li>
-                            <li>Sample: <span className='font-bold'>LOGIN:abc</span></li>
+                            <li>Sample: <span className='font-bold'>LOGIN:abcxxx</span></li>
                         </ol>
                     </li>
                 </ol>
@@ -431,7 +431,7 @@ function MarketDataTypeA() {
       </div>
       {/* Index packet Structure */}
       <div>
-            <h1 className='font-bold py-3'>Market Depth Structure: (32 Bytes)</h1>
+            <h1 className='font-bold py-3'>Index Packet Structure: (32 Bytes)</h1>
             <span className='font-thin'>Specifically created for non tradable Index Tokens (Mentioned below)</span>
 
             <div className='max-w-[50%]'>

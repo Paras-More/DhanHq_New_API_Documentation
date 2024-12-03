@@ -25,7 +25,7 @@ function LoginTypeB() {
 }'
 `
   const SuccessResponseJson = {
-    "status": true,
+    "status": "true",
     "message": "Please enter the OTP that we sent on XXXXXXX452 and XXXX00@GMAIL.COM",
     "errorcode": "",
     "data": {
@@ -36,13 +36,13 @@ function LoginTypeB() {
     }
 }
   const FailureApiVersionJson = {
-    "status": false,
+    "status": "false",
     "message": "Please provide valid clientcode and password.",
     "errorcode": "400",
     "data": null
 }
   const FailureCredentialsJson = {
-    "status": false,
+    "status": "false",
     "message": "Invalid username or password. 9 attempts remaining ",
     "errorcode": "500",
     "data": null

@@ -23,10 +23,10 @@ function LoginTypeA() {
     "status": "success",
     "data": {
         "ugid": "e5425447-bb52-4b04-8086-a8b37f62953d",
-        "is_kyc": true,
-        "is_activate": true,
-        "is_password_reset": true,
-        "is_error": false,
+        "is_kyc": "true",
+        "is_activate": "true",
+        "is_password_reset": "true",
+        "is_error": "false",
         "cid": "SATYA",
         "nm": "SATYA",
         "flag": 0

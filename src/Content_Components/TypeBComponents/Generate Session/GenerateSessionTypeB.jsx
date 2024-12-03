@@ -22,7 +22,7 @@ function GenerateSessionTypeB() {
     }'
     `
     const SuccessResponseJson = {
-      "status": true,
+      "status": "true",
       "message": "SUCCESS",
       "errorcode": "200",
       "data": {
@@ -32,7 +32,7 @@ function GenerateSessionTypeB() {
       }
   }
     const FailureInvalidOtpJson = {
-      "status": false,
+      "status": "false",
       "message": "Entered OTP has been expired. Please regenerate a new one & enter the same.",
       "errorcode": "500",
       "data": null
@@ -40,38 +40,28 @@ function GenerateSessionTypeB() {
 
   const SessionParameter = [
     {
-      "Field":"api_key",
+      "Field":"refreshToken",
       "Type":"string",
-      "Description":" The API key provided to the user (Example: SATYA)."
+      "Description":"The username of the user (Example: SATYA)."
     },
     {
-      "Field":"request_token",
+      "Field":"otp",
       "Type":"string",
       "Description":"A token that uniquely identifies the session request (Example: 123)."
     },
-    {
-      "Field":"checksum",
-      "Type":"string",
-      "Description":"A validation string to ensure the integrity of the request (Example: W)"
-    }
   ]
 
   const SessionNtascParameter = [
     {
-      "Field":"api_key",
+      "Field":"refreshToken",
       "Type":"string",
-      "Description":" username (SATYA)."
+      "Description":"username (SATYA)"
     },
     {
       "Field":"request_token",
       "Type":"string",
       "Description":" OTP (123);"
     },
-    {
-      "Field":"checksum",
-      "Type":"string",
-      "Description":"source (W)"
-    }
   ]
   
 

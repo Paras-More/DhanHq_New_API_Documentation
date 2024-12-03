@@ -29,7 +29,7 @@ function CancelOrderTypeB() {
 `
 
 const SuccessResponseJson = {
-  "status": true,
+  "status": "true",
   "message": "SUCCESS",
   "errorcode": "",
   "data": {
@@ -40,7 +40,7 @@ const SuccessResponseJson = {
 
 
 const FailureOrderIdJson = {
-  "status": false,
+  "status": "false",
   "message": "Order is Cancelled.Kindly refresh your OrderBook",
   "errorcode": "RS-00093",
   "data": null
@@ -186,12 +186,8 @@ const requestParameter = [
 
     {/* Path Parameter */}
     <div>
-        {/* <p> */}
             <p className="font-bold">Path Parameter -</p>
-            <ul className='list-inside list-disc px-8'>
-                <li>order_id: The unique identifier of the order to be cancel.</li>
-            </ul>
-        {/* </p> */}
+            <DynamicTable data={[{"Field":"order_id","Description":"The unique identifier of the order to be updated or modified"}]}/>
     </div>
 
     {/* Request Body Details Section */}

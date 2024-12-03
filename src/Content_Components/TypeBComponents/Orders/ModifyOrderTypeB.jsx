@@ -29,7 +29,7 @@ function ModifyOrderTypeB() {
 
 
     const SuccessResponseJson ={
-      "status": true,
+      "status": "true",
       "message": "SUCCESS",
       "errorcode": "",
       "data": {
@@ -40,7 +40,7 @@ function ModifyOrderTypeB() {
   
 
     const FailureValidJson = {
-      "status": false,
+      "status": "false",
       "message": "Enter valid trigger price.",
       "errorcode": "400",
       "data": null
@@ -48,7 +48,7 @@ function ModifyOrderTypeB() {
   
 
     const FailureOrderIdJson = {
-      "status": false,
+      "status": "false",
       "message": "Order is Cancelled.Kindly refresh your OrderBook",
       "errorcode": "RS-0034",
       "data": null
@@ -81,6 +81,11 @@ function ModifyOrderTypeB() {
       "Description":"The trading side of transaction : <code class='highlighter'>BUY</code> <code class='highlighter'>SELL</code>"
     },
     {
+      "Field":"orderid ",
+      "Type":"string",
+      "Description":"Order Id Number</code>"
+    },
+    {
       "Field":"order_type",
       "Type":"string",
       "Description":"Order Type :<code class='highlighter'>LIMIT</code> <code class='highlighter'>MARKET</code> <code class='highlighter'>STOP_LOSS</code> <code class='highlighter'>STOP_LOSS_MARKET</code>"
@@ -94,6 +99,11 @@ function ModifyOrderTypeB() {
       "Field":"producttype",
       "Type":"string",
       "Description":"Product +________________ type <code class='highlighter'>CNC</code> <code class='highlighter'>INTRADAY</code> <code class='highlighter'>MARGIN</code> <code class='highlighter'>MTF</code> <code class='highlighter'>CO</code> <code class='highlighter'>BO</code>"
+    },
+    {
+      "Field":"duration",
+      "Type":"string",
+      "Description":"Regular Order Immediate or Cancel"
     },
     {
       "Field":"price",
@@ -111,29 +121,14 @@ function ModifyOrderTypeB() {
       "Description":"Auto Sqaure off"
     },
     {
-      "Field":"stoploss",
-      "Type":"string",
-      "Description":"Stop Loss order"
-    },
-    {
-      "Field":"trailingStopLoss",
-      "Type":"string",
-      "Description":"Trailing Stop Loss order"
-    },
-    {
       "Field":"disclosedquantity",
       "Type":"string",
       "Description":"Number of shares visible (Keep more than 30% of quantity)"
     },
     {
-      "Field":"duration",
+      "Field":"modqty_remng",
       "Type":"string",
-      "Description":"Regular Order Immediate or Cancel"
-    },
-    {
-      "Field":"ordertag",
-      "Type":"string",
-      "Description":"It is optional to apply to an order to identify. The length of the tag should be less than 20 characters."
+      "Description":"NA ____________________________"
     },
   ]
 
@@ -216,9 +211,7 @@ function ModifyOrderTypeB() {
     <div>
         {/* <p> */}
             <p className="font-bold">Path Parameter -</p>
-            <ul className='list-inside list-disc px-8'>
-                <li>order_id: The unique identifier of the order to be updated or modified</li>
-            </ul>
+            <DynamicTable data={[{"Field":"order_id","Description":"The unique identifier of the order to be updated or modified"}]}/>
         {/* </p> */}
     </div>
 

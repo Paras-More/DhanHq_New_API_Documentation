@@ -26,7 +26,7 @@ curl --location 'http://localhost:18463/zrd/orders' \\
             "exchange_update_timestamp": null,
             "exchange_timestamp": null,
             "variety": null,
-            "modified": false,
+            "modified": "false",
             "exchange": "NSE",
             "tradingsymbol": "INFY",
             "instrument_token": 1594,
@@ -62,7 +62,7 @@ curl --location 'http://localhost:18463/zrd/orders' \\
             "exchange_update_timestamp": null,
             "exchange_timestamp": null,
             "variety": null,
-            "modified": false,
+            "modified": "false",
             "exchange": "NSE",
             "tradingsymbol": "ACC",
             "instrument_token": 22,
@@ -168,15 +168,6 @@ curl --location 'http://localhost:18463/zrd/orders' \\
         </li>
       </ul>
     </div>
-
-    {/* Path Parameter */}
-    <div>
-        {/* <p> */}
-            <p className="font-bold">Path Parameter -</p>
-            <DynamicTable data={pathParameter}/>
-        {/* </p> */}
-    </div>
-
     {/* Request Body Details Section */}
     <div>
       <p>

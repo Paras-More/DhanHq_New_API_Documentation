@@ -34,7 +34,7 @@ const requestBodyJson ={
 
 
 const SuccessResponseJson = {
-  "status": true,
+  "status": "true",
   "message": "SUCCESS",
   "errorcode": null,
   "data": {
@@ -79,7 +79,7 @@ const data = [
 
 
 const FailureInputJson = {
-  "status": false,
+  "status": "false",
   "message": "Invalid request. Please try again.",
   "errorcode": "400",
   "data": null
@@ -153,16 +153,6 @@ const FailureInputJson = {
           <span className="font-semibold">Content-Type:</span> Indicates the media type of the resource being sent. For this request, it is set to application/json.
         </li>
       </ul>
-    </div>
-
-    {/* Path Parameter */}
-    <div>
-        {/* <p> */}
-            <p className="font-bold">Path Parameter -</p>
-            <ul className='list-inside list-disc px-8'>
-                <li>order_id: The unique identifier of the order to be cancel.</li>
-            </ul>
-        {/* </p> */}
     </div>
 
     {/* Request Body Details Section */}

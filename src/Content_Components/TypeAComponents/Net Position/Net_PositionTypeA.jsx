@@ -77,7 +77,7 @@ curl --location 'http://localhost:18463/Zrd/portfolio/positions' \\
             }
         ],
         "day": null
-    }}
+  }}
   
   const FailureVersionJson = {
     "status": "error",

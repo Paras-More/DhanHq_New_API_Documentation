@@ -169,25 +169,13 @@ function ModifyOrderTypeA() {
     </div>
 
     {/* Request Body Details Section */}
-    <div>
+    <div className='flex flex-col gap-4'>
       <p>
         <span className="font-bold">Request Body - </span>The   body   of   the   request   must   be   URL-encoded   and   include   the   following
         parameters:
       </p>
-      <ul className="list-inside list-disc indent-8 py-2">
-        <li>tradingsymbol</li>
-        <li>order_type</li>
-        <li>quantity</li>
-        <li>price</li>
-        <li>validity</li>
-        <li>exchange</li>
-        <li>trigger_price</li>
-        <li>disclosed_quantity</li>
-        <li>transaction_type</li>
-        <li>product</li>
-        <li>modqty_remng</li>
-        <DynamicTable data={requestParameter}/>
-      </ul>
+      <DynamicTable data={requestParameter}/>
+
     </div>
 
     {/* Path Parameter */}
@@ -195,7 +183,7 @@ function ModifyOrderTypeA() {
         {/* <p> */}
             <p className="font-bold">Path Parameter -</p>
             <ul className='list-inside list-disc px-8'>
-                <li>order_id: The unique identifier of the order to be updated or modified</li>
+                <DynamicTable data={[{"Field":"order_id","Description":"The unique identifier of the order to be updated or modified"}]}/>
             </ul>
         {/* </p> */}
     </div>

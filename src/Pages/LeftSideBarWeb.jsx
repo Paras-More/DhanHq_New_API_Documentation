@@ -155,7 +155,7 @@ function LeftSideBarWeb() {
 
 
   return (
-    <aside className='bg-white  w-customSmall flex-shrink-0 xl:flex flex-col gap-4  overflow-y-scroll'>
+    <aside className='bg-white  w-customSmall hidden flex-shrink-0 xl:flex flex-col gap-4  overflow-y-scroll'>
             {console.log("LeftSide bar RENDER")}
         {/*  */}
           <div>

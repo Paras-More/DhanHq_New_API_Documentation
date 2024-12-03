@@ -11,7 +11,7 @@ curl --location 'http://localhost:18463/Agl/portfolio/positions' \\
 `
  
   const SuccessResponseJson = {
-    "status": true,
+    "status": "true",
     "message": "SUCCESS",
     "errorcode": "",
     "data": [
@@ -100,7 +100,7 @@ curl --location 'http://localhost:18463/Agl/portfolio/positions' \\
 
   
   const FailureVersionJson = {
-    "status": false,
+    "status": "false",
     "message": "Incorrect auth. Please try again.",
     "errorcode": "400",
     "data": null

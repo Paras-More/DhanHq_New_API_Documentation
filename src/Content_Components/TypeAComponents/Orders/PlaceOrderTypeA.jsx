@@ -179,7 +179,7 @@ function PlaceOrderTypeA() {
           </li>
           <li>
             <span className="font-semibold">Content-Type:</span> For this
-            request, it is set to application/x-www-form-urlencoded, which is
+            request, it is set to <span className='mstockNavFont'>application/x-www-form-urlencoded</span>, which is
             used for submiting form data.
           </li>
         </ul>

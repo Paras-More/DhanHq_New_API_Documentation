@@ -196,6 +196,32 @@ function MarketDataTypeB() {
             "Field": "Ask Price 4",
             "Type": "[long]",
             "Description": ""
+        },
+        // 
+        {
+            "Field": "Ask Number Of Orders 4",
+            "Type": "[short]",
+            "Description": ""
+        },
+        {
+            "Field": "Buy/Sell Flag 5",
+            "Type": "[short]]",
+            "Description": ""
+        },
+        {
+            "Field": "Ask Qty 5",
+            "Type": "[long]",
+            "Description": ""
+        },
+        {
+            "Field": "Ask Price 5",
+            "Type": "[long]",
+            "Description": ""
+        },
+        {
+            "Field": "Ask Number Of Orders 5",
+            "Type": "[short]",
+            "Description": ""
         }
     ]
     
@@ -346,7 +372,7 @@ function MarketDataTypeB() {
             <ul className='list-outside list-disc p-4'>
                 <li>Available Actions (<span className='font-bold'>action</span>) : 1 =  <span className='font-bold'>subscribe </span>, 0 =<span className='font-bold'> unsubscribe</span>, mode</li>
                 <li>Available Values (<span className='font-bold'>mode</span>):  1 = <span className='font-bold'>LTP</span>, 2 = <span className='font-bold'>Quote</span>, 3 = <span className='font-bold'>Snap Quote</span></li>
-                <li>Available Exchange Types (<span className='font-bold'>exchangeType</span>): 1 = <span className='font-bold'>NSECM</span>, 2 = <span className='font-bold'>NSEFO</span>, 3 = <span className='fotnt-bold'>BSECM</span>,
+                <li>Available Exchange Types (<span className='font-bold'>exchangeType</span>): 1 = <span className='font-bold'>NSECM</span>, 2 = <span className='font-bold'>NSEFO</span>, 3 = <span className='font-bold'>BSECM</span>,
                 4 = <span className='font-bold'>BSEFO</span>, 13 = <span className='font-bold'>NSECD</span></li>
             </ul>
             {/* Sample Details Structure */}
@@ -358,6 +384,7 @@ function MarketDataTypeB() {
 
     {/* Response Structure */}
     <div className='flex flex-col gap-4'>
+        <h1  className='font-bold'>Response Structure</h1>
         <p>Quotes delivered via the API are always binary messages. These have to be read as bytes
         and then type-casted into appropriate quote data structures.</p>
         <div>
