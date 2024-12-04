@@ -1,52 +1,55 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { ContextStore } from '../App'
+import { Link, NavLink, useLocation } from 'react-router-dom'
+// import { ContextStore } from '../App'
 import { useContext } from 'react'
 import "./Main.css"
+import { SelectTypeContext } from '../Context/SelectType';
 
 
 function LeftSideBarWeb() {
   
-    const {state,dispatch} = useContext(ContextStore);
+    const {state,dispatch} = useContext(SelectTypeContext);
+    const [currentTypeLinks,setCurrentTypeLinks] = useState([])
+    
     const TradingApiDefaultA = [
       {
         title:"Login",
-        path:"/type-a/login",
+        path:"/login",
         isSelected:false,
         type:"TradingAPI"
 
       },
       {
         title:"Generate Session",
-        path:"/type-a/generate-session",
+        path:"/generate-session",
         isSelected:false,
         type:"TradingAPI"
 
       },
       {
         title:"Orders",
-        path:"/type-a/orders",
+        path:"/orders",
         isSelected:false,
         type:"TradingAPI"
 
       },
       {
         title:"Net Position",
-        path:"/type-a/net-position",
+        path:"/net-position",
         isSelected:false,
         type:"TradingAPI"
 
       },
       {
         title:"Calculate Order Margin",
-        path:"/type-a/calculate-order-margin",
+        path:"/calculate-order-margin",
         isSelected:false,
         type:"TradingAPI"
 
       },
       {
         title:"Market Data",
-        path:"/type-a/market-data",
+        path:"/market-data",
         isSelected:false,
         type:"DataAPI"
 
@@ -69,41 +72,41 @@ function LeftSideBarWeb() {
     const TradingApiDefaultB = [
       {
         title:"Login",
-        path:"/type-b/login",
+        path:"/login",
         isSelected:false,
         type:"TradingAPI"
       },
       {
         title:"Generate Session",
-        path:"/type-b/generate-session",
+        path:"/generate-session",
         isSelected:false,
         type:"TradingAPI"
 
       },
       {
         title:"Orders",
-        path:"/type-b/orders",
+        path:"/orders",
         isSelected:false,
         type:"TradingAPI"
 
       },
       {
         title:"Net Position",
-        path:"/type-b/net-position",
+        path:"/net-position",
         isSelected:false,
         type:"TradingAPI"
 
       },
       {
         title:"Calculate Order Margin",
-        path:"/type-b/calculate-order-margin",
+        path:"/calculate-order-margin",
         isSelected:false,
         type:"TradingAPI"
 
       },
       {
         title:"Market Data",
-        path:"/type-b/market-data",
+        path:"/market-data",
         isSelected:false,
         type:"DataAPI"
 
@@ -123,35 +126,23 @@ function LeftSideBarWeb() {
       }
 
     ]
-    
+    const location = useLocation();
     const[TradlingLinkTypeA,setTradlingLinkTypeA] = useState(TradingApiDefaultA)
     const[TradlingLinkTypeB,setTradlingLinkTypeB] = useState(TradingApiDefaultA)
 
-    function handleTitleClick(title,ArrayName){
-        
-      if(ArrayName === "TradlingLinkTypeA"){
-        const filteredArray = TradlingLinkTypeA.map((ele,i)=>{
-          if(ele.title === title){
-            return {...ele,isSelected:true}
-          }else{
-            return {...ele,isSelected:false}
-          }
-      })
-      setTradlingLinkTypeA(filteredArray)   
-      setTradlingLinkTypeB(TradingApiDefaultB)
-      }else if(ArrayName === "TradlingLinkTypeB"){
-        const filteredArray = TradlingLinkTypeB.map((ele,i)=>{
-          if(ele.title === title){
-            return {...ele,isSelected:true}
-          }else{
-            return {...ele,isSelected:false}
-          }
-      })
-      setTradlingLinkTypeB(filteredArray) 
-      setTradlingLinkTypeA(TradingApiDefaultA)
+    useEffect(()=>{
+        setCurrentTypeLinks(filterCurrentTypeLinks())
+    },[state.selectedValue])
+
+    
+    const filterCurrentTypeLinks = ()=>{
+      switch (state.selectedValue) {
+        case "A":
+          return TradingApiDefaultA;
+          case "B":
+        return TradingApiDefaultB;
       }
-     
-    }
+  }    
 
 
   return (
@@ -165,7 +156,7 @@ function LeftSideBarWeb() {
             state.selectedValue === 'Type A' && 
              <ul className='indent-3'>
               {
-                TradlingLinkTypeA?.map((ele,i)=>{
+                currentTypeLinks?.map((ele,i)=>{
                   if(ele.type === 'Introduction')
                     return(
                 <Link  onClick={(e)=>handleTitleClick(ele.title,'TradlingLinkTypeA')} to={ele.path}><li className={`${ele.isSelected ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
@@ -194,9 +185,9 @@ function LeftSideBarWeb() {
 
       {/* DropDown Type A & Type B */}
           <div className='w-full '>
-                <div className='p-1 w-[60%] bg-customBlueFont text-white rounded-lg cursor-pointer hover:' onClick={()=>dispatch({type:"TOGGLE_DROPDOWN"})}>
+                <div className='p-1 w-[60%] bg-customBlueFont text-white rounded-lg cursor-pointer hover:' onClick={()=>dispatch({...state,showDropDown:!state.showDropDown})}>
                   <div className='flex items-center justify-between px-1'>
-                  <p className='indent-2 font-semibold text-s'>{state.selectedValue}</p>
+                  <p className='indent-2 font-semibold text-s'>{`Type ${state.selectedValue}`}</p>
                   {
                     state.showDropDown ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                       <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
@@ -215,10 +206,10 @@ function LeftSideBarWeb() {
                       transform:state.showDropDown ?  "translateY(0)" : "translateY(1px)",
                     }}
                       >
-                      <p className="indent-3 p-1 text-customBlueFont border-b hover:text-customBlueFont hover:bg-orange-100  flex items-center justify-between pr-6" onClick={() => dispatch({ type: "SELECTED_OPTION_VALUE", payload: "Type A" })}>
+                      <p className="indent-3 p-1 text-customBlueFont border-b hover:text-customBlueFont hover:bg-orange-100  flex items-center justify-between pr-6" onClick={() => dispatch({selectedValue: "A",showDropDown:false})}>
                         Type A
                       </p>
-                      <p className="indent-3 p-1 text-customBlueFont hover:text-customBlueFont hover:bg-orange-100  flex items-center justify-between pr-6" onClick={() => dispatch({ type: "SELECTED_OPTION_VALUE", payload: "Type B" })}>
+                      <p className="indent-3 p-1 text-customBlueFont hover:text-customBlueFont hover:bg-orange-100  flex items-center justify-between pr-6" onClick={() =>dispatch({selectedValue: "B",showDropDown:false})}>
                         Type B
                       </p>
                     </div> 
@@ -230,34 +221,16 @@ function LeftSideBarWeb() {
           <h1 className="font-bold mb-1">Trading API's</h1>
 
           {/* For Selected Value Type A */}
+          <ul className='list-none'>
           {
-            state.selectedValue === 'Type A' && 
-             <ul className='indent-3'>
-              {
-                TradlingLinkTypeA?.map((ele,i)=>{
-                  if(ele.type === 'TradingAPI')
+              currentTypeLinks?.map((ele,i)=>{
+                if(ele.type === 'TradingAPI')
                     return(
-                <Link  onClick={(e)=>handleTitleClick(ele.title,'TradlingLinkTypeA')} to={ele.path}><li className={`${ele.isSelected ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
+                <Link to={`/type-${state.selectedValue}/${ele.title.replaceAll(" ","-")}`.toLowerCase()}><li className={`${ele.path.replace("/","") === location.pathname.split("/")[2] ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
                     )
                 })
-              }
-            </ul>
-          }
-
-          {/* For Selected Value Type B */}
-          {
-            state.selectedValue === 'Type B' && 
-             <ul className='indent-3'>
-              {
-                TradlingLinkTypeB?.map((ele,i)=>{
-                  if(ele.type === 'TradingAPI')
-                    return(
-                <Link  onClick={(e)=>handleTitleClick(ele.title,'TradlingLinkTypeB')} to={ele.path}><li className={`${ele.isSelected ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
-                    )
-                })
-              }
-            </ul>
-          }
+            }
+          </ul>
         
           </div>
 
@@ -265,50 +238,33 @@ function LeftSideBarWeb() {
           <div>
             <h1 className="font-bold mb-1">Data APIs</h1>
             <ul className='indent-3 flex flex-col'>
-            { state.selectedValue === 'Type A' && 
-                TradlingLinkTypeA?.map((ele,i)=>{
-                  if(ele.type === 'DataAPI')
+            
+            {
+              currentTypeLinks?.map((ele,i)=>{
+                if(ele.type === 'DataAPI')
                     return(
-                <Link  onClick={(e)=>handleTitleClick(ele.title,'TradlingLinkTypeA')} to={ele.path}><li className={`${ele.isSelected ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
+                <Link to={`/type-${state.selectedValue}/${ele.title.replaceAll(" ","-")}`.toLowerCase()}><li className={`${ele.path.replace("/","") === location.pathname.split("/")[2] ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
                     )
                 })
             }
+
             </ul>
 
-            <ul className='indent-3 flex flex-col'>
-            { state.selectedValue === 'Type B' && 
-                TradlingLinkTypeB?.map((ele,i)=>{
-                  if(ele.type === 'DataAPI')
-                    return(
-                <Link  onClick={(e)=>handleTitleClick(ele.title,'TradlingLinkTypeB')} to={ele.path}><li className={`${ele.isSelected ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
-                    )
-                })
-            }
-            </ul>
           </div>
 
       {/* Annexure and others */}
           <div>
-            <ul className='indent-3  flex flex-col'>
-            {state.selectedValue === 'Type A' && 
-                TradlingLinkTypeA?.map((ele,i)=>{
-                  if(ele.type === 'Annexure')
+          <ul className='indent-3 flex flex-col'>
+            
+            {
+              currentTypeLinks?.map((ele,i)=>{
+                if(ele.type === 'Annexure')
                     return(
-                <Link  onClick={(e)=>handleTitleClick(ele.title,'TradlingLinkTypeA')} to={ele.path}><li className={`${ele.isSelected ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
+                <Link to={`/${ele.title.replaceAll(" ","-")}`.toLowerCase()}><li className={`${ele.path.replace("/","") === location.pathname.split("/")[1] ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
                     )
                 })
             }
-            </ul>
 
-            <ul className='indent-3  flex flex-col'>
-            {state.selectedValue === 'Type B' && 
-                TradlingLinkTypeB?.map((ele,i)=>{
-                  if(ele.type === 'Annexure')
-                    return(
-                <Link  onClick={(e)=>handleTitleClick(ele.title,'TradlingLinkTypeB')} to={ele.path}><li className={`${ele.isSelected ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
-                    )
-                })
-            }
             </ul>
           </div>
   </aside>       

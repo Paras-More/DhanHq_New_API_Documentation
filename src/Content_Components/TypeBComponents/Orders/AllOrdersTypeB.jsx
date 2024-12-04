@@ -32,7 +32,7 @@ function AllOrdersTypeB() {
 
   return (
     <div>
-        <h1 className="content-heading-font  py-6">Orders TypeB</h1>
+        <h1 className="content-heading-font  py-6">Orders</h1>
         {/* Order API table */}
             <div>
               <p>The order APIs let you place orders of different varities, modify and cancel pending orders, retrieve the daily order and more.</p>

@@ -49,7 +49,7 @@ const requestParameter = [
   {
     "Field":"variety",
     "Type":"string",
-    "Description":"pending ---"
+    "Description":"Variety of the order ( <code class='highlighter'>regular</code> <code class='highlighter'>amo</code> <code class='highlighter'>co</code> <code class='highlighter'>iceberg</code> <code class='highlighter'>auction</code>)"
   },
   {
     "Field":"tradingsymbol",
@@ -59,7 +59,7 @@ const requestParameter = [
   {
     "Field":"symboltoken",
     "Type":"string",
-    "Description":"pending ---"
+    "Description":"Token of the contract for which modify is being sent"
   },
   {
     "Field":"exchange",
@@ -89,7 +89,7 @@ const requestParameter = [
   {
     "Field":"producttype",
     "Type":"string",
-    "Description":"Product +________________ type <code class='highlighter'>CNC</code> <code class='highlighter'>INTRADAY</code> <code class='highlighter'>MARGIN</code> <code class='highlighter'>MTF</code> <code class='highlighter'>CO</code> <code class='highlighter'>BO</code>"
+    "Description":" Product Type <code class='highlighter'>CNC</code> <code class='highlighter'>INTRADAY</code> <code class='highlighter'>MARGIN</code> <code class='highlighter'>MTF</code> <code class='highlighter'>CO</code> <code class='highlighter'>BO</code>"
   },
   {
     "Field":"duration",

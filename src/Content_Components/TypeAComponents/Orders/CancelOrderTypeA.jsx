@@ -69,7 +69,7 @@ const requestParameter = [
   {
     "Field":"modqty_remng",
     "Type":"string",
-    "Description":"Need to update"
+    "Description":"Remaining quantity"
   },
   {
     "Field":"product",

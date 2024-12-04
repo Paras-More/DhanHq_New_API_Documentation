@@ -82,7 +82,7 @@ function ModifyOrderTypeA() {
       {
         "Field":"disclosed_quantity",
         "Type":"string",
-        "Description":"Number of shares visible (Keep more than 30% of quantity"
+        "Description":"Number of shares visible (Keep more than 30% of quantity)"
       },
       {
         "Field":"transaction_type",
@@ -97,7 +97,7 @@ function ModifyOrderTypeA() {
       {
         "Field":"modqty_remng",
         "Type":"string",
-        "Description":"Need to update"
+        "Description":"Remaining quantity"
       },
 
 

@@ -74,7 +74,7 @@ const requestParameter = [
   return (
     <div className='flex flex-col gap-6 mt-10'>
     {/* <h1>Place Order</h1> */}
-        <h1 className="content-heading-font">Login Type B</h1>
+        <h1 className="content-heading-font">Login</h1>
                 <div className='mt-4'>
                     <DynamicTable data={data}/>
                 </div>
