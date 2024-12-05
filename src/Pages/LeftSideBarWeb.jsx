@@ -132,7 +132,7 @@ function LeftSideBarWeb() {
 
     useEffect(()=>{
         setCurrentTypeLinks(filterCurrentTypeLinks())
-    },[state.selectedValue])
+    },[state.selectedValue])  
 
     
     const filterCurrentTypeLinks = ()=>{
@@ -146,41 +146,24 @@ function LeftSideBarWeb() {
 
 
   return (
-    <aside className='bg-white  w-customSmall hidden flex-shrink-0 xl:flex flex-col gap-4  overflow-y-scroll'>
+    <aside className='bg-white   w-customSmall hidden flex-shrink-0 xl:flex flex-col gap-4  overflow-y-scroll'>
             {console.log("LeftSide bar RENDER")}
-        {/*  */}
+        {/* Introduction API */}
           <div>
             <h1 className="font-bold mb-6">API Documentation</h1>
-            <ul className='indent-1 flex flex-col'>
             {
-            state.selectedValue === 'Type A' && 
-             <ul className='indent-3'>
+             <ul className='indent-1 flex flex-col'>
               {
                 currentTypeLinks?.map((ele,i)=>{
+                  
                   if(ele.type === 'Introduction')
                     return(
-                <Link  onClick={(e)=>handleTitleClick(ele.title,'TradlingLinkTypeA')} to={ele.path}><li className={`${ele.isSelected ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
+                <Link to={ele.path}><li className={`${location.pathname === '/' ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
                     )
                 })
               }
             </ul>
           }
-
-          {/* For Selected Value Type B */}
-          {
-            state.selectedValue === 'Type B' && 
-             <ul className='indent-3'>
-              {
-                TradlingLinkTypeB?.map((ele,i)=>{
-                  if(ele.type === 'Introduction')
-                    return(
-                <Link  onClick={(e)=>handleTitleClick(ele.title,'TradlingLinkTypeB')} to={ele.path}><li className={`${ele.isSelected ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
-                    )
-                })
-              }
-            </ul>
-          }
-            </ul>
           </div>
 
       {/* DropDown Type A & Type B */}
@@ -219,7 +202,6 @@ function LeftSideBarWeb() {
       {/* Trading API List Items */}
           <div>
           <h1 className="font-bold mb-1">Trading API's</h1>
-
           {/* For Selected Value Type A */}
           <ul className='list-none'>
           {
@@ -231,14 +213,12 @@ function LeftSideBarWeb() {
                 })
             }
           </ul>
-        
-          </div>
+        </div>
 
       {/* Data API List Items */}
           <div>
             <h1 className="font-bold mb-1">Data APIs</h1>
             <ul className='indent-3 flex flex-col'>
-            
             {
               currentTypeLinks?.map((ele,i)=>{
                 if(ele.type === 'DataAPI')
@@ -247,13 +227,11 @@ function LeftSideBarWeb() {
                     )
                 })
             }
-
             </ul>
-
           </div>
 
       {/* Annexure and others */}
-          <div>
+        <div>
           <ul className='indent-3 flex flex-col'>
             
             {
@@ -264,9 +242,8 @@ function LeftSideBarWeb() {
                     )
                 })
             }
-
             </ul>
-          </div>
+        </div>
   </aside>       
   )
 }

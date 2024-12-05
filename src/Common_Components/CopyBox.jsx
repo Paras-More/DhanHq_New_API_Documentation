@@ -18,7 +18,7 @@ const CopyBox = ({ copyContent }) => {
   };
 
   return (
-    <div className="relative  bg-customBlue  text-gray-800 p-4 rounded-sm shadow-md max-w-full overflow-x-auto">
+    <div className="relative bg-customBlue shrink-1  text-gray-800 p-4 rounded-sm shadow-md max-w-full overflow-x-scroll">
       <code className="whitespace-pre-wrap">{copyContent}</code>
       <button
         onClick={handleCopy}

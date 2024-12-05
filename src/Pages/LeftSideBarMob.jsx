@@ -1,33 +1,42 @@
 import React, { useEffect, useState } from 'react'
-
+import { useContext } from 'react';
+import { SelectTypeContext } from '../Context/SelectType';
 function LeftSideBarMob() {
-  const [ShowMenu,setShowMenu] = useState(false)
+
+  const {showMenu,setShowMenu} = useContext(SelectTypeContext)
+
+
     useEffect(()=>{
-      console.log(ShowMenu);
-    },[ShowMenu])
+      
+
+    },[showMenu])
 
   return (
-    <div className={`flex w-full x-1000 xl:hidden h-[100vh] overflow-hidden fixed top-0 left-0`}>
-      
-        { 
-               <div className='w-full h-full z-500 text-2xl relative'>
-                  {
-                    ShowMenu ? <svg onClick={()=>setShowMenu(!ShowMenu)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                    </svg> : <svg onClick={()=>setShowMenu(!ShowMenu)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-                    </svg>
-                  }
-                  {
-                    <div className='bg-gray-500 opacity-70 z-40 h-full'>
-                        <p>Paras more</p>
-                    </div>
-                  }
-               </div>
-        
-        }
+    <>
+        {
+          showMenu && <div className='w-full text-2xl fixed top-0 right-0 left-0 bottom-0 bg-[#6b72808f]'>
 
-    </div>
+             {
+              <div className='h-full'>
+                      
+                      <div className='bg-white w-[50%] h-full'>
+                      <div className='top-4 left-7'>
+                        <div className='pt-4 pl-7'>
+                          <svg onClick={()=>setShowMenu(!showMenu)}
+                              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3   9h12a6 6 0 0 1 0 12h-3" />
+                          </svg> 
+                        </div>
+                        {/*  */}
+                      </div>
+
+                            <p>asdasdadasdasdasd</p>
+                      </div>  
+               </div>
+              }
+               </div>
+        }
+    </>
   )
 }
 

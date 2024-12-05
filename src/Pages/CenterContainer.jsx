@@ -14,7 +14,7 @@ function CenterContainer() {
   }, [location]); // Runs whenever the route (location) changes.
 
   return (
-<section className='bg-white w-customLarge flex-shrink-1 overflow-y-auto mb-10 Center_content_div'>
+<section className='bg-white max-w-[736px] flex-shrink-1 overflow-y-auto mb-10 Center_content_div'>
 {console.log("Center Container render")}    
     <Outlet/>
  </section>

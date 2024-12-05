@@ -35,9 +35,9 @@ function AllOrdersTypeA() {
         {/* Order API table */}
             <div>
               <p>The order APIs let you place orders of different varities, modify and cancel pending orders, retrieve the daily order and more.</p>
-                    <div className='mt-4'>
+                    {/* <div className='mt-4'> */}
                         <DynamicTable data={data}/>
-                    </div>
+                    {/* </div> */}
                 </div>
             <div className='flex flex-col gap-10'>
                     <PlaceOrderTypeA/>

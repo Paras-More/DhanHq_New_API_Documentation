@@ -79,7 +79,7 @@ th{
   font-family: "Inter",'Courier New', Courier, monospace !important;
   font-size: 1rem !important;
   font-feature-settings: "kern";
-  padding: 3PX;
+  padding: 0px 2px;
   background-color: #dbdde0;  
 }
 .JsonViewer-font{

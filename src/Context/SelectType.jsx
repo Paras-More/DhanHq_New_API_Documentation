@@ -13,9 +13,10 @@ export const SelectTypeContext = createContext();
 // Context Provider Component
 export const SelectTypeProvider = ({ children }) => {
   const [state, dispatch] = useState(dropdownReducerinitialState);
+  const [showMenu,setShowMenu] = useState(true)
 
   return (
-    <SelectTypeContext.Provider value={{ state, dispatch }}>
+    <SelectTypeContext.Provider value={{ state, dispatch,showMenu,setShowMenu }}>
       {children}
     </SelectTypeContext.Provider>
   );

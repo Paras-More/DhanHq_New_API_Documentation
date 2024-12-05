@@ -70,21 +70,40 @@ function Introduction() {
   `;
 
   const ErrorData = `
-  {
-    "errorType": "",
-    "errorCode": "",
-    "errorMessage": ""
-}
+  
+    curl --location 'http://localhost:18463/Agl/orders/regular' \
+    --header 'X-Mirae-Version: 1' \
+    --header 'Authorization: Bearer access_token' \
+    --header 'Content-Type: application/json' \
+    --data '{
+    "variety": "NORMAL",
+    "tradingsymbol": "ACC-EQ",
+    "symboltoken": "22",
+    "exchange": "NSE",
+    "transactiontype": "BUY",
+    "ordertype": "MARKET",
+    "quantity": "20",
+    "producttype": "DELIVERY",
+    "price": "194.50",
+    "triggerprice": "0",
+    "squareoff": "0",
+    "stoploss": "0",
+    "trailingStopLoss": "",
+    "disclosedquantity": "",
+    "duration": "DAY",
+    "ordertag": ""
+}'
+
   `
 
   return (
     <div>
-      <h1 className="content-heading-font  py-6">Introduction</h1>
+      <h1 className="content-heading-font py-6">Introduction</h1>
 
       {/* Introduction details section */}
           <div>
           <h3 className="font-semibold content-subheading-font">Getting Started</h3>
-          <p>
+          <p className="shrink-1">
             DhanHQ API is a state-of-the-art platform for you to build trading and
             investment services & strategies. It is a set of REST-like APIs that
             provide integration with our trading platform. Execute & modify orders
