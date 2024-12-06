@@ -5,8 +5,7 @@ import DynamicTable from '../../../Common_Components/DynamicTable'
 
 function PlaceOrderTypeB() {
 
-    const PlaceOrdercURLData = `
-    curl --location 'http://localhost:18463/Agl/orders/regular' \\
+    const PlaceOrdercURLData = `curl --location 'http://ntasc.mirae.com/typeb/orders/regular' \\
     --header 'X-Mirae-Version: 1' \\
     --header 'Authorization: Bearer access_token' \\
     --header 'Content-Type: application/json' \\
@@ -27,9 +26,8 @@ function PlaceOrderTypeB() {
     "disclosedquantity": "",
     "duration": "DAY",
     "ordertag": ""
-}'
+    }'
 `
-    
         const SuccessResponseJson = {
           "status": "true",
           "message": "SUCCESS",
@@ -40,7 +38,6 @@ function PlaceOrderTypeB() {
               "uniqueorderid": ""
           }
       }
-      
     
         const FailureInvalidOrderTypeJson ={
           "status": "false",
@@ -48,8 +45,7 @@ function PlaceOrderTypeB() {
           "errorcode": "400",
           "data": null
       }
-      
-    
+        
         const FailureMarketCloseJson = {
           "status": "false",
           "message": "RMS:1141241105101:NSE,EQUITY,22,ACC,INTRADAY,,EQ,SATYA,B,1,I,22,ACC,INTRADAY,89.44995,FUND LIMIT INSUFFICIENT,AVAILABLE FUND=0,ADDITIONAL REQUIRED FUND=572.36,CALCULATED MARGIN FOR ORDER=572.36",
@@ -147,15 +143,15 @@ function PlaceOrderTypeB() {
       {/* <h1>Place Order</h1> */}
       <div className='flex flex-col gap-3'>
         <ol className='list-inside'>
-          <li className="font-bold text-xl">1. Place Order</li>
+          <li className="font-bold text-xl">Order Placement</li>
         </ol>
         <p>
           URL :
           <a
             className="mstockNavFont"
-            href="https://ntasc.mirae.com/agl/orders/regular"
+            href="https://ntasc.mirae.com/typeb/orders/regular"
           >
-            https://nTasc.mirae.com/agl/orders/regular 
+            https://nTasc.mirae.com/typeb/orders/regular 
           </a>
         </p>
         <p>
@@ -163,35 +159,19 @@ function PlaceOrderTypeB() {
         </p>
       </div>
 
-       {/* Postman Curl command Details Section */}
-       <div>
-        <p className="font-bold">Postman cURL Command -</p>
-        <CopyBox copyContent={PlaceOrdercURLData} />
-      </div>
-
-       {/* Request Body Details Section */}
-      <div className='flex flex-col gap-3'>
+      {/* Description  Details Section */}
+      <div>
         <p>
-          <span className="font-bold">Request Body - </span>The body of the
-          request must be URL-encoded and include the following parameters:
-        </p>
-        <DynamicTable data={requestParameter}/>
-      </div>
-            {/* Request Header Section */}
-            <div>
-        <h1 className="font-bold">Request Headers – </h1>
-        <p className="py-1">
-          <span>
-            <span className="font-bold">Key:</span> X-Mirae-Version ,{" "}
-          </span>
-          <span>
-            <span className="font-bold">Value</span>: 1
-          </span>
+          <span className="font-bold">Description -</span>This endpoint allows
+          users to place a regular trading order in the specified market. Users
+          must provide relevant order details such as the trading symbol,
+          exchange, transaction type, and other order specifics.
         </p>
       </div>
 
       {/* Request Header Details Section */}
-      <div>
+      <div className='flex flex-col gap-2'>
+      <span className="font-bold"> Request Headers -</span>
         <ul>
           <li>
             <span className="font-semibold">X-Mirae-Version:</span> Specifies
@@ -209,15 +189,21 @@ function PlaceOrderTypeB() {
         </ul>
       </div>
 
-      {/* Description  Details Section */}
-      <div>
-        <p>
-          <span className="font-bold">Description -</span>This endpoint allows
-          users to place a regular trading order in the specified market. Users
-          must provide relevant order details such as the trading symbol,
-          exchange, transaction type, and other order specifics.
-        </p>
+       {/* Postman Curl command Details Section */}
+       <div className='flex flex-col gap-2'>
+        <p className="font-bold">Postman cURL Command -</p>
+        <CopyBox copyContent={PlaceOrdercURLData} />
       </div>
+
+       {/* Request Body Details Section */}
+      <div className='flex flex-col gap-3'>
+        <p>
+          <span className="font-bold">Request Body - </span>The body of the
+          request must be URL-encoded and include the following parameters:
+        </p>
+        <DynamicTable data={requestParameter}/>
+      </div>
+
        {/* Request Response -  Details Section  */}
        <div>
         <p className="font-bold">Response Structure -</p>
@@ -254,9 +240,6 @@ function PlaceOrderTypeB() {
           </ul>
         </div>
       </div>
-
-
-
     </div>
   );
 }

@@ -7,18 +7,17 @@ function GenerateSessionTypeA() {
   const data =[
     {
         "method": "POST",
-        "path": "https://nTasc.mirae.com/zrd/session/token",
+        "path": "https://nTasc.mirae.com/typea/session/token",
         "description": "This endpoint is used to retrieve a session token based on the provided API key, request token, and checksum."
       },
   ]
 
-  const loginCurlData =`
-  curl --location 'http://localhost:18463/zrd/session/token' \\
-  --header 'X-Mirae-Version: 1' \\
-  --header 'Content-Type: application/x-www-form-urlencoded' \\
-  --data-urlencode 'api_key=SATYA' \\
-  --data-urlencode 'request_token=123' \\
-  --data-urlencode 'checksum=W'`
+  const loginCurlData =`curl --location 'http://ntasc.mirae.com/typea/session/token' \\
+    --header 'X-Mirae-Version: 1' \\
+    --header 'Content-Type: application/x-www-form-urlencoded' \\
+    --data-urlencode 'api_key=SATYA' \\
+    --data-urlencode 'request_token=123' \\
+    --data-urlencode 'checksum=W'`
 
   const SuccessResponseJson = {
     "status": "success",
@@ -113,9 +112,9 @@ function GenerateSessionTypeA() {
             URL :
             <a
               className="mstockNavFont"
-              href="https://nTasc.mirae.com/zrd/session/token "
+              href="https://nTasc.mirae.com/typea/session/token "
             >
-              https://nTasc.mirae.com/zrd/session/token
+              https://nTasc.mirae.com/typea/session/token
             </a>
           </p>
           <p>
@@ -131,28 +130,10 @@ provided API key, request token, and checksum. The session token is essential fo
 authenticating subsequent API requests
       </p>
     </div>
-
-    {/* Postman Curl command Details Section */}
-    <div>
-      <p className="font-bold">Postman cURL Command -</p>
-      <CopyBox copyContent={loginCurlData} />
-    </div>
     
-    {/* Request Header Section */}
-    <div>
-      <h1 className="font-bold">Request Headers – </h1>
-      <p className="py-1">
-        <span>
-          <span className="font-bold">Key:</span> X-Mirae-Version: ,{" "}
-        </span>
-        <span>
-          <span className="font-bold">Value</span>: 1
-        </span>
-      </p>
-    </div>
-
     {/* Request Header Details Section */}
-    <div>
+    <div className='flex flex-col gap-2'>
+    <span className="font-bold">Request Headers -</span> 
       <ul>
         <li>
           <span className="font-semibold">X-Mirae-Version:</span> Specifies
@@ -163,6 +144,13 @@ authenticating subsequent API requests
         </li>
       </ul>
     </div>
+
+    {/* Postman Curl command Details Section */}
+    <div>
+      <p className="font-bold">Postman cURL Command -</p>
+      <CopyBox copyContent={loginCurlData} />
+    </div>
+
 
     {/* Request Body Details Section */}
     <div className='flex flex-col gap-5'>

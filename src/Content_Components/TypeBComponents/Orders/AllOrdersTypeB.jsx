@@ -10,22 +10,22 @@ function AllOrdersTypeB() {
     const data = [
         {
           "method": "POST",
-          "path": "https://nTasc.mirae.com/agl/orders/regular",
+          "path": "https://nTasc.mirae.com/typeb/orders/regular",
           "description": "Place a new order"
         },
         {
           "method": "PUT",
-          "path": "https://nTasc.mirae.com/agl/orders/regular/{OrderID}",
+          "path": "https://nTasc.mirae.com/typeb/orders/regular/{OrderID}",
           "description": "Modify a pending order"
         },
         {
           "method": "DELETE",
-          "path": "https://nTasc.mirae.com/agl/orders/regular/{OrderID} ",
+          "path": "https://nTasc.mirae.com/typeb/orders/regular/{OrderID} ",
           "description": "Cancel a pending order"
         },
         {
           "method": "GET",
-          "path": "https://nTasc.mirae.com/agl/orders",
+          "path": "https://nTasc.mirae.com/typeb/orders",
           "description": "View all the existing orders."
         },    
       ]
@@ -34,7 +34,7 @@ function AllOrdersTypeB() {
     <div>
         <h1 className="content-heading-font  py-6">Orders</h1>
         {/* Order API table */}
-            <div>
+            <div className='flex flex-col gap-4'>
               <p>The order APIs let you place orders of different varities, modify and cancel pending orders, retrieve the daily order and more.</p>
                     <div className='mt-4'>
                         <DynamicTable data={data}/>

@@ -5,7 +5,7 @@ import DynamicTable from '../../../Common_Components/DynamicTable'
 
 function PlaceOrderTypeA() {
 
-    const PlaceOrdercURLData = `curl --location 'http://localhost:18463/zrd/orders/regular' \\
+    const PlaceOrdercURLData = `curl --location 'http://ntasc.mirae.com/typea/orders/regular' \\
     --header 'X-Mirae-Version: 1' \\
     --header 'Authorization: token api_key:access_token \\
     --header 'Content-Type: application/x-www-form-urlencoded' \\
@@ -83,15 +83,15 @@ function PlaceOrderTypeA() {
       {/* <h1>Place Order</h1> */}
       <div className='flex flex-col gap-3'>
         <ol className='list-inside'>
-          <li className="font-bold text-xl">1. Place Order</li>
+          <li className="font-bold text-xl">Order Placement</li>
         </ol>
         <p>
           URL :
           <a
             className="mstockNavFont"
-            href="https://ntasc.mirae.com/zrd/orders/regular"
+            href="https://ntasc.mirae.com/typea/orders/regular"
           >
-            https://ntasc.mirae.com/zrd/orders/regular
+            https://ntasc.mirae.com/typea/orders/regular
           </a>
         </p>
         <p>
@@ -99,14 +99,44 @@ function PlaceOrderTypeA() {
         </p>
       </div>
 
+      {/* Description  Details Section */}
+      <div>
+        <p>
+          <span className="font-bold">Description -</span>This endpoint allows
+          users to place a regular trading order in the specified market. Users
+          must provide relevant order details such as the trading symbol,
+          exchange, transaction type, and other order specifics.
+        </p>
+      </div>
+ 
+      {/* Request Header Details Section */}
+      <div className='flex flex-col gap-2'>
+      <span className="font-bold">Request Headers -</span>
+        <ul>
+          <li>
+            <span className="font-semibold">X-Mirae-Version:</span> Specifies
+            the version of the API being used. In this case, it is set to 1
+          </li>
+          <li>
+            <span className="font-semibold">Authorization:</span> A token-based
+            authentication header. The format is token api_key:access_token
+          </li>
+          <li>
+            <span className="font-semibold">Content-Type:</span> For this
+            request, it is set to <span className='mstockNavFont'>application/x-www-form-urlencoded</span>, which is
+            used for submiting form data.
+          </li>
+        </ul>
+      </div>
+
        {/* Postman Curl command Details Section */}
-       <div>
+       <div className='flex flex-col gap-2'>
         <p className="font-bold">Postman cURL Command -</p>
         <CopyBox copyContent={PlaceOrdercURLData} />
       </div>
 
        {/* Request Body Details Section */}
-      <div>
+      <div className='flex flex-col gap-2'>
         <p>
           <span className="font-bold">Request Body - </span>The body of the
           request must be URL-encoded and include the following parameters:
@@ -151,48 +181,6 @@ function PlaceOrderTypeA() {
             <NewJsonViewer data={FailureInputJson} />
           </ul>
         </div>
-      </div>
-
-      {/* Request Header Section */}
-      <div>
-        <h1 className="font-bold">Request Headers – </h1>
-        <p className="py-1">
-          <span>
-            <span className="font-bold">Key:</span> X-Mirae-Version ,{" "}
-          </span>
-          <span>
-            <span className="font-bold">Value</span>: 1
-          </span>
-        </p>
-      </div>
-
-      {/* Request Header Details Section */}
-      <div>
-        <ul>
-          <li>
-            <span className="font-semibold">X-Mirae-Version:</span> Specifies
-            the version of the API being used. In this case, it is set to 1
-          </li>
-          <li>
-            <span className="font-semibold">Authorization:</span> A token-based
-            authentication header. The format is token api_key:access_token
-          </li>
-          <li>
-            <span className="font-semibold">Content-Type:</span> For this
-            request, it is set to <span className='mstockNavFont'>application/x-www-form-urlencoded</span>, which is
-            used for submiting form data.
-          </li>
-        </ul>
-      </div>
-
-      {/* Description  Details Section */}
-      <div>
-        <p>
-          <span className="font-bold">Description -</span>This endpoint allows
-          users to place a regular trading order in the specified market. Users
-          must provide relevant order details such as the trading symbol,
-          exchange, transaction type, and other order specifics.
-        </p>
       </div>
 
     </div>

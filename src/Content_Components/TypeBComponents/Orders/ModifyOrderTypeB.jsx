@@ -4,30 +4,27 @@ import NewJsonViewer from '../../../Common_Components/NewJsonViewer'
 import DynamicTable from '../../../Common_Components/DynamicTable'
 function ModifyOrderTypeB() {
 
-    const ModifyOrderCurlData = `
-    curl --location --request PUT 'http://localhost:18463/Agl/orders/regular/1191241106101' \\
-  --header 'X-Mirae-Version: 1' \\
-  --header 'Authorization: Bearer access_token \\
-  --header 'Content-Type: application/json' \\
-  --data '{
-    "variety": "NORMAL",
-    "tradingsymbol": "ACC-EQ",
-    "symboltoken": "22",
-    "exchange": "NSE",
-    "transactiontype": "BUY",
-    "orderid": "1191241106101",
-    "ordertype": "MARKET",
-    "quantity": "15",
-    "producttype": "DELIVERY",
-    "duration": "DAY",
-    "price": "2240",
-    "triggerprice": "0",
-    "disclosedquantity": "",
-    "modqty_remng": "0"
-}'
+    const ModifyOrderCurlData = `curl --location --request PUT 'http://ntasc.mirae.com/typeb/orders/regular/1191241106101' \\
+    --header 'X-Mirae-Version: 1' \\
+    --header 'Authorization: Bearer access_token \\
+    --header 'Content-Type: application/json' \\
+    --data '{
+      "variety": "NORMAL",
+      "tradingsymbol": "ACC-EQ",
+      "symboltoken": "22",
+      "exchange": "NSE",
+      "transactiontype": "BUY",
+      "orderid": "1191241106101",
+      "ordertype": "MARKET",
+      "quantity": "15",
+      "producttype": "DELIVERY",
+      "duration": "DAY",
+      "price": "2240",
+      "triggerprice": "0",
+      "disclosedquantity": "",
+      "modqty_remng": "0"
+      }'
 `
-
-
     const SuccessResponseJson ={
       "status": "true",
       "message": "SUCCESS",
@@ -37,7 +34,6 @@ function ModifyOrderTypeB() {
           "uniqueorderid": ""
       }
   }
-  
 
     const FailureValidJson = {
       "status": "false",
@@ -46,7 +42,6 @@ function ModifyOrderTypeB() {
       "data": null
   }
   
-
     const FailureOrderIdJson = {
       "status": "false",
       "message": "Order is Cancelled.Kindly refresh your OrderBook",
@@ -138,15 +133,15 @@ function ModifyOrderTypeB() {
     {/* <h1>Place Order</h1> */}
     <div className='flex flex-col gap-3'>
       <ol className='list-inside'>
-        <li className="font-bold text-xl">2. Modify Order</li>
+        <li className="font-bold text-xl">Order Modification</li>
       </ol>
       <p>
         URL :
         <a
           className="mstockNavFont"
-          href="https://ntasc.mirae.com/agl/orders/regular/{orderID}"
+          href="https://ntasc.mirae.com/typeb/orders/regular/{orderID}"
         >
-          https://nTasc.mirae.com/agl/orders/regular/&#10100;OrderID&#10101;
+          https://nTasc.mirae.com/typeb/orders/regular/&#10100;OrderID&#10101;
         </a>
       </p>
       <p>
@@ -162,27 +157,10 @@ function ModifyOrderTypeB() {
       </p>
     </div>
 
-    {/* Postman Curl command Details Section */}
-    <div>
-      <p className="font-bold">Postman cURL Command -</p>
-      <CopyBox copyContent={ModifyOrderCurlData} />
-    </div>
-
-     {/* Request Header Section */}
-     <div>
-      <h1 className="font-bold">Request Headers – </h1>
-      <p className="py-1">
-        <span>
-          <span className="font-bold">Key:</span> X-Mirae-Version: ,{" "}
-        </span>
-        <span>
-          <span className="font-bold">Value</span>: 1
-        </span>
-      </p>
-    </div>
-
+    
     {/* Request Header Details Section */}
-    <div>
+    <div className='flex flex-col gap-2'>
+    <span className="font-bold">Request Headers -</span>
       <ul>
         <li>
           <span className="font-semibold">X-Mirae-Version:</span> Specifies
@@ -198,21 +176,27 @@ function ModifyOrderTypeB() {
       </ul>
     </div>
 
+    {/* Postman Curl command Details Section */}
+    <div className='flex flex-col gap-2'>
+      <p className="font-bold">Postman cURL Command -</p>
+      <CopyBox copyContent={ModifyOrderCurlData} />
+    </div>
+
+       {/* Path Parameter */}
+       <div className='flex flex-col gap-2'>
+        {/* <p> */}
+            <p className="font-bold">Path Parameter -</p>
+            <DynamicTable data={[{"Field":"order_id","Description":"The unique identifier of the order to be updated or modified"}]}/>
+        {/* </p> */}
+    </div>
+
     {/* Request Body Details Section */}
-    <div>
+    <div className='flex flex-col gap-2'>
       <p>
         <span className="font-bold">Request Body - </span>The   body   of   the   request   must   be   URL-encoded   and   include   the   following
         parameters:
       </p>
         <DynamicTable data={requestParameter}/>
-    </div>
-
-    {/* Path Parameter */}
-    <div>
-        {/* <p> */}
-            <p className="font-bold">Path Parameter -</p>
-            <DynamicTable data={[{"Field":"order_id","Description":"The unique identifier of the order to be updated or modified"}]}/>
-        {/* </p> */}
     </div>
 
 

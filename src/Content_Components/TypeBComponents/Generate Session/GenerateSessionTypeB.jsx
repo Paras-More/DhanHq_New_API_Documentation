@@ -7,19 +7,18 @@ function GenerateSessionTypeB() {
     const data = [
         {
             "method": "POST",
-            "path": "https://nTasc.mirae.com/agl/portfolio/positions",
+            "path": "https://nTasc.mirae.com/typeb/portfolio/positions",
             "description":"This endpoint is used to retrieve a session token based on the provided API key, request token, and checksum."
           },
     ]
 
-    const generateSessionCurlData = `
-    curl --location 'http://localhost:18463/Agl/session/token' \\
+    const generateSessionCurlData = `curl --location 'http://ntasc.mirae.com/typeb/session/token' \\
     --header 'X-Mirae-Version: 1' \\
     --header 'Content-Type: application/json' \\
     --data '{
         "refreshToken": "SATYA",
         "otp":"123"
-    }'
+      }'
     `
     const SuccessResponseJson = {
       "status": "true",
@@ -80,9 +79,9 @@ function GenerateSessionTypeB() {
             URL :
             <a
               className="mstockNavFont"
-              href="https://nTasc.mirae.com/agl/session/token"
+              href="https://nTasc.mirae.com/typeb/session/token"
             >
-              https://nTasc.mirae.com/agl/session/token 
+              https://nTasc.mirae.com/typeb/session/token 
             </a>
           </p>
           <p>
@@ -96,28 +95,10 @@ function GenerateSessionTypeB() {
         <span className="font-bold">Description -</span> This endpoint is used to retrieve a session token based on the provided refreshToken and otp. The session token is essential for authenticating subsequent API requests.
       </p>
     </div>
-
-    {/* Postman Curl command Details Section */}
-    <div>
-      <p className="font-bold">Postman cURL Command -</p>
-      <CopyBox copyContent={generateSessionCurlData} />
-    </div>
     
-    {/* Request Header Section */}
-    <div>
-      <h1 className="font-bold">Request Headers – </h1>
-      <p className="py-1">
-        <span>
-          <span className="font-bold">Key:</span> X-Mirae-Version: ,{" "}
-        </span>
-        <span>
-          <span className="font-bold">Value</span>: 1
-        </span>
-      </p>
-    </div>
-
     {/* Request Header Details Section */}
-    <div>
+    <div className='flex flex-col gap-2'>
+    <span className="font-bold"> Request Headers -</span> 
       <ul>
         <li>
           <span className="font-semibold">X-Mirae-Version:</span> Specifies
@@ -129,23 +110,21 @@ function GenerateSessionTypeB() {
       </ul>
     </div>
 
+    {/* Postman Curl command Details Section */}
+    <div className='flex flex-col gap-2'>
+      <p className="font-bold">Postman cURL Command -</p>
+      <CopyBox copyContent={generateSessionCurlData} />
+    </div>
+
+
     {/* Request Body Details Section */}
     <div className='flex flex-col gap-3'>
       <p><span className="font-bold">Request Body - </span></p>
       <p>The body of the request must be URL-encoded and include the following parameters:</p>
       <div className='flex flex-col gap-6'>
-      {/* <ul className='list-inside list-disc'>
-        <li>refreshToken: The username of the user (Example: SATYA).</li>
-
-        <li>•	otp: A token that uniquely identifies the session request (Example: 123).</li>
-      </ul> */}
       <DynamicTable data={SessionParameter}/>
 
       <p>n.Tasc Fields mapping with mStock API Parameters – </p>
-      {/* <ul className='list-inside list-disc'>
-          <li>refreshToken  =&gt; username (SATYA)</li>
-          <li>refreshToken  =&gt; OTP (123);</li>
-      </ul> */}
       <DynamicTable data={SessionNtascParameter}/>
       </div>
     </div>

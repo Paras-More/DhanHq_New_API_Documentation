@@ -5,21 +5,19 @@ import DynamicTable from '../../../Common_Components/DynamicTable'
 
 function CancelOrderTypeA() {
 
-    const CancelOrderCurlData = `
-curl --location --request DELETE 
-'http://localhost:18463/zrd/orders/regular/1161241001100' \\
---header 'X-Mirae-Version: 1' \\
---header 'Authorization: token api_key:access_token' \\
---header 'Content-Type: application/x-www-form-urlencoded' \\
---data-urlencode 'tradingsymbol=ACC' \\
---data-urlencode 'transaction_type=BUY' \\
---data-urlencode 'validity=DAY' \\
---data-urlencode 'exchange=NSE' \\
---data-urlencode 'quantity=3' \\
---data-urlencode 'order_type=LIMIT' \\
---data-urlencode 'modqty_remng=2' \\
---data-urlencode 'product=MIS' \\
---data-urlencode 'price=1250'`
+    const CancelOrderCurlData = `curl --location --request DELETE 'http://ntasc.mirae.com/typea/orders/regular/1161241001100' \\
+    --header 'X-Mirae-Version: 1' \\
+    --header 'Authorization: token api_key:access_token' \\
+    --header 'Content-Type: application/x-www-form-urlencoded' \\
+    --data-urlencode 'tradingsymbol=ACC' \\
+    --data-urlencode 'transaction_type=BUY' \\
+    --data-urlencode 'validity=DAY' \\
+    --data-urlencode 'exchange=NSE' \\
+    --data-urlencode 'quantity=3' \\
+    --data-urlencode 'order_type=LIMIT' \\
+    --data-urlencode 'modqty_remng=2' \\
+    --data-urlencode 'product=MIS' \\
+    --data-urlencode 'price=1250'`
 
 const SuccessResponseJson = {
     "status": "success",
@@ -89,15 +87,15 @@ const requestParameter = [
     {/* <h1>Place Order</h1> */}
     <div className='flex flex-col gap-3'>
       <ol className='list-inside'>
-        <li className="font-bold text-xl">3. Cancel Order</li>
+        <li className="font-bold text-xl">Order Cancellation</li>
       </ol>
       <p>
         URL : 
         <a
           className="mstockNavFont"
-          href="https://ntasc.mirae.com/zrd/orders/regular/{OrderID}"
+          href="https://ntasc.mirae.com/typea/orders/regular/{OrderID}"
         >
-          https://ntasc.mirae.com/zrd/orders/regular/&#10100;OrderID&#10101;
+          https://ntasc.mirae.com/typea/orders/regular/&#10100;OrderID&#10101;
         </a>
       </p>
       <p>
@@ -111,29 +109,11 @@ const requestParameter = [
         <span className="font-bold">Description -</span>This endpoint allows users to delete an existing order specified by
         the order ID. Deleting an order will cancel the specified order.
       </p>
-    </div>
-
-    {/* Postman Curl command Details Section */}
-    <div>
-      <p className="font-bold">Postman cURL Command -</p>
-      <CopyBox copyContent={CancelOrderCurlData} />
-    </div>
-    
-    {/* Request Header Section */}
-    <div>
-      <h1 className="font-bold">Request Headers – </h1>
-      <p className="py-1">
-        <span>
-          <span className="font-bold">Key:</span> X-Mirae-Version: ,{" "}
-        </span>
-        <span>
-          <span className="font-bold">Value</span>: 1
-        </span>
-      </p>
-    </div>
+    </div> 
 
     {/* Request Header Details Section */}
-    <div>
+    <div className='flex flex-col gap-2'>
+    <span className="font-bold">Request Headers -</span>
       <ul>
         <li>
           <span className="font-semibold">X-Mirae-Version:</span> Specifies
@@ -149,8 +129,14 @@ const requestParameter = [
       </ul>
     </div>
 
+    {/* Postman Curl command Details Section */}
+    <div  className='flex flex-col gap-2'>
+      <p className="font-bold">Postman cURL Command -</p>
+      <CopyBox copyContent={CancelOrderCurlData} />
+    </div>
+
     {/* Path Parameter */}
-    <div>
+    <div  className='flex flex-col gap-2'>
         {/* <p> */}
             <p className="font-bold">Path Parameter -</p>
             <DynamicTable data={[{"Field":"order_id","Description":"The unique identifier of the order to be cancel."}]}/>
@@ -158,7 +144,7 @@ const requestParameter = [
     </div>
 
     {/* Request Body Details Section */}
-    <div>
+    <div  className='flex flex-col gap-2'>
       <p>
         <span className="font-bold">Request Body - </span>The   body   of   the   request   must   be   URL-encoded   and   include   the   following
         parameters:
@@ -167,7 +153,7 @@ const requestParameter = [
     </div>
 
     {/* Request Response -  Details Section  */}
-    <div>
+    <div >
       <p className="font-bold">Response Structure-</p>
       <p className='py-3'>
         The response of the request will be based on authentication outcome.

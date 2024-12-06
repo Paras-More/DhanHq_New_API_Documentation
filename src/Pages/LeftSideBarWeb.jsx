@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-// import { ContextStore } from '../App'
 import { useContext } from 'react'
 import "./Main.css"
 import { SelectTypeContext } from '../Context/SelectType';
@@ -146,7 +145,7 @@ function LeftSideBarWeb() {
 
 
   return (
-    <aside className='bg-white   w-customSmall hidden flex-shrink-0 xl:flex flex-col gap-4  overflow-y-scroll'>
+    <aside className='bg-white   w-customSmall hidden flex-shrink-0 md:flex flex-col gap-4  overflow-y-scroll'>
             {console.log("LeftSide bar RENDER")}
         {/* Introduction API */}
           <div>
@@ -218,7 +217,7 @@ function LeftSideBarWeb() {
       {/* Data API List Items */}
           <div>
             <h1 className="font-bold mb-1">Data APIs</h1>
-            <ul className='indent-3 flex flex-col'>
+            <ul className='flex flex-col'>
             {
               currentTypeLinks?.map((ele,i)=>{
                 if(ele.type === 'DataAPI')
@@ -232,13 +231,13 @@ function LeftSideBarWeb() {
 
       {/* Annexure and others */}
         <div>
-          <ul className='indent-3 flex flex-col'>
+          <ul className='flex flex-col'>
             
             {
               currentTypeLinks?.map((ele,i)=>{
                 if(ele.type === 'Annexure')
                     return(
-                <Link to={`/${ele.title.replaceAll(" ","-")}`.toLowerCase()}><li className={`${ele.path.replace("/","") === location.pathname.split("/")[1] ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
+                <Link to={`/${ele.title.replaceAll(" ","-")}`.toLowerCase()}><li className={`${ele.path.replace("/","") === location.pathname.split("/")[1] ? 'text-customBlueFont font-bold' :''} font-bold`}>{ele.title}</li></Link>
                     )
                 })
             }

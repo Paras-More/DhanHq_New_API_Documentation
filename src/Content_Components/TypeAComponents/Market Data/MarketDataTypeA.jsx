@@ -422,14 +422,16 @@ function MarketDataTypeA() {
             <DynamicTable data={quoteStructureData}/>
             </div>
       </div>
-      {/* Market Depth Structure */}
+
+    {/* Market Depth Structure */}
       <div>
             <h1 className='font-bold py-3'>Market Depth Structure: (120 Bytes)</h1>
             <div className='max-w-[50%]'>
             <DynamicTable data={marketDepthStructureData}/>
             </div>
       </div>
-      {/* Index packet Structure */}
+
+    {/* Index packet Structure */}
       <div>
             <h1 className='font-bold py-3'>Index Packet Structure: (32 Bytes)</h1>
             <span className='font-thin'>Specifically created for non tradable Index Tokens (Mentioned below)</span>
@@ -438,7 +440,8 @@ function MarketDataTypeA() {
             <DynamicTable data={indexPacketStructureData}/>
             </div>
       </div>
-      {/* Note Section */}
+
+    {/* Note Section */}
       <div className='mb-10'>
             <p className='font-bold'>Please Note :</p>
             <p>1. [<span className='font-bold'>short</span>]: 2 Bytes | [<span className='font-bold'>int</span>]: 4 Bytes </p>

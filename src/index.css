@@ -1,9 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 *{
   font-size: 14px;
   font-weight: 400;
+  font-family: "Open Sans",sans-serif !important;
   /* font-family: 'CircularXXSub-Medium',sans-serif ;
   font-feature-settings: "kern", "liga"; */
 }
@@ -24,21 +26,23 @@
   
 /*  */
 .font-circular {
-  font-family: 'CircularXXSub-Regular', sans-serif !important;
+  font-family: "Open Sans",sans-serif !important;
 }
 .content-heading-font {
   font-size: 2rem;
   font-weight: 600;
   letter-spacing: -.01em;
   color:#043B73;
-  font-family: 'CircularXXSub-Medium',sans-serif ;
-  font-feature-settings: "kern", "liga";
+  font-family: "Open Sans",sans-serif ;
+  /* font-feature-settings: "kern", "liga"; */
 }
 
 .content-subheading-font {
   font-size: 1.4rem;
   font-weight: 600;
-  font-family: 'CircularXXSub-Medium',sans-serif ;
+  /* font-family: 'CircularXXSub-Medium',sans-serif ; */
+  font-family: "Open Sans",sans-serif !important;
+
 }
 
 .title-font{
@@ -46,7 +50,9 @@
   font-weight: 700;
   letter-spacing: -.01em;
   margin: 1em 0;
-  font-family: 'CircularXXSub-Medium',sans-serif ;
+  /* font-family: 'CircularXXSub-Medium',sans-serif ; */
+  font-family: "Open Sans",sans-serif !important;
+
   color:#043B73 !important
 }
 
@@ -57,9 +63,10 @@ td, th {
   border-right: none; /* Remove vertical border on the right */
 }
 td{
-  font-family: CircularXXSub-Regular, sans-serif;
-  font-feature-settings: "kern", "liga";
-  font-family: 'CircularXXSub-Medium',sans-serif ;
+  /* font-feature-settings: "kern", "liga"; */
+  /* font-family: 'CircularXXSub-Medium',sans-serif ; */
+  font-family: "Open Sans",sans-serif !important;
+
   font-size: 0.875rem;
 }
 th{
@@ -77,13 +84,14 @@ th{
 }
 .highlighter{
   font-family: "Inter",'Courier New', Courier, monospace !important;
+  /* font-family: "Open Sans",sans-serif !important; */
+
   font-size: 1rem !important;
-  font-feature-settings: "kern";
+  /* font-feature-settings: "kern"; */
   padding: 0px 2px;
   background-color: #dbdde0;  
 }
 .JsonViewer-font{
-
   font-family:  monospace !important;
   padding: '1rem';
 }

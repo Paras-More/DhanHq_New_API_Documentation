@@ -7,17 +7,16 @@ function LoginTypeA() {
   const data  = [
     {
       "method": "POST",
-      "path": "https://nTasc.mirae.com/zrd/connect/login",
+      "path": "https://nTasc.mirae.com/typea/connect/login",
       "description": "This endpoint allows users to log in to the application "
     },
   ]
 
-  const loginCurlData = `
-  curl --location 'http://localhost:18463/zrd/connect/login' \\
-  --header 'X-Mirae-Version: 1' \\
-  --header 'Content-Type: application/x-www-form-urlencoded' \\
-  --data-urlencode 'username=SATYA' \\
-  --data-urlencode 'password=Macm@123'
+  const loginCurlData = `curl --location 'http://ntasc.mirae.com/typea/connect/login' \\
+    --header 'X-Mirae-Version: 1' \\
+    --header 'Content-Type: application/x-www-form-urlencoded' \\
+    --data-urlencode 'username=SATYA' \\
+    --data-urlencode 'password=Macm@123'
 `  
   const SuccessResponseJson = {
     "status": "success",
@@ -43,7 +42,6 @@ function LoginTypeA() {
     "message": "Invalid username or password (MACM1)",
     "data": null
   }
-
 
   const LoginParameters = [
     {
@@ -75,9 +73,9 @@ function LoginTypeA() {
             URL :
             <a
               className="mstockNavFont"
-              href="https://nTasc.mirae.com/zrd/connect/login"
+              href="https://nTasc.mirae.com/typea/connect/login"
             >
-              https://nTasc.mirae.com/zrd/connect/login
+              https://nTasc.mirae.com/typea/connect/login
             </a>
           </p>
           <p>
@@ -92,27 +90,9 @@ function LoginTypeA() {
       </p>
     </div>
 
-    {/* Postman Curl command Details Section */}
-    <div>
-      <p className="font-bold">Postman cURL Command -</p>
-      <CopyBox copyContent={loginCurlData} />
-    </div>
-    
-    {/* Request Header Section */}
-    <div>
-      <h1 className="font-bold">Request Headers – </h1>
-      <p className="py-1">
-        <span>
-          <span className="font-bold">Key:</span> X-Mirae-Version: ,{" "}
-        </span>
-        <span>
-          <span className="font-bold">Value</span>: 1
-        </span>
-      </p>
-    </div>
-
-    {/* Request Header Details Section */}
-    <div>
+     {/* Request Header Details Section */}
+     <div className='flex flex-col gap-2'>
+     <span className="font-bold">Request Headers -</span>
       <ul>
         <li>
           <span className="font-semibold">X-Mirae-Version:</span> Specifies
@@ -124,8 +104,14 @@ function LoginTypeA() {
       </ul>
     </div>
 
+    {/* Postman Curl command Details Section */}
+    <div className='flex flex-col gap-2'>
+      <p className="font-bold">Postman cURL Command -</p>
+      <CopyBox copyContent={loginCurlData} />
+    </div>
+
     {/* Request Body Details Section */}
-    <div>
+    <div className='flex flex-col gap-2'>
       <p><span className="font-bold">Request Body - </span></p>
       <p>The body of the request must be URL-encoded and include the following parameters:</p>
       <DynamicTable data={LoginParameters}/>

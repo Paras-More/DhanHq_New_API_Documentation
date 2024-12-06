@@ -5,8 +5,7 @@ import DynamicTable from '../../../Common_Components/DynamicTable'
 
 function CancelOrderTypeB() {
 
-    const CancelOrderCurlData = `
-    curl --location --request DELETE 'http://localhost:18463/Agl/orders/regular/1112241106105' \\
+    const CancelOrderCurlData =`curl --location --request DELETE 'http://ntasc.mirae.com/typeb/orders/regular/1112241106105' \\
     --header 'X-Mirae-Version: 1' \\
     --header 'Authorization: Bearer access_token \\
     --header 'Content-Type: application/json' \\
@@ -25,7 +24,7 @@ function CancelOrderTypeB() {
     "triggerprice": "0",
     "disclosedquantity": "",
     "modqty_remng": "0"
-}'
+    }'
 `
 
 const SuccessResponseJson = {
@@ -124,15 +123,15 @@ const requestParameter = [
     {/* <h1>Place Order</h1> */}
     <div className='flex flex-col gap-3'>
       <ol className='list-inside'>
-        <li className="font-bold text-xl">3. Cancel Order</li>
+        <li className="font-bold text-xl">Order Cancellation</li>
       </ol>
       <p>
         URL :
         <a
           className="mstockNavFont"
-          href="https://ntasc.mirae.com/agl/orders/regular/{OrderID}"
+          href="https://ntasc.mirae.com/typeb/orders/regular/{OrderID}"
         >
-           https://nTasc.mirae.com/agl/orders/regular/&#10100;OrderID&#10101;
+           https://nTasc.mirae.com/typeb/orders/regular/&#10100;OrderID&#10101;
         </a>
       </p>
       <p>
@@ -148,27 +147,10 @@ const requestParameter = [
       </p>
     </div>
 
-    {/* Postman Curl command Details Section */}
-    <div>
-      <p className="font-bold">Postman cURL Command -</p>
-      <CopyBox copyContent={CancelOrderCurlData} />
-    </div>
     
-    {/* Request Header Section */}
-    <div>
-      <h1 className="font-bold">Request Headers – </h1>
-      <p className="py-1">
-        <span>
-          <span className="font-bold">Key:</span> X-Mirae-Version: ,{" "}
-        </span>
-        <span>
-          <span className="font-bold">Value</span>: 1
-        </span>
-      </p>
-    </div>
-
     {/* Request Header Details Section */}
-    <div>
+    <div className='flex flex-col gap-2'>
+    <span className="font-bold"> Request Headers -</span>
       <ul>
         <li>
           <span className="font-semibold">X-Mirae-Version:</span> Specifies
@@ -184,14 +166,20 @@ const requestParameter = [
       </ul>
     </div>
 
+    {/* Postman Curl command Details Section */}
+    <div className='flex flex-col gap-2'>
+      <p className="font-bold">Postman cURL Command -</p>
+      <CopyBox copyContent={CancelOrderCurlData} />
+    </div>
+
     {/* Path Parameter */}
-    <div>
+    <div className='flex flex-col gap-2'>
             <p className="font-bold">Path Parameter -</p>
             <DynamicTable data={[{"Field":"order_id","Description":"The unique identifier of the order to be updated or modified"}]}/>
     </div>
 
     {/* Request Body Details Section */}
-    <div>
+    <div className='flex flex-col gap-2'>
       <p>
         <span className="font-bold">Request Body - </span>The   body   of   the   request   must   be   URL-encoded   and   include   the   following
         parameters:

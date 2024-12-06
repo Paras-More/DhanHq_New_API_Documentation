@@ -4,10 +4,9 @@ import NewJsonViewer from '../../../Common_Components/NewJsonViewer'
 import DynamicTable from '../../../Common_Components/DynamicTable'
 function Net_PositionTypeA() {
 
-  const positionCurlData = `
-curl --location 'http://localhost:18463/Zrd/portfolio/positions' \\
---header 'X-Mirae-Version: 1' \\
---header 'Authorization: token api_key:access_token'`
+  const positionCurlData = `curl --location 'http://ntasc.mirae.com/typea/portfolio/positions' \\
+    --header 'X-Mirae-Version: 1' \\
+    --header 'Authorization: token api_key:access_token'`
  
   const SuccessResponseJson = {
     "status": "success",
@@ -88,7 +87,7 @@ curl --location 'http://localhost:18463/Zrd/portfolio/positions' \\
   const data = [
     {
       "method": "POST",
-      "path": "https://ntasc.mirae.com/zrd/portfolio/positions",
+      "path": "https://ntasc.mirae.com/typea/portfolio/positions",
       "description": "retrieve a list of all existing trading orders."
     },
   ]
@@ -108,9 +107,9 @@ curl --location 'http://localhost:18463/Zrd/portfolio/positions' \\
         URL :
         <a
           className="mstockNavFont"
-          href="https://ntasc.mirae.com/zrd/portfolio/positions"
+          href="https://ntasc.mirae.com/typea/portfolio/positions"
         >
-          https://ntasc.mirae.com/zrd/portfolio/positions
+          https://ntasc.mirae.com/typea/portfolio/positions
         </a>
       </p>
       <p>
@@ -125,28 +124,10 @@ curl --location 'http://localhost:18463/Zrd/portfolio/positions' \\
         Users can view all their existing orders
       </p>
     </div>
-
-    {/* Postman Curl command Details Section */}
-    <div>
-      <p className="font-bold">Postman cURL Command -</p>
-      <CopyBox copyContent={positionCurlData} />
-    </div>
     
-    {/* Request Header Section */}
-    <div>
-      <h1 className="font-bold">Request Headers – </h1>
-      <p className="py-1">
-        <span>
-          <span className="font-bold">Key:</span> X-Mirae-Version: ,{" "}
-        </span>
-        <span>
-          <span className="font-bold">Value</span>: 1
-        </span>
-      </p>
-    </div>
-
     {/* Request Header Details Section */}
-    <div>
+    <div className='flex flex-col gap-2'>
+    <span className="font-bold">Request Headers -</span>
       <ul>
         <li>
           <span className="font-semibold">X-Mirae-Version:</span> Specifies
@@ -158,6 +139,13 @@ curl --location 'http://localhost:18463/Zrd/portfolio/positions' \\
         </li>
       </ul>
     </div>
+
+    {/* Postman Curl command Details Section */}
+    <div className='flex flex-col gap-2'>
+      <p className="font-bold">Postman cURL Command -</p>
+      <CopyBox copyContent={positionCurlData} />
+    </div>
+
 
     {/* Request Body Details Section */}
     <div>

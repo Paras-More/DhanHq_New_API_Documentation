@@ -4,22 +4,21 @@ import NewJsonViewer from '../../../Common_Components/NewJsonViewer'
 import DynamicTable from '../../../Common_Components/DynamicTable'
 function ModifyOrderTypeA() {
 
-    const ModifyOrderCurlData = `curl --location --request PUT 
-'http://localhost:18463/zrd/orders/regular/1131241001100' \\
---header 'X-Mirae-Version: 1' \\
---header 'Authorization: token api_key:access_token' \\
---header 'Content-Type: application/x-www-form-urlencoded' \\
---data-urlencode 'tradingsymbol=INFY' \\
---data-urlencode 'order_type=LIMIT' \\
---data-urlencode 'quantity=20' \\
---data-urlencode 'price=1255' \\
---data-urlencode 'validity=DAY' \\
---data-urlencode 'exchange=NSE' \\
---data-urlencode 'trigger_price=1230' \\
---data-urlencode 'disclosed_quantity=0' \\
---data-urlencode 'transaction_type=BUY' \\
---data-urlencode 'product=MIS' \\
---data-urlencode 'modqty_remng=2'`
+    const ModifyOrderCurlData =`curl --location --request PUT 'http://ntasc.mirae.com/typea/orders/regular/1131241001100' \\
+    --header 'X-Mirae-Version: 1' \\
+    --header 'Authorization: token api_key:access_token' \\
+    --header 'Content-Type: application/x-www-form-urlencoded' \\
+    --data-urlencode 'tradingsymbol=INFY' \\
+    --data-urlencode 'order_type=LIMIT' \\
+    --data-urlencode 'quantity=20' \\
+    --data-urlencode 'price=1255' \\
+    --data-urlencode 'validity=DAY' \\
+    --data-urlencode 'exchange=NSE' \\
+    --data-urlencode 'trigger_price=1230' \\
+    --data-urlencode 'disclosed_quantity=0' \\
+    --data-urlencode 'transaction_type=BUY' \\
+    --data-urlencode 'product=MIS' \\
+    --data-urlencode 'modqty_remng=2'`
 
 
     const SuccessResponseJson ={
@@ -108,15 +107,15 @@ function ModifyOrderTypeA() {
     {/* <h1>Place Order</h1> */}
     <div className='flex flex-col gap-3'>
       <ol className='list-inside'>
-        <li className="font-bold text-xl">2. Modify Order</li>
+        <li className="font-bold text-xl">Order Modification</li>
       </ol>
       <p>
         URL :
         <a
           className="mstockNavFont"
-          href="https://ntasc.mirae.com/zrd/orders/regular/{OrderID}"
+          href="https://ntasc.mirae.com/typea/orders/regular/{OrderID}"
         >
-          https://ntasc.mirae.com/zrd/orders/regular/&#10100;OrderID&#10101;
+          https://ntasc.mirae.com/typea/orders/regular/&#10100;OrderID&#10101;
         </a>
       </p>
       <p>
@@ -132,27 +131,9 @@ function ModifyOrderTypeA() {
       </p>
     </div>
 
-    {/* Postman Curl command Details Section */}
-    <div>
-      <p className="font-bold">Postman cURL Command -</p>
-      <CopyBox copyContent={ModifyOrderCurlData} />
-    </div>
-
-     {/* Request Header Section */}
-     <div>
-      <h1 className="font-bold">Request Headers – </h1>
-      <p className="py-1">
-        <span>
-          <span className="font-bold">Key:</span> X-Mirae-Version: ,{" "}
-        </span>
-        <span>
-          <span className="font-bold">Value</span>: 1
-        </span>
-      </p>
-    </div>
-
     {/* Request Header Details Section */}
-    <div>
+    <div className='flex flex-col gap-2'>
+    <span className="font-bold">Request Headers -</span>
       <ul>
         <li>
           <span className="font-semibold">X-Mirae-Version:</span> Specifies
@@ -167,6 +148,20 @@ function ModifyOrderTypeA() {
         </li>
       </ul>
     </div>
+    {/* Postman Curl command Details Section */}
+    <div className='flex flex-col gap-2'>
+      <p className="font-bold">Postman cURL Command -</p>
+      <CopyBox copyContent={ModifyOrderCurlData} />
+    </div>
+
+    
+    {/* Path Parameter */}
+    <div className='flex flex-col gap-3'>
+            <p className="font-bold">Path Parameter -</p>
+            <ul className='list-inside list-disc'>
+                <DynamicTable data={[{"Field":"order_id","Description":"The unique identifier of the order to be updated or modified"}]}/>
+            </ul>
+    </div>
 
     {/* Request Body Details Section */}
     <div className='flex flex-col gap-4'>
@@ -175,19 +170,7 @@ function ModifyOrderTypeA() {
         parameters:
       </p>
       <DynamicTable data={requestParameter}/>
-
     </div>
-
-    {/* Path Parameter */}
-    <div>
-        {/* <p> */}
-            <p className="font-bold">Path Parameter -</p>
-            <ul className='list-inside list-disc px-8'>
-                <DynamicTable data={[{"Field":"order_id","Description":"The unique identifier of the order to be updated or modified"}]}/>
-            </ul>
-        {/* </p> */}
-    </div>
-
 
     {/* Request Response -  Details Section  */}
     <div>
@@ -227,7 +210,6 @@ function ModifyOrderTypeA() {
         </ul>
       </div>
     </div>
-
   </div>
   )
 }

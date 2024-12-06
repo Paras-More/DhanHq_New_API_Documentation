@@ -14,12 +14,12 @@ function LeftSideBarMob() {
   return (
     <>
         {
-          showMenu && <div className='w-full text-2xl fixed top-0 right-0 left-0 bottom-0 bg-[#6b72808f]'>
+          showMenu && <div className='w-full xl:hidden text-2xl fixed top-0 right-0 left-0 bottom-0 bg-[#6b72808f]'>
 
              {
               <div className='h-full'>
                       
-                      <div className='bg-white w-[50%] h-full'>
+                    <div className='bg-white w-[50%] h-full'>
                       <div className='top-4 left-7'>
                         <div className='pt-4 pl-7'>
                           <svg onClick={()=>setShowMenu(!showMenu)}
@@ -27,11 +27,15 @@ function LeftSideBarMob() {
                               <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3   9h12a6 6 0 0 1 0 12h-3" />
                           </svg> 
                         </div>
-                        {/*  */}
+                        {/* Menu */}
                       </div>
 
-                            <p>asdasdadasdasdasd</p>
+                      <div>
+                        <p>paras More</p>
                       </div>  
+
+                            
+                    </div>  
                </div>
               }
                </div>

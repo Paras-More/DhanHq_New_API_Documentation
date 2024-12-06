@@ -6,21 +6,19 @@ import DynamicTable from '../../../Common_Components/DynamicTable'
 function Calculate_Order_MarginTypeB() {
 
 
-const COMCurlData =`
-curl --location 'http://localhost:18463/Agl/margins/orders' \\
---header 'X-Mirae-Version: 1' \\
---header 'Authorization: Bearer access_token \\
---header 'Content-Type: application/json' \\
---data '{
-    "exchange": "NSE",
-    "qty": "10",
-    "price": "2240",
-    "productType": "DELIVERY",
-    "token": "22",
-    "tradeType": "BUY",
-    "triggerPrice": 0
-}'
-`  
+const COMCurlData =`curl --location 'http://ntasc.mirae.com/typeb/margins/orders' \\
+    --header 'X-Mirae-Version: 1' \\
+    --header 'Authorization: Bearer access_token \\
+    --header 'Content-Type: application/json' \\
+    --data '{
+        "exchange": "NSE",
+        "qty": "10",
+        "price": "2240",
+        "productType": "DELIVERY",
+        "token": "22",
+        "tradeType": "BUY",
+        "triggerPrice": 0
+    }'`  
 
 const requestBodyJson ={
   "exchange": "NSE",
@@ -72,7 +70,7 @@ const SuccessResponseJson = {
 const data = [
   {
     "method": "POST",
-    "path": "https://nTasc.mirae.com/agl/margins/orders",
+    "path": "https://nTasc.mirae.com/typeb/margins/orders",
     "description": "This endpoint allows users to retrieve a list of their trading orders. Users can view all their existing orders."
   },
 ]
@@ -101,9 +99,9 @@ const FailureInputJson = {
         URL :
         <a
           className="mstockNavFont"
-          href="https://nTasc.mirae.com/agl/margins/orders"
+          href="https://nTasc.mirae.com/typeb/margins/orders"
         >
-          https://nTasc.mirae.com/agl/margins/orders
+          https://nTasc.mirae.com/typeb/margins/orders
         </a>
       </p>
       <p>
@@ -118,28 +116,10 @@ const FailureInputJson = {
         Users can view all their existing orders.
       </p>
     </div>
-
-    {/* Postman Curl command Details Section */}
-    <div>
-      <p className="font-bold">Postman cURL Command -</p>
-      <CopyBox copyContent={COMCurlData} />
-    </div>
     
-    {/* Request Header Section */}
-    <div>
-      <h1 className="font-bold">Request Headers – </h1>
-      <p className="py-1">
-        <span>
-          <span className="font-bold">Key:</span> X-Mirae-Version: ,{" "}
-        </span>
-        <span>
-          <span className="font-bold">Value</span>: 1
-        </span>
-      </p>
-    </div>
-
     {/* Request Header Details Section */}
-    <div>
+    <div className='flex flex-col gap-2'>
+    <span className="font-bold">Request Headers -</span>
       <ul>
         <li>
           <span className="font-semibold">X-Mirae-Version:</span> Specifies
@@ -155,8 +135,14 @@ const FailureInputJson = {
       </ul>
     </div>
 
+    {/* Postman Curl command Details Section */}
+    <div className='flex flex-col gap-2'>
+      <p className="font-bold">Postman cURL Command -</p>
+      <CopyBox copyContent={COMCurlData} />
+    </div>
+
     {/* Request Body Details Section */}
-    <div>
+    <div className='flex flex-col gap-2'>
     <p className="font-bold">Request Body-</p>
     <NewJsonViewer data={requestBodyJson}/>
     </div>

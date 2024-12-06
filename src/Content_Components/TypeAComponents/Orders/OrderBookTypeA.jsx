@@ -5,10 +5,9 @@ import DynamicTable from '../../../Common_Components/DynamicTable'
 
 function OrderBookTypeA() {
    
-   const orderBookCurlData = `
-curl --location 'http://localhost:18463/zrd/orders' \\
---header 'X-Mirae-Version: 1' \\
---header 'Authorization: token api_key:access_token'`
+   const orderBookCurlData = `curl --location 'http://ntasc.mirae.com/typea/orders' \\
+    --header 'X-Mirae-Version: 1' \\
+    --header 'Authorization: token api_key:access_token'`
 
   const SuccessResponseJson = {
     "status": "success",
@@ -109,15 +108,15 @@ curl --location 'http://localhost:18463/zrd/orders' \\
     {/* <h1>Place Order</h1> */}
     <div className='flex flex-col gap-3'>
       <ol className='list-inside'>
-        <li className="font-bold text-xl">4. Order Book</li>
+        <li className="font-bold text-xl">Order Book</li>
       </ol>
       <p>
         URL :
         <a
           className="mstockNavFont"
-          href=" https://ntasc.mirae.com/zrd/orders"
+          href=" https://ntasc.mirae.com/typea/orders"
         >
-          https://ntasc.mirae.com/zrd/orders
+          https://ntasc.mirae.com/typea/orders
         </a>
       </p>
       <p>
@@ -133,27 +132,10 @@ curl --location 'http://localhost:18463/zrd/orders' \\
       </p>
     </div>
 
-    {/* Postman Curl command Details Section */}
-    <div>
-      <p className="font-bold">Postman cURL Command -</p>
-      <CopyBox copyContent={orderBookCurlData} />
-    </div>
     
-    {/* Request Header Section */}
-    <div>
-      <h1 className="font-bold">Request Headers – </h1>
-      <p className="py-1">
-        <span>
-          <span className="font-bold">Key:</span> X-Mirae-Version: ,{" "}
-        </span>
-        <span>
-          <span className="font-bold">Value</span>: 1
-        </span>
-      </p>
-    </div>
-
     {/* Request Header Details Section */}
-    <div>
+    <div className='flex flex-col gap-2'>
+    <span className="font-bold">Request Headers -</span>
       <ul>
         <li>
           <span className="font-semibold">X-Mirae-Version:</span> Specifies
@@ -168,8 +150,15 @@ curl --location 'http://localhost:18463/zrd/orders' \\
         </li>
       </ul>
     </div>
+
+    {/* Postman Curl command Details Section */}
+    <div className='flex flex-col gap-2'>
+      <p className="font-bold">Postman cURL Command -</p>
+      <CopyBox copyContent={orderBookCurlData} />
+    </div>
+
     {/* Request Body Details Section */}
-    <div>
+    <div className='flex flex-col gap-2'>
       <p>
         <span className="font-bold">Request Body - </span>This endpoint does not require a request body or additional parameters in the
         query string for the retrieval of orders.

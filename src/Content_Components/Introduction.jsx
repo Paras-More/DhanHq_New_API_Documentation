@@ -70,30 +70,11 @@ function Introduction() {
   `;
 
   const ErrorData = `
-  
-    curl --location 'http://localhost:18463/Agl/orders/regular' \
-    --header 'X-Mirae-Version: 1' \
-    --header 'Authorization: Bearer access_token' \
-    --header 'Content-Type: application/json' \
-    --data '{
-    "variety": "NORMAL",
-    "tradingsymbol": "ACC-EQ",
-    "symboltoken": "22",
-    "exchange": "NSE",
-    "transactiontype": "BUY",
-    "ordertype": "MARKET",
-    "quantity": "20",
-    "producttype": "DELIVERY",
-    "price": "194.50",
-    "triggerprice": "0",
-    "squareoff": "0",
-    "stoploss": "0",
-    "trailingStopLoss": "",
-    "disclosedquantity": "",
-    "duration": "DAY",
-    "ordertag": ""
-}'
-
+  {
+    "errorType": "",
+    "errorCode": "",
+    "errorMessage": ""
+}
   `
 
   return (
