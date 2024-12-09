@@ -143,7 +143,7 @@ function GenerateSessionTypeA() {
           <dt class="font-semibold min-w-[120px]">Content-Type :</dt>
           <dd>
             For this request, it is set to
-            <span class="mstockNavFont">application/x-www-form-urlencoded</span>, which is used for submitting form data.
+            <span class="mstockNavFont"> application/x-www-form-urlencoded</span>, which is used for submitting form data.
           </dd>
         </div>
      </dl>
