@@ -79,7 +79,7 @@ function Introduction() {
 
   return (
     <div className="min-w-full">
-      <h1 className="content-heading-font py-6">Introduction</h1>
+      <h1 className="content-heading-font py-2">Introduction</h1>
        {/* <p>Description -This is this introduction page of API Documentation .</p>  */}
        <p className="shrink-1 py-2">
             API is a state-of-the-art platform for you to build trading and
