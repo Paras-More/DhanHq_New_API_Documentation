@@ -164,7 +164,7 @@ function LeftSideBarWeb() {
             {console.log("LeftSide bar RENDER")}
         {/* Introduction API */}
           <div>
-            <h1 className="font-bold mb-6 mt-4">API Documentation</h1>
+            <h1 className="font-bold mb-6 mt-2">API Documentation</h1>
             {
              <ul className='indent-1 flex flex-col'>
               {
