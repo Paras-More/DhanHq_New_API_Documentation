@@ -98,7 +98,7 @@ function GenerateSessionTypeA() {
   ]
 
   return (
-    <div className='flex flex-col gap-6 mt-10'>
+    <div className='flex flex-col gap-6'>
     {/* <h1>Place Order</h1> */}
         <h1 className="content-heading-font"> Generate Session</h1>
         <div className='mt-4'>
@@ -108,7 +108,7 @@ function GenerateSessionTypeA() {
           <ol className='list-inside'>
             <li className="font-bold text-xl">Generate Session</li>
           </ol>
-          <p>
+          {/* <p>
             URL :
             <a
               className="mstockNavFont"
@@ -119,35 +119,39 @@ function GenerateSessionTypeA() {
           </p>
           <p>
             Method -<span className="font-bold"> POST</span>
-          </p>
+          </p> */}
         </div>
         
     {/* Description  Details Section */}
     <div>
       <p>
-        <span className="font-bold">Description -</span> This endpoint is used to retrieve a session token based on the
-provided API key, request token, and checksum. The session token is essential for
-authenticating subsequent API requests
+        This endpoint is used to retrieve a session token based on the
+        provided API key, request token, and checksum. The session token is essential for
+        authenticating subsequent API requests
       </p>
     </div>
     
     {/* Request Header Details Section */}
     <div className='flex flex-col gap-2'>
     <span className="font-bold">Request Headers -</span> 
-      <ul>
-        <li>
-          <span className="font-semibold">X-Mirae-Version:</span> Specifies
-          the version of the API being used. In this case, it is set to 1
-        </li>
-        <li>
-          <span className="font-semibold">Content-Type: </span> For this request, it is set to<span className='mstockNavFont'> application/x-www-form-urlencoded</span>, which is used for submiting form data.
-        </li>
-      </ul>
+      <dl class="pl-4">
+        <div class="flex">
+          <dt class="font-semibold min-w-[120px]">X-Mirae-Version :</dt>
+          <dd>Specifies the version of the API being used. In this case, it is set to 1.</dd>
+        </div>
+        <div class="flex">
+          <dt class="font-semibold min-w-[120px]">Content-Type :</dt>
+          <dd>
+            For this request, it is set to
+            <span class="mstockNavFont">application/x-www-form-urlencoded</span>, which is used for submitting form data.
+          </dd>
+        </div>
+     </dl>
     </div>
 
     {/* Postman Curl command Details Section */}
     <div>
-      <p className="font-bold">Postman cURL Command -</p>
+      <p className="font-bold">cURL Command -</p>
       <CopyBox copyContent={loginCurlData} />
     </div>
 

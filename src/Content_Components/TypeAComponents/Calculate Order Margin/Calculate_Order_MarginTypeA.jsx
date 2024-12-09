@@ -86,15 +86,17 @@ const FailureInputJson = {
 }
 
   return (
-    <div className='flex flex-col gap-6 mt-10'>
+    <div className='flex flex-col gap-6'>
     {/* <h1>Place Order</h1> */}
     <h1 className="content-heading-font">Calculate Order Margin</h1>
-    <DynamicTable data={data}/>
+    <div className='mt-4'>
+                 <DynamicTable data={data}/>
+              </div>
     <div className='flex flex-col gap-3'>
       <ol className='list-inside'>
         <li className="font-bold text-xl">Calculate Order Margin</li>
       </ol>
-      <p>
+      {/* <p>
         URL :
         <a
           className="mstockNavFont"
@@ -105,13 +107,13 @@ const FailureInputJson = {
       </p>
       <p>
         Method -<span className="font-bold"> POST</span>
-      </p>
+      </p> */}
     </div>
     
     {/* Description  Details Section */}
     <div>
       <p>
-        <span className="font-bold">Description -</span>This endpoint allows users to retrieve a list of their trading orders.
+        This endpoint allows users to retrieve a list of their trading orders.
         Users can view all their existing orders.
       </p>
     </div>
@@ -119,24 +121,27 @@ const FailureInputJson = {
        {/* Request Header Details Section */}
        <div className='flex flex-col gap-2'>
     <span className="font-bold">Request Headers -</span>
-      <ul>
-        <li>
-          <span className="font-semibold">X-Mirae-Version:</span> Specifies
-          the version of the API being used. In this case, it is set to 1
-        </li>
-        <li>
-          <span className="font-semibold">Authorization:</span> A token-based authentication header. The format is token 
-          api_key:access_token.
-        </li>
-        <li>
-          <span className="font-semibold">Content-Type:</span> Indicated the media type of the resource. For this request, it is set to <a className='mstockNavFont' href='application/x-www-form-urlencoded'> application/x-www-form-urlencoded</a>, which s used for submiting form data.
-        </li>
-      </ul>
+      <dl class="pl-4">
+        <div class="flex">
+          <dt class="font-semibold min-w-[120px]">X-Mirae-Version :</dt>
+          <dd>Specifies the version of the API being used. In this case, it is set to 1.</dd>
+        </div>
+        <div class="flex">
+          <dt class="font-semibold min-w-[120px]">Authorization :</dt>
+          <dd>A token-based authentication header. The format is token api_key:access_token.</dd>
+        </div>
+        <div class="flex">
+          <dt class="font-semibold min-w-[120px]">Content-Type :</dt>
+          <dd>
+            Indicated the media type of the resource. For this request, it is set to <a className='mstockNavFont' href='application/x-www-form-urlencoded'> application/x-www-form-urlencoded</a>, which is used for submiting form data.
+          </dd>
+        </div>
+      </dl>
     </div>
 
     {/* Postman Curl command Details Section */}
     <div className='flex flex-col gap-2'>
-      <p className="font-bold">Postman cURL Command -</p>
+      <p className="font-bold">cURL Command -</p>
       <CopyBox copyContent={COMCurlData} />
     </div>
 

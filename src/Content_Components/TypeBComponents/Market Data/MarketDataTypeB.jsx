@@ -338,9 +338,16 @@ function MarketDataTypeB() {
     
   return (
     <>
-        <div className='flex flex-col gap-6 mt-10'>
+        <div className='flex flex-col gap-6'>
     {/* <h1>Place Order</h1> */}
         <h1 className="content-heading-font">Market Data</h1>
+
+    {/* Establishing Connection Details Connection */}
+    <div className='flex flex-col gap-4'> 
+            <h1 className='text-xl font-bold'>Establishing Connection</h1>
+            <p>To establish connection with Mirae WebSocket for Market Feed, you can to the below endpoint using WebSocket library.</p>
+            <CopyBox copyContent={"wss://nstream.mirae.com?API_KEY=KEY&ACCESS_TOKEN=ACXX"}/>
+    </div>
 
      {/* ServerAuth Details Section */}
      <div>

@@ -32,9 +32,10 @@ function AllOrdersTypeB() {
 
   return (
     <div>
-        <h1 className="content-heading-font  py-6">Orders</h1>
         {/* Order API table */}
             <div className='flex flex-col gap-4'>
+            <h1 className="content-heading-font">Orders</h1>
+
               <p>The order APIs let you place orders of different varities, modify and cancel pending orders, retrieve the daily order and more.</p>
                     <div className='mt-4'>
                         <DynamicTable data={data}/>

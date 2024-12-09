@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useContext } from 'react'
 import "./Main.css"
+import { useNavigate } from 'react-router-dom'
 import { SelectTypeContext } from '../Context/SelectType';
 
 
 function LeftSideBarWeb() {
   
     const {state,dispatch} = useContext(SelectTypeContext);
+    const navigate = useNavigate()
     const [currentTypeLinks,setCurrentTypeLinks] = useState([])
     
     const TradingApiDefaultA = [
@@ -126,12 +128,26 @@ function LeftSideBarWeb() {
 
     ]
     const location = useLocation();
+    const [initalRender,setInitalRender] = useState(false)
     const[TradlingLinkTypeA,setTradlingLinkTypeA] = useState(TradingApiDefaultA)
     const[TradlingLinkTypeB,setTradlingLinkTypeB] = useState(TradingApiDefaultA)
 
     useEffect(()=>{
-        setCurrentTypeLinks(filterCurrentTypeLinks())
+        setCurrentTypeLinks(filterCurrentTypeLinks())        
+        if(initalRender){
+          navigate(`/type-${state.selectedValue.toLowerCase()}/login`)
+        }
+        setInitalRender(true)
     },[state.selectedValue])  
+
+    useEffect(()=>{
+      console.log("path",);
+      const pathType = location.pathname; 
+      if(pathType.length >0){
+          navigate(location.pathname)
+      // dispatch({...state,selectedValue:pathType.toUpperCase()})
+      }
+    },[location.pathname])
 
     
     const filterCurrentTypeLinks = ()=>{
@@ -142,14 +158,13 @@ function LeftSideBarWeb() {
         return TradingApiDefaultB;
       }
   }    
-
-
+  
   return (
     <aside className='bg-white   w-customSmall hidden flex-shrink-0 md:flex flex-col gap-4  overflow-y-scroll'>
             {console.log("LeftSide bar RENDER")}
         {/* Introduction API */}
           <div>
-            <h1 className="font-bold mb-6">API Documentation</h1>
+            <h1 className="font-bold mb-6 mt-4">API Documentation</h1>
             {
              <ul className='indent-1 flex flex-col'>
               {

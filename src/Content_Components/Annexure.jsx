@@ -132,7 +132,7 @@ function Annexure() {
                
     ]
   return (
-    <div className='flex flex-col gap-6 mt-10'>
+    <div className='flex md:min-w-[736px] flex-col gap-6'>
     {/* <h1>Place Order</h1> */}
         <h1 className="content-heading-font">Annexure</h1>
         <div>

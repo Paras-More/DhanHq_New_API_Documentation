@@ -119,7 +119,7 @@ const data = [
   },[])
 
   return (
-    <div className='flex flex-col gap-6 mt-10'>
+    <div className='flex flex-col gap-6'>
     {/* <h1>Place Order</h1> */}
     <h1 className="content-heading-font">Net Position</h1>
                     <div className='mt-4'>
@@ -129,7 +129,7 @@ const data = [
       <ol className='list-inside'>
         <li className="font-bold text-xl">Net Position</li>
       </ol>
-      <p>
+      {/* <p>
         URL :
         <a
           className="mstockNavFont"
@@ -140,13 +140,13 @@ const data = [
       </p>
       <p>
         Method -<span className="font-bold"> GET</span>
-      </p>
+      </p> */}
     </div>
     
     {/* Description  Details Section */}
     <div>
       <p>
-        <span className="font-bold">Description -</span> This endpoint allows users to retrieve a list of their trading orders.
+       This endpoint allows users to retrieve a list of their trading orders.
         Users can view all their existing orders
       </p>
     </div>
@@ -154,21 +154,21 @@ const data = [
     {/* Request Header Details Section */}
     <div className='flex flex-col gap-2'>
     <span className="font-bold">Request Headers -</span> 
-      <ul>
-        <li>
-          <span className="font-semibold">X-Mirae-Version:</span> Specifies
-          the version of the API being used. In this case, it is set to 1
-        </li>
-        <li>
-          <span className="font-semibold">Authorization:</span> A token-based authentication header. The format is token 
-          api_key:access_token.
-        </li>
-      </ul>
+      <dl class="pl-4">
+        <div class="flex">
+          <dt class="font-semibold min-w-[120px]">X-Mirae-Version :</dt>
+          <dd>Specifies the version of the API being used. In this case, it is set to 1.</dd>
+        </div>
+        <div class="flex">
+          <dt class="font-semibold min-w-[120px]">Authorization :</dt>
+          <dd>A token-based authentication header. The format is token api_key:access_token.</dd>
+        </div>
+      </dl>
     </div>
 
     {/* Postman Curl command Details Section */}
     <div className='flex flex-col gap-2'>
-      <p className="font-bold">Postman cURL Command -</p>
+      <p className="font-bold">cURL Command -</p>
       <CopyBox copyContent={positionCurlData} />
     </div>
 

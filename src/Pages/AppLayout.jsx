@@ -14,7 +14,7 @@ function  AppLayout() {
         {/* This Below Div will only be visible above 995px width screen */}
         {console.log("render")}
         <Navbar/>
-        <div className='m-auto max-w-full flex flex-nowrap shrink-1 gap-4 bg-white px-4 overflow-y-scroll overflow-hidden pt-10'style={{ maxHeight: "100vh" }} >
+        <div className='m-auto max-w-full flex flex-nowrap shrink-1 gap-4 bg-white px-4 overflow-y-scroll overflow-hidden pt-7'style={{ maxHeight: "100vh" }} >
            {/* Left Side Bar */}
            {/* For Webdevices for above 1205px other wise hidden*/}
                  <LeftSideBarWeb/>  
