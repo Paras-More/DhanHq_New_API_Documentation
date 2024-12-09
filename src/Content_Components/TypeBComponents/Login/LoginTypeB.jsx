@@ -8,7 +8,7 @@ function LoginTypeB() {
  const data  = [
     {
       "method": "POST",
-      "path": "https://nTasc.mirae.com/typeb/connect/login",
+      "path": "https://ntasc.mirae.com/typeb/connect/login",
       "description": "This endpoint allows users to log in to the application "
     },
   ]
@@ -84,9 +84,9 @@ const requestParameter = [
             URL :
             <a
               className="mstockNavFont"
-              href="https://nTasc.mirae.com/typeb/connect/login "
+              href="https://ntasc.mirae.com/typeb/connect/login "
             >
-              https://nTasc.mirae.com/typeb/connect/login 
+              https://ntasc.mirae.com/typeb/connect/login 
             </a>
           </p>
           <p>

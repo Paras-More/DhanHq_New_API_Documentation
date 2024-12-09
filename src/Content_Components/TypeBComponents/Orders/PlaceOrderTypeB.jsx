@@ -151,7 +151,7 @@ function PlaceOrderTypeB() {
             className="mstockNavFont"
             href="https://ntasc.mirae.com/typeb/orders/regular"
           >
-            https://nTasc.mirae.com/typeb/orders/regular 
+            https://ntasc.mirae.com/typeb/orders/regular 
           </a>
         </p>
         <p>

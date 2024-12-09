@@ -11,7 +11,7 @@ const CopyBox = ({ copyContent }) => {
         // Deleting the Pop of copied text
         setTimeout(()=>{
          setIsCopied(false)
-        },1000)
+        },3000)
     }).catch((e)=>{
         alert(e)
     })
@@ -24,12 +24,14 @@ const CopyBox = ({ copyContent }) => {
         onClick={handleCopy}
         className="absolute top-2 right-2 bg-customBlueFont text-white text-sm px-2 py-1 rounded hover:bg-customBlueFont"
       >
-        Copy
+        {
+          !isCopied ? "Copy" : "Copied!"
+        }
       </button>
-    {
+    {/* {
         isCopied &&  <span className="fixed bottom-6 right-32 px-5 py-2 bg-customBlueFont text-white rounded-md;
         ">Text is copied</span>
-    }
+    } */}
     </div>
   );
 };

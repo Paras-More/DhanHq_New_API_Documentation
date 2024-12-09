@@ -7,7 +7,7 @@ function GenerateSessionTypeA() {
   const data =[
     {
         "method": "POST",
-        "path": "https://nTasc.mirae.com/typea/session/token",
+        "path": "https://ntasc.mirae.com/typea/session/token",
         "description": "This endpoint is used to retrieve a session token based on the provided API key, request token, and checksum."
       },
   ]
@@ -79,7 +79,7 @@ function GenerateSessionTypeA() {
     }
   ]
 
-  const SessionNtascParameter = [
+  const SessionntascParameter = [
     {
       "Field":"api_key",
       "Type":"string",
@@ -112,9 +112,9 @@ function GenerateSessionTypeA() {
             URL :
             <a
               className="mstockNavFont"
-              href="https://nTasc.mirae.com/typea/session/token "
+              href="https://ntasc.mirae.com/typea/session/token "
             >
-              https://nTasc.mirae.com/typea/session/token
+              https://ntasc.mirae.com/typea/session/token
             </a>
           </p>
           <p>
@@ -177,7 +177,7 @@ authenticating subsequent API requests
         
         <li>checksum =&gt; source (W)</li>
       </ul> */}
-       <DynamicTable data={SessionNtascParameter}/>
+       <DynamicTable data={SessionntascParameter}/>
 
     </div>
 

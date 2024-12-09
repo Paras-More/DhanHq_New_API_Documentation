@@ -10,22 +10,22 @@ function AllOrdersTypeB() {
     const data = [
         {
           "method": "POST",
-          "path": "https://nTasc.mirae.com/typeb/orders/regular",
+          "path": "https://ntasc.mirae.com/typeb/orders/regular",
           "description": "Place a new order"
         },
         {
           "method": "PUT",
-          "path": "https://nTasc.mirae.com/typeb/orders/regular/{OrderID}",
+          "path": "https://ntasc.mirae.com/typeb/orders/regular/{OrderID}",
           "description": "Modify a pending order"
         },
         {
           "method": "DELETE",
-          "path": "https://nTasc.mirae.com/typeb/orders/regular/{OrderID} ",
+          "path": "https://ntasc.mirae.com/typeb/orders/regular/{OrderID} ",
           "description": "Cancel a pending order"
         },
         {
           "method": "GET",
-          "path": "https://nTasc.mirae.com/typeb/orders",
+          "path": "https://ntasc.mirae.com/typeb/orders",
           "description": "View all the existing orders."
         },    
       ]

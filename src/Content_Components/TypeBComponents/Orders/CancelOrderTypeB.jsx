@@ -131,7 +131,7 @@ const requestParameter = [
           className="mstockNavFont"
           href="https://ntasc.mirae.com/typeb/orders/regular/{OrderID}"
         >
-           https://nTasc.mirae.com/typeb/orders/regular/&#10100;OrderID&#10101;
+           https://ntasc.mirae.com/typeb/orders/regular/&#10100;OrderID&#10101;
         </a>
       </p>
       <p>

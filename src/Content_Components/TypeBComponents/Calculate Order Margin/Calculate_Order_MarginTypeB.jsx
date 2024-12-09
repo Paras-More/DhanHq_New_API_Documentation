@@ -70,7 +70,7 @@ const SuccessResponseJson = {
 const data = [
   {
     "method": "POST",
-    "path": "https://nTasc.mirae.com/typeb/margins/orders",
+    "path": "https://ntasc.mirae.com/typeb/margins/orders",
     "description": "This endpoint allows users to retrieve a list of their trading orders. Users can view all their existing orders."
   },
 ]
@@ -99,9 +99,9 @@ const FailureInputJson = {
         URL :
         <a
           className="mstockNavFont"
-          href="https://nTasc.mirae.com/typeb/margins/orders"
+          href="https://ntasc.mirae.com/typeb/margins/orders"
         >
-          https://nTasc.mirae.com/typeb/margins/orders
+          https://ntasc.mirae.com/typeb/margins/orders
         </a>
       </p>
       <p>

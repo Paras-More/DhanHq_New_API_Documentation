@@ -107,7 +107,7 @@ function Net_PositionTypeB() {
 const data = [
   {
     "method": "POST",
-    "path": "https://nTasc.mirae.com/typeb/portfolio/positions",
+    "path": "https://ntasc.mirae.com/typeb/portfolio/positions",
     "description": "retrieve a list of all existing trading orders."
   },
 ]
@@ -133,9 +133,9 @@ const data = [
         URL :
         <a
           className="mstockNavFont"
-          href="https://nTasc.mirae.com/typeb/portfolio/positions"
+          href="https://ntasc.mirae.com/typeb/portfolio/positions"
         >
-           https://nTasc.mirae.com/typeb/portfolio/positions
+           https://ntasc.mirae.com/typeb/portfolio/positions
         </a>
       </p>
       <p>

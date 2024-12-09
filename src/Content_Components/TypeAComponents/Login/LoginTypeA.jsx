@@ -7,7 +7,7 @@ function LoginTypeA() {
   const data  = [
     {
       "method": "POST",
-      "path": "https://nTasc.mirae.com/typea/connect/login",
+      "path": "https://ntasc.mirae.com/typea/connect/login",
       "description": "This endpoint allows users to log in to the application "
     },
   ]
@@ -60,8 +60,9 @@ function LoginTypeA() {
 
   return (
     <div className='flex flex-col gap-6 mt-10'>
+              <h1 className="content-heading-font">Login</h1>
+
     {/* <h1>Place Order</h1> */}
-        <h1 className="content-heading-font">Login</h1>
                 <div className='mt-4'>
                     <DynamicTable data={data}/>
                 </div>
@@ -73,9 +74,9 @@ function LoginTypeA() {
             URL :
             <a
               className="mstockNavFont"
-              href="https://nTasc.mirae.com/typea/connect/login"
+              href="https://ntasc.mirae.com/typea/connect/login"
             >
-              https://nTasc.mirae.com/typea/connect/login
+              https://ntasc.mirae.com/typea/connect/login
             </a>
           </p>
           <p>

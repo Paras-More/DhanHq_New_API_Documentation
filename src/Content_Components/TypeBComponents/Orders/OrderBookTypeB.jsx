@@ -115,7 +115,7 @@ function OrderBookTypeB() {
           className="mstockNavFont"
           href="https://ntasc.mirae.com/typeb/orders"
         >
-          https://nTasc.mirae.com/typeb/orders
+          https://ntasc.mirae.com/typeb/orders
         </a>
       </p>
       <p>

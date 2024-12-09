@@ -344,7 +344,7 @@ function MarketDataTypeB() {
 
      {/* ServerAuth Details Section */}
      <div>
-                <h1 className='text-xl font-bold mb-2'>Server Auth</h1>
+                <h1 className='text-xl font-bold mb-2'>Auth</h1>
             <div>
             <ol className=' list-decimal flex flex-col gap-3 list-outside px-4'>
                     <li>Authentication is done based on the Access Token generated in Login</li>

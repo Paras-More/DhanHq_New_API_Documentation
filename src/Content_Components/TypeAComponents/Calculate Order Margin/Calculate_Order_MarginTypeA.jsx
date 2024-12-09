@@ -1,9 +1,16 @@
 import React from 'react'
 import CopyBox from '../../../Common_Components/CopyBox'
 import NewJsonViewer from '../../../Common_Components/NewJsonViewer'
-
+import DynamicTable from '../../../Common_Components/DynamicTable'
 function Calculate_Order_MarginTypeA() {
 
+  const data = [
+    {
+      "method": "POST",
+      "path": "https://ntasc.mirae.com/typea/margins/orders",
+      "description": "This endpoint allows users to retrieve a list of their trading orders. Users can view all their existing orders."
+    },
+  ]
 
 const COMCurlData =`curl --location 'http://ntasc.mirae.com/typea/margins/orders' \\
     --header 'X-Mirae-Version: 1' \\
@@ -82,6 +89,7 @@ const FailureInputJson = {
     <div className='flex flex-col gap-6 mt-10'>
     {/* <h1>Place Order</h1> */}
     <h1 className="content-heading-font">Calculate Order Margin</h1>
+    <DynamicTable data={data}/>
     <div className='flex flex-col gap-3'>
       <ol className='list-inside'>
         <li className="font-bold text-xl">Calculate Order Margin</li>

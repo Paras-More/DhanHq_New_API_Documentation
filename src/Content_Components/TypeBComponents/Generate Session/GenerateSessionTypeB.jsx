@@ -7,7 +7,7 @@ function GenerateSessionTypeB() {
     const data = [
         {
             "method": "POST",
-            "path": "https://nTasc.mirae.com/typeb/portfolio/positions",
+            "path": "https://ntasc.mirae.com/typeb/session/token",
             "description":"This endpoint is used to retrieve a session token based on the provided API key, request token, and checksum."
           },
     ]
@@ -50,7 +50,7 @@ function GenerateSessionTypeB() {
     },
   ]
 
-  const SessionNtascParameter = [
+  const SessionntascParameter = [
     {
       "Field":"refreshToken",
       "Type":"string",
@@ -79,9 +79,9 @@ function GenerateSessionTypeB() {
             URL :
             <a
               className="mstockNavFont"
-              href="https://nTasc.mirae.com/typeb/session/token"
+              href="https://ntasc.mirae.com/typeb/session/token"
             >
-              https://nTasc.mirae.com/typeb/session/token 
+              https://ntasc.mirae.com/typeb/session/token 
             </a>
           </p>
           <p>
@@ -125,7 +125,7 @@ function GenerateSessionTypeB() {
       <DynamicTable data={SessionParameter}/>
 
       <p>n.Tasc Fields mapping with mStock API Parameters – </p>
-      <DynamicTable data={SessionNtascParameter}/>
+      <DynamicTable data={SessionntascParameter}/>
       </div>
     </div>
 
