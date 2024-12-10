@@ -160,10 +160,11 @@ function LeftSideBarWeb() {
   }    
   
   return (
-    <aside className='bg-white   w-customSmall hidden flex-shrink-0 md:flex flex-col gap-4  overflow-y-scroll'>
+    <aside className='bg-white sticky top-0 w-customSmall hidden flex-shrink-0 md:flex flex-col gap-4  overflow-y-scroll'>
             {console.log("LeftSide bar RENDER")}
-        {/* Introduction API */}
-          <div>
+       <div className='fixed flex flex-col gap-4'>
+         {/* Introduction API */}
+         <div>
             <h1 className="font-bold mb-6 mt-2">API Documentation</h1>
             {
              <ul className='indent-1 flex flex-col'>
@@ -181,8 +182,8 @@ function LeftSideBarWeb() {
           </div>
 
       {/* DropDown Type A & Type B */}
-          <div className='w-full '>
-                <div className='p-1 w-[60%] bg-customBlueFont text-white rounded-lg cursor-pointer hover:' onClick={()=>dispatch({...state,showDropDown:!state.showDropDown})}>
+          <div className='w-full relative'>
+                <div className='p-1 max-w-[63%] bg-customBlueFont text-white rounded-lg cursor-pointer hover:' onClick={()=>dispatch({...state,showDropDown:!state.showDropDown})}>
                   <div className='flex items-center justify-between px-1'>
                   <p className='indent-2 font-semibold text-s'>{`Type ${state.selectedValue}`}</p>
                   {
@@ -258,6 +259,7 @@ function LeftSideBarWeb() {
             }
             </ul>
         </div>
+       </div>
   </aside>       
   )
 }

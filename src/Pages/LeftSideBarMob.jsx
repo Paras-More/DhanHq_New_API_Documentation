@@ -13,7 +13,6 @@ function LeftSideBarMob() {
 
     function handleLinkCLick(e){
       e.stopPropagation();
-
     }
 
     function handleParentClick(e){ 

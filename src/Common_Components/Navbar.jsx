@@ -1,20 +1,20 @@
 import React, { useContext, useEffect } from 'react'
 import { SelectTypeContext } from '../Context/SelectType'
 import LeftSideBarMob from '../Pages/LeftSideBarMob'
+import mstockLogo from "../Logo/mirae-logo.svg"
+
 function Navbar() {
   const {showMenu,setShowMenu} = useContext(SelectTypeContext)
 
 
   useEffect(()=>{
 
-    
   },[showMenu])
- 
 
 
   return (
-    <nav className="w-full bg-white border-b-2 lg:px-40 lg:py-2 px-8 py-1  flex items-center justify-between flex-wrap sticky top-0  z-50">
-               <div className='flex items-center justify-between w-full'>
+    <nav className="w-full h-16 bg-white border-b-2  flex items-center justify-center flex-wrap sticky top-0  z-50">
+               <div className='flex  items-center justify-start m-auto max-w-[930px] w-full'>
                <div className='md:hidden'>
                   {
                     !showMenu && <svg
@@ -33,11 +33,10 @@ function Navbar() {
                     </svg> 
                   }
 
-
-
                 </div>
+
               <div className='flex gap-20 items-center justify-between h-[45px]'>
-                    <img src='https://www.mstock.com/content/images/mirae-logo.svg' className='hidden md:block h-[45px]'></img>
+                    <img src={mstockLogo} alt="mstock-logo" className='hidden md:block h-[45px]'></img>
                     <span className='mstockNavFont text-xl'>API Documentation</span>        
               </div> 
               </div>  

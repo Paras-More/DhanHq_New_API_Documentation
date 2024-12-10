@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import "./Main.css"
 import { Outlet,useLocation } from 'react-router-dom'
 
+
 function CenterContainer() {
 
   const location  = useLocation();
@@ -14,8 +15,8 @@ function CenterContainer() {
   }, [location]); // Runs whenever the route (location) changes.
 
   return (
-<section className='bg-white max-w-[736px] flex-shrink-1 overflow-y-auto mb-10 Center_content_div'>
-{console.log("Center Container render")}    
+<section className='bg-red-400 max-w-[736px] md:min-w-[736px] flex-shrink-1 mb-10 Center_content_div'>
+  {console.log("Center Container render")}    
     <Outlet/>
  </section>
   )
