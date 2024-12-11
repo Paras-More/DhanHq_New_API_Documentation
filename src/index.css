@@ -36,6 +36,10 @@
   font-family: "Open Sans",sans-serif ;
   /* font-feature-settings: "kern", "liga"; */
 }
+.changeScrollTop{
+  font-family: "Open Sans",sans-serif !important;
+
+}
 
 .content-subheading-font {
   font-size: 1.4rem;

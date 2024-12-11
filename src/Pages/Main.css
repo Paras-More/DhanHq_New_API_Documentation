@@ -12,3 +12,8 @@
 .Center_content_div::-webkit-scrollbar {
   display: none; /* Hide the scrollbar in Webkit-based browsers like Chrome */
 }
+
+.changeScrollTop{
+  font-family: "Open Sans",sans-serif !important;
+
+}

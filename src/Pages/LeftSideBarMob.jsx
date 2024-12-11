@@ -1,39 +1,186 @@
 import React, { useEffect, useState } from 'react'
 import { useContext } from 'react';
 import { SelectTypeContext } from '../Context/SelectType';
+import mstockLogo from "../Logo/mirae-logo.svg"
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 function LeftSideBarMob() {
 
   const {showMenu,setShowMenu} = useContext(SelectTypeContext)
+  const {state,dispatch} = useContext(SelectTypeContext);
+  const navigate = useNavigate()
+  const [currentTypeLinks,setCurrentTypeLinks] = useState([])
+  
+  const TradingApiDefaultA = [
+    {
+      title:"Login",
+      path:"/login",
+      isSelected:false,
+      type:"TradingAPI"
 
+    },
+    {
+      title:"Generate Session",
+      path:"/generate-session",
+      isSelected:false,
+      type:"TradingAPI"
+
+    },
+    {
+      title:"Orders",
+      path:"/orders",
+      isSelected:false,
+      type:"TradingAPI"
+
+    },
+    {
+      title:"Net Position",
+      path:"/net-position",
+      isSelected:false,
+      type:"TradingAPI"
+
+    },
+    {
+      title:"Calculate Order Margin",
+      path:"/calculate-order-margin",
+      isSelected:false,
+      type:"TradingAPI"
+
+    },
+    {
+      title:"Market Data",
+      path:"/market-data",
+      isSelected:false,
+      type:"DataAPI"
+
+    },
+    {
+      title:"Annexure",
+      path:"/annexure",
+      isSelected:false,
+      type:"Annexure"
+
+    },
+    {
+      title:"Introduction",
+      path:"/",
+      isSelected:false,
+      type:"Introduction"
+    }
+
+  ]
+  const TradingApiDefaultB = [
+    {
+      title:"Login",
+      path:"/login",
+      isSelected:false,
+      type:"TradingAPI"
+    },
+    {
+      title:"Generate Session",
+      path:"/generate-session",
+      isSelected:false,
+      type:"TradingAPI"
+
+    },
+    {
+      title:"Orders",
+      path:"/orders",
+      isSelected:false,
+      type:"TradingAPI"
+
+    },
+    {
+      title:"Net Position",
+      path:"/net-position",
+      isSelected:false,
+      type:"TradingAPI"
+
+    },
+    {
+      title:"Calculate Order Margin",
+      path:"/calculate-order-margin",
+      isSelected:false,
+      type:"TradingAPI"
+
+    },
+    {
+      title:"Market Data",
+      path:"/market-data",
+      isSelected:false,
+      type:"DataAPI"
+
+    },
+    {
+      title:"Annexure",
+      path:"/annexure",
+      isSelected:false,
+      type:"Annexure"
+
+    },
+    {
+      title:"Introduction",
+      path:"/",
+      isSelected:false,
+      type:"Introduction"
+    }
+
+  ]
+  const location = useLocation();
+  const [initalRender,setInitalRender] = useState(false)
+  const[TradlingLinkTypeA,setTradlingLinkTypeA] = useState(TradingApiDefaultA)
+  const[TradlingLinkTypeB,setTradlingLinkTypeB] = useState(TradingApiDefaultA)
+
+  useEffect(()=>{
+      setCurrentTypeLinks(filterCurrentTypeLinks())        
+      if(initalRender){
+        navigate(`/type-${state.selectedValue.toLowerCase()}/login`)
+      }
+      setInitalRender(true)
+  },[state.selectedValue])  
+
+  useEffect(()=>{
+    console.log("path",);
+    const pathType = location.pathname; 
+    if(pathType.length >0){
+        navigate(location.pathname)
+        setShowMenu(!showMenu)
+    // dispatch({...state,selectedValue:pathType.toUpperCase()})
+    }
+  },[location.pathname])
+
+  
+  const filterCurrentTypeLinks = ()=>{
+    switch (state.selectedValue) {
+      case "A":
+        return TradingApiDefaultA;
+        case "B":
+      return TradingApiDefaultB;
+    }
+} 
 
     useEffect(()=>{
-      
-
     },[showMenu])
 
     function handleLinkCLick(e){
       e.stopPropagation();
     }
-
     function handleParentClick(e){ 
       // If user clicks on background grey portion then menu will be closed       
       setShowMenu(!showMenu)
     }
-
   return (
     <>
         {
-          showMenu && <div onClick={handleParentClick} className='w-full xl:hidden text-2xl fixed top-0 right-0 left-0 bottom-0 bg-[#6b72808f]'>
+          showMenu && <div onClick={handleParentClick} className=' w-full xl:hidden text-2xl fixed top-0 right-0 left-0 bottom-0 bg-[#6b72808f]'>
              {
-              <div className='h-full w-[17.125rem] px-2 py-4 bg-green-500'>
+              <div className='h-full w-[17.125rem] bg-white px-2 py-4 '>
                       
-                    <div onClick={handleLinkCLick} className=' h-full'>
-                      <div className='bg-white flex flex-col items-start justify-center py-[1.75rem] px-[1rem] min-h-[7rem] max-h-[7rem]'>
+                    <div onClick={handleLinkCLick} className='  h-full'>
+                      <div className='bg-white flex flex-col items-start justify-center py-[1.75rem] px-[1rem] min-h-[7rem] max-h-[4rem]'>
                         <div className='h-[3.5rem] w-[12.875rem]'>
-                          <img src='https://www.mstock.com/content/images/mirae-logo.svg' className='h-[3.5rem] w-[7.875rem]'></img>
-                        </div>
-                        <div>
-                            <p>API Documentation</p>
+                          <img src={mstockLogo} className='h-[3.5rem] w-[7.875rem]'></img>
                         </div>
                         {/* Back button SVG DIV */}
                         {/* <div className='pt-4 pl-7 bg-slate-300'>
@@ -43,13 +190,112 @@ function LeftSideBarMob() {
                           </svg> 
                         </div> */}
                       </div>
-                      {/* <div className='bg-red-500 mt-5'>
-                        <p>paras More</p>
-                      </div>       */}
+       <div className='mt-2'>
+          <div className='fixed flex flex-col gap-2 overflow-y-scroll'>
+
+         {/* Introduction API */}
+         <div>
+            <h1 className="font-bold mb-2">API Documentation</h1>
+            {
+             <ul className='indent-1 flex flex-col'>
+              {
+                currentTypeLinks?.map((ele,i)=>{
+                  
+                  if(ele.type === 'Introduction')
+                    return(
+                <Link to={ele.path}><li className={`${location.pathname === '/' ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
+                    )
+                })
+              }
+            </ul>
+          }
+          </div>
+
+      {/* DropDown Type A & Type B */}
+          <div className='w-full relative'>
+                <div className='p-1 max-w-[63%] bg-customBlueFont text-white rounded-lg cursor-pointer hover:' onClick={()=>dispatch({...state,showDropDown:!state.showDropDown})}>
+                  <div className='flex items-center justify-between px-1'>
+                  <p className='indent-2 font-semibold text-s'>{`Type ${state.selectedValue}`}</p>
+                  {
+                    state.showDropDown ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                      </svg> : <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  }
+                  </div>
+                </div>
+                {
+                    <div className="border-x-2 border-y-2 w-[60%] rounded-lg mt-1 flex flex-col bg-white shadow-lg border-orange-200  transition-all ease- duration-500 overflow-hidden"  
+                    style={{
+                      opacity: state.showDropDown ? 1 : 0,
+                      visibility: state.showDropDown ? "visible" : "hidden",
+                      maxHeight: state.showDropDown ? "300px" : "0px", // Increased maxHeight for smoother expand
+                      transform:state.showDropDown ?  "translateY(0)" : "translateY(1px)",
+                    }}
+                      >
+                      <p className="indent-3 p-1 text-customBlueFont border-b hover:text-customBlueFont hover:bg-orange-100  flex items-center justify-between pr-6" onClick={() => dispatch({selectedValue: "A",showDropDown:false})}>
+                        Type A
+                      </p>
+                      <p className="indent-3 p-1 text-customBlueFont hover:text-customBlueFont hover:bg-orange-100  flex items-center justify-between pr-6" onClick={() =>dispatch({selectedValue: "B",showDropDown:false})}>
+                        Type B
+                      </p>
+                    </div> 
+                }
+          </div>
+    
+      {/* Trading API List Items */}
+          <div>
+          <h1 className="font-bold mb-1">Trading API's</h1>
+          {/* For Selected Value Type A */}
+          <ul className='list-none'>
+          {
+              currentTypeLinks?.map((ele,i)=>{
+                if(ele.type === 'TradingAPI')
+                    return(
+                <Link to={`/type-${state.selectedValue}/${ele.title.replaceAll(" ","-")}`.toLowerCase()}><li className={`${ele.path.replace("/","") === location.pathname.split("/")[2] ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
+                    )
+                })
+            }
+          </ul>
+        </div>
+
+      {/* Data API List Items */}
+          <div>
+            <h1 className="font-bold mb-1">Data APIs</h1>
+            <ul className='flex flex-col'>
+            {
+              currentTypeLinks?.map((ele,i)=>{
+                if(ele.type === 'DataAPI')
+                    return(
+                <Link to={`/type-${state.selectedValue}/${ele.title.replaceAll(" ","-")}`.toLowerCase()}><li className={`${ele.path.replace("/","") === location.pathname.split("/")[2] ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
+                    )
+                })
+            }
+            </ul>
+          </div>
+
+      {/* Annexure and others */}
+        <div>
+          <ul className='flex flex-col'>
+            
+            {
+              currentTypeLinks?.map((ele,i)=>{
+                if(ele.type === 'Annexure')
+                    return(
+                <Link to={`/${ele.title.replaceAll(" ","-")}`.toLowerCase()}><li className={`${ele.path.replace("/","") === location.pathname.split("/")[1] ? 'text-customBlueFont font-bold' :''} font-bold`}>{ele.title}</li></Link>
+                    )
+                })
+            }
+            </ul>
+        </div>
+       </div>
+                      </div>      
                     </div>  
                </div>
               }
-               </div>
+
+          </div>
         }
     </>
   )

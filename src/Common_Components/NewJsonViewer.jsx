@@ -37,9 +37,9 @@ const NewJsonViewer = ({ data }) => {
         );
       }
     } else if (typeof value === "string") {
-      return <span className="text-red-500">"{value}"</span>;
+      return <span className="text-red-500 break-words">"{value}"</span>;
     } else {
-      return <span className="text-red-500">{value}</span>;
+      return <span className="text-red-500 break-words">{value}</span>;
     }
   };
 

@@ -44,7 +44,6 @@ function Router() {
               <Route path='/type-b/market-data' element={<MarketDataTypeB/>}></Route>
               {/* Annexure Route */}
               <Route path='/annexure' element={<Annexure/>}></Route>
-
           <Route path='*' element={<NotFound/>}/>
         </Route>
        </Routes>
