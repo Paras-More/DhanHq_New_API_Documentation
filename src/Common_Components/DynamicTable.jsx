@@ -6,8 +6,8 @@ const DynamicTable = ({ data }) => {
     const columns = Object.keys(data[0]);
       
     return (
-      <div className="max-w-full">
-        <table className="table-auto border-collapse border overflow-x-scroll border-gray-300 max-w-full">
+      <div className="max-w-full overflow-x-auto">
+        <table className="table-auto border-collapse border overflow-x-scroll border-gray-300 ">
           <thead>
             <tr className="bg-gray-100">
               {/* Dynamically render headers */}
@@ -31,11 +31,8 @@ const DynamicTable = ({ data }) => {
                   <td
                   dangerouslySetInnerHTML={{__html: row[col]}}
                     key={col}
-                    className={`px-4 py-2  text-wrap break-words ${
-                      typeof row[col] === "string" && col.includes("path")
-                        ? "font-mono"
-                        : ""
-                    }`}
+                    className={`px-4 py-2  text-wrap  ${typeof row[col] === "string"? "font-mono": ""
+                    } ${col.includes("path") ? "font-mono break- break-all": ""}`}
                   >
                   </td>
                 ))}
