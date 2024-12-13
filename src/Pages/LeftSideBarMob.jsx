@@ -173,22 +173,32 @@ function LeftSideBarMob() {
   return (
     <>
         {
-          showMenu && <div onClick={handleParentClick} className=' w-full xl:hidden text-2xl fixed top-0 right-0 left-0 bottom-0 bg-[#6b72808f]'>
+        <div 
+        onClick={handleParentClick} 
+        className="md:hidden text-2xl fixed top-0 left-0 h-full bg-[#6b72808f] transition-all ease-in duration-500" 
+        style={{
+          opacity: showMenu ? 1 : 0,
+          visibility: showMenu ? "visible" : "hidden",
+          width: showMenu ? "100%" : "-1%", // Expands from 0% width to full width
+          transform: showMenu ? "translateX(0)" : "translateX(-100%)", // Moves from left to right
+          transform: !showMenu ? "translateX(-100%)" : "translateX(0)", // Moves from left to right
+        }}
+      >
              {
-              <div className='h-full w-[17.125rem] bg-white px-2 py-4 '>
+              <div className='h-full w-[14.125rem] bg-white px-4 py-4 '>
                       
-                    <div onClick={handleLinkCLick} className='  h-full'>
-                      <div className='bg-white flex flex-col items-start justify-center py-[1.75rem] px-[1rem] min-h-[7rem] max-h-[4rem]'>
-                        <div className='h-[3.5rem] w-[12.875rem]'>
-                          <img src={mstockLogo} className='h-[3.5rem] w-[7.875rem]'></img>
-                        </div>
-                        {/* Back button SVG DIV */}
-                        {/* <div className='pt-4 pl-7 bg-slate-300'>
+                    <div onClick={handleLinkCLick} className='bg-white  h-full'>
+                      <div className='bg-white flex items-center justify-start gap-2 py-[0.5rem] min-h-[4rem] max-h-[4rem]'>.
+                          {/* Back button SVG DIV */}
+                          <div className='mb-2 mr-2'>
                           <svg onClick={()=>setShowMenu(!showMenu)}
                               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                               <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3   9h12a6 6 0 0 1 0 12h-3" />
                           </svg> 
-                        </div> */}
+                        </div>
+                        <div className='h-[3.5rem] w-[12.875rem] '>
+                          <img src={mstockLogo} className='h-[3.5rem] w-[7.875rem]'></img>
+                        </div>
                       </div>
        <div className='mt-2'>
           <div className='fixed flex flex-col gap-2 overflow-y-scroll'>
@@ -203,7 +213,7 @@ function LeftSideBarMob() {
                   
                   if(ele.type === 'Introduction')
                     return(
-                <Link to={ele.path}><li className={`${location.pathname === '/' ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
+                <Link to={ele.path}><li className={`border-b-[1px] border-t-[1px] border-gray-200 ${location.pathname === '/' ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
                     )
                 })
               }
@@ -213,7 +223,7 @@ function LeftSideBarMob() {
 
       {/* DropDown Type A & Type B */}
           <div className='w-full relative'>
-                <div className='p-1 max-w-[63%] bg-customBlueFont text-white rounded-lg cursor-pointer hover:' onClick={()=>dispatch({...state,showDropDown:!state.showDropDown})}>
+                <div className='max-w-[63%] mt-2 bg-customBlueFont text-white rounded-lg cursor-pointer hover:' onClick={()=>dispatch({...state,showDropDown:!state.showDropDown})}>
                   <div className='flex items-center justify-between px-1'>
                   <p className='indent-2 font-semibold text-s'>{`Type ${state.selectedValue}`}</p>
                   {
@@ -234,10 +244,10 @@ function LeftSideBarMob() {
                       transform:state.showDropDown ?  "translateY(0)" : "translateY(1px)",
                     }}
                       >
-                      <p className="indent-3 p-1 text-customBlueFont border-b hover:text-customBlueFont hover:bg-orange-100  flex items-center justify-between pr-6" onClick={() => dispatch({selectedValue: "A",showDropDown:false})}>
+                      <p className="indent-3  text-customBlueFont border-b hover:text-customBlueFont hover:bg-orange-100  flex items-center justify-between pr-6" onClick={() => dispatch({selectedValue: "A",showDropDown:false})}>
                         Type A
                       </p>
-                      <p className="indent-3 p-1 text-customBlueFont hover:text-customBlueFont hover:bg-orange-100  flex items-center justify-between pr-6" onClick={() =>dispatch({selectedValue: "B",showDropDown:false})}>
+                      <p className="indent-3 text-customBlueFont hover:text-customBlueFont hover:bg-orange-100  flex items-center justify-between pr-6" onClick={() =>dispatch({selectedValue: "B",showDropDown:false})}>
                         Type B
                       </p>
                     </div> 
@@ -246,17 +256,21 @@ function LeftSideBarMob() {
     
       {/* Trading API List Items */}
           <div>
-          <h1 className="font-bold mb-1">Trading API's</h1>
+          <h1 className="font-bold mb-1 ">Trading API's</h1>
           {/* For Selected Value Type A */}
           <ul className='list-none'>
-          {
-              currentTypeLinks?.map((ele,i)=>{
-                if(ele.type === 'TradingAPI')
-                    return(
-                <Link to={`/type-${state.selectedValue}/${ele.title.replaceAll(" ","-")}`.toLowerCase()}><li className={`${ele.path.replace("/","") === location.pathname.split("/")[2] ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
-                    )
-                })
-            }
+          {currentTypeLinks?.map((ele, i) => {
+          if (ele.type === 'TradingAPI') {
+          return (
+            <Link key={ele.title} to={`/type-${state.selectedValue}/${ele.title.replaceAll(" ","-")}`.toLowerCase()}>
+              <li className={`border-b-[1px] border-gray-200 ${i === 0 ? 'border-t-[1px] border-gray-200' : ''} ${ele.path.replace("/","") === location.pathname.split("/")[2] ? 'text-customBlueFont font-bold' : ''}`}>
+                {ele.title}
+              </li>
+            </Link>
+          );
+        }
+      })}
+
           </ul>
         </div>
 
@@ -265,13 +279,19 @@ function LeftSideBarMob() {
             <h1 className="font-bold mb-1">Data APIs</h1>
             <ul className='flex flex-col'>
             {
-              currentTypeLinks?.map((ele,i)=>{
-                if(ele.type === 'DataAPI')
-                    return(
-                <Link to={`/type-${state.selectedValue}/${ele.title.replaceAll(" ","-")}`.toLowerCase()}><li className={`${ele.path.replace("/","") === location.pathname.split("/")[2] ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
-                    )
-                })
-            }
+  currentTypeLinks?.map((ele, i) => {
+    if (ele.type === 'DataAPI') {
+      return (
+        <Link key={ele.title} to={`/type-${state.selectedValue}/${ele.title.replaceAll(" ","-")}`.toLowerCase()}>
+          <li className={`border-b-[1px] border-gray-200 ${ 'border-t-[1px] border-gray-200'} ${ele.path.replace("/","") === location.pathname.split("/")[2] ? 'text-customBlueFont font-bold' : ''}`}>
+            {ele.title}
+          </li>
+        </Link>
+      );
+    }
+  })
+}
+
             </ul>
           </div>
 
@@ -283,7 +303,7 @@ function LeftSideBarMob() {
               currentTypeLinks?.map((ele,i)=>{
                 if(ele.type === 'Annexure')
                     return(
-                <Link to={`/${ele.title.replaceAll(" ","-")}`.toLowerCase()}><li className={`${ele.path.replace("/","") === location.pathname.split("/")[1] ? 'text-customBlueFont font-bold' :''} font-bold`}>{ele.title}</li></Link>
+                <Link to={`/${ele.title.replaceAll(" ","-")}`.toLowerCase()}><li className= {`${ele.path.replace("/","") === location.pathname.split("/")[1] ? 'text-customBlueFont font-bold' :''} font-bold`} >{ele.title}</li></Link>
                     )
                 })
             }

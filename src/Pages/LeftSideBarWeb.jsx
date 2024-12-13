@@ -213,7 +213,6 @@ function LeftSideBarWeb() {
                     </div> 
                 }
           </div>
-    
       {/* Trading API List Items */}
           <div>
           <h1 className="font-bold mb-1">Trading API's</h1>

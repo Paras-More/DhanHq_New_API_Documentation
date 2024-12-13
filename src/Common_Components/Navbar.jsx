@@ -14,7 +14,7 @@ function Navbar() {
 
   return (
     <nav className="w-full h-16 bg-white border-b-2  flex items-center justify-center flex-wrap sticky top-0  z-50">
-               <div className='flex  items-center justify-start m-auto max-w-[930px] w-full'>
+               <div className='flex bg-white px-4 items-center justify-start gap-8 m-auto max-w-[930px] w-full'>
                <div className='md:hidden'>
                   {
                     !showMenu && <svg
