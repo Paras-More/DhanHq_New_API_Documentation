@@ -5,6 +5,8 @@ import mstockLogo from "../Logo/mirae-logo.svg"
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import TradingApiDefaultA from '../Utils/TradlingLinkTypeA';
+import TradingApiDefaultB from '../Utils/TradingApiDefaultB';
 function LeftSideBarMob() {
 
   const {showMenu,setShowMenu} = useContext(SelectTypeContext)
@@ -12,121 +14,7 @@ function LeftSideBarMob() {
   const navigate = useNavigate()
   const [currentTypeLinks,setCurrentTypeLinks] = useState([])
   
-  const TradingApiDefaultA = [
-    {
-      title:"Login",
-      path:"/login",
-      isSelected:false,
-      type:"TradingAPI"
 
-    },
-    {
-      title:"Generate Session",
-      path:"/generate-session",
-      isSelected:false,
-      type:"TradingAPI"
-
-    },
-    {
-      title:"Orders",
-      path:"/orders",
-      isSelected:false,
-      type:"TradingAPI"
-
-    },
-    {
-      title:"Net Position",
-      path:"/net-position",
-      isSelected:false,
-      type:"TradingAPI"
-
-    },
-    {
-      title:"Calculate Order Margin",
-      path:"/calculate-order-margin",
-      isSelected:false,
-      type:"TradingAPI"
-
-    },
-    {
-      title:"Market Data",
-      path:"/market-data",
-      isSelected:false,
-      type:"DataAPI"
-
-    },
-    {
-      title:"Annexure",
-      path:"/annexure",
-      isSelected:false,
-      type:"Annexure"
-
-    },
-    {
-      title:"Introduction",
-      path:"/",
-      isSelected:false,
-      type:"Introduction"
-    }
-
-  ]
-  const TradingApiDefaultB = [
-    {
-      title:"Login",
-      path:"/login",
-      isSelected:false,
-      type:"TradingAPI"
-    },
-    {
-      title:"Generate Session",
-      path:"/generate-session",
-      isSelected:false,
-      type:"TradingAPI"
-
-    },
-    {
-      title:"Orders",
-      path:"/orders",
-      isSelected:false,
-      type:"TradingAPI"
-
-    },
-    {
-      title:"Net Position",
-      path:"/net-position",
-      isSelected:false,
-      type:"TradingAPI"
-
-    },
-    {
-      title:"Calculate Order Margin",
-      path:"/calculate-order-margin",
-      isSelected:false,
-      type:"TradingAPI"
-
-    },
-    {
-      title:"Market Data",
-      path:"/market-data",
-      isSelected:false,
-      type:"DataAPI"
-
-    },
-    {
-      title:"Annexure",
-      path:"/annexure",
-      isSelected:false,
-      type:"Annexure"
-
-    },
-    {
-      title:"Introduction",
-      path:"/",
-      isSelected:false,
-      type:"Introduction"
-    }
-
-  ]
   const location = useLocation();
   const [initalRender,setInitalRender] = useState(false)
   const[TradlingLinkTypeA,setTradlingLinkTypeA] = useState(TradingApiDefaultA)
@@ -213,7 +101,7 @@ function LeftSideBarMob() {
                   
                   if(ele.type === 'Introduction')
                     return(
-                <Link to={ele.path}><li className={`border-b-[1px] border-t-[1px] border-gray-200 ${location.pathname === '/' ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
+                <Link to={ele.path}><li className={`${location.pathname === '/developer/' ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
                     )
                 })
               }
@@ -262,11 +150,7 @@ function LeftSideBarMob() {
           {currentTypeLinks?.map((ele, i) => {
           if (ele.type === 'TradingAPI') {
           return (
-            <Link key={ele.title} to={`/type-${state.selectedValue}/${ele.title.replaceAll(" ","-")}`.toLowerCase()}>
-              <li className={`border-b-[1px] border-gray-200 ${i === 0 ? 'border-t-[1px] border-gray-200' : ''} ${ele.path.replace("/","") === location.pathname.split("/")[2] ? 'text-customBlueFont font-bold' : ''}`}>
-                {ele.title}
-              </li>
-            </Link>
+           <Link to={`/developer/type-${state.selectedValue}/${ele.title.replaceAll(" ","-")}`.toLowerCase()}><li className={`${ele.path.split("/")[2] === location.pathname.split("/")[3] ? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
           );
         }
       })}
@@ -282,11 +166,7 @@ function LeftSideBarMob() {
   currentTypeLinks?.map((ele, i) => {
     if (ele.type === 'DataAPI') {
       return (
-        <Link key={ele.title} to={`/type-${state.selectedValue}/${ele.title.replaceAll(" ","-")}`.toLowerCase()}>
-          <li className={`border-b-[1px] border-gray-200 ${ 'border-t-[1px] border-gray-200'} ${ele.path.replace("/","") === location.pathname.split("/")[2] ? 'text-customBlueFont font-bold' : ''}`}>
-            {ele.title}
-          </li>
-        </Link>
+        <Link to={`/developer/type-${state.selectedValue}/${ele.title.replaceAll(" ","-")}`.toLowerCase()}><li className={`${ele.path.split("/")[2] === location.pathname.split("/")[3]? 'text-customBlueFont font-bold' :''}`}>{ele.title}</li></Link>
       );
     }
   })
@@ -303,7 +183,7 @@ function LeftSideBarMob() {
               currentTypeLinks?.map((ele,i)=>{
                 if(ele.type === 'Annexure')
                     return(
-                <Link to={`/${ele.title.replaceAll(" ","-")}`.toLowerCase()}><li className= {`${ele.path.replace("/","") === location.pathname.split("/")[1] ? 'text-customBlueFont font-bold' :''} font-bold`} >{ele.title}</li></Link>
+                  <Link to={`/developer/${ele.title.replaceAll(" ","-")}`.toLowerCase()}><li className={`${location.pathname === '/developer/annexure' ? 'text-customBlueFont font-bold' :''} font-bold`}>{ele.title}</li></Link>
                     )
                 })
             }

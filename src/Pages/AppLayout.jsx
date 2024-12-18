@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react';
 import "./Main.css"
-import Router from '../Routes/Router';
 import LeftSideBarWeb from './LeftSideBarWeb';
-import LeftSideBarMob from './LeftSideBarMob';
 import RightSideBar from './RightSideBar';  
 import CenterContainer from './CenterContainer';
-import { useRef } from 'react';
 import Navbar from '../Common_Components/Navbar';
 import { useLocation } from 'react-router-dom';
 function  AppLayout() {
@@ -26,7 +23,7 @@ function  AppLayout() {
         {console.log("render")}
         <Navbar/>
       <div className='w-full max-h-[90vh] overflow-y-auto changeScrollTop'>
-      <div className=' max-w-[930px] mx-auto flex flex-nowrap shrink-1 gap-4 px-4 pt-7 relative'>
+      <div className=' md:max-w-[70vw] max-w-full bg-white mx-auto flex flex-nowrap shrink-1 gap-4 px-4  pt-7 relative'>
            {/* Left Side Bar */}
            {/* For Webdevices for above 1205px other wise hidden*/}
                  <LeftSideBarWeb/>  
@@ -37,7 +34,9 @@ function  AppLayout() {
                  <CenterContainer/>
 
           {/* Right SideBar */}
-            {/* <RightSideBar/> */}
+            {/* <div className='max-w-full '>
+            <RightSideBar/>
+            </div> */}
         </div>
       </div>
 

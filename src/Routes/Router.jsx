@@ -22,28 +22,28 @@ function Router() {
     <>
     <BrowserRouter>
       <Routes>
-          <Route path='/' element={<AppLayout/>}>
+          <Route path='/developer' element={<AppLayout/>}>
           <Route index element={<Introduction/>}></Route>
               {/* Order Routes */}
-              <Route path='/type-a/orders' element={<AllOrdersTypeA/>}></Route>
-              <Route path='/type-b/orders' element={<AllOrdersTypeB/>}></Route>
+              <Route path='/developer/type-a/orders' element={<AllOrdersTypeA/>}></Route>
+              <Route path='/developer/type-b/orders' element={<AllOrdersTypeB/>}></Route>
               {/* Net Position Route */}
-              <Route path='/type-a/net-position' element={<Net_PositionTypeA/>}></Route>
-              <Route path='/type-b/net-position' element={<Net_PositionTypeB/>}></Route>
+              <Route path='/developer/type-a/net-position' element={<Net_PositionTypeA/>}></Route>
+              <Route path='/developer/type-b/net-position' element={<Net_PositionTypeB/>}></Route>
               {/* Calculate Order Margin route */}
-              <Route path='/type-a/calculate-order-margin' element={<Calculate_Order_MarginTypeA/>}></Route>
-              <Route path='/type-b/calculate-order-margin' element={<Calculate_Order_MarginTypeB/>}></Route>
+              <Route path='/developer/type-a/calculate-order-margin' element={<Calculate_Order_MarginTypeA/>}></Route>
+              <Route path='/developer/type-b/calculate-order-margin' element={<Calculate_Order_MarginTypeB/>}></Route>
               {/* Generate Session Routes */}
-              <Route path='/type-a/generate-session' element={<GenerateSessionTypeA/>}></Route>
-              <Route path='/type-b/generate-session' element={<GenerateSessionTypeB/>}></Route>
+              <Route path='/developer/type-a/generate-session' element={<GenerateSessionTypeA/>}></Route>
+              <Route path='/developer/type-b/generate-session' element={<GenerateSessionTypeB/>}></Route>
               {/* Login Session Routes */}
-              <Route path='/type-a/login' element={<LoginTypeA/>}></Route>
-              <Route path='/type-b/login' element={<LoginTypeB/>}></Route>
+              <Route path='/developer/type-a/login' element={<LoginTypeA/>}></Route>
+              <Route path='/developer/type-b/login' element={<LoginTypeB/>}></Route>
               {/* Market Data Routes */}
-              <Route path='/type-a/market-data' element={<MarketDataTypeA/>}></Route>
-              <Route path='/type-b/market-data' element={<MarketDataTypeB/>}></Route>
+              <Route path='/developer/type-a/market-data' element={<MarketDataTypeA/>}></Route>
+              <Route path='/developer/type-b/market-data' element={<MarketDataTypeB/>}></Route>
               {/* Annexure Route */}
-              <Route path='/annexure' element={<Annexure/>}></Route>
+              <Route path='/developer/annexure' element={<Annexure/>}></Route>
           <Route path='*' element={<NotFound/>}/>
         </Route>
        </Routes>

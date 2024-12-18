@@ -103,18 +103,6 @@ function Net_PositionTypeA() {
       <ol className='list-inside'>
         <li className="font-bold text-xl">Net Position</li>
       </ol>
-      {/* <p>
-        URL :
-        <a
-          className="mstockNavFont"
-          href="https://ntasc.mirae.com/typea/portfolio/positions"
-        >
-          https://ntasc.mirae.com/typea/portfolio/positions
-        </a>
-      </p>
-      <p>
-        Method -<span className="font-bold"> GET</span>
-      </p> */}
     </div>
     
     {/* Description  Details Section */}

@@ -2,9 +2,9 @@ import React from 'react'
 
 function RightSideBar() {
   return (
-    <aside className='bg-green-500 w-customSmall flex-shrink-0 lg:flex hidden'>
+    <aside className='bg-green-500 sticky  md:flex flex-wrap hidden max-w-[13rem]'>
           {console.log("RightSide bar RENDER")}
-    <p>green</p>
+    <span>Padaskmakmdamdaksmdkasdan</span>
   </aside>
 )
 }

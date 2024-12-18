@@ -109,18 +109,6 @@ function OrderBookTypeB() {
       <ol className='list-inside'>
         <li className="font-bold text-xl">Order Book</li>
       </ol>
-      {/* <p>
-        URL :
-        <a
-          className="mstockNavFont"
-          href="https://ntasc.mirae.com/typeb/orders"
-        >
-          https://ntasc.mirae.com/typeb/orders
-        </a>
-      </p>
-      <p>
-        Method -<span className="font-bold"> GET</span>
-      </p> */}
     </div>
     
     {/* Description  Details Section */}

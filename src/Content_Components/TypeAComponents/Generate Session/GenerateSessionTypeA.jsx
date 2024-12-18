@@ -108,18 +108,6 @@ function GenerateSessionTypeA() {
           <ol className='list-inside'>
             <li className="font-bold text-xl">Generate Session</li>
           </ol>
-          {/* <p>
-            URL :
-            <a
-              className="mstockNavFont"
-              href="https://ntasc.mirae.com/typea/session/token "
-            >
-              https://ntasc.mirae.com/typea/session/token
-            </a>
-          </p>
-          <p>
-            Method -<span className="font-bold"> POST</span>
-          </p> */}
         </div>
         
     {/* Description  Details Section */}
