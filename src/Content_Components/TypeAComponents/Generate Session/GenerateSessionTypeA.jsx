@@ -15,7 +15,7 @@ function GenerateSessionTypeA() {
   const loginCurlData =`curl --location 'http://ntasc.mirae.com/typea/session/token' \\
     --header 'X-Mirae-Version: 1' \\
     --header 'Content-Type: application/x-www-form-urlencoded' \\
-    --data-urlencode 'api_key=SATYA' \\
+    --data-urlencode 'api_key=ay3KHeKfEJgoiYzkB/MAKg@@' \\
     --data-urlencode 'request_token=123' \\
     --data-urlencode 'checksum=W'`
 
@@ -134,6 +134,12 @@ function GenerateSessionTypeA() {
             <span class="mstockNavFont"> application/x-www-form-urlencoded</span>, which is used for submitting form data.
           </dd>
         </div>
+        <div class="flex">
+          <dt class="font-semibold min-w-[120px]">X-PrivateKey :</dt>
+          <dd>
+          ay3KHeKfEJgoiYzkB/MAKg@@
+          </dd>
+        </div>
      </dl>
     </div>
 
@@ -148,15 +154,6 @@ function GenerateSessionTypeA() {
     <div className='flex flex-col gap-5'>
       <p><span className="font-bold">Request Body - </span></p>
       <p>The body of the request must be URL-encoded and include the following parameters:</p>
-
-      {/* <ul className='list-inside list-disc py-2'>
-
-        <li>api_key: The API key provided to the user (Example: SATYA).</li>
-
-        <li>request_token: A token that uniquely identifies the session request (Example: 123).</li>
-        
-        <li>checksum: A validation string to ensure the integrity of the request (Example: W)</li>
-      </ul> */}
       <DynamicTable data={SessionParameter}/>
       
 
