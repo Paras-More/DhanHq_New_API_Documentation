@@ -65,7 +65,7 @@ function GenerateSessionTypeA() {
     {
       "Field":"api_key",
       "Type":"string",
-      "Description":" The API key provided to the user (Example: SATYA)."
+      "Description":" The API key provided to the user (Example: ay3KHeKfEJgoiYzkB/MAKg@@)."
     },
     {
       "Field":"request_token",
@@ -83,7 +83,7 @@ function GenerateSessionTypeA() {
     {
       "Field":"api_key",
       "Type":"string",
-      "Description":" username (SATYA)."
+      "Description":"ay3KHeKfEJgoiYzkB/MAKg@@"
     },
     {
       "Field":"request_token",
