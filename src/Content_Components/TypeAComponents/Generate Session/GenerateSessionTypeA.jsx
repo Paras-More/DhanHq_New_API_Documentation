@@ -140,12 +140,6 @@ function GenerateSessionTypeA() {
             <span class="mstockNavFont"> application/x-www-form-urlencoded</span>, which is used for submitting form data.
           </dd>
         </div>
-        <div class="flex">
-          <dt class="font-semibold min-w-[120px]">X-PrivateKey :</dt>
-          <dd>
-          ay3KHeKfEJgoiYzkB/MAKg@@
-          </dd>
-        </div>
      </dl>
     </div>
 

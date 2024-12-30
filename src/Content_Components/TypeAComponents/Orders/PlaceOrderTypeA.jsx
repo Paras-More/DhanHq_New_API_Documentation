@@ -5,7 +5,7 @@ import DynamicTable from '../../../Common_Components/DynamicTable'
 
 function PlaceOrderTypeA() {
 
-    const PlaceOrdercURLData = `curl --location 'http://ntasc.mirae.com/typea/orders/regular' \\
+    const PlaceOrdercURLData = `curl --location 'http://ntasc.mirae.com/typea/orders/{variety}' \\
     --header 'X-Mirae-Version: 1' \\
     --header 'Authorization: token api_key:access_token \\
     --header 'Content-Type: application/x-www-form-urlencoded' \\
@@ -40,6 +40,11 @@ function PlaceOrderTypeA() {
         }
 
         const requestParameter = [
+          {
+            "Field":"variety",
+            "Type":"string",
+            "Description":"Variety of the order ( <code class='highlighter'>regular</code> <code class='highlighter'>amo</code> <code class='highlighter'>co</code>)"
+          },
           {
             "Field":"tradingsymbol",
             "Type":"string",
@@ -118,9 +123,6 @@ function PlaceOrderTypeA() {
             <span className="font-semibold">Content-Type:</span> For this
             request, it is set to <span className='mstockNavFont'>application/x-www-form-urlencoded</span>, which is
             used for submiting form data.
-          </li>
-          <li>
-            <span className="font-semibold">X-PrivateKey :</span>  ay3KHeKfEJgoiYzkB/MAKg@@
           </li>
         </ul>
       </div>

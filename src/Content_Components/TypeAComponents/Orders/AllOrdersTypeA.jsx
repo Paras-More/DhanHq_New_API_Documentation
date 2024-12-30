@@ -9,17 +9,17 @@ function AllOrdersTypeA() {
   const data = [
     {
       "method": "POST",
-      "path": "https://ntasc.mirae.com/typea/orders/regular",
+      "path": "https://ntasc.mirae.com/typea/orders/{variety}",
       "description": "Place a new order"
     },
     {
       "method": "PUT",
-      "path": "https://ntasc.mirae.com/typea/orders/regular/❴OrderID❵",
+      "path": "https://ntasc.mirae.com/typea/orders/{variety}/❴OrderID❵",
       "description": "Modify a pending order"
     },
     {
       "method": "DELETE",
-      "path": "https://ntasc.mirae.com/typea/orders/regular/❴OrderID❵",
+      "path": "https://ntasc.mirae.com/typea/orders/{variety}/❴OrderID❵",
       "description": "Cancel a pending order"
     },
     {

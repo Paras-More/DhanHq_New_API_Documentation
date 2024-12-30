@@ -129,12 +129,6 @@ const FailureInvalidAPIKey ={
             Indicated the media type of the resource. For this request, it is set to <a className='mstockNavFont' href='application/x-www-form-urlencoded'> application/x-www-form-urlencoded</a>, which is used for submiting form data.
           </dd>
         </div>
-        <div class="flex">
-          <dt class="font-semibold min-w-[120px]">X-PrivateKey :</dt>
-          <dd>
-          ay3KHeKfEJgoiYzkB/MAKg@@
-          </dd>
-        </div>
       </dl>
     </div>
 
