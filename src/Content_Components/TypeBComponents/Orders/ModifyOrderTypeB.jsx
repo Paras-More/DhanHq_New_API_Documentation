@@ -48,6 +48,12 @@ function ModifyOrderTypeB() {
       "errorcode": "RS-0034",
       "data": null
   }
+  const FailureInvalidAPIKey ={
+    "status": "error",
+    "message": "API is suspended/expired for use. Please check your API subscription and try again.",
+    "data": null
+  }
+
 
   const requestParameter = [
     {
@@ -135,18 +141,6 @@ function ModifyOrderTypeB() {
       <ol className='list-inside'>
         <li className="font-bold text-xl">Order Modification</li>
       </ol>
-      {/* <p>
-        URL :
-        <a
-          className="mstockNavFont"
-          href="https://ntasc.mirae.com/typeb/orders/regular/{orderID}"
-        >
-          https://ntasc.mirae.com/typeb/orders/regular/&#10100;OrderID&#10101;
-        </a>
-      </p>
-      <p>
-        Method -<span className="font-bold"> PUT</span>
-      </p> */}
     </div>
 
     {/* Description  Details Section */}
@@ -174,6 +168,12 @@ function ModifyOrderTypeB() {
           <dt class="font-semibold min-w-[120px]">Content-Type :</dt>
           <dd>
           Indicated the media type of the resource. For this request, it is set to <span className='mstockNavFont'>application/json</span>, which is used for submiting form data through body
+          </dd>
+        </div>
+         <div class="flex">
+          <dt class="font-semibold min-w-[120px]">X-PrivateKey :</dt>
+          <dd>
+          ay3KHeKfEJgoiYzkB/MAKg@@
           </dd>
         </div>
       </dl>
@@ -238,6 +238,15 @@ function ModifyOrderTypeB() {
             below json reponse.
           </li>
           <NewJsonViewer data={FailureOrderIdJson} />
+
+          <li>
+              {" "}
+              <span className="font-semibold">
+                Failure (HTTP Status 400):{" "}
+              </span>{" "}
+              If the API Key is Invalid or expired. 
+            </li>
+            <NewJsonViewer data={FailureInvalidAPIKey} />
         </ul>
       </div>
     </div>

@@ -60,7 +60,13 @@ function GenerateSessionTypeA() {
     "status": "error",
     "message": "Entered OTP has been expired. Please regenerate a new one & enter the same.",
     "data": null
-}
+  }
+  const FailureInvalidAPIKey ={
+    "status": "error",
+    "message": "API is suspended/expired for use. Please check your API subscription and try again.",
+    "data": null
+  }
+
   const SessionParameter = [
     {
       "Field":"api_key",
@@ -158,14 +164,6 @@ function GenerateSessionTypeA() {
       
 
       <p>n.Tasc Fields mapping with mStock API Parameters – </p>
-      {/* <ul className='list-inside list-disc py-2'>
-
-        <li>api_key =&gt; username (SATYA)</li>
-
-        <li>request_token =&gt; OTP (123);</li>
-        
-        <li>checksum =&gt; source (W)</li>
-      </ul> */}
        <DynamicTable data={SessionntascParameter}/>
 
     </div>
@@ -194,6 +192,13 @@ function GenerateSessionTypeA() {
             If the request fails due to an invalid OTP passed, the server will return an error message.
           </li>
           <NewJsonViewer data={FailureInvalidOtpJson} />
+          <li>
+            <span className="font-semibold">
+            Failure (HTTP Status 400):{" "}
+            </span>{" "}
+            If the API Key is Invalid or expired.
+          </li>
+          <NewJsonViewer data={FailureInvalidAPIKey} />
         </ul>
       </div>
     </div>

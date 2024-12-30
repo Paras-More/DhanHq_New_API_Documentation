@@ -52,6 +52,12 @@ function PlaceOrderTypeB() {
           "errorcode": "RS-0111",
           "data": null
       }
+      const FailureInvalidAPIKey ={
+        "status": "error",
+        "message": "API is suspended/expired for use. Please check your API subscription and try again.",
+        "data": null
+      }
+
 
       const requestParameter = [
         {
@@ -145,18 +151,6 @@ function PlaceOrderTypeB() {
         <ol className='list-inside'>
           <li className="font-bold text-xl">Order Placement</li>
         </ol>
-        {/* <p>
-          URL :
-          <a
-            className="mstockNavFont"
-            href="https://ntasc.mirae.com/typeb/orders/regular"
-          >
-            https://ntasc.mirae.com/typeb/orders/regular 
-          </a>
-        </p>
-        <p>
-          Method -<span className="font-bold"> POST</span>
-        </p> */}
       </div>
 
       {/* Description  Details Section */}
@@ -185,6 +179,12 @@ function PlaceOrderTypeB() {
           <dt class="font-semibold min-w-[120px]">Content-Type :</dt>
           <dd>
           A token-based authentication header. The format is token api_key:access_token. Content-Type: For this request, it is set to <span className='mstockNavFont'>application/json</span>, which is used for submiting form data through body
+          </dd>
+        </div>
+        <div class="flex">
+          <dt class="font-semibold min-w-[120px]">X-PrivateKey :</dt>
+          <dd>
+          ay3KHeKfEJgoiYzkB/MAKg@@
           </dd>
         </div>
       </dl>
@@ -238,6 +238,15 @@ function PlaceOrderTypeB() {
               an error message with below json format.
             </li>
             <NewJsonViewer data={FailureMarketCloseJson} />
+
+            <li>
+              {" "}
+              <span className="font-semibold">
+                Failure (HTTP Status 400):{" "}
+              </span>{" "}
+              If the API Key is Invalid or expired. 
+            </li>
+            <NewJsonViewer data={FailureInvalidAPIKey} />
           </ul>
         </div>
       </div>

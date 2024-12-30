@@ -20,7 +20,6 @@ function ModifyOrderTypeA() {
     --data-urlencode 'product=MIS' \\
     --data-urlencode 'modqty_remng=2'`
 
-
     const SuccessResponseJson ={
         "status": "success",
         "data": {
@@ -40,6 +39,11 @@ function ModifyOrderTypeA() {
         "message": "Order Does not Exsist.Need to refresh orderbook / relogin in application ",
         "error_type": "InputException",
         "data": null
+    }
+    const FailureInvalidAPIKey ={
+      "status": "error",
+      "message": "API is suspended/expired for use. Please check your API subscription and try again.",
+      "data": null
     }
 
     const requestParameter = [
@@ -109,24 +113,12 @@ function ModifyOrderTypeA() {
       <ol className='list-inside'>
         <li className="font-bold text-xl">Order Modification</li>
       </ol>
-      <p>
-        URL :
-        <a
-          className="mstockNavFont"
-          href="https://ntasc.mirae.com/typea/orders/regular/{OrderID}"
-        >
-          https://ntasc.mirae.com/typea/orders/regular/&#10100;OrderID&#10101;
-        </a>
-      </p>
-      <p>
-        Method -<span className="font-bold"> PUT</span>
-      </p>
     </div>
 
     {/* Description  Details Section */}
     <div>
       <p>
-        <span className="font-bold">Description -</span>This endpoint allows users to update/modify an existing order by
+      This endpoint allows users to update/modify an existing order by
         specifying the order ID and providing the updated order details.
       </p>
     </div>
@@ -146,6 +138,9 @@ function ModifyOrderTypeA() {
         <li>
           <span className="font-semibold">Content-Type:</span> Indicated the media type of the resource. For this request, it is set to <a className='mstockNavFont' href='application/x-www-form-urlencoded'> application/x-www-form-urlencoded</a>, which s used for submiting form data.
         </li>
+        <li>
+            <span className="font-semibold">X-PrivateKey :</span>  ay3KHeKfEJgoiYzkB/MAKg@@
+          </li>
       </ul>
     </div>
     {/* Postman Curl command Details Section */}
@@ -207,6 +202,15 @@ function ModifyOrderTypeA() {
             below json reponse.
           </li>
           <NewJsonViewer data={FailureInputJson} />
+
+          <li>
+              {" "}
+              <span className="font-semibold">
+                Failure (HTTP Status 400):{" "}
+              </span>{" "}
+              If the API Key is Invalid or expired. 
+            </li>
+            <NewJsonViewer data={FailureInvalidAPIKey} />
         </ul>
       </div>
     </div>

@@ -86,6 +86,11 @@ function OrderBookTypeA() {
         }
     ]
 }
+const FailureInvalidAPIKey ={
+  "status": "error",
+  "message": "API is suspended/expired for use. Please check your API subscription and try again.",
+  "data": null
+}
 
   const VersionExpensionJson ={
     "status": "error",
@@ -110,24 +115,12 @@ function OrderBookTypeA() {
       <ol className='list-inside'>
         <li className="font-bold text-xl">Order Book</li>
       </ol>
-      <p>
-        URL :
-        <a
-          className="mstockNavFont"
-          href=" https://ntasc.mirae.com/typea/orders"
-        >
-          https://ntasc.mirae.com/typea/orders
-        </a>
-      </p>
-      <p>
-        Method -<span className="font-bold"> GET</span>
-      </p>
     </div>
     
     {/* Description  Details Section */}
     <div>
       <p>
-        <span className="font-bold">Description -</span>This endpoint allows users to retrieve a list of their trading orders.
+       This endpoint allows users to retrieve a list of their trading orders.
         Users can view all their existing orders.
       </p>
     </div>
@@ -147,6 +140,9 @@ function OrderBookTypeA() {
         </li>
         <li>
           <span className="font-semibold">Content-Type:</span> Indicated the media type of the resource. For this request, it is set to <a className='mstockNavFont' href='application/x-www-form-urlencoded'> application/x-www-form-urlencoded</a>, which s used for submiting form data.
+        </li>
+        <li>
+          <span className="font-semibold">X-PrivateKey :</span> ay3KHeKfEJgoiYzkB/MAKg@@
         </li>
       </ul>
     </div>
@@ -193,6 +189,15 @@ function OrderBookTypeA() {
 error message
           </li>
           <NewJsonViewer data={VersionExpensionJson} />
+
+          <li>
+              {" "}
+              <span className="font-semibold">
+                Failure (HTTP Status 400):{" "}
+              </span>{" "}
+              If the API Key is Invalid or expired. 
+            </li>
+            <NewJsonViewer data={FailureInvalidAPIKey} />
         </ul>
       </div>
     </div>

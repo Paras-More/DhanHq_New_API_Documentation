@@ -26,7 +26,7 @@ const COMCurlData =`curl --location 'http://ntasc.mirae.com/typea/margins/orders
         "quantity": 1,
         "price": 0,
         "trigger_price": 0
-    }`  
+}`  
 
 const requestBodyJson ={
     "exchange": "NSE",
@@ -84,6 +84,11 @@ const FailureInputJson = {
   "error_type": "InputException",
   "data": null
 }
+const FailureInvalidAPIKey ={
+  "status": "error",
+  "message": "API is suspended/expired for use. Please check your API subscription and try again.",
+  "data": null
+}
 
   return (
     <div className='flex flex-col gap-6'>
@@ -96,18 +101,6 @@ const FailureInputJson = {
       <ol className='list-inside'>
         <li className="font-bold text-xl">Calculate Order Margin</li>
       </ol>
-      {/* <p>
-        URL :
-        <a
-          className="mstockNavFont"
-          href="https://ntasc.mirae.com/typea/margins/orders"
-        >
-          https://ntasc.mirae.com/typea/margins/orders
-        </a>
-      </p>
-      <p>
-        Method -<span className="font-bold"> POST</span>
-      </p> */}
     </div>
     
     {/* Description  Details Section */}
@@ -134,6 +127,12 @@ const FailureInputJson = {
           <dt class="font-semibold min-w-[120px]">Content-Type :</dt>
           <dd>
             Indicated the media type of the resource. For this request, it is set to <a className='mstockNavFont' href='application/x-www-form-urlencoded'> application/x-www-form-urlencoded</a>, which is used for submiting form data.
+          </dd>
+        </div>
+        <div class="flex">
+          <dt class="font-semibold min-w-[120px]">X-PrivateKey :</dt>
+          <dd>
+          ay3KHeKfEJgoiYzkB/MAKg@@
           </dd>
         </div>
       </dl>
@@ -178,6 +177,14 @@ const FailureInputJson = {
             error message
           </li>
           <NewJsonViewer data={FailureInputJson} />
+
+          <li>
+          <span className="font-semibold">
+            Failure (HTTP Status 400):{" "}
+            </span>{" "}
+            If the API Key is Invalid or expired.
+          </li>
+          <NewJsonViewer data={FailureInvalidAPIKey} />
         </ul>
       </div>
     </div>

@@ -36,6 +36,11 @@ function GenerateSessionTypeB() {
       "errorcode": "500",
       "data": null
   } 
+  const FailureInvalidAPIKey ={
+    "status": "error",
+    "message": "API is suspended/expired for use. Please check your API subscription and try again.",
+    "data": null
+  }
 
   const SessionParameter = [
     {
@@ -98,6 +103,11 @@ function GenerateSessionTypeB() {
             For this request, it is set to <span className='mstockNavFont'> application/json</span>, which is used for submiting form through data.
           </dd>
         </div>
+        <div class="flex">
+          <dt class="font-semibold min-w-[120px]">X-PrivateKey :</dt>
+          <dd>
+          ay3KHeKfEJgoiYzkB/MAKg@@</dd>
+        </div>
       </dl>
     </div>
 
@@ -143,6 +153,13 @@ function GenerateSessionTypeB() {
             If the request fails due to an invalid OTP passed, the server will return an error message.
           </li>
           <NewJsonViewer data={FailureInvalidOtpJson} />
+
+          <li>
+            <span className="font-semibold">
+            Failure (HTTP Status 400):{" "}
+            </span>{" "}
+            If the API Key is Invalid or expired.          </li>
+          <NewJsonViewer data={FailureInvalidAPIKey} />
         </ul>
       </div>
     </div>

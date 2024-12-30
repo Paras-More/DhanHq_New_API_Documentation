@@ -80,24 +80,12 @@ const requestParameter = [
           <ol className='list-inside'>
             <li className="font-bold text-xl">Login</li>
           </ol>
-          <p>
-            URL :
-            <a
-              className="mstockNavFont"
-              href="https://ntasc.mirae.com/typeb/connect/login "
-            >
-              https://ntasc.mirae.com/typeb/connect/login 
-            </a>
-          </p>
-          <p>
-            Method -<span className="font-bold"> POST</span>
-          </p>
         </div>
         
     {/* Description  Details Section */}
     <div>
       <p>
-        <span className="font-bold">Description -</span> This endpoint allows users to log in to the application by providing their username and password. Successful authentication will send the OTP to users registered mobile no that can be used for subsequent requests.
+         This endpoint allows users to log in to the application by providing their username and password. Successful authentication will send the OTP to users registered mobile no that can be used for subsequent requests.
       </p>
     </div>
     
