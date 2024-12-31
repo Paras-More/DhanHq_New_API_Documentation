@@ -6,6 +6,7 @@ function Net_PositionTypeB() {
 
   const positionCurlData =`curl --location 'http://ntasc.mirae.com/typeb/portfolio/positions' \\
     --header 'X-Mirae-Version: 1' \\
+    --header 'X-PrivateKey: ay3KHeKfEJgoiYzkB/MAKg@@' \\
     --header 'Authorization: Bearer jwtToken'`
  
   const SuccessResponseJson = {

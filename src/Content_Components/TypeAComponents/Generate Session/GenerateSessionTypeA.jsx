@@ -17,7 +17,7 @@ function GenerateSessionTypeA() {
     --header 'Content-Type: application/x-www-form-urlencoded' \\
     --data-urlencode 'api_key=ay3KHeKfEJgoiYzkB/MAKg@@' \\
     --data-urlencode 'request_token=123' \\
-    --data-urlencode 'checksum=W'`
+    --data-urlencode 'checksum=L'`
 
   const SuccessResponseJson = {
     "status": "success",
@@ -81,7 +81,7 @@ function GenerateSessionTypeA() {
     {
       "Field":"checksum",
       "Type":"string",
-      "Description":"A validation string to ensure the integrity of the request (Example: W)"
+      "Description":"A validation string to ensure the integrity of the request (Example: L)"
     }
   ]
 
@@ -99,7 +99,7 @@ function GenerateSessionTypeA() {
     {
       "Field":"checksum",
       "Type":"string",
-      "Description":"source (W)"
+      "Description":"source (L)"
     }
   ]
 

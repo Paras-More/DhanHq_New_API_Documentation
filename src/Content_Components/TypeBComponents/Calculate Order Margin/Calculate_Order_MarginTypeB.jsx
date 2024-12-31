@@ -9,16 +9,22 @@ function Calculate_Order_MarginTypeB() {
 const COMCurlData =`curl --location 'http://ntasc.mirae.com/typeb/margins/orders' \\
     --header 'X-Mirae-Version: 1' \\
     --header 'Authorization: Bearer jwtToken \\
+    --header 'X-PrivateKey: ay3KHeKfEJgoiYzkB/MAKg@@' \\
     --header 'Content-Type: application/json' \\
     --data '{
-        "exchange": "NSE",
-        "qty": "10",
-        "price": "2240",
-        "productType": "DELIVERY",
-        "token": "22",
-        "tradeType": "BUY",
-        "triggerPrice": 0
-    }'`  
+    "orders": [
+        {
+            "product_type": "DELIVERY",
+            "transaction_type": "BUY",
+            "quantity": "5",
+            "price": "2250",
+            "exchange": "NSE",
+            "symbol_name": "ACC",
+            "token": "22",
+            "trigger_price": 0
+        }
+    ]
+}'`  
 
 const requestBodyJson ={
   "exchange": "NSE",
@@ -39,38 +45,108 @@ const FailureInvalidAPIKey ={
 
 
 const SuccessResponseJson = {
-  "status": "true",
+  "status": true,
   "message": "SUCCESS",
   "errorcode": null,
   "data": {
-      "totalMarginRequired": 22400,
-      "marginComponents": {
-          "netPremium": 0,
-          "spanMargin": 0,
-          "marginBenefit": 0,
-          "deliveryMargin": 0,
-          "nonNFOMargin": 0,
-          "totOptionsPremium": 0
-      },
-      "marginBreakup": [
-          {
-              "exchange": "NSE",
-              "productType": "DELIVERY",
-              "totalMarginRequired": 0
-          }
-      ],
-      "optionsBuy": {
-          "totOptionsPremium": 0,
-          "optionDetails": [
+      "summary": {
+          "total_charges": 11250,
+          "trade_value": 0,
+          "breakup": [
               {
-                  "exchange": "NSE",
-                  "productType": "DELIVERY",
-                  "token": "22",
-                  "lotMultiplier": 10,
-                  "optionPremium": 0
+                  "name": "BROKERAGE",
+                  "amount": 0,
+                  "msg": "",
+                  "breakup": []
+              },
+              {
+                  "name": "BROKER_BROKERAGE",
+                  "amount": 0,
+                  "msg": "",
+                  "breakup": []
+              },
+              {
+                  "name": "EXPOMARGIN",
+                  "amount": 0,
+                  "msg": "",
+                  "breakup": []
+              },
+              {
+                  "name": "LEVIES_BROKERAGE",
+                  "amount": 0,
+                  "msg": "",
+                  "breakup": []
+              },
+              {
+                  "name": "OTHER_BROKERAGE",
+                  "amount": 0,
+                  "msg": "",
+                  "breakup": []
+              },
+              {
+                  "name": "SPANMARGIN",
+                  "amount": 0,
+                  "msg": "",
+                  "breakup": []
+              },
+              {
+                  "name": "VARELMMARGIN",
+                  "amount": 0,
+                  "msg": "",
+                  "breakup": []
               }
           ]
-      }
+      },
+      "charges": [
+          {
+              "total_charges": 11250,
+              "trade_value": 0,
+              "breakup": [
+                  {
+                      "name": "BROKERAGE",
+                      "amount": 0,
+                      "msg": "",
+                      "breakup": []
+                  },
+                  {
+                      "name": "BROKER_BROKERAGE",
+                      "amount": 0,
+                      "msg": "",
+                      "breakup": []
+                  },
+                  {
+                      "name": "EXPOMARGIN",
+                      "amount": 0,
+                      "msg": "",
+                      "breakup": []
+                  },
+                  {
+                      "name": "LEVIES_BROKERAGE",
+                      "amount": 0,
+                      "msg": "",
+                      "breakup": []
+                  },
+                  {
+                      "name": "OTHER_BROKERAGE",
+                      "amount": 0,
+                      "msg": "",
+                      "breakup": []
+                  },
+                  {
+                      "name": "SPANMARGIN",
+                      "amount": 0,
+                      "msg": "",
+                      "breakup": []
+                  },
+                  {
+                      "name": "VARELMMARGIN",
+                      "amount": 0,
+                      "msg": "",
+                      "breakup": []
+                  }
+              ]
+          }
+      ]
   }
 }
 
@@ -102,18 +178,6 @@ const FailureInputJson = {
       <ol className='list-inside'>
         <li className="font-bold text-xl">Calculate Order Margin</li>
       </ol>
-      {/* <p>
-        URL :
-        <a
-          className="mstockNavFont"
-          href="https://ntasc.mirae.com/typeb/margins/orders"
-        >
-          https://ntasc.mirae.com/typeb/margins/orders
-        </a>
-      </p>
-      <p>
-        Method -<span className="font-bold"> POST</span>
-      </p> */}
     </div>
     
     {/* Description  Details Section */}

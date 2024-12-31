@@ -6,6 +6,7 @@ function OrderBookTypeB() {
    
    const orderBookCurlData = `curl --location 'http://ntasc.mirae.com/typeb/orders' \\
     --header 'X-Mirae-Version: 1' \\
+    --header 'X-PrivateKey: ay3KHeKfEJgoiYzkB/MAKg@@' \\
     --header 'Authorization: Bearer jwtToken'`
 
   const SuccessResponseJson = {

@@ -7,6 +7,7 @@ function CancelOrderTypeB() {
 
     const CancelOrderCurlData =`curl --location --request DELETE 'http://ntasc.mirae.com/typeb/orders/regular/1112241106105' \\
     --header 'X-Mirae-Version: 1' \\
+    --header 'X-PrivateKey: ay3KHeKfEJgoiYzkB/MAKg@@' \\
     --header 'Authorization: Bearer jwtToken \\
     --header 'Content-Type: application/json' \\
     --data '{

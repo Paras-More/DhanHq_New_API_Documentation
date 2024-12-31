@@ -14,6 +14,7 @@ function GenerateSessionTypeB() {
 
     const generateSessionCurlData = `curl --location 'http://ntasc.mirae.com/typeb/session/token' \\
     --header 'X-Mirae-Version: 1' \\
+    --header 'X-PrivateKey: ay3KHeKfEJgoiYzkB/MAKg@@' \\
     --header 'Content-Type: application/json' \\
     --data '{
         "refreshToken": "refreshToken",

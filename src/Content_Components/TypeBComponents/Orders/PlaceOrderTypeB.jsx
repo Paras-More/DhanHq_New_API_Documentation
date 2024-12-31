@@ -7,6 +7,7 @@ function PlaceOrderTypeB() {
 
     const PlaceOrdercURLData = `curl --location 'http://ntasc.mirae.com/typeb/orders/regular' \\
     --header 'X-Mirae-Version: 1' \\
+    --header 'X-PrivateKey: ay3KHeKfEJgoiYzkB/MAKg@@' \\
     --header 'Authorization: Bearer jwtToken' \\
     --header 'Content-Type: application/json' \\
     --data '{

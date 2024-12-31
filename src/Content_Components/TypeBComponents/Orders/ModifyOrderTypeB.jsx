@@ -6,6 +6,7 @@ function ModifyOrderTypeB() {
 
     const ModifyOrderCurlData = `curl --location --request PUT 'http://ntasc.mirae.com/typeb/orders/regular/1191241106101' \\
     --header 'X-Mirae-Version: 1' \\
+    --header 'X-PrivateKey: ay3KHeKfEJgoiYzkB/MAKg@@' \\
     --header 'Authorization: Bearer jwtToken \\
     --header 'Content-Type: application/json' \\
     --data '{
