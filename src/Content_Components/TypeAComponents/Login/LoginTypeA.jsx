@@ -69,9 +69,6 @@ function LoginTypeA() {
           <ol className='list-inside'>
             <li className="font-bold text-xl">Login</li>
           </ol>
-          {/* <p>
-            Method -<span className="font-bold"> POST</span>
-          </p> */}
         </div>
         
     {/* Description  Details Section */}

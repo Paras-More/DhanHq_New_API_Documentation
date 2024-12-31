@@ -63,7 +63,7 @@ function PlaceOrderTypeB() {
         {
           "Field":"variety",
           "Type":"string",
-          "Description":"Variety of the order ( <code class='highlighter'>regular</code> <code class='highlighter'>amo</code> <code class='highlighter'>co</code> <code class='highlighter'>iceberg</code> <code class='highlighter'>auction</code>)"
+          "Description":"Variety of the order ( <code class='highlighter'>regular</code> <code class='highlighter'>amo</code> <code class='highlighter'>co</code> )"
         },
         {
           "Field":"tradingsymbol",

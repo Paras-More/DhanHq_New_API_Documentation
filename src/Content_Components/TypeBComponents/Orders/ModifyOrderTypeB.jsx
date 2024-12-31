@@ -6,7 +6,7 @@ function ModifyOrderTypeB() {
 
     const ModifyOrderCurlData = `curl --location --request PUT 'http://ntasc.mirae.com/typeb/orders/regular/1191241106101' \\
     --header 'X-Mirae-Version: 1' \\
-    --header 'Authorization: Bearer access_token \\
+    --header 'Authorization: Bearer jwtToken \\
     --header 'Content-Type: application/json' \\
     --data '{
       "variety": "NORMAL",
@@ -59,7 +59,7 @@ function ModifyOrderTypeB() {
     {
       "Field":"variety",
       "Type":"string",
-      "Description":"Variety of the order ( <code class='highlighter'>regular</code> <code class='highlighter'>amo</code> <code class='highlighter'>co</code> <code class='highlighter'>iceberg</code> <code class='highlighter'>auction</code>)"
+      "Description":"Variety of the order ( <code class='highlighter'>regular</code> <code class='highlighter'>amo</code> <code class='highlighter'>co</code>)"
     },
     {
       "Field":"tradingsymbol",
@@ -162,7 +162,7 @@ function ModifyOrderTypeB() {
         </div>
         <div class="flex">
           <dt class="font-semibold min-w-[120px]">Authorization :</dt>
-          <dd>A token-based authentication header. The format is token api_key:access_token.</dd>
+          <dd>A token-based authentication header. The format is token api_key:jwtToken.</dd>
         </div>
         <div class="flex">
           <dt class="font-semibold min-w-[120px]">Content-Type :</dt>

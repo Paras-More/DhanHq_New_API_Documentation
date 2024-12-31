@@ -8,7 +8,7 @@ function Calculate_Order_MarginTypeB() {
 
 const COMCurlData =`curl --location 'http://ntasc.mirae.com/typeb/margins/orders' \\
     --header 'X-Mirae-Version: 1' \\
-    --header 'Authorization: Bearer access_token \\
+    --header 'Authorization: Bearer jwtToken \\
     --header 'Content-Type: application/json' \\
     --data '{
         "exchange": "NSE",
@@ -134,7 +134,7 @@ const FailureInputJson = {
         </div>
         <div class="flex">
           <dt class="font-semibold min-w-[120px]">Authorization :</dt>
-          <dd>A token-based authentication header. The format is token api_key:access_token.</dd>
+          <dd>A token-based authentication header. The format is token api_key:jwtToken.</dd>
         </div>
         <div class="flex">
           <dt class="font-semibold min-w-[120px]">Content-Type :</dt>

@@ -40,6 +40,11 @@ const FailureInvalidAPIKey ={
 
 const requestParameter = [
   {
+    "Field":"variety",
+    "Type":"string",
+    "Description":"Variety of the order ( <code class='highlighter'>regular</code> <code class='highlighter'>amo</code> <code class='highlighter'>co</code>)"
+  },
+  {
     "Field":"tradingsymbol",
     "Type":"string",
     "Description":"Refer Trading Symbol in Tables"
@@ -119,9 +124,6 @@ const requestParameter = [
         <li>
           <span className="font-semibold">Content-Type:</span> Indicated the media type of the resource. For this request, it is set to <a className='mstockNavFont' href='application/x-www-form-urlencoded'> application/x-www-form-urlencoded</a>, which s used for submiting form data.
         </li>
-        <li>
-            <span className="font-semibold">X-PrivateKey :</span>  ay3KHeKfEJgoiYzkB/MAKg@@
-          </li>
       </ul>
     </div>
 

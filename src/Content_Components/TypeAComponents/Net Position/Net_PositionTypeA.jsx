@@ -130,10 +130,6 @@ const FailureInvalidAPIKey ={
           <dt class="font-semibold min-w-[120px]">Authorization :</dt>
           <dd>A token-based authentication header. The format is token api_key:access_token.</dd>
         </div>
-        <div class="flex">
-          <dt class="font-semibold min-w-[120px]">X-PrivateKey :</dt>
-          <dd>ay3KHeKfEJgoiYzkB/MAKg@@</dd>
-        </div>
       </dl>
     </div>
 

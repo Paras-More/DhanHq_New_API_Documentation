@@ -6,7 +6,7 @@ function Net_PositionTypeB() {
 
   const positionCurlData =`curl --location 'http://ntasc.mirae.com/typeb/portfolio/positions' \\
     --header 'X-Mirae-Version: 1' \\
-    --header 'Authorization: Bearer access_token'`
+    --header 'Authorization: Bearer jwtToken'`
  
   const SuccessResponseJson = {
     "status": "true",
@@ -155,7 +155,7 @@ const data = [
         </div>
         <div class="flex">
           <dt class="font-semibold min-w-[120px]">Authorization :</dt>
-          <dd>A token-based authentication header. The format is token api_key:access_token.</dd>
+          <dd>A token-based authentication header. The format is token api_key:jwtToken.</dd>
         </div>
         <div class="flex">
           <dt class="font-semibold min-w-[120px]">X-PrivateKey :</dt>
