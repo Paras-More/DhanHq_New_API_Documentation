@@ -16,18 +16,19 @@ function GenerateSessionTypeB() {
     --header 'X-Mirae-Version: 1' \\
     --header 'Content-Type: application/json' \\
     --data '{
-        "refreshToken": "SATYA",
+        "refreshToken": "refreshToken",
         "otp":"123"
       }'
     `
-    const SuccessResponseJson = {
-      "status": "true",
-      "message": "SUCCESS",
-      "errorcode": "200",
+    const SuccessResponseJson ={
+      "status": true,
+      "message": "Please enter the OTP that we sent on XXXXXXX928 and XXXXEY@MIRAEASSETCM.COM",
+      "errorcode": "",
       "data": {
-          "jwtToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
-          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
-          "feedToken": "eyJhbGciOiJIUzUxMiJ9"
+          "jwtToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVU0VSTkFNRSI6IlJBSFVMIiwiQVBJVFlQRSI6IkFHTCIsIm5iZiI6MTczNTYyNDQxNSwiZXhwIjoxNzM1NjI0NzE1LCJpYXQiOjE3MzU2MjQ0MTV9.MQGh5S801_tccVXx0k-Njj_yqkcXBaN5T0mZnUjLlHI",
+          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVU0VSTkFNRSI6IlJBSFVMIiwiQVBJVFlQRSI6IkFHTCIsIm5iZiI6MTczNTYyNDQxNSwiZXhwIjoxNzM1NjI0NzE1LCJpYXQiOjE3MzU2MjQ0MTV9.MQGh5S801_tccVXx0k-Njj_yqkcXBaN5T0mZnUjLlHI",
+          "feedToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVU0VSTkFNRSI6IlJBSFVMIiwiQVBJVFlQRSI6IkFHTCIsIm5iZiI6MTczNTYyNDQxNSwiZXhwIjoxNzM1NjI0NzE1LCJpYXQiOjE3MzU2MjQ0MTV9.MQGh5S801_tccVXx0k-Njj_yqkcXBaN5T0mZnUjLlHI",
+          "state": "live"
       }
   }
     const FailureInvalidOtpJson = {
@@ -46,7 +47,7 @@ function GenerateSessionTypeB() {
     {
       "Field":"refreshToken",
       "Type":"string",
-      "Description":"The username of the user (Example: SATYA)."
+      "Description":"refreshToken"
     },
     {
       "Field":"otp",
@@ -59,7 +60,7 @@ function GenerateSessionTypeB() {
     {
       "Field":"refreshToken",
       "Type":"string",
-      "Description":"username (SATYA)"
+      "Description":"refreshToken"
     },
     {
       "Field":"request_token",
