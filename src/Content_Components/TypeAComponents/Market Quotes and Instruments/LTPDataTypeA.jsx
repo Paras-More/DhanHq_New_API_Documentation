@@ -1,28 +1,32 @@
 import React from "react";
-import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import CopyBox from "../../../Common_Components/CopyBox";
+import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
-
-function CancelOrderTypeA() {
-  const CancelOrderCurlData = `curl --location --request DELETE 'http://ntasc.mirae.com/typea/orders/regular/1161241001100' \\
+function LTPDataTypeA() {
+  const ModifyOrderCurlData = `curl --location 'http://localhost:18463/Zrd/instruments/quote/ltp?i=NSE:ACC&i=BSE:ACC&i=NFO:CDSL25JAN2220CE' \\
     --header 'X-Mirae-Version: 1' \\
-    --header 'Authorization: token api_key:access_token' \\
-    --header 'Content-Type: application/x-www-form-urlencoded' \\
-    --data-urlencode 'tradingsymbol=ACC' \\
-    --data-urlencode 'transaction_type=BUY' \\
-    --data-urlencode 'validity=DAY' \\
-    --data-urlencode 'exchange=NSE' \\
-    --data-urlencode 'quantity=3' \\
-    --data-urlencode 'order_type=LIMIT' \\
-    --data-urlencode 'modqty_remng=2' \\
-    --data-urlencode 'product=MIS' \\
-    --data-urlencode 'price=1250'`;
+    --header 'Authorization: token api_key:access_token'`;
 
   const SuccessResponseJson = {
     status: "success",
     data: {
-      order_id: "1161241001100",
+      "NSE:ACC": {
+        instrument_token: 500410,
+        last_price: 195700,
+      },
+      "BSE:ACC": {
+        instrument_token: 500410,
+        last_price: 195700,
+      },
+      "NFO:CDSL25JAN2220CE": null,
     },
+  };
+
+  const FailureTokenJson = {
+    status: "error",
+    message: "Invalid request. Please try again.",
+    error_type: "TokenException",
+    data: null,
   };
 
   const FailureInputJson = {
@@ -52,10 +56,20 @@ function CancelOrderTypeA() {
       Description: "Refer Trading Symbol in Tables",
     },
     {
-      Field: "transaction_type",
+      Field: "order_type",
       Type: "string",
       Description:
-        "The trading side of transaction : <code class='highlighter'>BUY</code> <code class='highlighter'>SELL</code>",
+        "Order Type :<code class='highlighter'>LIMIT</code> <code class='highlighter'>MARKET</code> <code class='highlighter'>STOP_LOSS</code> <code class='highlighter'>STOP_LOSS_MARKET</code>",
+    },
+    {
+      Field: "quantity",
+      Type: "string",
+      Description: "Number of shares for the order",
+    },
+    {
+      Field: "price",
+      Type: "string",
+      Description: "Price at which order is placed",
     },
     {
       Field: "validity",
@@ -70,20 +84,21 @@ function CancelOrderTypeA() {
         "Validity of Order <code class='highlighter'>NSE</code> <code class='highlighter'>BSE</code>",
     },
     {
-      Field: "quantity",
-      Type: "string",
-      Description: "Number of shares for the order",
-    },
-    {
-      Field: "order_type",
+      Field: "trigger_price",
       Type: "string",
       Description:
-        "Order Type :<code class='highlighter'>LIMIT</code> <code class='highlighter'>MARKET</code> <code class='highlighter'>STOP_LOSS</code> <code class='highlighter'>STOP_LOSS_MARKET</code>",
+        "Price at which the order is triggered, in case of <code class='highlighter'>STOP_LOSS</code> <code class='highlighter'>STOP_LOSS_MARKET</code>",
     },
     {
-      Field: "modqty_remng",
+      Field: "disclosed_quantity",
       Type: "string",
-      Description: "Remaining quantity",
+      Description: "Number of shares visible (Keep more than 30% of quantity)",
+    },
+    {
+      Field: "transaction_type",
+      Type: "string",
+      Description:
+        "The trading side of transaction : <code class='highlighter'>BUY</code> <code class='highlighter'>SELL</code>",
     },
     {
       Field: "product",
@@ -91,27 +106,28 @@ function CancelOrderTypeA() {
       Description:
         "Product type <code class='highlighter'>CNC</code> <code class='highlighter'>INTRADAY</code> <code class='highlighter'>MARGIN</code> <code class='highlighter'>MTF</code> <code class='highlighter'>CO</code> <code class='highlighter'>BO</code>",
     },
-
     {
-      Field: "price",
+      Field: "modqty_remng",
       Type: "string",
-      Description: "Price at which order is placed",
+      Description: "Remaining quantity",
     },
   ];
+
   return (
     <div className="flex flex-col gap-6 mt-10">
       {/* <h1>Place Order</h1> */}
       <div className="flex flex-col gap-3">
         <ol className="list-inside">
-          <li className="font-bold text-xl">Order Cancellation</li>
+          <li className="font-bold text-xl">Market LTP Data</li>
         </ol>
       </div>
 
       {/* Description  Details Section */}
       <div>
         <p>
-          This endpoint allows users to delete an existing order specified by
-          the order ID. Deleting an order will cancel the specified order.
+          This endpoint returns the LTP market data identified by the
+          exchange:tradingsymbol combination that are passed as values to the
+          query parameter.
         </p>
       </div>
 
@@ -141,40 +157,47 @@ function CancelOrderTypeA() {
           </li>
         </ul>
       </div>
-
       {/* Postman Curl command Details Section */}
       <div className="flex flex-col gap-2">
         <p className="font-bold">Postman cURL Command -</p>
-        <CopyBox copyContent={CancelOrderCurlData} />
+        <CopyBox copyContent={ModifyOrderCurlData} />
       </div>
 
-      {/* Path Parameter */}
-      <div className="flex flex-col gap-2">
-        {/* <p> */}
-        <p className="font-bold">Path Parameter -</p>
-        <DynamicTable
-          data={[
-            {
-              Field: "order_id",
-              Description: "The unique identifier of the order to be cancel.",
-            },
-          ]}
-        />
-        {/* </p> */}
+      {/* Query Parameter */}
+      <div className="flex flex-col gap-3">
+        <p className="font-bold">Query Parameter -</p>
+        <ul className="list-inside list-disc">
+          <DynamicTable
+            data={[
+              {
+                Field: "i",
+                Description: "NSE:ACC",
+              },
+              {
+                Field: "i",
+                Description: "BSE:ACC",
+              },
+              {
+                Field: "i",
+                Description: "NFO:CDSL25JAN2220CE",
+              },
+            ]}
+          />
+        </ul>
       </div>
 
       {/* Request Body Details Section */}
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-4">
         <p>
-          <span className="font-bold">Request Body - </span>The body of the
-          request must be URL-encoded and include the following parameters:
+          <span className="font-bold">Request Body - </span>This endpoint does
+          not require a request body or additional parameters in the query
+          string for the retrieval of orders.
         </p>
-        <DynamicTable data={requestParameter} />
       </div>
 
       {/* Request Response -  Details Section  */}
       <div>
-        <p className="font-bold">Response Structure-</p>
+        <p className="font-bold">Request Response -</p>
         <p className="py-3">
           The response of the request will be based on authentication outcome.
         </p>
@@ -184,10 +207,19 @@ function CancelOrderTypeA() {
             <li>
               {" "}
               <span className="font-semibold">Success (HTTP Status 200): </span>
-              On successful order deletion, the server returns a JSON object
+              On successful order update, the server returns a JSON object
               containing the order ID and status.
             </li>
             <NewJsonViewer data={SuccessResponseJson} />
+
+            <li>
+              {" "}
+              <span className="font-semibold">Failure (HTTP Status 401): </span>
+              : If the order fails due to invalid parameters, authentication
+              issues, or other errors, the server will return an error message
+              with below json format.
+            </li>
+            <NewJsonViewer data={FailureTokenJson} />
 
             <li>
               {" "}
@@ -214,4 +246,4 @@ function CancelOrderTypeA() {
   );
 }
 
-export default CancelOrderTypeA;
+export default LTPDataTypeA;

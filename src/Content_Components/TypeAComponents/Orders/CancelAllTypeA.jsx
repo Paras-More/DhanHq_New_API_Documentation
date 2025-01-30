@@ -3,20 +3,10 @@ import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import CopyBox from "../../../Common_Components/CopyBox";
 import DynamicTable from "../../../Common_Components/DynamicTable";
 
-function CancelOrderTypeA() {
-  const CancelOrderCurlData = `curl --location --request DELETE 'http://ntasc.mirae.com/typea/orders/regular/1161241001100' \\
-    --header 'X-Mirae-Version: 1' \\
-    --header 'Authorization: token api_key:access_token' \\
-    --header 'Content-Type: application/x-www-form-urlencoded' \\
-    --data-urlencode 'tradingsymbol=ACC' \\
-    --data-urlencode 'transaction_type=BUY' \\
-    --data-urlencode 'validity=DAY' \\
-    --data-urlencode 'exchange=NSE' \\
-    --data-urlencode 'quantity=3' \\
-    --data-urlencode 'order_type=LIMIT' \\
-    --data-urlencode 'modqty_remng=2' \\
-    --data-urlencode 'product=MIS' \\
-    --data-urlencode 'price=1250'`;
+function CancelAllTypeA() {
+  const CancelOrderCurlData = `curl --location --request POST 'http://ntasc.mirae.com/typea/orders/cancelall' \\
+--header 'X-Mirae-Version: 1' \\
+--header 'Authorization: token api_key:access_token' \\`;
 
   const SuccessResponseJson = {
     status: "success",
@@ -39,80 +29,18 @@ function CancelOrderTypeA() {
     data: null,
   };
 
-  const requestParameter = [
-    {
-      Field: "variety",
-      Type: "string",
-      Description:
-        "Variety of the order ( <code class='highlighter'>regular</code> <code class='highlighter'>amo</code> <code class='highlighter'>co</code>)",
-    },
-    {
-      Field: "tradingsymbol",
-      Type: "string",
-      Description: "Refer Trading Symbol in Tables",
-    },
-    {
-      Field: "transaction_type",
-      Type: "string",
-      Description:
-        "The trading side of transaction : <code class='highlighter'>BUY</code> <code class='highlighter'>SELL</code>",
-    },
-    {
-      Field: "validity",
-      Type: "string",
-      Description:
-        "Validity of Order <code class='highlighter'>DAY</code> <code class='highlighter'>IOC</code>",
-    },
-    {
-      Field: "exchange",
-      Type: "string",
-      Description:
-        "Validity of Order <code class='highlighter'>NSE</code> <code class='highlighter'>BSE</code>",
-    },
-    {
-      Field: "quantity",
-      Type: "string",
-      Description: "Number of shares for the order",
-    },
-    {
-      Field: "order_type",
-      Type: "string",
-      Description:
-        "Order Type :<code class='highlighter'>LIMIT</code> <code class='highlighter'>MARKET</code> <code class='highlighter'>STOP_LOSS</code> <code class='highlighter'>STOP_LOSS_MARKET</code>",
-    },
-    {
-      Field: "modqty_remng",
-      Type: "string",
-      Description: "Remaining quantity",
-    },
-    {
-      Field: "product",
-      Type: "string",
-      Description:
-        "Product type <code class='highlighter'>CNC</code> <code class='highlighter'>INTRADAY</code> <code class='highlighter'>MARGIN</code> <code class='highlighter'>MTF</code> <code class='highlighter'>CO</code> <code class='highlighter'>BO</code>",
-    },
-
-    {
-      Field: "price",
-      Type: "string",
-      Description: "Price at which order is placed",
-    },
-  ];
   return (
     <div className="flex flex-col gap-6 mt-10">
       {/* <h1>Place Order</h1> */}
       <div className="flex flex-col gap-3">
         <ol className="list-inside">
-          <li className="font-bold text-xl">Order Cancellation</li>
+          <li className="font-bold text-xl">Cancel All</li>
         </ol>
       </div>
 
       {/* Description  Details Section */}
       <div>
-        <p>
-          This endpoint allows users to delete an existing order specified by
-          the order ID. Deleting an order will cancel the specified order.
-        </p>
+        <p>This endpoint allows users to cancel all the orders at once.</p>
       </div>
 
       {/* Request Header Details Section */}
@@ -146,30 +74,6 @@ function CancelOrderTypeA() {
       <div className="flex flex-col gap-2">
         <p className="font-bold">Postman cURL Command -</p>
         <CopyBox copyContent={CancelOrderCurlData} />
-      </div>
-
-      {/* Path Parameter */}
-      <div className="flex flex-col gap-2">
-        {/* <p> */}
-        <p className="font-bold">Path Parameter -</p>
-        <DynamicTable
-          data={[
-            {
-              Field: "order_id",
-              Description: "The unique identifier of the order to be cancel.",
-            },
-          ]}
-        />
-        {/* </p> */}
-      </div>
-
-      {/* Request Body Details Section */}
-      <div className="flex flex-col gap-2">
-        <p>
-          <span className="font-bold">Request Body - </span>The body of the
-          request must be URL-encoded and include the following parameters:
-        </p>
-        <DynamicTable data={requestParameter} />
       </div>
 
       {/* Request Response -  Details Section  */}
@@ -214,4 +118,4 @@ function CancelOrderTypeA() {
   );
 }
 
-export default CancelOrderTypeA;
+export default CancelAllTypeA;

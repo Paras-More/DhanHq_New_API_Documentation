@@ -1,13 +1,7 @@
 const TradingApiDefaultB = [
   {
-    title: "Login",
-    path: "/developer/login",
-    isSelected: false,
-    type: "TradingAPI",
-  },
-  {
-    title: "Generate Session",
-    path: "/developer/generate-session",
+    title: "User",
+    path: "/developer/user",
     isSelected: false,
     type: "TradingAPI",
   },
@@ -18,14 +12,26 @@ const TradingApiDefaultB = [
     type: "TradingAPI",
   },
   {
-    title: "Net Position",
-    path: "/developer/net-position",
+    title: "Portfolio",
+    path: "/developer/portfolio",
     isSelected: false,
     type: "TradingAPI",
   },
   {
     title: "Calculate Order Margin",
     path: "/developer/calculate-order-margin",
+    isSelected: false,
+    type: "TradingAPI",
+  },
+  {
+    title: "Market Quotes and Instruments",
+    path: "/developer/market-quotes-and-instruments",
+    isSelected: false,
+    type: "TradingAPI",
+  },
+  {
+    title: "Historical Candle",
+    path: "/developer/historical-candle",
     isSelected: false,
     type: "TradingAPI",
   },
