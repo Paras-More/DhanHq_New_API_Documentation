@@ -78,7 +78,7 @@ function Router() {
             />
             <Route path="type-b/error-codes" element={<TypeBErrors />} />
             {/* Login Session Routes */}
-            <Route path="type-a/user" element={<UserDetailsTypeA />} />
+            <Route path="type-a/user" element={<UserDetailsTypeA   />} />
             <Route path="type-b/user" element={<LoginTypeB />} />
             {/* Market Data Routes */}
             <Route path="type-a/market-data" element={<MarketDataTypeA />} />
