@@ -22,7 +22,7 @@ function LeftSideBarWeb() {
   useEffect(() => {
     setCurrentTypeLinks(filterCurrentTypeLinks());
     if (initalRender) {
-      navigate(`/developer/type-${state.selectedValue.toLowerCase()}/login`);
+      navigate(`/developer/type-${state.selectedValue.toLowerCase()}/user`);
     }
     setInitalRender(true);
   }, [state.selectedValue]);
