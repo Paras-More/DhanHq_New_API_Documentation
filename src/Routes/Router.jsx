@@ -3,13 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Introduction from "../Content_Components/Introduction";
 import AllOrdersTypeA from "../Content_Components/TypeAComponents/Orders/AllOrdersTypeA";
 import AllOrdersTypeB from "../Content_Components/TypeBComponents/Orders/AllOrdersTypeB";
-import Net_PositionTypeB from "../Content_Components/TypeBComponents/Net Position/Net_PositionTypeB";
 import Calculate_Order_MarginTypeA from "../Content_Components/TypeAComponents/Calculate Order Margin/Calculate_Order_MarginTypeA";
 import Calculate_Order_MarginTypeB from "../Content_Components/TypeBComponents/Calculate Order Margin/Calculate_Order_MarginTypeB";
-import GenerateSessionTypeA from "../Content_Components/TypeAComponents/User/GenerateSessionTypeA";
-import GenerateSessionTypeB from "../Content_Components/TypeBComponents/Generate Session/GenerateSessionTypeB";
-import LoginTypeA from "../Content_Components/TypeAComponents/User/LoginTypeA";
-import LoginTypeB from "../Content_Components/TypeBComponents/Login/LoginTypeB";
 import MarketDataTypeA from "../Content_Components/TypeAComponents/Market Data/MarketDataTypeA";
 import MarketDataTypeB from "../Content_Components/TypeBComponents/Market Data/MarketDataTypeB";
 import Annexure from "../Content_Components/Annexure";
@@ -21,7 +16,10 @@ import PortfolioTypeA from "../Content_Components/TypeAComponents/Portfolio/Port
 import MarketQutes_InstrumentsTypeA from "../Content_Components/TypeAComponents/Market Quotes and Instruments/MarketQutes_InstrumentsTypeA";
 import HistoricalCandleTypeA from "../Content_Components/TypeAComponents/Historical Candle/HistoricalCandleTypeA";
 import UserDetailsTypeA from "../Content_Components/TypeAComponents/User/UserDetailsTypeA";
-
+import UserDetailsTypeB from "../Content_Components/TypeBComponents/User/UserDetailsTypeB";
+import PortfolioTypeB from "../Content_Components/TypeBComponents/Portfolio/PortfolioTypeB";
+import MarketQutes_InstrumentsTypeB from "../Content_Components/TypeBComponents/Market Quotes and Instruments/MarketQutes_InstrumentsTypeB";
+import HistoricalCandleTypeB from "../Content_Components/TypeBComponents/Historical Candle/HistoricalCandleTypeB";
 function Router() {
   return (
     <>
@@ -34,7 +32,7 @@ function Router() {
             <Route path="type-b/orders" element={<AllOrdersTypeB />} />
             {/* Net Position Route */}
             <Route path="type-a/portfolio" element={<PortfolioTypeA />} />
-            <Route path="type-b/portfolio" element={<Net_PositionTypeB />} />
+            <Route path="type-b/portfolio" element={<PortfolioTypeB />} />
             {/* Calculate Order Margin route */}
             <Route
               path="type-a/calculate-order-margin"
@@ -51,7 +49,7 @@ function Router() {
             />
             <Route
               path="type-b/market-quotes-and-instruments"
-              element={<AllOrdersTypeB />}
+              element={<MarketQutes_InstrumentsTypeB />}
             />
             {/* Historical Candle Route */}
             <Route
@@ -60,16 +58,7 @@ function Router() {
             />
             <Route
               path="type-b/historical-candle"
-              element={<Net_PositionTypeB />}
-            />
-            {/* Generate Session Routes */}
-            <Route
-              path="type-a/generate-session"
-              element={<GenerateSessionTypeA />}
-            />
-            <Route
-              path="type-b/generate-session"
-              element={<GenerateSessionTypeB />}
+              element={<HistoricalCandleTypeB />}
             />
             {/* Erroe Pages Routes */}
             <Route
@@ -79,7 +68,7 @@ function Router() {
             <Route path="type-b/error-codes" element={<TypeBErrors />} />
             {/* Login Session Routes */}
             <Route path="type-a/user" element={<UserDetailsTypeA   />} />
-            <Route path="type-b/user" element={<LoginTypeB />} />
+            <Route path="type-b/user" element={<UserDetailsTypeB />} />
             {/* Market Data Routes */}
             <Route path="type-a/market-data" element={<MarketDataTypeA />} />
             <Route path="type-b/market-data" element={<MarketDataTypeB />} />

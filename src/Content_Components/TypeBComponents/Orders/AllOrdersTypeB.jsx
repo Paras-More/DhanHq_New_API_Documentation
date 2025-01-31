@@ -3,8 +3,10 @@ import PlaceOrderTypeB from './PlaceOrderTypeB'
 import ModifyOrderTypeB from './ModifyOrderTypeB'
 import CancelOrderTypeB from './CancelOrderTypeB'
 import OrderBookTypeB from './OrderBookTypeB'
+import CancelAllTypeB from './CancelAllTypeB'
 import DynamicTable from '../../../Common_Components/DynamicTable'
-
+import IndiviualOrderDetailsTypeB from './IndiviualOrderDetailsTypeB'
+import TradeHistoryTypeB from './TradeHistoryTypeB'
 function AllOrdersTypeB() {
 
     const data = [
@@ -24,9 +26,24 @@ function AllOrdersTypeB() {
           "description": "Cancel a pending order"
         },
         {
+          "method": "POST",
+          "path": "https://ntasc.mirae.com/typeb/orders/cancelall ",
+          "description": "Cancel all pending order"
+        },
+        {
           "method": "GET",
           "path": "https://ntasc.mirae.com/typeb/orders",
           "description": "View all the existing orders."
+        },    
+        {
+          "method": "GET",
+          "path": "http://ntasc.mirae.com/typeb/trades",
+          "description": "This endpoint returns a list of all trades generated upon the execution of orders for that day."
+        },    
+        {
+          "method": "GET",
+          "path": "http://ntasc.mirae.com/typeb/order/details",
+          "description": "View the status of individual order"
         },    
       ]
 
@@ -45,7 +62,10 @@ function AllOrdersTypeB() {
                     <PlaceOrderTypeB/>
                     <ModifyOrderTypeB/>
                     <CancelOrderTypeB/>
+                    <CancelAllTypeB/>
                     <OrderBookTypeB/>
+                    <TradeHistoryTypeB/>
+                    <IndiviualOrderDetailsTypeB/>
             </div>
     </div>
 
