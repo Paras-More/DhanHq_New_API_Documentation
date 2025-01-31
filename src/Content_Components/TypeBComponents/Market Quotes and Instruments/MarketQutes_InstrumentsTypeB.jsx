@@ -24,7 +24,7 @@ function MarketQutes_InstrumentsTypeB() {
       <div className="mt-4">
         <DynamicTable data={data} />
       </div>
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-7">
         <OHLCDataTypeB />
         <hr></hr>
         <LTPDataTypeB />

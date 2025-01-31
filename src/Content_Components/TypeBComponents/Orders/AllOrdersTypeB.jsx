@@ -58,13 +58,19 @@ function AllOrdersTypeB() {
                         <DynamicTable data={data}/>
                     </div>
                 </div>
-            <div className='flex flex-col gap-10'>
+            <div className='flex flex-col gap-7'>
                     <PlaceOrderTypeB/>
+                    <hr></hr>
                     <ModifyOrderTypeB/>
+                    <hr></hr>
                     <CancelOrderTypeB/>
+                    <hr></hr>
                     <CancelAllTypeB/>
+                    <hr></hr>
                     <OrderBookTypeB/>
+                    <hr></hr>
                     <TradeHistoryTypeB/>
+                    <hr></hr>
                     <IndiviualOrderDetailsTypeB/>
             </div>
     </div>

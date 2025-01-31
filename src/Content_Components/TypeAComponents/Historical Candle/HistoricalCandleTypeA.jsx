@@ -3,9 +3,12 @@ import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
 function HistoricalCandleTypeA() {
-  const ModifyOrderCurlData = `curl --location --request PUT 'http://ntasc.mirae.com/typea/historical/11536/minute?from=2024-08-02+09:15:00&to=2024-08-04+09:20:00' \\
-    --header 'X-Mirae-Version: 1' \\
-    --header 'Authorization: token api_key:access_token' \\`;
+  const ModifyOrderCurlData = `curl --location --request GET 'http://ntasc.mirae.com/typea/trades' \\
+--header 'X-Mirae-Version: 1' \\
+--header 'Authorization: token access_token' \\
+--header 'Content-Type: application/x-www-form-urlencoded' \\
+--data-urlencode 'fromdate=2024-01-06' \\
+--data-urlencode 'todate=2025-01-07'`;
 
   const SuccessResponseJson = {
     status: "success",
@@ -50,16 +53,20 @@ function HistoricalCandleTypeA() {
       Description: "2025-01-07",
     },
   ];
-
+  const data = [
+    {
+      method: "GET",
+      path: "https://ntasc.mirae.com/typea/instruments/historical/11536/minute?from={2024-08-02+09:15:00}&to={2024-08-04+09:20:00}",
+      description: "View historical candle data"
+    },
+  ];
   return (
-    <div className="flex flex-col gap-6 mt-10">
+    <div className="flex flex-col gap-6">
       {/* <h1>Place Order</h1> */}
-      <div className="flex flex-col gap-3">
-        <ol className="list-inside">
-          <li className="font-bold text-xl">Historical Candle</li>
-        </ol>
+      <h1 className="content-heading-font">Historical Candle</h1>
+      <div className="mt-2">
+        <DynamicTable data={data} />
       </div>
-
       {/* Description  Details Section */}
       <div>
         <p>

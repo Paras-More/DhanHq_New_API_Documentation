@@ -5,14 +5,14 @@ import DynamicTable from "../../../Common_Components/DynamicTable";
 function FundSummaryTypeA() {
   const data = [
     {
-      method: "POST",
-      path: "https://ntasc.mirae.com/typea/session/token",
+      method: "GET",
+      path: "http://ntasc.mirae.com/user/fundsummary",
       description:
-        "This endpoint is used to retrieve a session token based on the provided API key, request token, and checksum.",
+        "This endpoint used get the funds, cash and margin information for the user.",
     },
   ];
 
-  const loginCurlData = `curl --location --request PUT 'http://ntasc.mirae.com/user/fundsummary' \\
+  const loginCurlData = `curl --location --request 'http://ntasc.mirae.com/user/fundsummary' \\
     --header 'X-Mirae-Version: 1' \\
     --header 'Authorization: token api_key:access_token' \\`;
 
@@ -103,13 +103,13 @@ function FundSummaryTypeA() {
     <div className="flex flex-col gap-6">
       {/* <h1>Place Order</h1> */}
       {/* <h1 className="content-heading-font"> Generate Session</h1> */}
-      {/* <div className="mt-4">
-        <DynamicTable data={data} />
-      </div> */}
       <div className="flex flex-col gap-3">
         <ol className="list-inside">
           <li className="font-bold text-xl">Fund Summary </li>
         </ol>
+          <div className="mt-4">
+        <DynamicTable data={data} />
+      </div>
       </div>
 
       {/* Description  Details Section */}
@@ -132,14 +132,9 @@ function FundSummaryTypeA() {
             </dd>
           </div>
           <div class="flex">
-            <dt class="font-semibold min-w-[120px]">Content-Type :</dt>
+            <dt class="font-semibold min-w-[120px]"> Authorization:</dt>
             <dd>
-              For this request, it is set to
-              <span class="mstockNavFont">
-                {" "}
-                application/x-www-form-urlencoded
-              </span>
-              , which is used for submitting form data.
+           A token-based authentication header. The format is token api_key:access_token
             </dd>
           </div>
         </dl>

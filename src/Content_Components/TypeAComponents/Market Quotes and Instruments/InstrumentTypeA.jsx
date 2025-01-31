@@ -3,7 +3,7 @@ import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
 function InstrumentTypeA() {
-  const ModifyOrderCurlData = `curl --location --request PUT 'http://ntasc.mirae.com/typea/zrd/trades' \\
+  const ModifyOrderCurlData = `curl --location --request PUT 'http://ntasc.mirae.com/typea/instruments/scriptmaster' \\
     --header 'X-Mirae-Version: 1' \\
     --header 'Authorization: token api_key:access_token' \\`;
 
@@ -104,7 +104,7 @@ function InstrumentTypeA() {
   ];
 
   return (
-    <div className="flex flex-col gap-6 mt-10">
+    <div className="flex flex-col gap-6">
       {/* <h1>Place Order</h1> */}
       <div className="flex flex-col gap-3">
         <ol className="list-inside">

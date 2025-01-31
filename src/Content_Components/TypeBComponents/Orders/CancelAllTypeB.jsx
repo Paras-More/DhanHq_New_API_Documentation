@@ -32,7 +32,7 @@ function CancelAllTypeB() {
   };
 
   return (
-    <div className="flex flex-col gap-6 mt-10">
+    <div className="flex flex-col gap-6">
       {/* <h1>Place Order</h1> */}
       <div className="flex flex-col gap-3">
         <ol className="list-inside">

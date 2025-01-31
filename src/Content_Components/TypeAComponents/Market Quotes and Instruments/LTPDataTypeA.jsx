@@ -3,9 +3,9 @@ import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
 function LTPDataTypeA() {
-  const ModifyOrderCurlData = `curl --location 'http://localhost:18463/Zrd/instruments/quote/ltp?i=NSE:ACC&i=BSE:ACC&i=NFO:CDSL25JAN2220CE' \\
-    --header 'X-Mirae-Version: 1' \\
-    --header 'Authorization: token api_key:access_token'`;
+  const ModifyOrderCurlData = `curl --location 'http://localhost:18463/Zrd/instruments/quote/ltp?i=NSE%3AACC&i=BSE%3AACC&i=NFO%3ACDSL25JAN2220CE' \\
+--header 'X-Mirae-Version: 1' \\
+--header 'Authorization: token access_token'`;
 
   const SuccessResponseJson = {
     status: "success",
@@ -114,7 +114,7 @@ function LTPDataTypeA() {
   ];
 
   return (
-    <div className="flex flex-col gap-6 mt-10">
+    <div className="flex flex-col gap-6">
       {/* <h1>Place Order</h1> */}
       <div className="flex flex-col gap-3">
         <ol className="list-inside">
@@ -143,18 +143,7 @@ function LTPDataTypeA() {
             <span className="font-semibold">Authorization:</span> A token-based
             authentication header. The format is token api_key:access_token.
           </li>
-          <li>
-            <span className="font-semibold">Content-Type:</span> Indicated the
-            media type of the resource. For this request, it is set to{" "}
-            <a
-              className="mstockNavFont"
-              href="application/x-www-form-urlencoded"
-            >
-              {" "}
-              application/x-www-form-urlencoded
-            </a>
-            , which s used for submiting form data.
-          </li>
+          
         </ul>
       </div>
       {/* Postman Curl command Details Section */}

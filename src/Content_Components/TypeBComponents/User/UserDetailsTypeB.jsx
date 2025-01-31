@@ -29,7 +29,7 @@ function UserDetailsTypeB() {
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="content-heading-font">User Details TYPE b and Authentication</h1>
+      <h1 className="content-heading-font">User Details and Authentication</h1>
       {/* Order API table */}
       {/* <div className="flex flex-col gap-4">
         <p>
@@ -38,9 +38,7 @@ function UserDetailsTypeB() {
         </p>
         <DynamicTable data={data} />
       </div> */}
-      <div className="flex flex-col gap-10">
-
-        <hr></hr>
+      <div className="flex flex-col gap-7">
         <LoginTypeB/>
         <hr></hr>
         <GenerateSessionTypeB/>

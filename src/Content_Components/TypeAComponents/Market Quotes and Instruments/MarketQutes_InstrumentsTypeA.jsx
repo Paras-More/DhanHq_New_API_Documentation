@@ -7,24 +7,14 @@ import DynamicTable from "../../../Common_Components/DynamicTable";
 function MarketQutes_InstrumentsTypeA() {
   const data = [
     {
-      method: "POST",
-      path: "https://ntasc.mirae.com/typea/orders/{variety}",
-      description: "Place a new order",
-    },
-    {
-      method: "PUT",
-      path: "https://ntasc.mirae.com/typea/orders/{variety}/❴OrderID❵",
-      description: "Modify a pending order",
-    },
-    {
-      method: "DELETE",
-      path: "https://ntasc.mirae.com/typea/orders/{variety}/❴OrderID❵",
-      description: "Cancel a pending order",
+      method: "GET",
+      path: "	https://ntasc.mirae.com/typea/instruments/quote",
+      description: "View OHLC and LTP market data"
     },
     {
       method: "GET",
-      path: "https://ntasc.mirae.com/typea/orders",
-      description: "View all the existing orders.",
+      path: "https://ntasc.mirae.com/typea/instruments/OpenAPIScripMaster",
+      description: "Provides the consolidated,csv formatted list of instruments ",
     },
   ];
 

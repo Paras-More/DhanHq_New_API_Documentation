@@ -6,24 +6,19 @@ import PositionConversionTypeA from "./PositionConversionTypeA";
 function PortfolioTypeA() {
   const data = [
     {
-      method: "POST",
-      path: "https://ntasc.mirae.com/typea/orders/{variety}",
-      description: "Place a new order",
-    },
-    {
-      method: "PUT",
-      path: "https://ntasc.mirae.com/typea/orders/{variety}/❴OrderID❵",
-      description: "Modify a pending order",
-    },
-    {
-      method: "DELETE",
-      path: "https://ntasc.mirae.com/typea/orders/{variety}/❴OrderID❵",
-      description: "Cancel a pending order",
+      method: "GET",
+      path: "http://ntasc.mirae.com/typea/portfolio/positions",
+      description: "view all their existing orders",
     },
     {
       method: "GET",
-      path: "https://ntasc.mirae.com/typea/orders",
-      description: "View all the existing orders.",
+      path: "http://ntasc.mirae.com/typea/portfolio/holdings",
+      description: "View all holdings",
+    },
+    {
+      method: "POST",
+      path: "http://ntasc.mirae.com/typea/portfolio/convertposition",
+      description: "Convert position",
     },
   ];
 
@@ -33,7 +28,7 @@ function PortfolioTypeA() {
       <div className="mt-4">
         <DynamicTable data={data} />
       </div>
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-7">
         <Net_PositionTypeA />
         <hr></hr>
         <Holdings_TypeA />
