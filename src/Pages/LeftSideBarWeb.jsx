@@ -46,7 +46,7 @@ function LeftSideBarWeb() {
   };
 
   return (
-    <aside className="bg-white sticky top-0 w-[180px] hidden flex-shrink-0 md:flex flex-col gap-4">
+    <aside className="bg-white sticky top-0 w-[200px] hidden flex-shrink-0 md:flex flex-col gap-4">
       {console.log("LeftSide bar RENDER")}
       <div className="fixed flex flex-col gap-4">
         {/* Introduction API */}

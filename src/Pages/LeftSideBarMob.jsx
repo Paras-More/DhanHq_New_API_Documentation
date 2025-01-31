@@ -72,7 +72,7 @@ function LeftSideBarMob() {
           }}
         >
           {
-            <div className="h-full w-[15.125rem] bg-white px-4 py-4 ">
+            <div className="h-full w-[16.125rem] bg-white px-4 py-4 ">
               <div onClick={handleLinkCLick} className="bg-white  h-full">
                 <div className="bg-white flex items-center justify-start gap-2 py-[0.5rem] min-h-[4rem] max-h-[4rem]">
                   .{/* Back button SVG DIV */}
