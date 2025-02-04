@@ -5,7 +5,15 @@ import DynamicTable from "../../../Common_Components/DynamicTable";
 function Net_PositionTypeA() {
   const positionCurlData = `curl --location 'http://ntasc.mirae.com/typea/portfolio/positions' \\
     --header 'X-Mirae-Version: 1' \\
-    --header 'Authorization: token api_key:access_token'`;
+    --header 'Authorization: token api_key:access_token'\\
+    --header 'Content-Type: application/x-www-form-urlencoded' \\
+    --data-urlencode 'tradingsymbol=ACC' \\
+    --data-urlencode 'exchange=NSE' \\
+    --data-urlencode 'transaction_type=BUY' \\
+    --data-urlencode 'position_type=DAY' \\
+    --data-urlencode 'quantity=1' \\
+    --data-urlencode 'old_product=CNC' \\
+    --data-urlencode 'new_product=MIS'`;
 
   const SuccessResponseJson = {
     status: "success",
@@ -164,15 +172,15 @@ function Net_PositionTypeA() {
             <NewJsonViewer data={SuccessResponseJson} />
             {/* Failure Version Json View repsonse */}
             <li>
-              <span className="font-semibold">Failure (HTTP Status 200): </span>{" "}
+              <span className="font-semibold">Failure (HTTP Status 400): </span>{" "}
               If authentication fails, the server will return an error message
             </li>
             <NewJsonViewer data={FailureVersionJson} />
-            <li>
+            {/* <li>
               <span className="font-semibold">Failure (HTTP Status 400): </span>{" "}
               If the API Key is Invalid or expired.
             </li>
-            <NewJsonViewer data={FailureInvalidAPIKey} />
+            <NewJsonViewer data={FailureInvalidAPIKey} /> */}
           </ul>
         </div>
       </div>

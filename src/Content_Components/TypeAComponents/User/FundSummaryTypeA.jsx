@@ -6,13 +6,13 @@ function FundSummaryTypeA() {
   const data = [
     {
       method: "GET",
-      path: "http://ntasc.mirae.com/user/fundsummary",
+      path: "http://ntasc.mirae.com/typea/user/fundsummary",
       description:
         "This endpoint used get the funds, cash and margin information for the user.",
     },
   ];
 
-  const loginCurlData = `curl --location --request 'http://ntasc.mirae.com/user/fundsummary' \\
+  const loginCurlData = `curl --location --request 'http://ntasc.mirae.com/typea/user/fundsummary' \\
     --header 'X-Mirae-Version: 1' \\
     --header 'Authorization: token api_key:access_token' \\`;
 
@@ -107,9 +107,9 @@ function FundSummaryTypeA() {
         <ol className="list-inside">
           <li className="font-bold text-xl">Fund Summary </li>
         </ol>
-          <div className="mt-4">
-        <DynamicTable data={data} />
-      </div>
+        <div className="mt-4">
+          <DynamicTable data={data} />
+        </div>
       </div>
 
       {/* Description  Details Section */}
@@ -134,7 +134,8 @@ function FundSummaryTypeA() {
           <div class="flex">
             <dt class="font-semibold min-w-[120px]"> Authorization:</dt>
             <dd>
-           A token-based authentication header. The format is token api_key:access_token
+              A token-based authentication header. The format is token
+              api_key:access_token
             </dd>
           </div>
         </dl>

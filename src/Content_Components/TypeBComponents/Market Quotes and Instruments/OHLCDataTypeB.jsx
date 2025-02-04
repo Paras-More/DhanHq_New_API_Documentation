@@ -3,31 +3,39 @@ import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
 function OHLCDataTypeB() {
-  const ModifyOrderCurlData = `curl --location '	https://ntasc.mirae.com/typeb/agl/instruments/quote' \\
+  const ModifyOrderCurlData = `curl --location --request GET 'http://localhost:18463/agl/instruments/quote' \\
 --header 'X-Mirae-Version: 1' \\
---header 'Authorization: Bearer access_token.' \\
---header 'X-PrivateKey: private_key\\'`;
+--header 'Authorization: Bearer access_token' \\
+--header 'X-PrivateKey: INnHxHlHDwDWPmXMou00TA@@' \\
+--header 'Content-Type: application/json' \\
+--data '{
+    "mode": "OHLC",
+    "exchangeTokens": {
+        "NSE": ["3045"],
+        "BSE": ["500410"]
+    }
+}'`;
 
   const SuccessResponseJson = {
-    "status": true,
-    "message": "SUCCESS",
-    "errorcode": "",
-    "data": {
-         "fetched": [
-              {
-                   "exchange": "NSE",
-                   "tradingSymbol": "SBIN-EQ",
-                   "symbolToken": "3045",
-                   "ltp": 571.8,
-                   "open": 568.75,
-                   "high": 568.75,
-                   "low": 567.05,
-                   "close": 566.5
-              }
-         ],
-         "unfetched": []
-    }
-};
+    status: true,
+    message: "SUCCESS",
+    errorcode: "",
+    data: {
+      fetched: [
+        {
+          exchange: "NSE",
+          tradingSymbol: "SBIN-EQ",
+          symbolToken: "3045",
+          ltp: 571.8,
+          open: 568.75,
+          high: 568.75,
+          low: 567.05,
+          close: 566.5,
+        },
+      ],
+      unfetched: [],
+    },
+  };
 
   const FailureTokenJson = {
     status: "error",
@@ -151,7 +159,7 @@ function OHLCDataTypeB() {
             authentication header. The format is token api_key:access_token.
           </li>
           <li>
-            <span className="font-semibold">X-PrivateKey:</span>  private_key
+            <span className="font-semibold">X-PrivateKey:</span> private_key
           </li>
         </ul>
       </div>

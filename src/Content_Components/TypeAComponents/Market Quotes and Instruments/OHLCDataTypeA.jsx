@@ -5,7 +5,7 @@ import DynamicTable from "../../../Common_Components/DynamicTable";
 function OHLCDataTypeA() {
   const ModifyOrderCurlData = `curl --location 'https://ntasc.mirae.com/typea/instruments/quote/ohlc?i=NSE%3AACC&i=BSE%3AACC' \\
 --header 'X-Mirae-Version: 1' \\
---header 'Authorization: token access_token\\`;
+--header 'Authorization: token access_token`;
 
   const SuccessResponseJson = {
     status: "success",

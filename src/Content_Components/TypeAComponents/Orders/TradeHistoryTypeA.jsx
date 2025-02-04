@@ -5,7 +5,10 @@ import DynamicTable from "../../../Common_Components/DynamicTable";
 function TradeHistoryTypeA() {
   const ModifyOrderCurlData = `curl --location --request GET 'http://ntasc.mirae.com/typea/trades' \\
     --header 'X-Mirae-Version: 1' \\
-    --header 'Authorization: token api_key:access_token' \\`;
+    --header 'Authorization: token api_key:access_token' \\
+    --header 'Content-Type: application/x-www-form-urlencoded' \\
+    --data-urlencode 'fromdate=2024-01-06' \\
+    --data-urlencode 'todate=2025-01-07'`;
 
   const SuccessResponseJson = {
     status: "success",

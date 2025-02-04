@@ -5,7 +5,15 @@ import DynamicTable from "../../../Common_Components/DynamicTable";
 function PositionConversionTypeA() {
   const positionCurlData = `curl --location 'http://ntasc.mirae.com/typea/portfolio/convertposition' \\
     --header 'X-Mirae-Version: 1' \\
-    --header 'Authorization: token api_key:access_token'`;
+    --header 'Authorization: token api_key:access_token'
+    --header 'Content-Type: application/x-www-form-urlencoded' \\
+    --data-urlencode 'tradingsymbol=ACC' \\
+    --data-urlencode 'exchange=NSE' \\
+    --data-urlencode 'transaction_type=BUY' \\
+    --data-urlencode 'position_type=DAY' \\
+    --data-urlencode 'quantity=1' \\
+    --data-urlencode 'old_product=CNC' \\
+    --data-urlencode 'new_product=MIS'`;
 
   const SuccessResponseJson = {
     status: "success",
@@ -149,7 +157,7 @@ function PositionConversionTypeA() {
             {/* Failure Version Json View repsonse */}
             <li>
               <span className="font-semibold">Failure (HTTP Status 200): </span>{" "}
-              bad request
+              Error
             </li>
             <NewJsonViewer data={FailureExceptionJson} />
             <li>

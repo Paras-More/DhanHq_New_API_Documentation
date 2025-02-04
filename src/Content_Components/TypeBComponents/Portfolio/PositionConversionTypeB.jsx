@@ -28,21 +28,23 @@ function PositionConversionTypeB() {
     "sellamount": "",
     "transactiontype": "BUY",
     "quantity": 1,
-    "type": "DAY"}'`;
+    "type": "DAY"
+    }'`;
 
   const SuccessResponseJson = {
-    "status": true,
-    "message": "SUCCESS",
-    "errorcode": "",
-    "data": null
-};
+    status: true,
+    message: "SUCCESS",
+    errorcode: "",
+    data: null,
+  };
 
-  const FailureExceptionJson ={
-    "status": false,
-    "message": "NSE EQUITY 3787 EQ AJAY B 1 C INSUFICIENT QUANTITY TO CONVERT. INSUFICIENT QUANTITY: 1 AVAILABLE QUANTITY: 0",
-    "errorcode": "MA0034",
-    "data": null
-};
+  const FailureExceptionJson = {
+    status: false,
+    message:
+      "NSE EQUITY 3787 EQ AJAY B 1 C INSUFICIENT QUANTITY TO CONVERT. INSUFICIENT QUANTITY: 1 AVAILABLE QUANTITY: 0",
+    errorcode: "MA0034",
+    data: null,
+  };
   const FailureInvalidAPIKey = {
     status: "error",
     message:
@@ -96,9 +98,7 @@ function PositionConversionTypeB() {
           </div>
           <div class="flex">
             <dt class="font-semibold min-w-[120px]">X-PrivateKey: </dt>
-            <dd>
-            private_key
-            </dd>
+            <dd>private_key</dd>
           </div>
         </dl>
       </div>

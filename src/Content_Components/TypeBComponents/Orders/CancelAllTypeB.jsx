@@ -4,12 +4,10 @@ import CopyBox from "../../../Common_Components/CopyBox";
 import DynamicTable from "../../../Common_Components/DynamicTable";
 
 function CancelAllTypeB() {
-  const CancelOrderCurlData = `curl --location --request PUT 'http://ntasc.mirae.com/typeb/orders/cancelall' \\
-    --header 'X-Mirae-Version: 1' \\
-    --header 'Authorization: token api_key:access_token' \\
-    --header 'X-PrivateKey: private_key'\\`
-    ;
-
+  const CancelOrderCurlData = `curl --location --request POST 'http://localhost:18463/Agl/orders/cancelall' \\
+--header 'X-Mirae-Version: 1' \\
+--header 'Authorization: Bearer access_token' \\
+--header 'X-PrivateKey: INnHxHlHDwDWPmXMou00TA@@'`;
   const SuccessResponseJson = {
     status: "success",
     data: {

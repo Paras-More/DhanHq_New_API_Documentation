@@ -3,58 +3,63 @@ import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
 function TradeHistoryTypeB() {
-  const ModifyOrderCurlData = `curl --location --request GET 'http://ntasc.mirae.com/typeb/trades' \\
-    --header 'X-Mirae-Version: 1' \\
-    --header 'Authorization: token api_key:access_token' \\
-     --header 'X-PrivateKey: private_key'\\`;
+  const ModifyOrderCurlData = `curl --location --request GET 'http://localhost:18463/Agl/trades' \\
+--header 'X-Mirae-Version: 1' \\
+--header 'Authorization: Bearer access_token' \\
+--header 'X-PrivateKey: ay3KHeKfEJgoiYzkB/MAKg@@' \\
+--header 'Content-Type: application/json' \\
+--data '{
+    "fromdate": "2024-01-06",
+    "todate" : "2025-01-07"
+}'`;
 
   const SuccessResponseJson = {
-    "status": true,
-    "message": "SUCCESS",
-    "errorcode": "",
-    "data": [
-        {
-            "exchange": "NSE",
-            "producttype": "DELIVERY",
-            "tradingsymbol": "RASHTRIYA CHEMICALS & FER",
-            "instrumenttype": "",
-            "symbolgroup": "",
-            "strikeprice": "",
-            "optiontype": "",
-            "expirydate": "",
-            "marketlot": "",
-            "precision": "",
-            "multiplier": "",
-            "tradevalue": "",
-            "transactiontype": "SELL",
-            "fillprice": "145.45",
-            "fillsize": "1",
-            "orderid": "1300000040250500",
-            "fillid": "68346395",
-            "filltime": "14:48:23"
-        },
-        {
-            "exchange": "NSE",
-            "producttype": "DELIVERY",
-            "tradingsymbol": "RASHTRIYA CHEMICALS & FER",
-            "instrumenttype": "",
-            "symbolgroup": "",
-            "strikeprice": "",
-            "optiontype": "",
-            "expirydate": "",
-            "marketlot": "",
-            "precision": "",
-            "multiplier": "",
-            "tradevalue": "",
-            "transactiontype": "BUY",
-            "fillprice": "145.60",
-            "fillsize": "1",
-            "orderid": "1300000040194885",
-            "fillid": "68334426",
-            "filltime": "14:47:53"
-        }
-    ]
-};
+    status: true,
+    message: "SUCCESS",
+    errorcode: "",
+    data: [
+      {
+        exchange: "NSE",
+        producttype: "DELIVERY",
+        tradingsymbol: "RASHTRIYA CHEMICALS & FER",
+        instrumenttype: "",
+        symbolgroup: "",
+        strikeprice: "",
+        optiontype: "",
+        expirydate: "",
+        marketlot: "",
+        precision: "",
+        multiplier: "",
+        tradevalue: "",
+        transactiontype: "SELL",
+        fillprice: "145.45",
+        fillsize: "1",
+        orderid: "1300000040250500",
+        fillid: "68346395",
+        filltime: "14:48:23",
+      },
+      {
+        exchange: "NSE",
+        producttype: "DELIVERY",
+        tradingsymbol: "RASHTRIYA CHEMICALS & FER",
+        instrumenttype: "",
+        symbolgroup: "",
+        strikeprice: "",
+        optiontype: "",
+        expirydate: "",
+        marketlot: "",
+        precision: "",
+        multiplier: "",
+        tradevalue: "",
+        transactiontype: "BUY",
+        fillprice: "145.60",
+        fillsize: "1",
+        orderid: "1300000040194885",
+        fillid: "68334426",
+        filltime: "14:47:53",
+      },
+    ],
+  };
 
   const FailureInvalidAPIKey = {
     status: "error",
@@ -108,7 +113,7 @@ function TradeHistoryTypeB() {
           </li>
           <li>
             <span className="font-semibold">X-PrivateKey: </span>private_key
-          </li> 
+          </li>
         </ul>
       </div>
       {/* Postman Curl command Details Section */}

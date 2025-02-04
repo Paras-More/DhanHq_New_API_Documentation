@@ -6,17 +6,7 @@ import DynamicTable from "../../../Common_Components/DynamicTable";
 function CancelOrderTypeA() {
   const CancelOrderCurlData = `curl --location --request DELETE 'http://ntasc.mirae.com/typea/orders/regular/1161241001100' \\
     --header 'X-Mirae-Version: 1' \\
-    --header 'Authorization: token api_key:access_token' \\
-    --header 'Content-Type: application/x-www-form-urlencoded' \\
-    --data-urlencode 'tradingsymbol=ACC' \\
-    --data-urlencode 'transaction_type=BUY' \\
-    --data-urlencode 'validity=DAY' \\
-    --data-urlencode 'exchange=NSE' \\
-    --data-urlencode 'quantity=3' \\
-    --data-urlencode 'order_type=LIMIT' \\
-    --data-urlencode 'modqty_remng=2' \\
-    --data-urlencode 'product=MIS' \\
-    --data-urlencode 'price=1250'`;
+    --header 'Authorization: token api_key:access_token'`;
 
   const SuccessResponseJson = {
     status: "success",
@@ -89,7 +79,7 @@ function CancelOrderTypeA() {
       Field: "product",
       Type: "string",
       Description:
-        "Product type <code class='highlighter'>CNC</code> <code class='highlighter'>INTRADAY</code> <code class='highlighter'>MARGIN</code> <code class='highlighter'>MTF</code> <code class='highlighter'>CO</code> <code class='highlighter'>BO</code>",
+        "Product type <code class='highlighter'>CNC</code> <code class='highlighter'>NORMAL</code> <code class='highlighter'>MIS</code>",
     },
 
     {
@@ -126,18 +116,6 @@ function CancelOrderTypeA() {
           <li>
             <span className="font-semibold">Authorization:</span> A token-based
             authentication header. The format is token api_key:access_token.
-          </li>
-          <li>
-            <span className="font-semibold">Content-Type:</span> Indicated the
-            media type of the resource. For this request, it is set to{" "}
-            <a
-              className="mstockNavFont"
-              href="application/x-www-form-urlencoded"
-            >
-              {" "}
-              application/x-www-form-urlencoded
-            </a>
-            , which s used for submiting form data.
           </li>
         </ul>
       </div>

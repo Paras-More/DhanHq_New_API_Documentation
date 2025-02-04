@@ -3,12 +3,9 @@ import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
 function HistoricalCandleTypeA() {
-  const ModifyOrderCurlData = `curl --location --request GET 'http://ntasc.mirae.com/typea/trades' \\
+  const ModifyOrderCurlData = `curl --location 'http://localhost:18463/zrd/instruments/historical/11536/60minute?from=2024-08-02+09%3A15%3A00&to=2024-08-04+09%3A20%3A00' \\
 --header 'X-Mirae-Version: 1' \\
---header 'Authorization: token access_token' \\
---header 'Content-Type: application/x-www-form-urlencoded' \\
---data-urlencode 'fromdate=2024-01-06' \\
---data-urlencode 'todate=2025-01-07'`;
+--header 'Authorization: token access_token'`;
 
   const SuccessResponseJson = {
     status: "success",
@@ -57,7 +54,7 @@ function HistoricalCandleTypeA() {
     {
       method: "GET",
       path: "https://ntasc.mirae.com/typea/instruments/historical/11536/minute?from={2024-08-02+09:15:00}&to={2024-08-04+09:20:00}",
-      description: "View historical candle data"
+      description: "View historical candle data",
     },
   ];
   return (
@@ -86,18 +83,6 @@ function HistoricalCandleTypeA() {
           <li>
             <span className="font-semibold">Authorization:</span> A token-based
             authentication header. The format is token api_key:access_token.
-          </li>
-          <li>
-            <span className="font-semibold">Content-Type:</span> Indicated the
-            media type of the resource. For this request, it is set to{" "}
-            <a
-              className="mstockNavFont"
-              href="application/x-www-form-urlencoded"
-            >
-              {" "}
-              application/x-www-form-urlencoded
-            </a>
-            , which s used for submiting form data.
           </li>
         </ul>
       </div>

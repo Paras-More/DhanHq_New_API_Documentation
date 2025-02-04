@@ -4,56 +4,61 @@ import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
 
 function IndiviualOrderDetailsTypeB() {
-  const orderBookCurlData = `curl --location --request PUT 'http://ntasc.mirae.com/typeb/order/details \\
-    --header 'X-Mirae-Version: 1' \\
-    --header 'Authorization: token api_key:access_token' \\
-    --header 'X-PrivateKey: private_key'\\`;
+  const orderBookCurlData = `curl --location --request GET 'http://localhost:18463/Agl/order/details' \\
+--header 'X-Mirae-Version: 1' \\
+--header 'Authorization: Bearer access_token' \\
+--header 'X-PrivateKey: ay3KHeKfEJgoiYzkB/MAKg@@' \\
+--header 'Content-Type: application/json' \\
+--data '{
+    "order_no": "1181250130105",
+    "segment": "E"
+}'`;
 
   const SuccessResponseJson = {
-    "status": true,
-    "message": "SUCCESS",
-    "errorcode": "",
-    "data": [
-        {
-            "variety": null,
-            "ordertype": "MARKET",
-            "producttype": "DELIVERY",
-            "duration": "DAY",
-            "price": 0,
-            "triggerprice": 0,
-            "quantity": "20",
-            "disclosedquantity": "0",
-            "squareoff": 0,
-            "stoploss": 0,
-            "trailingstoploss": 0,
-            "tradingsymbol": "ACC",
-            "transactiontype": "SELL",
-            "exchange": "NSE",
-            "symboltoken": "22",
-            "instrumenttype": "EQUITY",
-            "strikeprice": 0,
-            "optiontype": "",
-            "expirydate": "2025-Jan-23",
-            "lotsize": "",
-            "cancelsize": "0",
-            "averageprice": "0",
-            "filledshares": "20",
-            "unfilledshares": "0",
-            "orderid": "1000000000016254",
-            "text": "CONFIRMED",
-            "status": "Pending",
-            "orderstatus": "Pending",
-            "updatetime": "23-01-2025 03:14:25 PM",
-            "exchtime": "",
-            "exchorderupdatetime": "",
-            "fillid": "",
-            "filltime": "",
-            "parentorderid": "",
-            "ordertag": "",
-            "uniqueorderid": ""
-        }
-    ]
-};
+    status: true,
+    message: "SUCCESS",
+    errorcode: "",
+    data: [
+      {
+        variety: null,
+        ordertype: "MARKET",
+        producttype: "DELIVERY",
+        duration: "DAY",
+        price: 0,
+        triggerprice: 0,
+        quantity: "20",
+        disclosedquantity: "0",
+        squareoff: 0,
+        stoploss: 0,
+        trailingstoploss: 0,
+        tradingsymbol: "ACC",
+        transactiontype: "SELL",
+        exchange: "NSE",
+        symboltoken: "22",
+        instrumenttype: "EQUITY",
+        strikeprice: 0,
+        optiontype: "",
+        expirydate: "2025-Jan-23",
+        lotsize: "",
+        cancelsize: "0",
+        averageprice: "0",
+        filledshares: "20",
+        unfilledshares: "0",
+        orderid: "1000000000016254",
+        text: "CONFIRMED",
+        status: "Pending",
+        orderstatus: "Pending",
+        updatetime: "23-01-2025 03:14:25 PM",
+        exchtime: "",
+        exchorderupdatetime: "",
+        fillid: "",
+        filltime: "",
+        parentorderid: "",
+        ordertag: "",
+        uniqueorderid: "",
+      },
+    ],
+  };
   const FailureInvalidAPIKey = {
     status: "error",
     message:
@@ -113,7 +118,6 @@ function IndiviualOrderDetailsTypeB() {
           <li>
             <span className="font-semibold">X-PrivateKey:</span>private_key
           </li>
-          
         </ul>
       </div>
 

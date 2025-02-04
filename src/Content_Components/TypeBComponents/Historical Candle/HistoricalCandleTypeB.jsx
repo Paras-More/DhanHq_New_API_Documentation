@@ -18,8 +18,8 @@ function HistoricalCandleTypeB() {
 
   const SuccessResponseJson = {
     status: "true",
-    message:"success",
-    "errorcode": "",
+    message: "success",
+    errorcode: "",
     data: {
       candles: [
         ["2024-01-01T09:15:00+05", 3790, 3832, 3773.35, 3803, 825219],
@@ -46,7 +46,7 @@ function HistoricalCandleTypeB() {
     {
       method: "GET",
       path: "https://ntasc.mirae.com/typeb/instruments/historical",
-      description: "View historical candle data"
+      description: "View historical candle data",
     },
   ];
 
@@ -56,8 +56,8 @@ function HistoricalCandleTypeB() {
       <h1 className="content-heading-font">Historical Candle</h1>
       <div className="flex flex-col gap-3">
         <div className="mt-4">
-        <DynamicTable data={data} />
-      </div>
+          <DynamicTable data={data} />
+        </div>
       </div>
 
       {/* Description  Details Section */}

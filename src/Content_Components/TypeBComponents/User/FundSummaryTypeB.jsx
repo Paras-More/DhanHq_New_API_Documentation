@@ -14,31 +14,31 @@ function FundSummaryTypeB() {
 
   const loginCurlData = `curl --location --request PUT 'http://ntasc.mirae.com/user/fundsummary' \\
     --header 'X-Mirae-Version: 1' \\
-    --header 'Authorization: token api_key:access_token' \\
+    --header 'Authorization: Bearer access_token' \\
     --header 'X-PrivateKey: private_key'\\
     `;
 
   const SuccessResponseJson = {
-    "status": true,
-    "message": "SUCCESS",
-    "errorcode": "",
-    "data": {
-        "net": "199999999998",
-        "availablecash": "299998804600.8",
-        "availableintradaypayin": "299998804600.8",
-        "availablelimitmargin": "0",
-        "collateral": "0",
-        "m2munrealized": "0",
-        "m2mrealized": "0",
-        "utiliseddebits": "1195396.2",
-        "utilisedspan": "0",
-        "utilisedoptionpremium": "0.0",
-        "utilisedholdingsales": "0",
-        "utilisedexposure": "0",
-        "utilisedturnover": "0",
-        "utilisedpayout": "0.0"
-    }
-};
+    status: true,
+    message: "SUCCESS",
+    errorcode: "",
+    data: {
+      net: "199999999998",
+      availablecash: "299998804600.8",
+      availableintradaypayin: "299998804600.8",
+      availablelimitmargin: "0",
+      collateral: "0",
+      m2munrealized: "0",
+      m2mrealized: "0",
+      utiliseddebits: "1195396.2",
+      utilisedspan: "0",
+      utilisedoptionpremium: "0.0",
+      utilisedholdingsales: "0",
+      utilisedexposure: "0",
+      utilisedturnover: "0",
+      utilisedpayout: "0.0",
+    },
+  };
 
   const FailureInvalidAPIKey = {
     status: "error",
@@ -96,8 +96,8 @@ function FundSummaryTypeB() {
         <ol className="list-inside">
           <li className="font-bold text-xl">Fund Summary </li>
         </ol>
-        <div className='mt-4'>
-              <DynamicTable data={data}/>
+        <div className="mt-4">
+          <DynamicTable data={data} />
         </div>
       </div>
 
@@ -123,14 +123,13 @@ function FundSummaryTypeB() {
           <div class="flex">
             <dt class="font-semibold min-w-[120px]">Authorization :</dt>
             <dd>
-            A token-based authentication header. The format is token api_key:access_token.
+              A token-based authentication header. The format is token
+              api_key:access_token.
             </dd>
           </div>
           <div class="flex">
-            <dt class="font-semibold min-w-[120px]">'X-PrivateKey :</dt>
-            <dd>
-            ay3KHeKfEJgoiYzkB/MAKg@@
-            </dd>
+            <dt class="font-semibold min-w-[120px]">X-PrivateKey :</dt>
+            <dd>ay3KHeKfEJgoiYzkB/MAKg@@</dd>
           </div>
         </dl>
       </div>

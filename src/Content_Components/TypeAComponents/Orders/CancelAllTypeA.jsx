@@ -55,18 +55,6 @@ function CancelAllTypeA() {
             <span className="font-semibold">Authorization:</span> A token-based
             authentication header. The format is token api_key:access_token.
           </li>
-          <li>
-            <span className="font-semibold">Content-Type:</span> Indicated the
-            media type of the resource. For this request, it is set to{" "}
-            <a
-              className="mstockNavFont"
-              href="application/x-www-form-urlencoded"
-            >
-              {" "}
-              application/x-www-form-urlencoded
-            </a>
-            , which s used for submiting form data.
-          </li>
         </ul>
       </div>
 

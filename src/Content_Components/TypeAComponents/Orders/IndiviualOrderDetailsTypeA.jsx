@@ -6,7 +6,10 @@ import DynamicTable from "../../../Common_Components/DynamicTable";
 function IndiviualOrderDetailsTypeA() {
   const orderBookCurlData = `curl --location 'http://ntasc.mirae.com/typea/order/details' \\
     --header 'X-Mirae-Version: 1' \\
-    --header 'Authorization: token api_key:access_token'`;
+    --header 'Authorization: token api_key:access_token'\\
+    --header 'Content-Type: application/x-www-form-urlencoded' \\
+    --data-urlencode 'order_no=1157250130101' \\
+    --data-urlencode 'segment=E'`;
 
   const SuccessResponseJson = {
     status: "success",
