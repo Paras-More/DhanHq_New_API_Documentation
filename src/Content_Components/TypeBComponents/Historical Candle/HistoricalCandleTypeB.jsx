@@ -3,7 +3,7 @@ import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
 function HistoricalCandleTypeB() {
-  const ModifyOrderCurlData = `curl --location --request GET 'https://ntasc.mirae.com/typeb/instruments/historical' \
+  const ModifyOrderCurlData = `curl --location --request GET 'https://ntasc.mirae.com/typeb/instruments/historical' \\
 --header 'X-Mirae-Version: 1' \\
 --header 'Authorization: Bearer access_token' \\
 --header 'X-PrivateKey: private_key' \\
@@ -15,7 +15,7 @@ function HistoricalCandleTypeB() {
     "fromdate": "2024-08-02 09:15",
     "todate": "2024-08-04 09:20"
 }' \\`;
-
+  
   const SuccessResponseJson = {
     status: "true",
     message: "success",
