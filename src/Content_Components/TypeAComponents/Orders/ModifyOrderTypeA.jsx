@@ -78,7 +78,7 @@ function ModifyOrderTypeA() {
       Field: "trigger_price",
       Type: "string",
       Description:
-        "Price at which the order is triggered, in case of <code class='highlighter'>STOP_LOSS</code> <code class='highlighter'>STOP_LOSS_MARKET</code>",
+        "Price at which the order is triggered, in case of <code class='highlighter'>SL</code> <code class='highlighter'>SL-M</code>",
     },
     {
       Field: "disclosed_quantity",
