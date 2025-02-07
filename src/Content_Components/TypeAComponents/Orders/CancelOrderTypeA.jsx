@@ -2,7 +2,7 @@ import React from "react";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import CopyBox from "../../../Common_Components/CopyBox";
 import DynamicTable from "../../../Common_Components/DynamicTable";
-
+import { API_KEY_ERROR_TYPE_A } from "../../../Utils/TypeAErrors";
 function CancelOrderTypeA() {
   const CancelOrderCurlData = `curl --location --request DELETE 'http://ntasc.mirae.com/typea/orders/regular/1161241001100' \\
     --header 'X-Mirae-Version: 1' \\
@@ -22,72 +22,7 @@ function CancelOrderTypeA() {
     error_type: "InputException",
     data: null,
   };
-  const FailureInvalidAPIKey = {
-    status: "error",
-    message:
-      "API is suspended/expired for use. Please check your API subscription and try again.",
-    data: null,
-  };
 
-  const requestParameter = [
-    {
-      Field: "variety",
-      Type: "string",
-      Description:
-        "Variety of the order ( <code class='highlighter'>regular</code> <code class='highlighter'>amo</code> <code class='highlighter'>co</code>)",
-    },
-    {
-      Field: "tradingsymbol",
-      Type: "string",
-      Description: "Refer Trading Symbol in Tables",
-    },
-    {
-      Field: "transaction_type",
-      Type: "string",
-      Description:
-        "The trading side of transaction : <code class='highlighter'>BUY</code> <code class='highlighter'>SELL</code>",
-    },
-    {
-      Field: "validity",
-      Type: "string",
-      Description:
-        "Validity of Order <code class='highlighter'>DAY</code> <code class='highlighter'>IOC</code>",
-    },
-    {
-      Field: "exchange",
-      Type: "string",
-      Description:
-        "Validity of Order <code class='highlighter'>NSE</code> <code class='highlighter'>BSE</code>",
-    },
-    {
-      Field: "quantity",
-      Type: "string",
-      Description: "Number of shares for the order",
-    },
-    {
-      Field: "order_type",
-      Type: "string",
-      Description:
-        "Order Type :<code class='highlighter'>LIMIT</code> <code class='highlighter'>MARKET</code> <code class='highlighter'>STOP_LOSS</code> <code class='highlighter'>STOP_LOSS_MARKET</code>",
-    },
-    {
-      Field: "modqty_remng",
-      Type: "string",
-      Description: "Remaining quantity",
-    },
-    {
-      Field: "product",
-      Type: "string",
-      Description:
-        "Product type <code class='highlighter'>CNC</code> <code class='highlighter'>NORMAL</code> <code class='highlighter'>MIS</code>",
-    },
-
-    {
-      Field: "price",
-      Type: "string",
-      Description: "Price at which order is placed",
-    },
-  ];
   return (
     <div className="flex flex-col gap-6 mt-10">
       {/* <h1>Place Order</h1> */}
@@ -141,15 +76,6 @@ function CancelOrderTypeA() {
         {/* </p> */}
       </div>
 
-      {/* Request Body Details Section */}
-      <div className="flex flex-col gap-2">
-        <p>
-          <span className="font-bold">Request Body - </span>The body of the
-          request must be URL-encoded and include the following parameters:
-        </p>
-        <DynamicTable data={requestParameter} />
-      </div>
-
       {/* Request Response -  Details Section  */}
       <div>
         <p className="font-bold">Response Structure-</p>
@@ -184,7 +110,7 @@ function CancelOrderTypeA() {
               </span>{" "}
               If the API Key is Invalid or expired.
             </li>
-            <NewJsonViewer data={FailureInvalidAPIKey} />
+            <NewJsonViewer data={API_KEY_ERROR_TYPE_A} />
           </ul>
         </div>
       </div>

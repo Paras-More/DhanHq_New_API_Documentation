@@ -2,6 +2,7 @@ import React from "react";
 import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
+import { API_KEY_ERROR_TYPE_B,INVALID_REQUEST_TYPE_B_401 } from "../../../Utils/TypeBErrors";
 function InstrumentTypeB() {
 
   const ModifyOrderCurlData = `curl --location 'https://ntasc.mirae.com/typeb/instruments/OpenAPIScripMaster' \\
@@ -14,13 +15,6 @@ function InstrumentTypeB() {
     data: { "NSE:ACC": null, "BSE:ACC": null, "NFO:CDSL25JAN2220CE": null },
   };
 
-  const FailureTokenJson = {
-    status: "error",
-    message: "Invalid request. Please try again.",
-    error_type: "TokenException",
-    data: null,
-  };
-
   const FailureInputJson = {
     status: "error",
     message:
@@ -28,13 +22,7 @@ function InstrumentTypeB() {
     error_type: "InputException",
     data: null,
   };
-  const FailureInvalidAPIKey = {
-    status: "error",
-    message:
-      "API is suspended/expired for use. Please check your API subscription and try again.",
-    data: null,
-  };
-
+ 
   const requestParameter = [
     {
       Field: "variety",
@@ -178,7 +166,7 @@ function InstrumentTypeB() {
               issues, or other errors, the server will return an error message
               with below json format.
             </li>
-            <NewJsonViewer data={FailureTokenJson} />
+            <NewJsonViewer data={INVALID_REQUEST_TYPE_B_401} />
 
             <li>
               {" "}
@@ -187,7 +175,7 @@ function InstrumentTypeB() {
               </span>{" "}
               If the API Key is Invalid or expired.
             </li>
-            <NewJsonViewer data={FailureInvalidAPIKey} />
+            <NewJsonViewer data={API_KEY_ERROR_TYPE_B} />
           </ul>
         </div>
       </div>

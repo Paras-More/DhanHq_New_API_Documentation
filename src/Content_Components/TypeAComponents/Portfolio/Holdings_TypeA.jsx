@@ -2,6 +2,7 @@ import React from "react";
 import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
+import { API_KEY_ERROR_TYPE_A } from "../../../Utils/TypeAErrors";
 function Holdings_TypeA() {
   const positionCurlData = `curl --location 'http://ntasc.mirae.com/typea/portfolio/holdings' \\
     --header 'X-Mirae-Version: 1' \\
@@ -67,12 +68,7 @@ function Holdings_TypeA() {
     error_type: "TokenException",
     data: null,
   };
-  const FailureInvalidAPIKey = {
-    status: "error",
-    message:
-      "API is suspended/expired for use. Please check your API subscription and try again.",
-    data: null,
-  };
+
   const data = [
     {
       method: "POST",
@@ -162,7 +158,7 @@ function Holdings_TypeA() {
               <span className="font-semibold">Failure (HTTP Status 400): </span>{" "}
               If the API Key is Invalid or expired.
             </li>
-            <NewJsonViewer data={FailureInvalidAPIKey} />
+            <NewJsonViewer data={API_KEY_ERROR_TYPE_A} />
           </ul>
         </div>
       </div>

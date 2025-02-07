@@ -2,6 +2,7 @@ import React from "react";
 import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
+import { INVALID_REQUEST_TYPE_B_401, API_KEY_ERROR_TYPE_B } from "../../../Utils/TypeBErrors";
 function OrderBookTypeB() {
   const orderBookCurlData = `curl --location 'http://ntasc.mirae.com/typeb/orders' \\
     --header 'X-Mirae-Version: 1' \\
@@ -92,20 +93,6 @@ function OrderBookTypeB() {
     ],
   };
 
-  const VersionExpensionJson = {
-    status: "false",
-    message: "Invalid request. Please try again.",
-    errorcode: "400",
-    data: null,
-  };
-
-  const FailureInvalidAPIKey = {
-    status: "error",
-    message:
-      "API is suspended/expired for use. Please check your API subscription and try again.",
-    data: null,
-  };
-
   return (
     <div className="flex flex-col gap-6">
       {/* <h1>Place Order</h1> */}
@@ -187,7 +174,7 @@ function OrderBookTypeB() {
               </span>{" "}
               : If authentication fails, the server will return an error message
             </li>
-            <NewJsonViewer data={VersionExpensionJson} />
+            <NewJsonViewer data={INVALID_REQUEST_TYPE_B_401} />
 
             <li>
               {" "}
@@ -196,7 +183,7 @@ function OrderBookTypeB() {
               </span>{" "}
               If the API Key is Invalid or expired.
             </li>
-            <NewJsonViewer data={FailureInvalidAPIKey} />
+            <NewJsonViewer data={API_KEY_ERROR_TYPE_B} />
           </ul>
         </div>
       </div>

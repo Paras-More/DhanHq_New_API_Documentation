@@ -2,6 +2,7 @@ import React from "react";
 import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
+import { API_KEY_ERROR_TYPE_A } from "../../../Utils/TypeAErrors";
 function GenerateSessionTypeA() {
   const data = [
     {
@@ -49,12 +50,6 @@ function GenerateSessionTypeA() {
     status: "error",
     message:
       "Entered OTP has been expired. Please regenerate a new one & enter the same.",
-    data: null,
-  };
-  const FailureInvalidAPIKey = {
-    status: "error",
-    message:
-      "API is suspended/expired for use. Please check your API subscription and try again.",
     data: null,
   };
 
@@ -196,7 +191,7 @@ function GenerateSessionTypeA() {
               <span className="font-semibold">Failure (HTTP Status 400): </span>{" "}
               If the API Key is Invalid or expired.
             </li>
-            <NewJsonViewer data={FailureInvalidAPIKey} />
+            <NewJsonViewer data={API_KEY_ERROR_TYPE_A} />
           </ul>
         </div>
       </div>

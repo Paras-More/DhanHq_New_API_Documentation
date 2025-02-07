@@ -2,6 +2,7 @@ import React from "react";
 import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
+import { API_KEY_ERROR_TYPE_B } from "../../../Utils/TypeBErrors";
 function TradeHistoryTypeB() {
   const ModifyOrderCurlData = `curl --location --request GET 'http://localhost:18463/Agl/trades' \\
 --header 'X-Mirae-Version: 1' \\
@@ -14,7 +15,7 @@ function TradeHistoryTypeB() {
 }'`;
 
   const SuccessResponseJson = {
-    status: true,
+    status: "true",
     message: "SUCCESS",
     errorcode: "",
     data: [
@@ -59,13 +60,6 @@ function TradeHistoryTypeB() {
         filltime: "14:47:53",
       },
     ],
-  };
-
-  const FailureInvalidAPIKey = {
-    status: "error",
-    message:
-      "API is suspended/expired for use. Please check your API subscription and try again.",
-    data: null,
   };
 
   const requestParameter = [
@@ -155,7 +149,7 @@ function TradeHistoryTypeB() {
               </span>{" "}
               If the API Key is Invalid or expired.
             </li>
-            <NewJsonViewer data={FailureInvalidAPIKey} />
+            <NewJsonViewer data={API_KEY_ERROR_TYPE_B} />
           </ul>
         </div>
       </div>

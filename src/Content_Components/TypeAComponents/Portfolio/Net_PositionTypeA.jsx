@@ -5,15 +5,7 @@ import DynamicTable from "../../../Common_Components/DynamicTable";
 function Net_PositionTypeA() {
   const positionCurlData = `curl --location 'http://ntasc.mirae.com/typea/portfolio/positions' \\
     --header 'X-Mirae-Version: 1' \\
-    --header 'Authorization: token api_key:access_token'\\
-    --header 'Content-Type: application/x-www-form-urlencoded' \\
-    --data-urlencode 'tradingsymbol=ACC' \\
-    --data-urlencode 'exchange=NSE' \\
-    --data-urlencode 'transaction_type=BUY' \\
-    --data-urlencode 'position_type=DAY' \\
-    --data-urlencode 'quantity=1' \\
-    --data-urlencode 'old_product=CNC' \\
-    --data-urlencode 'new_product=MIS'`;
+    --header 'Authorization: token api_key:access_token'\\`;
 
   const SuccessResponseJson = {
     status: "success",
@@ -92,12 +84,7 @@ function Net_PositionTypeA() {
     error_type: "VersionException",
     data: null,
   };
-  const FailureInvalidAPIKey = {
-    status: "error",
-    message:
-      "API is suspended/expired for use. Please check your API subscription and try again.",
-    data: null,
-  };
+ 
 
   return (
     <div className="flex flex-col gap-6">

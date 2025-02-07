@@ -2,7 +2,7 @@ import React from "react";
 import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
-
+import { API_KEY_ERROR_TYPE_B,INVALID_REQUEST_TYPE_B_401 } from "../../../Utils/TypeBErrors";
 function Calculate_Order_MarginTypeB() {
   const COMCurlData = `curl --location 'http://ntasc.mirae.com/typeb/margins/orders' \\
     --header 'X-Mirae-Version: 1' \\
@@ -33,16 +33,8 @@ function Calculate_Order_MarginTypeB() {
     tradeType: "BUY",
     triggerPrice: 0,
   };
-
-  const FailureInvalidAPIKey = {
-    status: "error",
-    message:
-      "API is suspended/expired for use. Please check your API subscription and try again.",
-    data: null,
-  };
-
   const SuccessResponseJson = {
-    status: true,
+    status: "true",
     message: "SUCCESS",
     errorcode: null,
     data: {
@@ -156,12 +148,6 @@ function Calculate_Order_MarginTypeB() {
     },
   ];
 
-  const FailureInputJson = {
-    status: "false",
-    message: "Invalid request. Please try again.",
-    errorcode: "400",
-    data: null,
-  };
 
   return (
     <div className="flex flex-col gap-6">
@@ -252,7 +238,7 @@ function Calculate_Order_MarginTypeB() {
               </span>{" "}
               If authentication fails, the server will return an error message
             </li>
-            <NewJsonViewer data={FailureInputJson} />
+            <NewJsonViewer data={INVALID_REQUEST_TYPE_B_401} />
 
             <li>
               {" "}
@@ -261,7 +247,7 @@ function Calculate_Order_MarginTypeB() {
               </span>{" "}
               If the API Key is Invalid or expired.
             </li>
-            <NewJsonViewer data={FailureInvalidAPIKey} />
+            <NewJsonViewer data={API_KEY_ERROR_TYPE_B} />
           </ul>
         </div>
       </div>

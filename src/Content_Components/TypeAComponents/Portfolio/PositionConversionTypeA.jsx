@@ -2,6 +2,7 @@ import React from "react";
 import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
+import { API_KEY_ERROR_TYPE_A } from "../../../Utils/TypeAErrors";
 function PositionConversionTypeA() {
   const positionCurlData = `curl --location 'http://ntasc.mirae.com/typea/portfolio/convertposition' \\
     --header 'X-Mirae-Version: 1' \\
@@ -15,22 +16,16 @@ function PositionConversionTypeA() {
     --data-urlencode 'old_product=CNC' \\
     --data-urlencode 'new_product=MIS'`;
 
-  const SuccessResponseJson = {
-    status: "success",
-    data: "true",
-  };
+  const SuccessResponseJson = `instrument_token,exchange_token,tradingsymbol,name,last_price,expiry,strike,
+  tick_size,lot_size,instrument_type,segment,exchange
+1,1,GOLDSTAR,GOLDSTAR POWER LIMITED,,,,,1,SM,SM,NSE
+2,2,91D101220,GOI TBILL 91D-10/12/20,,,,,1,TB,TB,NSE`
 
   const FailureExceptionJson = {
     status: "error",
     message:
       "NSE EQUITY 3787 EQ RAHUL B 1 C INSUFICIENT QUANTITY TO CONVERT. INSUFICIENT QUANTITY: 1 AVAILABLE QUANTITY: 0",
     error_type: "MiraeException",
-    data: null,
-  };
-  const FailureInvalidAPIKey = {
-    status: "error",
-    message:
-      "API is suspended/expired for use. Please check your API subscription and try again.",
     data: null,
   };
   const data = [
@@ -72,12 +67,12 @@ function PositionConversionTypeA() {
     {
       Field: "old_product",
       Type: "string",
-      Description: "Product type <code class='highlighter'>MIS</code>",
+      Description: "Product type <code class='highlighter'>CNC</code> <code class='highlighter'>MIS</code> <code class='highlighter'>MTF</code>",
     },
     {
       Field: "new_product",
       Type: "string",
-      Description: "Product type <code class='highlighter'>MTF</code>",
+      Description: "Product type <code class='highlighter'>CNC</code> <code class='highlighter'>MIS</code> <code class='highlighter'>MTF</code>",
     },
   ];
 
@@ -153,18 +148,12 @@ function PositionConversionTypeA() {
               On successful retrieval, the server returns a JSON array of client
               positions.
             </li>
-            <NewJsonViewer data={SuccessResponseJson} />
-            {/* Failure Version Json View repsonse */}
-            <li>
-              <span className="font-semibold">Failure (HTTP Status 200): </span>{" "}
-              Error
-            </li>
-            <NewJsonViewer data={FailureExceptionJson} />
+            <CopyBox copyContent={SuccessResponseJson} />
             <li>
               <span className="font-semibold">Failure (HTTP Status 400): </span>{" "}
               If the API Key is Invalid or expired.
             </li>
-            <NewJsonViewer data={FailureInvalidAPIKey} />
+            <NewJsonViewer data={API_KEY_ERROR_TYPE_A} />
           </ul>
         </div>
       </div>

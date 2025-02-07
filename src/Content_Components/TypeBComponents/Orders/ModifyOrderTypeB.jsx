@@ -2,6 +2,7 @@ import React from "react";
 import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
+import { API_KEY_ERROR_TYPE_B,INVALID_REQUEST_TYPE_B_401 } from "../../../Utils/TypeBErrors";
 function ModifyOrderTypeB() {
   const ModifyOrderCurlData = `curl --location --request PUT 'http://ntasc.mirae.com/typeb/orders/regular/1191241106101' \\
     --header 'X-Mirae-Version: 1' \\
@@ -48,19 +49,12 @@ function ModifyOrderTypeB() {
     errorcode: "RS-0034",
     data: null,
   };
-  const FailureInvalidAPIKey = {
-    status: "error",
-    message:
-      "API is suspended/expired for use. Please check your API subscription and try again.",
-    data: null,
-  };
-
   const requestParameter = [
     {
       Field: "variety",
       Type: "string",
       Description:
-        "Variety of the order ( <code class='highlighter'>regular</code> <code class='highlighter'>amo</code> <code class='highlighter'>co</code>)",
+        "Variety of the order ( <code class='highlighter'>NORMAL</code> <code class='highlighter'>AMO</code> <code class='highlighter'>ROBO</code> <code class='highlighter'>STOPLOSS</code> )",
     },
     {
       Field: "tradingsymbol",
@@ -93,7 +87,7 @@ function ModifyOrderTypeB() {
       Field: "order_type",
       Type: "string",
       Description:
-        "Order Type :<code class='highlighter'>LIMIT</code> <code class='highlighter'>MARKET</code> <code class='highlighter'>STOP_LOSS</code> <code class='highlighter'>STOP_LOSS_MARKET</code>",
+        " Product Type <code class='highlighter'>DELIVERY</code> <code class='highlighter'>INTRADAY</code> <code class='highlighter'>MARGIN</code> <code class='highlighter'>CARRYFORWARD</code>",
     },
     {
       Field: "quantity",
@@ -263,7 +257,7 @@ function ModifyOrderTypeB() {
               </span>{" "}
               If the API Key is Invalid or expired.
             </li>
-            <NewJsonViewer data={FailureInvalidAPIKey} />
+            <NewJsonViewer data={API_KEY_ERROR_TYPE_B} />
           </ul>
         </div>
       </div>

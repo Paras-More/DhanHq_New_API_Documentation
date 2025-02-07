@@ -2,7 +2,7 @@ import React from "react";
 import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
-
+import { API_KEY_ERROR_TYPE_B } from "../../../Utils/TypeBErrors";
 function IndiviualOrderDetailsTypeB() {
   const orderBookCurlData = `curl --location --request GET 'http://localhost:18463/Agl/order/details' \\
 --header 'X-Mirae-Version: 1' \\
@@ -15,7 +15,7 @@ function IndiviualOrderDetailsTypeB() {
 }'`;
 
   const SuccessResponseJson = {
-    status: true,
+    status: "true",
     message: "SUCCESS",
     errorcode: "",
     data: [
@@ -59,13 +59,6 @@ function IndiviualOrderDetailsTypeB() {
       },
     ],
   };
-  const FailureInvalidAPIKey = {
-    status: "error",
-    message:
-      "API is suspended/expired for use. Please check your API subscription and try again.",
-    data: null,
-  };
-
   const VersionExpensionJson = {
     status: "error",
     message: "Please provide valid api version.",
@@ -170,7 +163,7 @@ function IndiviualOrderDetailsTypeB() {
               </span>{" "}
               If the API Key is Invalid or expired.
             </li>
-            <NewJsonViewer data={FailureInvalidAPIKey} />
+            <NewJsonViewer data={API_KEY_ERROR_TYPE_B} />
           </ul>
         </div>
       </div>

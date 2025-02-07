@@ -2,6 +2,7 @@ import React from "react";
 import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
+import { API_KEY_ERROR_TYPE_B,INVALID_REQUEST_TYPE_B_401 } from "../../../Utils/TypeBErrors";
 function OHLCDataTypeB() {
   const ModifyOrderCurlData = `curl --location --request GET 'http://localhost:18463/agl/instruments/quote' \\
 --header 'X-Mirae-Version: 1' \\
@@ -16,8 +17,8 @@ function OHLCDataTypeB() {
     }
 }'`;
 
-  const SuccessResponseJson = {
-    status: true,
+  const OHLCSuccessResponseJson = {
+    status: "true",
     message: "SUCCESS",
     errorcode: "",
     data: {
@@ -37,13 +38,22 @@ function OHLCDataTypeB() {
     },
   };
 
-  const FailureTokenJson = {
-    status: "error",
-    message: "Invalid request. Please try again.",
-    error_type: "TokenException",
-    data: null,
-  };
-
+  const LTPSuccessResponseJson =  {
+    "status": "true",
+    "message": "SUCCESS",
+    "errorcode": "",
+    "data": {
+         "fetched": [
+              {
+                   "exchange": "NSE",
+                   "tradingSymbol": "SBIN-EQ",
+                   "symbolToken": "3045",
+                   "ltp": 571.75
+              }
+         ],
+         "unfetched": []
+    }
+};
   const FailureInputJson = {
     status: "error",
     message:
@@ -51,81 +61,19 @@ function OHLCDataTypeB() {
     error_type: "InputException",
     data: null,
   };
-  const FailureInvalidAPIKey = {
-    status: "error",
-    message:
-      "API is suspended/expired for use. Please check your API subscription and try again.",
-    data: null,
-  };
-
   const requestParameter = [
     {
-      Field: "variety",
+      Field: "mode",
       Type: "string",
       Description:
-        "Variety of the order ( <code class='highlighter'>regular</code> <code class='highlighter'>amo</code> <code class='highlighter'>co</code>)",
+        "<code class='highlighter'>OHLC</code> <code class='highlighter'>LTP</code>",
     },
     {
-      Field: "tradingsymbol",
-      Type: "string",
-      Description: "Refer Trading Symbol in Tables",
-    },
-    {
-      Field: "order_type",
-      Type: "string",
-      Description:
-        "Order Type :<code class='highlighter'>LIMIT</code> <code class='highlighter'>MARKET</code> <code class='highlighter'>STOP_LOSS</code> <code class='highlighter'>STOP_LOSS_MARKET</code>",
-    },
-    {
-      Field: "quantity",
-      Type: "string",
-      Description: "Number of shares for the order",
-    },
-    {
-      Field: "price",
-      Type: "string",
-      Description: "Price at which order is placed",
-    },
-    {
-      Field: "validity",
-      Type: "string",
-      Description:
-        "Validity of Order <code class='highlighter'>DAY</code> <code class='highlighter'>IOC</code>",
-    },
-    {
-      Field: "exchange",
-      Type: "string",
-      Description:
-        "Validity of Order <code class='highlighter'>NSE</code> <code class='highlighter'>BSE</code>",
-    },
-    {
-      Field: "trigger_price",
-      Type: "string",
-      Description:
-        "Price at which the order is triggered, in case of <code class='highlighter'>STOP_LOSS</code> <code class='highlighter'>STOP_LOSS_MARKET</code>",
-    },
-    {
-      Field: "disclosed_quantity",
-      Type: "string",
-      Description: "Number of shares visible (Keep more than 30% of quantity)",
-    },
-    {
-      Field: "transaction_type",
-      Type: "string",
-      Description:
-        "The trading side of transaction : <code class='highlighter'>BUY</code> <code class='highlighter'>SELL</code>",
-    },
-    {
-      Field: "product",
-      Type: "string",
-      Description:
-        "Product type <code class='highlighter'>CNC</code> <code class='highlighter'>INTRADAY</code> <code class='highlighter'>MARGIN</code> <code class='highlighter'>MTF</code> <code class='highlighter'>CO</code> <code class='highlighter'>BO</code>",
-    },
-    {
-      Field: "modqty_remng",
-      Type: "string",
-      Description: "Remaining quantity",
-    },
+      "Field": "exchangeTokens",
+      "Type": "string",
+      "Description": "<code class='highlighter'>\"NSE\": [\"3045\"]</code> <code class='highlighter'>\"BSE\": [\"500410\"]</code>"
+    }
+
   ];
 
   return (
@@ -174,16 +122,7 @@ function OHLCDataTypeB() {
         <p className="font-bold">Query Parameter -</p>
         <ul className="list-inside list-disc">
           <DynamicTable
-            data={[
-              {
-                Field: "i",
-                Description: "NSE:ACC",
-              },
-              {
-                Field: "i",
-                Description: "BSE:ACC",
-              },
-            ]}
+            data={requestParameter}
           />
         </ul>
       </div>
@@ -209,10 +148,18 @@ function OHLCDataTypeB() {
             <li>
               {" "}
               <span className="font-semibold">Success (HTTP Status 200): </span>
-              On successful order update, the server returns a JSON object
-              containing the order ID and status.
+              Successful OHLC Response
             </li>
-            <NewJsonViewer data={SuccessResponseJson} />
+            <NewJsonViewer data={OHLCSuccessResponseJson} />
+
+            {/* <li> */}
+
+            <li>
+              {" "}
+              <span className="font-semibold">Success (HTTP Status 200): </span>
+              Successful LTP Response
+            </li>
+            <NewJsonViewer data={LTPSuccessResponseJson} />
 
             <li>
               {" "}
@@ -221,7 +168,7 @@ function OHLCDataTypeB() {
               issues, or other errors, the server will return an error message
               with below json format.
             </li>
-            <NewJsonViewer data={FailureTokenJson} />
+            <NewJsonViewer data={INVALID_REQUEST_TYPE_B_401} />
 
             <li>
               {" "}
@@ -230,7 +177,7 @@ function OHLCDataTypeB() {
               </span>{" "}
               If the API Key is Invalid or expired.
             </li>
-            <NewJsonViewer data={FailureInvalidAPIKey} />
+            <NewJsonViewer data={API_KEY_ERROR_TYPE_B} />
           </ul>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
+import { API_KEY_ERROR_TYPE_B , INVALID_REQUEST_TYPE_B_401} from "../../../Utils/TypeBErrors";
 function Net_PositionTypeB() {
   const positionCurlData = `curl --location 'http://ntasc.mirae.com/typeb/portfolio/positions' \\
     --header 'X-Mirae-Version: 1' \\
@@ -94,20 +95,6 @@ function Net_PositionTypeB() {
         netprice: "800.5",
       },
     ],
-  };
-
-  const FailureVersionJson = {
-    status: "false",
-    message: "Incorrect auth. Please try again.",
-    errorcode: "400",
-    data: null,
-  };
-
-  const FailureInvalidAPIKey = {
-    status: "error",
-    message:
-      "API is suspended/expired for use. Please check your API subscription and try again.",
-    data: null,
   };
 
   const data = [
@@ -206,7 +193,7 @@ function Net_PositionTypeB() {
               <span className="font-semibold">Failure (HTTP Status 401): </span>{" "}
               If authentication fails, the server will return an error message
             </li>
-            <NewJsonViewer data={FailureVersionJson} />
+            <NewJsonViewer data={INVALID_REQUEST_TYPE_B_401} />
 
             <li>
               {" "}
@@ -215,7 +202,7 @@ function Net_PositionTypeB() {
               </span>{" "}
               If the API Key is Invalid or expired.
             </li>
-            <NewJsonViewer data={FailureInvalidAPIKey} />
+            <NewJsonViewer data={API_KEY_ERROR_TYPE_B} />
           </ul>
         </div>
       </div>

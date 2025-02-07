@@ -26,8 +26,8 @@ function MarketQutes_InstrumentsTypeB() {
       </div>
       <div className="flex flex-col gap-7">
         <OHLCDataTypeB />
-        <hr></hr>
-        <LTPDataTypeB />
+        {/* <hr></hr>
+        <LTPDataTypeB /> */}
         <hr></hr>
         <InstrumentTypeB />
       </div>

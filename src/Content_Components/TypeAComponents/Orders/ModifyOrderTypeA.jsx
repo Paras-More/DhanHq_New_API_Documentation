@@ -2,22 +2,18 @@ import React from "react";
 import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
+import { API_KEY_ERROR_TYPE_A } from "../../../Utils/TypeAErrors";
 function ModifyOrderTypeA() {
-  const ModifyOrderCurlData = `curl --location --request PUT 'http://ntasc.mirae.com/typea/orders/regular/1131241001100' \\
-    --header 'X-Mirae-Version: 1' \\
-    --header 'Authorization: token api_key:access_token' \\
-    --header 'Content-Type: application/x-www-form-urlencoded' \\
-    --data-urlencode 'tradingsymbol=INFY' \\
-    --data-urlencode 'order_type=LIMIT' \\
-    --data-urlencode 'quantity=20' \\
-    --data-urlencode 'price=1255' \\
-    --data-urlencode 'validity=DAY' \\
-    --data-urlencode 'exchange=NSE' \\
-    --data-urlencode 'trigger_price=1230' \\
-    --data-urlencode 'disclosed_quantity=0' \\
-    --data-urlencode 'transaction_type=BUY' \\
-    --data-urlencode 'product=MIS' \\
-    --data-urlencode 'modqty_remng=2'`;
+  const ModifyOrderCurlData = `curl --location --request PUT 'http://ntasc.mirae.com/typea/orders/regular/1000000000016050' \\
+--header 'X-Mirae-Version: 1' \\
+--header 'Authorization: token api_key:access_token' \\
+--header 'Content-Type: application/x-www-form-urlencoded' \\
+--data-urlencode 'order_type=LIMIT' \\  
+--data-urlencode 'quantity=5' \\
+--data-urlencode 'price=2000' \\
+--data-urlencode 'validity=DAY' \\
+--data-urlencode 'disclosed_quantity=0' \\
+--data-urlencode 'trigger_price=0'`;
 
   const SuccessResponseJson = {
     status: "success",
@@ -25,14 +21,12 @@ function ModifyOrderTypeA() {
       order_id: "1131241001100",
     },
   };
-
   const FailureTokenJson = {
     status: "error",
     message: "Invalid request. Please try again.",
     error_type: "TokenException",
     data: null,
   };
-
   const FailureInputJson = {
     status: "error",
     message:
@@ -40,13 +34,6 @@ function ModifyOrderTypeA() {
     error_type: "InputException",
     data: null,
   };
-  const FailureInvalidAPIKey = {
-    status: "error",
-    message:
-      "API is suspended/expired for use. Please check your API subscription and try again.",
-    data: null,
-  };
-
   const requestParameter = [
     {
       Field: "variety",
@@ -63,7 +50,7 @@ function ModifyOrderTypeA() {
       Field: "order_type",
       Type: "string",
       Description:
-        "Order Type :<code class='highlighter'>LIMIT</code> <code class='highlighter'>MARKET</code> <code class='highlighter'>STOP_LOSS</code> <code class='highlighter'>STOP_LOSS_MARKET</code>",
+        "Order Type :<code class='highlighter'>LIMIT</code> <code class='highlighter'>MARKET</code> <code class='highlighter'>SL</code> <code class='highlighter'>SL-M</code>",
     },
     {
       Field: "quantity",
@@ -108,7 +95,7 @@ function ModifyOrderTypeA() {
       Field: "product",
       Type: "string",
       Description:
-        "Product type <code class='highlighter'>CNC</code> <code class='highlighter'>NORMAL</code> <code class='highlighter'>MIS</code> ",
+        "Product type <code class='highlighter'>CNC</code> <code class='highlighter'>MIS</code> <code class='highlighter'>MTF</code> <code class='highlighter'>NRML</code>  ",
     },
     {
       Field: "modqty_remng",
@@ -116,7 +103,6 @@ function ModifyOrderTypeA() {
       Description: "Remaining quantity",
     },
   ];
-
   return (
     <div className="flex flex-col gap-6 mt-10">
       {/* <h1>Place Order</h1> */}
@@ -234,7 +220,7 @@ function ModifyOrderTypeA() {
               </span>{" "}
               If the API Key is Invalid or expired.
             </li>
-            <NewJsonViewer data={FailureInvalidAPIKey} />
+            <NewJsonViewer data={API_KEY_ERROR_TYPE_A} />
           </ul>
         </div>
       </div>

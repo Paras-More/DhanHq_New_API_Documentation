@@ -2,7 +2,7 @@ import React from "react";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import CopyBox from "../../../Common_Components/CopyBox";
 import DynamicTable from "../../../Common_Components/DynamicTable";
-
+import { API_KEY_ERROR_TYPE_A } from "../../../Utils/TypeAErrors";
 function CancelAllTypeA() {
   const CancelOrderCurlData = `curl --location --request POST 'http://ntasc.mirae.com/typea/orders/cancelall' \\
 --header 'X-Mirae-Version: 1' \\
@@ -22,12 +22,7 @@ function CancelAllTypeA() {
     error_type: "InputException",
     data: null,
   };
-  const FailureInvalidAPIKey = {
-    status: "error",
-    message:
-      "API is suspended/expired for use. Please check your API subscription and try again.",
-    data: null,
-  };
+
 
   return (
     <div className="flex flex-col gap-6 mt-10">
@@ -98,7 +93,7 @@ function CancelAllTypeA() {
               </span>{" "}
               If the API Key is Invalid or expired.
             </li>
-            <NewJsonViewer data={FailureInvalidAPIKey} />
+            <NewJsonViewer data={API_KEY_ERROR_TYPE_A} />
           </ul>
         </div>
       </div>

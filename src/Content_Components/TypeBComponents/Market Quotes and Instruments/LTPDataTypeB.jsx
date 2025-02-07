@@ -17,7 +17,7 @@ function LTPDataTypeB() {
 
 
   const SuccessLTPResponseJson = {
-    "status": true,
+    "status": "true",
     "message": "SUCCESS",
     "errorcode": "",
     "data": {

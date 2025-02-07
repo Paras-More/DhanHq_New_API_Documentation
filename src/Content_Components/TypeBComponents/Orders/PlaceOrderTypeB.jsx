@@ -2,7 +2,7 @@ import React from "react";
 import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
-
+import { API_KEY_ERROR_TYPE_B,INVALID_REQUEST_TYPE_B_401 } from "../../../Utils/TypeBErrors";
 function PlaceOrderTypeB() {
   const PlaceOrdercURLData = `curl --location 'http://ntasc.mirae.com/typeb/orders/regular' \\
     --header 'X-Mirae-Version: 1' \\
@@ -39,13 +39,6 @@ function PlaceOrderTypeB() {
     },
   };
 
-  const FailureInvalidOrderTypeJson = {
-    status: "false",
-    message:
-      "Invalid order type. valid product types allowed are MARKET, STOPLOSS_MARKET, STOPLOSS_LIMIT and LIMIT.",
-    errorcode: "400",
-    data: null,
-  };
 
   const FailureMarketCloseJson = {
     status: "false",
@@ -54,19 +47,13 @@ function PlaceOrderTypeB() {
     errorcode: "RS-0111",
     data: null,
   };
-  const FailureInvalidAPIKey = {
-    status: "error",
-    message:
-      "API is suspended/expired for use. Please check your API subscription and try again.",
-    data: null,
-  };
 
   const requestParameter = [
     {
       Field: "variety",
       Type: "string",
       Description:
-        "Variety of the order ( <code class='highlighter'>regular</code> <code class='highlighter'>amo</code> <code class='highlighter'>co</code> )",
+        "Variety of the order ( <code class='highlighter'>NORMAL</code> <code class='highlighter'>AMO</code> <code class='highlighter'>ROBO</code> <code class='highlighter'>STOPLOSS</code> )",
     },
     {
       Field: "tradingsymbol",
@@ -105,7 +92,7 @@ function PlaceOrderTypeB() {
       Field: "producttype",
       Type: "string",
       Description:
-        " Product Type <code class='highlighter'>CNC</code> <code class='highlighter'>INTRADAY</code> <code class='highlighter'>MARGIN</code> <code class='highlighter'>MTF</code> <code class='highlighter'>CO</code> <code class='highlighter'>BO</code>",
+        " Product Type <code class='highlighter'>DELIVERY</code> <code class='highlighter'>INTRADAY</code> <code class='highlighter'>MARGIN</code> <code class='highlighter'>CARRYFORWARD</code>",
     },
     {
       Field: "price",
@@ -243,7 +230,7 @@ function PlaceOrderTypeB() {
               issues, or other errors, the server will return an error message
               with below json format.
             </li>
-            <NewJsonViewer data={FailureInvalidOrderTypeJson} />
+            <NewJsonViewer data={INVALID_REQUEST_TYPE_B_401} />
 
             <li>
               {" "}
@@ -262,7 +249,7 @@ function PlaceOrderTypeB() {
               </span>{" "}
               If the API Key is Invalid or expired.
             </li>
-            <NewJsonViewer data={FailureInvalidAPIKey} />
+            <NewJsonViewer data={API_KEY_ERROR_TYPE_B} />
           </ul>
         </div>
       </div>

@@ -6,20 +6,20 @@ function FundSummaryTypeB() {
   const data = [
     {
       method: "GET",
-      path: "http://ntasc.mirae.com/user/fundsummary",
+      path: "http://ntasc.mirae.com/typeb/user/fundsummary",
       description:
         "This endpoint used get the funds, cash and margin information for the user",
     },
   ];
 
-  const loginCurlData = `curl --location --request PUT 'http://ntasc.mirae.com/user/fundsummary' \\
+  const loginCurlData = `curl --location --request PUT 'http://ntasc.mirae.com/typeb/user/fundsummary' \\
     --header 'X-Mirae-Version: 1' \\
     --header 'Authorization: Bearer access_token' \\
     --header 'X-PrivateKey: private_key'\\
     `;
 
   const SuccessResponseJson = {
-    status: true,
+    status: "true",
     message: "SUCCESS",
     errorcode: "",
     data: {

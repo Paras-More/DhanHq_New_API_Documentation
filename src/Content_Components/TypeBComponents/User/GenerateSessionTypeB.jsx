@@ -22,7 +22,7 @@ function GenerateSessionTypeB() {
       }'
     `
     const SuccessResponseJson ={
-      "status": true,
+      "status": "true",
       "message": "Please enter the OTP that we sent on XXXXXXX928 and XXXXEY@MIRAEASSETCM.COM",
       "errorcode": "",
       "data": {

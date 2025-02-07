@@ -2,6 +2,7 @@ import React from "react";
 import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
+import { API_KEY_ERROR_TYPE_B,INVALID_REQUEST_TYPE_B_401 } from "../../../Utils/TypeBErrors";
 function PositionConversionTypeB() {
   const positionCurlData = `curl --location 'http://ntasc.mirae.com/typeb/portfolio/convertposition' \\
     --header 'X-Mirae-Version: 1' \\
@@ -32,25 +33,20 @@ function PositionConversionTypeB() {
     }'`;
 
   const SuccessResponseJson = {
-    status: true,
+    status: "true",
     message: "SUCCESS",
     errorcode: "",
     data: null,
   };
 
   const FailureExceptionJson = {
-    status: false,
+    status: "false",
     message:
       "NSE EQUITY 3787 EQ AJAY B 1 C INSUFICIENT QUANTITY TO CONVERT. INSUFICIENT QUANTITY: 1 AVAILABLE QUANTITY: 0",
     errorcode: "MA0034",
     data: null,
   };
-  const FailureInvalidAPIKey = {
-    status: "error",
-    message:
-      "API is suspended/expired for use. Please check your API subscription and try again.",
-    data: null,
-  };
+
   const data = [
     {
       method: "POST",
@@ -145,7 +141,7 @@ function PositionConversionTypeB() {
               <span className="font-semibold">Failure (HTTP Status 400): </span>{" "}
               If the API Key is Invalid or expired.
             </li>
-            <NewJsonViewer data={FailureInvalidAPIKey} />
+            <NewJsonViewer data={API_KEY_ERROR_TYPE_B} />
           </ul>
         </div>
       </div>

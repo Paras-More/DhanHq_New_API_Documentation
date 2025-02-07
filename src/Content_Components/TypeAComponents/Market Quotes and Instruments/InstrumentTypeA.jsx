@@ -2,6 +2,7 @@ import React from "react";
 import CopyBox from "../../../Common_Components/CopyBox";
 import NewJsonViewer from "../../../Common_Components/NewJsonViewer";
 import DynamicTable from "../../../Common_Components/DynamicTable";
+import { API_KEY_ERROR_TYPE_A } from "../../../Utils/TypeAErrors";
 function InstrumentTypeA() {
   const ModifyOrderCurlData = `curl --location --request PUT 'http://ntasc.mirae.com/typea/instruments/scriptmaster' \\
     --header 'X-Mirae-Version: 1' \\
@@ -24,12 +25,6 @@ function InstrumentTypeA() {
     message:
       "Order Does not Exsist.Need to refresh orderbook / relogin in application ",
     error_type: "InputException",
-    data: null,
-  };
-  const FailureInvalidAPIKey = {
-    status: "error",
-    message:
-      "API is suspended/expired for use. Please check your API subscription and try again.",
     data: null,
   };
 
@@ -194,7 +189,7 @@ function InstrumentTypeA() {
               </span>{" "}
               If the API Key is Invalid or expired.
             </li>
-            <NewJsonViewer data={FailureInvalidAPIKey} />
+            <NewJsonViewer data={API_KEY_ERROR_TYPE_A} />
           </ul>
         </div>
       </div>
